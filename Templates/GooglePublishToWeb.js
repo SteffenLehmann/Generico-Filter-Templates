@@ -1,0 +1,116 @@
+// Publish your google slides, docs, forms, and sheets to the web and copy the publish link. If you want the students to be able to download the file, copy the standard URL (optional). 
+
+// The body of template
+<details id="Details@@AUTOID@@" closed="">
+        <summary class="detailsCollapsible">
+             @@Name Displayed on the Button@@
+        </summary>
+        <div class="present_wrapper">
+                <iframe class="iframeStyle" id="@@AUTOID@@" frameborder="0"  style="overflow: hidden;" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true""></iframe>
+        </div>
+        <p id="dlBtnP"><a id="Download@@AUTOID@@" href=""> Download</a></p>
+</details>
+<script>
+    window.onload = function(){
+    }
+</script>
+
+// Custom JS
+var pURL = '@@Google Publish to Web Link@@';
+var dURL = '@@Google URL - Easy Download@@';
+
+if(typeof(pURL) != 'undefined'){
+      var embedID = pURL.split("/")[pURL.split("/").length-2];
+
+      var embedType = pURL.split("/")[pURL.split("/").length-5];
+     
+      if(embedType == "presentation"){
+      	  var embedURL =  "https://docs.google.com/presentation/d/e/";
+      	   var embedURLend = "/embed?start=false&loop=false&delayms=3000";
+      }
+      
+      if(embedType == "document"){
+      	  var embedURL =  "https://docs.google.com/document/d/e/";
+      	  var embedURLend = "/pub?embedded=true";
+      }
+
+      if(embedType == "forms"){
+      	  var embedURL =  "https://docs.google.com/forms/d/e/";
+      	  var embedURLend = "/viewform?embedded=true";
+      }
+
+      if(embedType == "spreadsheets"){
+      	  var embedURL =  "https://docs.google.com/spreadsheets/d/e/";
+      	  var embedURLend = "/pubhtml?widget=true&amp;headers=false";
+      }
+
+      embedURL += embedID + embedURLend;
+
+      document.getElementById('Details'+@@AUTOID@@).onclick= function EmbedGoogle() {
+           document.getElementById('@@AUTOID@@').src = ""+embedURL;
+           if(typeof(dURL) =='undefined'){
+                  dlBtn = document.getElementById('Download'+@@AUTOID@@);
+                  dlBtn.innerHTML = '';
+                  dlBtn.href = "javascript:void(0)";
+                  dlBtn.style.cursor= 'default';
+                  dlBtn.disabled = true;
+                  dlBtn.style.color = '#000000';
+           }
+      };
+      
+      if(typeof(dURL) != 'undefined'){
+            var downloadID = dURL.split("/")[dURL.split("/").length-2];
+            var downloadType = dURL.split("/")[dURL.split("/").length-4];
+      
+      	    if(downloadType == "presentation"){
+      		var downloadURL =  "https://docs.google.com/presentation/d/";
+      	    }
+      
+      	    if(downloadType == "document"){
+      		var downloadURL =  "https://docs.google.com/document/d/";
+      	    }
+
+            if(downloadType == "spreadsheets"){
+      		var downloadURL =  "https://docs.google.com/spreadsheets/d/";
+      	    }
+
+            var downloadURLend = "/export/pdf";
+            downloadURL += downloadID+ downloadURLend;
+
+           dlBtn = document.getElementById('Download'+@@AUTOID@@);
+
+           if (dlBtn != null){
+                 document.getElementById('Download'+@@AUTOID@@).onclick= function DownloadGoogle() {
+                       document.getElementById('Download'+@@AUTOID@@).href = ""+downloadURL;
+                  };
+            };
+      } 
+}
+
+// Custom CSS
+.detailsCollapsible{
+    pointer: cursor; 
+    padding: 5px; 
+    width: 100%; 
+    border: none; 
+    text-align: left; 
+    outline: none;}
+    
+    .detailsCollapsible:hover{
+    background-color: #E8E8E8;
+    }
+    
+    .present_wrapper {
+    position: relative;
+    padding-bottom: 60%; 
+    }
+    
+    .iframeStyle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    }
+    
+    
