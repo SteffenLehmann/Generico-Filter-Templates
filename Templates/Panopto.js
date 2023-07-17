@@ -1,0 +1,54 @@
+// The body of template
+<details id="Details@@AUTOID@@" closed="">
+        <summary class="detailsCollapsible">
+             @@Name Displayed on the Button@@
+        </summary>
+        <div class="present_wrapper">
+            <iframe class="iframeStyle" id="@@AUTOID@@" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay"></iframe>
+        </div>
+</details>
+<script>
+    window.onload = function(){
+    }
+</script>
+
+const sharedURL = '@@Shared URL@@'
+let ID = ''
+let embedURL = ''
+
+if (typeof (sharedURL) != 'undefined') {
+    const parts = sharedURL.split("?");
+    ID = parts[parts.length - 1];
+    console.log(ID)
+    embedURL = "https://panopto.aau.dk/Panopto/Pages/Embed.aspx?" + ID + "&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=true&interactivity=all"
+    document.getElementById('Details'+@@AUTOID@@).onclick= function() {
+    document.getElementById('@@AUTOID@@').src = ""+ embedURL;
+};
+}
+
+
+// Custom CSS
+.detailsCollapsible{
+    pointer: cursor; 
+    padding: 5px; 
+    width: 100%; 
+    border: none; 
+    text-align: left; 
+    outline: none;}
+    
+    .detailsCollapsible:hover{
+    background-color: #E8E8E8;
+    }
+    
+    .present_wrapper {
+    position: relative;
+    padding-bottom: 60%; 
+    }
+    
+    .iframeStyle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    }
