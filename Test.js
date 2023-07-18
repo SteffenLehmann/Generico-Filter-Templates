@@ -6,9 +6,8 @@
              @@Name Displayed on the Button@@
         </summary>
         <div class="present_wrapper">
-            <iframe class="iframeStyle" id="@@AUTOID@@" sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe>
+            <iframe class="iframeStyle" id="@@AUTOID@@" frameborder="0"  style="overflow: hidden;" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
         </div>
-        <p id="results"><a id="Results@@AUTOID@@" href=""> Results</a></p>
 </details>
 <script>
     window.onload = function(){}
@@ -20,7 +19,6 @@
 const sharedURL = 'https://www.mentimeter.com/app/presentation/alssx23dpamkz1y7sq15tdokj3chob2w'
 const votingLink = 'https://www.menti.com/aldy2bhofb12' */
 
-const presentationName = '@@Presentation Name: The name of the Mentimenter presentation@@';
 const sharedURL = '@@Mentimeter shared video URL@@'
 
 
@@ -29,24 +27,11 @@ function idFromURL(url) {
     return parts[parts.length - 1];
 }
 
-function reNamePresentationName(name) {//The current url for results requires the name of the presentation with %20 instead of the first space
-    if (name.indexOf(" ") >= 0) {
-        const wordsOfName = name.split(" ");
-        name = wordsOfName[0] + "%20" + wordsOfName.slice(1).join(" "); 
-    }
-    return name;
-}
-
-if (typeof (sharedURL, votingLink, presentationName) != 'undefined') {
+if (typeof (sharedURL) != 'undefined') {
     const id = idFromURL(sharedURL);
     const embedURL = "https://www.mentimeter.com/app/presentation/" + id + "/embed"
-    const NameName = reNamePresentationName(presentationName);
-    const resultsPDF = 'https://static.mentimeter.com/screenshot/pdfs/'+ NameName +'.pdf'+ '?seriesId=' + id + '&screenshotTargetUrl=https%3A%2F%2Fwww.mentimeter.com%2Fpreview'
     document.getElementById('Details'+@@AUTOID@@).onclick= function() {
         document.getElementById('@@AUTOID@@').src = ""+ embedURL;
-    };
-    document.getElementById('Results'+@@AUTOID@@).onclick= function() {
-        document.getElementById('Results'+@@AUTOID@@).href = ""+ resultsPDF;
     };
 };
 
