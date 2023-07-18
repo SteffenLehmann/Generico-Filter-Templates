@@ -12,7 +12,7 @@
     }
 </script>
 
-const sharedURL = '@@Shared URL@@'
+const sharedURL = '@@Panopto shared video URL: remember to set it to public@@'
 let ID = ''
 let embedURL = ''
 
