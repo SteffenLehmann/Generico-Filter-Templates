@@ -1,9 +1,9 @@
-// Copy the link/URL of the Prezi presentation you want to embed.
+// Description: 
 
 // The body of template 
 <details id="Details@@AUTOID@@" closed="">
         <summary class="detailsCollapsible">
-                @@Name@@
+                @@The name of the button containg the prezi presentation@@
         </summary>
         <div class="present_wrapper">
               <iframe class="iframeStyle" id="@@AUTOID@@" src="" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" allow="autoplay; fullscreen" loading="lazy"></iframe>
@@ -18,7 +18,7 @@
 </script>
 
 // Custom JS
-var url = '@@Prezi URL@@';
+var url = '@@Prezi URL: From your Prezi dashboard, find the presentation you would like to share, click the three dots in its thumbnail and select Sharing and privacy from the list. Then you can copy the link.@@';
 if(typeof(url) != 'undefined'){
     var embedurl =  "https://prezi.com/p/embed/";
     var id = url.split("/")[url.split("/").length-2];
