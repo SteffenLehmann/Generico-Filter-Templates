@@ -2,6 +2,7 @@
 
 // The body of template 
 <details id="Details@@AUTOID@@" closed="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <summary class="detailsCollapsible">
         @@Name: The name of the button containing the padlet board@@
     </summary>
@@ -9,8 +10,9 @@
                <iframe id="@@AUTOID@@"  src="" frameborder="0" allow="camera;microphone;geolocation" style="width:100%;height:900px;display:block;padding:0;margin:0"></iframe>
          </div>
          <div class="Link-container">
-                <a id="ShareLink@@AUTOID@@" href="" target="_blank" class="Link"> Link</a>
-                <a id="Download@@AUTOID@@" href="" target="_blank" class="Link"> Download</a>
+                <a id="ShareLink@@AUTOID@@" href="" target="_blank" class="Link"><i class="fas fa-link"></i> Link</a>
+                <a id="Download@@AUTOID@@" href="" target="_blank" class="Link"><i class="fas fa-download"></i> Download</a>
+                <button id="fullscreen" class="Link"> <i class= "fas fa-expand-arrows-alt"></i> Full-screen</button>
         </div>
 </details>
 <script>
@@ -19,6 +21,8 @@ window.onload = function(){}
 
 // Custom JS
 const url = '@@Padlet shared URL: Remember to make it public for everyone@@';
+let iframeElement;
+const fullscreen = document.getElementById('fullscreen');
 if(typeof(url) != 'undefined'){
     const id =  url.split("-")[url.split("-").length-1];
     const embedurl = "https://padlet.com/embed/" + id;
@@ -28,6 +32,35 @@ if(typeof(url) != 'undefined'){
         document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
         document.getElementById('Download'+@@AUTOID@@).href = ""+downloadURL;
     };
+    iframeElement = document.getElementById(@@AUTOID@@);
+    
+}
+fullscreen.addEventListener('click', toggleFullscreen);
+
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+        // If the iframe is not in fullscreen mode, enter fullscreen
+        if (iframeElement.requestFullscreen) {
+            iframeElement.requestFullscreen();
+        } else if (iframeElement.mozRequestFullScreen) { // For Firefox
+            iframeElement.mozRequestFullScreen();
+        } else if (iframeElement.webkitRequestFullscreen) { // For Chrome, Safari, and Opera
+            iframeElement.webkitRequestFullscreen();
+        } else if (iframeElement.msRequestFullscreen) { // For Internet Explorer
+            iframeElement.msRequestFullscreen();
+        }
+    } else {
+        // If the iframe is already in fullscreen mode, exit fullscreen
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { // For Firefox
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { // For Chrome, Safari, and Opera
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { // For Internet Explorer
+            document.msExitFullscreen();
+        }
+    }
 }
 
 // Custom CSS
