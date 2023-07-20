@@ -1,32 +1,32 @@
-// Copy the link/URL of the Prezi presentation you want to embed.
+// Copy the link/URL from the Padlet board you want to Embed. 
 
 // The body of template 
 <details id="Details@@AUTOID@@" closed="">
-        <summary class="detailsCollapsible">
-                @@Name@@
-        </summary>
-        <div class="present_wrapper">
-              <iframe class="iframeStyle" id="@@AUTOID@@" src="" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" allow="autoplay; fullscreen" loading="lazy"></iframe>
-        </div>
-        <div class="Link-container">
+    <summary class="detailsCollapsible">
+        @@Name: The name of the button containing the padlet board@@
+    </summary>
+        <div class="present_wrapper" >
+               <iframe id="@@AUTOID@@"  src="" frameborder="0" allow="camera;microphone;geolocation" style="width:100%;height:900px;display:block;padding:0;margin:0"></iframe>
+         </div>
+         <div class="Link-container">
                 <a id="ShareLink@@AUTOID@@" href="" target="_blank" class="Link"> Link</a>
+                <a id="Download@@AUTOID@@" href="" target="_blank" class="Link"> Download</a>
         </div>
 </details>
 <script>
-      window.onload = function(){
-       }
+window.onload = function(){}
 </script>
 
 // Custom JS
-var url = '@@Prezi URL@@';
+const url = '@@Padlet shared URL: Remember to make it public for everyone@@';
 if(typeof(url) != 'undefined'){
-    var embedurl =  "https://prezi.com/p/embed/";
-    var id = url.split("/")[url.split("/").length-2];
-    embedurl += id + '/'
-    console.log(embedurl);
+    const id =  url.split("-")[url.split("-").length-1];
+    const embedurl = "https://padlet.com/embed/" + id;
+    const downloadURL = "https://padlet.com/_/exports/document_status?public_key=" + id;
     document.getElementById('Details'+@@AUTOID@@).onclick= function() {
         document.getElementById('@@AUTOID@@').src = ""+embedurl;
         document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
+        document.getElementById('Download'+@@AUTOID@@).href = ""+downloadURL;
     };
 }
 
@@ -45,10 +45,12 @@ if(typeof(url) != 'undefined'){
     
 .present_wrapper {
     position: relative;
-    padding-bottom: 60 %;
-    padding-top: 35px;
     height: 0;
     overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 2px;
+    box-sizing: border-box;
+    width: 100%;
 }
     
 .iframeStyle{
@@ -58,7 +60,7 @@ if(typeof(url) != 'undefined'){
     width: 100%;
     height: 100%;
 }
-    .Link-container{
+.Link-container{
     padding: 10px;
     border-radius: 5px;
     display: flex;

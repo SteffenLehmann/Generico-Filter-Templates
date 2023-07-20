@@ -3,29 +3,31 @@
 // The body of template 
 <details id="Details@@AUTOID@@" closed="">
     <summary class="detailsCollapsible">
-        @@Name@@
+        @@Name: The name of the button containing the padlet board@@
     </summary>
-        <div class="padlet-embed" style="border:1px solid rgba(0,0,0,0.1);border-radius:2px;box-sizing:border-box;overflow:hidden;position:relative;width:100%;background:#F4F4F4">
-               <iframe id="@@AUTOID@@"  src="" frameborder="0" allow="camera;microphone;geolocation" style="width:100%;height:608px;display:block;padding:0;margin:0"></iframe>
+        <div class="present_wrapper" >
+               <iframe id="@@AUTOID@@"  src="" frameborder="0" allow="camera;microphone;geolocation" style="width:100%;height:900px;display:block;padding:0;margin:0"></iframe>
          </div>
+         <div class="Link-container">
+                <a id="ShareLink@@AUTOID@@" href="" target="_blank" class="Link"> Link</a>
+                <a id="Download@@AUTOID@@" href="" target="_blank" class="Link"> Download</a>
+        </div>
 </details>
 <script>
-window.onload = function(){
-}
+window.onload = function(){}
 </script>
 
 // Custom JS
-var url = '@@Padlet URL@@';
-
+const url = '@@Padlet shared URL: Remember to make it public for everyone@@';
 if(typeof(url) != 'undefined'){
-      var embedurl =  url.split("/")[url.split("/").length-3];
-      var id = url.split("/")[url.split("/").length-1];
-      embedurl = "https://" + embedurl;
-      embedurl += "/embed/" + id;
-
-      document.getElementById('Details'+@@AUTOID@@).onclick= function() {
-              document.getElementById('@@AUTOID@@').src = ""+embedurl;
-      };
+    const id =  url.split("-")[url.split("-").length-1];
+    const embedurl = "https://padlet.com/embed/" + id;
+    const downloadURL = "https://padlet.com/_/exports/document_status?public_key=" + id;
+    document.getElementById('Details'+@@AUTOID@@).onclick= function() {
+        document.getElementById('@@AUTOID@@').src = ""+embedurl;
+        document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
+        document.getElementById('Download'+@@AUTOID@@).href = ""+downloadURL;
+    };
 }
 
 // Custom CSS
@@ -37,19 +39,53 @@ if(typeof(url) != 'undefined'){
     text-align: left; 
     outline: none;}
     
-    .detailsCollapsible:hover{
+.detailsCollapsible:hover{
     background-color: #E8E8E8;
-    }
+}
     
-    .miro_wrapper {
+.present_wrapper {
     position: relative;
-    padding-bottom: 70%; 
-    }
+    height: 0;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 2px;
+    box-sizing: border-box;
+    width: 100%;
+}
     
-    .iframeStylePadlet{
+.iframeStyle{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    }
+}
+.Link-container{
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+}
+
+.Link-container{
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+}
+.Link{
+    display: block;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #CCCCCC;
+    background-color: #CCCCCC; 
+    border-radius: 5px; /* Rounded borders */
+    margin-bottom: 5px;
+    margin: 0 5px;
+    color: #131314;
+    font-size: 16px;
+}
+
+.Link:hover{
+    background-color: #666666;
+    border: 1px solid #666666;
+    color: #468ff4;
+}

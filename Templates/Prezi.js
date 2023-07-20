@@ -18,10 +18,10 @@
 </script>
 
 // Custom JS
-var url = '@@Prezi URL: From your Prezi dashboard, find the presentation you would like to share, click the three dots in its thumbnail and select Sharing and privacy from the list. Then you can copy the link.@@';
+const url = '@@Prezi URL: From your Prezi dashboard, find the presentation you would like to share, click the three dots in its thumbnail and select Sharing and privacy from the list. Then you can copy the link.@@';
 if(typeof(url) != 'undefined'){
-    var embedurl =  "https://prezi.com/p/embed/";
-    var id = url.split("/")[url.split("/").length-2];
+    const embedurl =  "https://prezi.com/p/embed/";
+    const id = url.split("/")[url.split("/").length-2];
     embedurl += id + '/'
     console.log(embedurl);
     document.getElementById('Details'+@@AUTOID@@).onclick= function() {
@@ -58,7 +58,7 @@ if(typeof(url) != 'undefined'){
     width: 100%;
     height: 100%;
 }
-    .Link-container{
+.Link-container{
     padding: 10px;
     border-radius: 5px;
     display: flex;
