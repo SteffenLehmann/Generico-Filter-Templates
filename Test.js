@@ -10,7 +10,7 @@
                <iframe id="@@AUTOID@@"  src="" frameborder="0" allow="camera;microphone;geolocation" style="width:100%;height:900px;display:block;padding:0;margin:0"></iframe>
          </div>
          <div class="Link-container">
-                <a id="ShareLink@@AUTOID@@" href="" target="_blank" class="Link"><i class="fas fa-link"></i> Link</a>
+                <a id="ShareLink@@AUTOID@@" href="" target="_blank" class="Link"><i class="fas fa-external-link-alt"></i> Link</a>
                 <a id="Download@@AUTOID@@" href="" target="_blank" class="Link"><i class="fas fa-download"></i> Download</a>
                 <button id="fullscreen" class="Link"> <i class= "fas fa-expand-arrows-alt"></i> Full-screen</button>
         </div>
@@ -39,29 +39,47 @@ fullscreen.addEventListener('click', toggleFullscreen);
 
 function toggleFullscreen() {
     if (!document.fullscreenElement) {
-        // If the iframe is not in fullscreen mode, enter fullscreen
         if (iframeElement.requestFullscreen) {
             iframeElement.requestFullscreen();
-        } else if (iframeElement.mozRequestFullScreen) { // For Firefox
+        } else if (iframeElement.mozRequestFullScreen) {
             iframeElement.mozRequestFullScreen();
-        } else if (iframeElement.webkitRequestFullscreen) { // For Chrome, Safari, and Opera
+        } else if (iframeElement.webkitRequestFullscreen) {
             iframeElement.webkitRequestFullscreen();
-        } else if (iframeElement.msRequestFullscreen) { // For Internet Explorer
+        } else if (iframeElement.msRequestFullscreen) {
             iframeElement.msRequestFullscreen();
         }
     } else {
-        // If the iframe is already in fullscreen mode, exit fullscreen
         if (document.exitFullscreen) {
             document.exitFullscreen();
-        } else if (document.mozCancelFullScreen) { // For Firefox
+        } else if (document.mozCancelFullScreen) {
             document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) { // For Chrome, Safari, and Opera
+        } else if (document.webkitExitFullscreen) {
             document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) { // For Internet Explorer
+        } else if (document.msExitFullscreen) {
             document.msExitFullscreen();
         }
     }
 }
+
+// Listen for the fullscreenchange event on the document object
+document.addEventListener("fullscreenchange", function () {
+    if (document.fullscreenElement === iframeElement) {
+        // If the iframe is in fullscreen, add the exit button to its content
+        const iframeDocument = iframeElement.contentDocument;
+        const exitButton = document.createElement("button");
+        exitButton.className = "icon-button";
+        exitButton.innerText = "Exit Fullscreen";
+        exitButton.onclick = toggleFullscreen;
+        iframeDocument.body.appendChild(exitButton);
+    } else {
+        // If the iframe exits fullscreen, remove the exit button from its content
+        const iframeDocument = iframeElement.contentDocument;
+        const exitButton = iframeDocument.querySelector(".icon-button");
+        if (exitButton) {
+            exitButton.remove();
+        }
+    }
+});
 
 // Custom CSS
 .detailsCollapsible{
