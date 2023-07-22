@@ -32,7 +32,7 @@ if(typeof(url) != 'undefined'){
         document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
         document.getElementById('Download'+@@AUTOID@@).href = ""+downloadURL;
     };
-    iframeElement = document.getElementById(@@AUTOID@@);
+    fullscreenIframeContainer = document.getElementById(@@AUTOID@@);
     
 }
 fullscreen.addEventListener('click', toggleFullscreen);
@@ -40,14 +40,14 @@ fullscreen.addEventListener('click', toggleFullscreen);
 function toggleFullscreen() {
     if (!document.fullscreenElement) {
         // If the iframe is not in fullscreen mode, enter fullscreen
-        if (iframeElement.requestFullscreen) {
-            iframeElement.requestFullscreen();
-        } else if (iframeElement.mozRequestFullScreen) { // For Firefox
-            iframeElement.mozRequestFullScreen();
-        } else if (iframeElement.webkitRequestFullscreen) { // For Chrome, Safari, and Opera
-            iframeElement.webkitRequestFullscreen();
-        } else if (iframeElement.msRequestFullscreen) { // For Internet Explorer
-            iframeElement.msRequestFullscreen();
+        if (fullscreenIframeContainer.requestFullscreen) {
+            fullscreenIframeContainer.requestFullscreen();
+        } else if (fullscreenIframeContainer.mozRequestFullScreen) { // For Firefox
+            fullscreenIframeContainer.mozRequestFullScreen();
+        } else if (fullscreenIframeContainer.webkitRequestFullscreen) { // For Chrome, Safari, and Opera
+            fullscreenIframeContainer.webkitRequestFullscreen();
+        } else if (fullscreenIframeContainer.msRequestFullscreen) { // For Internet Explorer
+            fullscreenIframeContainer.msRequestFullscreen();
         }
     } else {
         // If the iframe is already in fullscreen mode, exit fullscreen
@@ -78,7 +78,6 @@ function toggleFullscreen() {
     
 .present_wrapper {
     position: relative;
-    height: 0;
     overflow: hidden;
     border: 1px solid rgba(0,0,0,0.1);
     border-radius: 2px;
