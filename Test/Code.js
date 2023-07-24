@@ -2,15 +2,21 @@
 const url = '@@Padlet shared URL: Remember to make it public for everyone@@';
 const fullscreenIframeContainer = document.getElementById('iframeContainer');
 const fullscreen = document.getElementById('fullscreenButton');
-if(typeof(url) != 'undefined'){
+const screenHeight = window.screen.height + 'px';
+let embeddedIframe;
+onLoad(url);
+
+function onLoad(url){
+  if(typeof(url) != 'undefined'){
     const id =  url.split("-")[url.split("-").length-1];
     const embedurl = "https://padlet.com/embed/" + id;
     const downloadURL = "https://padlet.com/_/exports/document_status?public_key=" + id;
     document.getElementById('Details'+@@AUTOID@@).onclick= function() {
-        document.getElementById('Content'+@@AUTOID@@).src = ""+embedurl;
+        embeddedIframe = document.getElementById('Content'+@@AUTOID@@).src = ""+embedurl;
         document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
         document.getElementById('Download'+@@AUTOID@@).href = ""+downloadURL;
     };
+  }
 }
 
 
@@ -43,26 +49,24 @@ function exitFullscreen() {
     document.msExitFullscreen();
   }
 }
-// Event listeners for the fullscreen change event
-document.addEventListener('fullscreenchange', () => {
-  if (document.fullscreenElement === fullscreenIframeContainer) {
-    exitFullscreenButton.style.display = 'block';
-    fullscreenButton.style.display = 'none';
-  } else {
-    exitFullscreenButton.style.display = 'none';
-    fullscreenButton.style.display = 'block';
-  }
-});
 
-document.addEventListener('webkitfullscreenchange', () => {
-  if (document.webkitFullscreenElement === fullscreenIframeContainer) {
+// Listen for fullscreen change event
+document.addEventListener('fullscreenchange', handleFullscreenChange);
+document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+function handleFullscreenChange() {
+  if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+    // If the iframe enters fullscreen
     exitFullscreenButton.style.display = 'block';
     fullscreenButton.style.display = 'none';
   } else {
+    // If the iframe exits fullscreen
     exitFullscreenButton.style.display = 'none';
     fullscreenButton.style.display = 'block';
   }
-});
+}
 
 // Event listener for the exit fullscreen button
 exitFullscreenButton.addEventListener('click', () => {

@@ -5,7 +5,8 @@
     width: 100%; 
     border: none; 
     text-align: left; 
-    outline: none;}
+    outline: none;
+}
     
 .detailsCollapsible:hover{
     background-color: #E8E8E8;
@@ -14,8 +15,8 @@
 .present_wrapper {
     position: relative;
     padding-bottom: 60 %;
-    padding-top: 35px;
     overflow: hidden;
+    height: 800px;
 }
 
 
@@ -64,3 +65,8 @@
     border: 1px solid #666666;
     color: #468ff4;
 }
+
+  .IframeStyle{
+    width: 100%;
+    height: 100%;
+  }
