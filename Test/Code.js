@@ -1,11 +1,16 @@
 // Custom JS
-const url = '@@Padlet shared URL: Remember to make it public for everyone@@';
-const fullscreenIframeContainer = document.getElementById('iframeContainer');
-const fullscreen = document.getElementById('fullscreenButton');
-const screenHeight = window.screen.height + 'px';
+const url = '@@Padlet shared URL: Remember to make it public for everyone@@'; // user input 
+const fullscreenIframeContainer = document.getElementById('iframeContainer'); 
+const fullscreenButton = document.getElementById('fullscreenButton');
 let embeddedIframe;
+let cursorMoved = false;
+let timeout;
+
+
 onLoad(url);
 
+
+// on load function e.g. when the Collapsible button is clicked
 function onLoad(url){
   if(typeof(url) != 'undefined'){
     const id =  url.split("-")[url.split("-").length-1];
@@ -19,9 +24,29 @@ function onLoad(url){
   }
 }
 
+function hideFullscreenButton() {
+  fullscreenButton.classList.add('hidden');
+  cursorMoved = false;
+}
+
+function showFullscreenButton() {
+  fullscreenButton.classList.remove('hidden');
+}
+
+function resetTimer() {
+  clearTimeout(timeout);
+  cursorMoved = true;
+  showFullscreenButton();
+  timeout = setTimeout(hideFullscreenButton, 2000);
+}
+
+document.addEventListener('mousemove', resetTimer);
+
+hideFullscreenButton();
+
 
 // Event listener for the fullscreen button
-fullscreen.addEventListener('click', enterFullscreen);
+fullscreenButton.addEventListener('click', enterFullscreen);
 
 
 // Function to enter fullscreen
