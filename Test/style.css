@@ -47,8 +47,8 @@
 .iframeButton{
     display: none;
     position: absolute;
-    top: 100px;
-    right: 100px;
+    bottom: 5px;
+    left: 5px;
     display: block;
     text-decoration: none;
     padding: 5px 10px;
