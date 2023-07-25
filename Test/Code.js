@@ -2,11 +2,9 @@
 const url = '@@Padlet shared URL: Remember to make it public for everyone@@'; // user input 
 const fullscreenIframeContainer = document.getElementById('iframeContainer'); 
 const fullscreenButton = document.getElementById('fullscreenButton');
-let embeddedIframe;
-let cursorMoved = false;
-let timeout;
-
-
+const exitFullscreenButton = document.getElementById('exitFullscreenButton');
+let embeddedIframe; // iframe element
+let timeout; // timeout variable for mouse movement
 onLoad(url);
 
 
@@ -24,25 +22,31 @@ function onLoad(url){
   }
 }
 
-function hideFullscreenButton() {
-  fullscreenButton.classList.add('hidden');
-  cursorMoved = false;
-}
 
-function showFullscreenButton() {
-  fullscreenButton.classList.remove('hidden');
+// hide exit fullscreen button
+function hideFullscreenExitButton() {
+  exitFullscreenButton.style.display = 'none';
 }
-
+// show exit fullscreen button
+function showFullscreenExitButton() {
+  exitFullscreenButton.style.display = 'block';
+}
+// reset timer
 function resetTimer() {
   clearTimeout(timeout);
-  cursorMoved = true;
-  showFullscreenButton();
-  timeout = setTimeout(hideFullscreenButton, 2000);
+  timeout = setTimeout(hideFullscreenExitButton, 2000);
 }
+// the code block below will be later
+/* // Event listeners for mouse movement that resets the timer and calls the showFullscreenButton function
+mouseMovementCollector.addEventListener('mousemove', () => {
+  console.log('mousemove');
+  if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+    console.log('mousemove in fullscreen');
+    showFullscreenExitButton();
+    resetTimer();
+  }
+}); */
 
-document.addEventListener('mousemove', resetTimer);
-
-hideFullscreenButton();
 
 
 // Event listener for the fullscreen button
@@ -64,6 +68,7 @@ function enterFullscreen() {
 
 // Function to exit fullscreen
 function exitFullscreen() {
+  console.log('exitFullscreen');
   if (document.exitFullscreen) {
     document.exitFullscreen();
   } else if (document.mozCancelFullScreen) {
@@ -84,16 +89,15 @@ document.addEventListener('MSFullscreenChange', handleFullscreenChange);
 function handleFullscreenChange() {
   if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
     // If the iframe enters fullscreen
-    exitFullscreenButton.style.display = 'block';
-    fullscreenButton.style.display = 'none';
+    showFullscreenExitButton();
   } else {
     // If the iframe exits fullscreen
-    exitFullscreenButton.style.display = 'none';
-    fullscreenButton.style.display = 'block';
+    hideFullscreenExitButton();
   }
 }
 
 // Event listener for the exit fullscreen button
 exitFullscreenButton.addEventListener('click', () => {
+  console.log('exitFullscreenButton clicked');
   exitFullscreen();
 });
