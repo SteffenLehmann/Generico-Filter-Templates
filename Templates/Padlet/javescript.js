@@ -10,17 +10,15 @@ const exitFullscreenButton = document.getElementById('exitFullscreenButton');
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton');
 
-let timeout; // timeout variable for mouse movement
-
 // function calls to create the temlate on moodle
 createNameForSummary(nameForSummary);
 onLoad(url);
 
-// creates the name for the template
+//creates the name for the template
 function createNameForSummary(name) {
   if (typeof(name) != 'undefined') {
     const summary = document.getElementById('detailsButton');
-    name = ""+ name; // you can add gif file to the summary title here
+    name = ""+ name; // you can add emoji to the summary title here, e.g. 🎦
     summary.textContent = name; // set the name of the button containing the padlet board
   } 
 }
@@ -52,36 +50,18 @@ details.addEventListener("toggle", (event) => {
   }
 });
 
-
 // hide exit fullscreen button
 function hideFullscreenExitButton() {
   exitFullscreenButton.style.display = 'none';
 }
+
 // show exit fullscreen button
 function showFullscreenExitButton() {
   exitFullscreenButton.style.display = 'block';
 }
-// reset timer
-function resetTimer() {
-  clearTimeout(timeout);
-  timeout = setTimeout(hideFullscreenExitButton, 2000);
-}
-// the code block below will be later
-/* // Event listeners for mouse movement that resets the timer and calls the showFullscreenButton function
-mouseMovementCollector.addEventListener('mousemove', () => {
-  console.log('mousemove');
-  if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
-    console.log('mousemove in fullscreen');
-    showFullscreenExitButton();
-    resetTimer();
-  }
-}); */
-
-
 
 // Event listener for the fullscreen button
 fullscreenButton.addEventListener('click', enterFullscreen);
-
 
 // Function to enter fullscreen
 function enterFullscreen() {
