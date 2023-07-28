@@ -1,7 +1,6 @@
 // Custom JS
 // user input from Moodle
 const nameForSummary = '@@Name: The name of the button containing the google document@@'; // user input
-const pURL = '@@Google Publish to Web Link: it is the second share option@@'; // user input
 const dURL = '@@Google shared URL: Remember to make it public for everyone@@'; // user input
 
 // getting the elements from the HTML
@@ -12,11 +11,10 @@ const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton');
 
 // function calls to create the temlate on moodle
-const embedURLArray = constructEmbedURL(pURL);
 const downloadURL = constructDownloadURL(dURL);
-createNameForSummary(nameForSummary, embedURLArray[1]);
-hideEnterFullscreenButtonOnPresentation(embedURLArray[1]);
-onLoad(embedURLArray[0], dURL, downloadURL);
+createNameForSummary(nameForSummary, downloadURL[1]);
+hideEnterFullscreenButtonOnPresentation(downloadURL[1]);
+onLoad(dURL, downloadURL[0]);
 
 // creates the name for the template
 function createNameForSummary(nameforbutton, ID) {
@@ -32,17 +30,12 @@ function createNameForSummary(nameforbutton, ID) {
 }
 
 // on load function e.g. when the Collapsible button is clicked
-function onLoad(embedurl, url, downloadURL){
-      if (typeof(embedurl) != 'undefined') {
+function onLoad(url, downloadURL){
+      if (typeof(url) != 'undefined') {
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
-                  document.getElementById('Content'+@@AUTOID@@).src = ""+embedurl;
-                  if (typeof(url) != 'undefined') {
-                        document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
-                        document.getElementById('Download'+@@AUTOID@@).href = ""+downloadURL;
-                  } else {
-                        document.getElementById('Download'+@@AUTOID@@).style.display = 'none';
-                        document.getElementById('ShareLink'+@@AUTOID@@).style.display = 'none';
-                  }
+                document.getElementById('Content'+@@AUTOID@@).src = ""+url;
+                document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
+                document.getElementById('Download'+@@AUTOID@@).href = ""+downloadURL;
             };
       }
 }
@@ -53,33 +46,6 @@ function hideEnterFullscreenButtonOnPresentation(type) {
       } 
 }
 
-// function to construct the embed URL
-function constructEmbedURL(URL){
-      if (typeof(URL) != 'undefined') {
-            const embedID = URL.split("/")[URL.split("/").length-2];
-            const embedType = URL.split("/")[URL.split("/").length-5];
-            console.log("embedID " +embedID);
-            console.log("embedType " +embedType);
-            let embedURL;
-            let embedURLend;
-            
-            if (embedType == "presentation"){
-                  embedURL =  "https://docs.google.com/presentation/d/e/";
-                  embedURLend = "/embed?start=false&loop=false&delayms=3000";
-            } else if (embedType == "document"){
-                  embedURL =  "https://docs.google.com/document/d/e/";
-                  embedURLend = "/pub?embedded=true";
-            } else if (embedType == "forms"){
-                  embedURL =  "https://docs.google.com/forms/d/e/";
-                  embedURLend = "/viewform?embedded=true";
-            } else if (embedType == "spreadsheets"){
-                  embedURL =  "https://docs.google.com/spreadsheets/d/e/";
-                  embedURLend = "/pubhtml?widget=true&amp;headers=false";
-            }
-            const embeddedURL = embedURL + embedID + embedURLend;
-            return [embeddedURL, embedType];
-      }
-}
 // function to construct the download URL
 function constructDownloadURL(URL){
       if(typeof(URL) != 'undefined') {
@@ -95,7 +61,7 @@ function constructDownloadURL(URL){
                   downloadURL =  "https://docs.google.com/spreadsheets/d/";
             }
             const downloadableURL = downloadURL + downloadID + "/export/pdf";
-            return downloadableURL;
+            return [downloadableURL, downloadType];
       }
 }
 
