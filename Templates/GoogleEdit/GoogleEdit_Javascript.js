@@ -9,12 +9,33 @@ const fullscreenButton = document.getElementById('fullscreenButton');
 const exitFullscreenButton = document.getElementById('exitFullscreenButton');
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton');
+const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
+const headerdownload = document.getElementById('DownloadLinkHeader'+@@AUTOID@@);
+
 
 // function calls to create the temlate on moodle
 const downloadURL = constructDownloadURL(dURL);
 createNameForSummary(nameForSummary, downloadURL[1]);
+assignHeaderLinks(dURL, downloadURL[0]);
+
 //hideEnterFullscreenButtonOnPresentation(downloadURL[1]);
 onLoad(dURL, downloadURL[0]);
+
+window.addEventListener('DOMContentLoaded', function() {
+      let firstElementHeight = document.querySelector('.container > :first-child').offsetHeight;
+      let elements = document.querySelectorAll('.container > div');
+
+      for (let i = 0; i < elements.length; i++) {
+            elements[i].style.height = firstElementHeight + 'px';
+      }
+});
+
+// function to assign the header links
+function assignHeaderLinks(url, downloadURL) {
+      headerLink.href = ""+ url;
+      headerdownload.href = ""+downloadURL;
+}
+
 
 // creates the name for the template
 function createNameForSummary(nameforbutton, ID) {
@@ -45,12 +66,12 @@ function setSameSiteAttribute(sameSiteValue) {
 // on load function e.g. when the Collapsible button is clicked
 function onLoad(url, downloadURL){
       if (typeof(url) != 'undefined') {
-            // set the SameSite attribute for the cookies
-            setSameSiteAttribute('None');
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
                 document.getElementById('Content'+@@AUTOID@@).src = ""+url;
-                document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
+                document.getElementById('ShareLink'+@@AUTOID@@).href = ""+ url;
                 document.getElementById('Download'+@@AUTOID@@).href = ""+downloadURL;
+                // set the SameSite attribute for the cookies
+                setSameSiteAttribute('None');
             };
       }
 }
@@ -86,10 +107,17 @@ details.addEventListener("toggle", (event) => {
         /* the element was toggled open */
         detailsButton.style.color = '#468ff4';
         detailsButton.style.backgroundColor = '#CCCCCC';
+        detailsButton.style.width = '';
+        headerLink.style.display = 'none';
+        headerdownload.style.display = 'none';
+
       } else {
         /* the element was toggled closed */
         detailsButton.style.backgroundColor = '';
         detailsButton.style.color = '';
+        detailsButton.style.width = '80%';
+        headerLink.style.display = 'block';
+        headerdownload.style.display = 'block';
       }
 });
     
