@@ -15,7 +15,7 @@ const detailsButton = document.getElementById('detailsButton');
 const embedURLArray = constructEmbedURL(pURL);
 const downloadURL = constructDownloadURL(dURL);
 createNameForSummary(nameForSummary, embedURLArray[1]);
-hideEnterFullscreenButtonOnPresentation(embedURLArray[1]);
+
 onLoad(embedURLArray[0], dURL, downloadURL);
 
 // creates the name for the template
@@ -31,9 +31,25 @@ function createNameForSummary(nameforbutton, ID) {
   } 
 }
 
+// set the SameSite attribute for the cookies
+function setSameSiteAttribute(sameSiteValue) {
+      const cookies = document.cookie.split(";");
+    
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        const [name, value] = cookie.split("=");
+    
+        // Set the cookie with the desired SameSite attribute
+        document.cookie = `${name}=${value}; SameSite=${sameSiteValue}; Secure`;
+      }
+    }
+
 // on load function e.g. when the Collapsible button is clicked
 function onLoad(embedurl, url, downloadURL){
       if (typeof(embedurl) != 'undefined') {
+            // set the SameSite attribute for the cookies
+            setSameSiteAttribute('None');
+            hideEnterFullscreenButtonOnPresentation(embedURLArray[1]);
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
                   document.getElementById('Content'+@@AUTOID@@).src = ""+embedurl;
                   if (typeof(url) != 'undefined') {

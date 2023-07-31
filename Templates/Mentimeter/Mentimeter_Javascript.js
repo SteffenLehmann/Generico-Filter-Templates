@@ -34,8 +34,23 @@ function reNamePresentationName(name) {//The current url for results requires th
     return name;
 }
 
+// set the SameSite attribute for the cookies
+function setSameSiteAttribute(sameSiteValue) {
+  const cookies = document.cookie.split(";");
+
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    const [name, value] = cookie.split("=");
+
+    // Set the cookie with the desired SameSite attribute
+    document.cookie = `${name}=${value}; SameSite=${sameSiteValue}; Secure`;
+  }
+}
+
 function onLoad(url, name) {
     if (typeof (url, name) != 'undefined') {
+        // set the SameSite attribute for the cookies
+        setSameSiteAttribute('None');
         const id = idFromURL(url);
         const embedURL = "https://www.mentimeter.com/app/presentation/" + id + "/embed";
         const renamedPresentation = reNamePresentationName(name);

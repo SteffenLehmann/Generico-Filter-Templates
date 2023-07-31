@@ -25,6 +25,8 @@ function createNameForSummary(name) {
 // on load function e.g. when the Collapsible button is clicked
 function onLoad(url){
     if(typeof(url) != 'undefined'){
+        // set the SameSite attribute for the cookies
+        setSameSiteAttribute('None');
         let embedurl =  "https://miro.com/app/live-embed/";
         const id = url.split("/")[url.split("/").length-2];
         embedurl += id + "/";
@@ -32,6 +34,18 @@ function onLoad(url){
             document.getElementById('Content'+@@AUTOID@@).src = ""+embedurl;
             document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
     };
+  }
+}
+// set the SameSite attribute for the cookies
+function setSameSiteAttribute(sameSiteValue) {
+  const cookies = document.cookie.split(";");
+
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    const [name, value] = cookie.split("=");
+
+    // Set the cookie with the desired SameSite attribute
+    document.cookie = `${name}=${value}; SameSite=${sameSiteValue}; Secure`;
   }
 }
 

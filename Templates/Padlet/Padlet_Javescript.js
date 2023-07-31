@@ -23,9 +23,24 @@ function createNameForSummary(name) {
   } 
 }
 
+// set the SameSite attribute for the cookies
+function setSameSiteAttribute(sameSiteValue) {
+  const cookies = document.cookie.split(";");
+
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    const [name, value] = cookie.split("=");
+
+    // Set the cookie with the desired SameSite attribute
+    document.cookie = `${name}=${value}; SameSite=${sameSiteValue}; Secure`;
+  }
+}
+
 // on load function e.g. when the Collapsible button is clicked
 function onLoad(url){
   if(typeof(url) != 'undefined'){
+    // set the SameSite attribute for the cookies
+    setSameSiteAttribute('None');
     const id =  url.split("-")[url.split("-").length-1];
     const embedurl = "https://padlet.com/embed/" + id;
     const downloadURL = "https://padlet.com/_/exports/document_status?public_key=" + id;
