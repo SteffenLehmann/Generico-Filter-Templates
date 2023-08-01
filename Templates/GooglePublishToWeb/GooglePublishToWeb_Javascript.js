@@ -10,13 +10,31 @@ const fullscreenButton = document.getElementById('fullscreenButton');
 const exitFullscreenButton = document.getElementById('exitFullscreenButton');
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton');
+const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
+const headerdownload = document.getElementById('DownloadLinkHeader'+@@AUTOID@@);
 
 // function calls to create the temlate on moodle
 const embedURLArray = constructEmbedURL(pURL);
 const downloadURL = constructDownloadURL(dURL);
 createNameForSummary(nameForSummary, embedURLArray[1]);
-
+assignHeaderLinks(dURL, downloadURL);
 onLoad(embedURLArray[0], dURL, downloadURL);
+
+window.addEventListener('DOMContentLoaded', function() {
+      let firstElementHeight = document.querySelector('.container > :first-child').offsetHeight;
+      let elements = document.querySelectorAll('.container > div');
+
+      for (let i = 0; i < elements.length; i++) {
+            elements[i].style.height = firstElementHeight + 'px';
+      }
+});
+
+// function to assign the header links
+function assignHeaderLinks(url, downloadURL) {
+      headerLink.href = ""+ url;
+      headerdownload.href = ""+downloadURL;
+}
+
 
 // creates the name for the template
 function createNameForSummary(nameforbutton, ID) {
@@ -121,10 +139,14 @@ details.addEventListener("toggle", (event) => {
         /* the element was toggled open */
         detailsButton.style.color = '#468ff4';
         detailsButton.style.backgroundColor = '#CCCCCC';
+        headerLink.style.display = 'none';
+        headerdownload.style.display = 'none';
       } else {
         /* the element was toggled closed */
         detailsButton.style.backgroundColor = '';
         detailsButton.style.color = '';
+        headerLink.style.display = 'block';
+        headerdownload.style.display = 'block';
       }
 });
     

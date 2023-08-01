@@ -15,6 +15,15 @@ createNameForSummary(nameForSummary);
 assignHeaderLinks(url);
 onLoad(url);
 
+window.addEventListener('DOMContentLoaded', function() {
+  let firstElementHeight = document.querySelector('.container > :first-child').offsetHeight;
+  let elements = document.querySelectorAll('.container > div');
+
+  for (let i = 0; i < elements.length; i++) {
+        elements[i].style.height = firstElementHeight + 'px';
+  }
+});
+
 // function to assign the header links
 function assignHeaderLinks(url) {
   headerLink.href = ""+ url;
