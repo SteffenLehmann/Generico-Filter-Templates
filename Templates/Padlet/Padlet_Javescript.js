@@ -9,10 +9,20 @@ const fullscreenButton = document.getElementById('fullscreenButton');
 const exitFullscreenButton = document.getElementById('exitFullscreenButton');
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton');
+const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
+const headerdownload = document.getElementById('DownloadLinkHeader'+@@AUTOID@@);
 
 // function calls to create the temlate on moodle
 createNameForSummary(nameForSummary);
-onLoad(url);
+const urls = constructURLs(url);
+assignHeaderLinks(url, urls[1]);
+onLoad(url, urls[0], urls[1]);
+
+// function to assign the header links
+function assignHeaderLinks(url, downloadURL) {
+  headerLink.href = ""+ url;
+  headerdownload.href = ""+downloadURL;
+}
 
 //creates the name for the template
 function createNameForSummary(name) {
@@ -36,18 +46,25 @@ function setSameSiteAttribute(sameSiteValue) {
   }
 }
 
-// on load function e.g. when the Collapsible button is clicked
-function onLoad(url){
+// function to construct the URLs
+function constructURLs(url) {
   if(typeof(url) != 'undefined'){
-    // set the SameSite attribute for the cookies
-    setSameSiteAttribute('None');
     const id =  url.split("-")[url.split("-").length-1];
     const embedurl = "https://padlet.com/embed/" + id;
     const downloadURL = "https://padlet.com/_/exports/document_status?public_key=" + id;
+    return [embedurl, downloadURL];
+  }
+}
+
+// on load function e.g. when the Collapsible button is clicked
+function onLoad(url, embedurl, downloadURL){
+  if(typeof(url) != 'undefined'){
     document.getElementById('Details'+@@AUTOID@@).onclick= function() {
         document.getElementById('Content'+@@AUTOID@@).src = ""+embedurl;
         document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
         document.getElementById('Download'+@@AUTOID@@).href = ""+downloadURL;
+        // set the SameSite attribute for the cookies
+        setSameSiteAttribute('None');
     };
   }
 }
@@ -58,10 +75,14 @@ details.addEventListener("toggle", (event) => {
     /* the element was toggled open */
     detailsButton.style.color = '#468ff4';
     detailsButton.style.backgroundColor = '#CCCCCC';
+    headerLink.style.display = 'none';
+    headerdownload.style.display = 'none';
   } else {
     /* the element was toggled closed */
     detailsButton.style.backgroundColor = '';
     detailsButton.style.color = '';
+    headerLink.style.display = 'block';
+    headerdownload.style.display = 'block';
   }
 });
 
