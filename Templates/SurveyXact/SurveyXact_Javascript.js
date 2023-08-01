@@ -9,10 +9,18 @@ const fullscreenButton = document.getElementById('fullscreenButton');
 const exitFullscreenButton = document.getElementById('exitFullscreenButton');
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton');
+const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
+
 
 // function calls to create the temlate on moodle
 createNameForSummary(nameForSummary);
+assignHeaderLinks(url);
 onLoad(url);
+
+// function to assign the header links
+function assignHeaderLinks(url) {
+  headerLink.href = ""+ url;
+}
 
 //creates the name for the template
 function createNameForSummary(name) {
@@ -53,10 +61,12 @@ details.addEventListener("toggle", (event) => {
       /* the element was toggled open */
       detailsButton.style.color = '#468ff4';
       detailsButton.style.backgroundColor = '#CCCCCC';
+      headerLink.style.display = 'none';
     } else {
       /* the element was toggled closed */
       detailsButton.style.backgroundColor = '';
       detailsButton.style.color = '';
+      headerLink.style.display = 'block';
     }
   });
   
