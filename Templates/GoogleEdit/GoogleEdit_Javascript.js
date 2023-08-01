@@ -107,7 +107,6 @@ details.addEventListener("toggle", (event) => {
         /* the element was toggled open */
         detailsButton.style.color = '#468ff4';
         detailsButton.style.backgroundColor = '#CCCCCC';
-        detailsButton.style.width = '';
         headerLink.style.display = 'none';
         headerdownload.style.display = 'none';
 
@@ -115,7 +114,6 @@ details.addEventListener("toggle", (event) => {
         /* the element was toggled closed */
         detailsButton.style.backgroundColor = '';
         detailsButton.style.color = '';
-        detailsButton.style.width = '80%';
         headerLink.style.display = 'block';
         headerdownload.style.display = 'block';
       }
