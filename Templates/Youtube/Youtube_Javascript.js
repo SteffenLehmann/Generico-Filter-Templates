@@ -50,7 +50,6 @@ function onLoad(url){
     document.getElementById('Details'+@@AUTOID@@).onclick= function() {
       document.getElementById('Content'+@@AUTOID@@).src = ""+embedURL;
       document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
-      // set the SameSite attribute for the cookies
       setSameSiteAttribute('None');
       };
   }

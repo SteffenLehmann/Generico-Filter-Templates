@@ -54,7 +54,6 @@ function constructEmbedURL(url) {
 function onLoad(url){
   const embedURL = constructEmbedURL(url);  
   if (typeof (embedURL) != 'undefined') {
-        // set the SameSite attribute for the cookies
         document.getElementById('Details'+@@AUTOID@@).onclick= function() {
             document.getElementById('Content'+@@AUTOID@@).src = ""+embedURL;
             document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;

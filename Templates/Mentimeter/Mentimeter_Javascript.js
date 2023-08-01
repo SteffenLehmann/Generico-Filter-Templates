@@ -87,13 +87,12 @@ function onLoad(url, embedURL, resultURL) {
         document.getElementById('Details'+@@AUTOID@@).onclick = function () {
             document.getElementById('Content'+@@AUTOID@@).src = "" + embedURL;
             document.getElementById('ShareLink'+@@AUTOID@@).href = "" + url;
-            // set the SameSite attribute for the cookies
-            setSameSiteAttribute('None');
             if (typeof (resultURL) != 'undefined') {
               document.getElementById('Download'+@@AUTOID@@).href = "" + resultURL;
             } else {
               document.getElementById('Download'+@@AUTOID@@).style.display = 'none';
             }
+            setSameSiteAttribute('None');
         };
     };
 }

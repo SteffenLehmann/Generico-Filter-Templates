@@ -63,7 +63,6 @@ function onLoad(url, embedurl, downloadURL){
         document.getElementById('Content'+@@AUTOID@@).src = ""+embedurl;
         document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
         document.getElementById('Download'+@@AUTOID@@).href = ""+downloadURL;
-        // set the SameSite attribute for the cookies
         setSameSiteAttribute('None');
     };
   }

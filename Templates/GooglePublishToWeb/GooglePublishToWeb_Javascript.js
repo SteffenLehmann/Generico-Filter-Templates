@@ -65,8 +65,6 @@ function setSameSiteAttribute(sameSiteValue) {
 // on load function e.g. when the Collapsible button is clicked
 function onLoad(embedurl, url, downloadURL){
       if (typeof(embedurl) != 'undefined') {
-            // set the SameSite attribute for the cookies
-            setSameSiteAttribute('None');
             hideEnterFullscreenButtonOnPresentation(embedURLArray[1]);
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
                   document.getElementById('Content'+@@AUTOID@@).src = ""+embedurl;
@@ -77,6 +75,7 @@ function onLoad(embedurl, url, downloadURL){
                         document.getElementById('Download'+@@AUTOID@@).style.display = 'none';
                         document.getElementById('ShareLink'+@@AUTOID@@).style.display = 'none';
                   }
+                  setSameSiteAttribute('None');
             };
       }
 }

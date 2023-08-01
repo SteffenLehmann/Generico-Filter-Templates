@@ -54,13 +54,12 @@ function setSameSiteAttribute(sameSiteValue) {
 // on load function e.g. when the Collapsible button is clicked
 function onLoad(url){
   if(typeof(url) != 'undefined'){
-    // set the SameSite attribute for the cookies
-    setSameSiteAttribute('None');
     const id = url.split("/")[url.split("/").length-1];
     const embedurl = "https://answergarden.ch/embed/" + id;
     document.getElementById('Details'+@@AUTOID@@).onclick= function() {
         document.getElementById('Content'+@@AUTOID@@).src = ""+embedurl;
         document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
+        setSameSiteAttribute('None');
     };
   }
 }
