@@ -1,0 +1,25 @@
+// Custom CSS
+
+.detailsCollapsible{
+    pointer: cursor; 
+    padding: 10px; 
+    border: none; 
+    text-align: left; 
+    outline: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #212121;
+    border-radius: 5px;
+}
+
+.detailsCollapsible:hover{
+    background-color: #CCCCCC;
+    color: #468ff4;
+}
+    
+.Indent{
+    padding-left: 10px;
+    text-indent: 5px;
+}

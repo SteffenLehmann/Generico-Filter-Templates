@@ -16,6 +16,7 @@ border: none;
 text-align: left; 
 outline: none;}
 
+
 .detailsCollapsible:hover{
 background-color: #E8E8E8;
 }
