@@ -5,7 +5,7 @@ const preziURL = '@@Prezi URL: From your Prezi dashboard find the presentation y
 
 // getting the elements from the HTML
 const details = document.getElementById('Details'+@@AUTOID@@);
-const detailsButton = document.getElementById('detailsButton');
+const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 
 // function calls to create the temlate on moodle
@@ -21,9 +21,8 @@ function assignHeaderLinks(url) {
 //creates the name for the template
 function createNameForSummary(name) {
   if (typeof(name) != 'undefined') {
-    const summary = document.getElementById('detailsButton');
     name = "👩‍🏫 "+ name; // you can add emoji to the summary title here, e.g. 🎦
-    summary.textContent = name; // set the name of the button containing the padlet board
+    detailsButton.textContent = name; // set the name of the button containing the padlet board
   } 
 }
 
@@ -59,11 +58,15 @@ details.addEventListener("toggle", (event) => {
       /* the element was toggled open */
       detailsButton.style.color = '#468ff4';
       detailsButton.style.backgroundColor = '#CCCCCC';
+      detailsButton.style.borderBottomRightRadius = '0px';
+      detailsButton.style.borderBottomLeftRadius = '0px';
       headerLink.style.display = 'none';
     } else {
       /* the element was toggled closed */
       detailsButton.style.backgroundColor = '';
       detailsButton.style.color = '';
+      detailsButton.style.borderBottomRightRadius = '5px';
+      detailsButton.style.borderBottomLeftRadius = '5px';
       headerLink.style.display = 'block';
     }
   });
