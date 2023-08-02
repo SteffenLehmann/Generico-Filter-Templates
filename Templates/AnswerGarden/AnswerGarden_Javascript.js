@@ -4,25 +4,17 @@ const nameForSummary = '@@Name: The name of the button containing the AnswerGard
 const url = '@@AnswerGarden URL@@'; // user input
 
 // getting the elements from the HTML
-const fullscreenIframeContainer = document.getElementById('iframeContainer'); 
-const fullscreenButton = document.getElementById('fullscreenButton');
-const exitFullscreenButton = document.getElementById('exitFullscreenButton');
+const fullscreenIframeContainer = document.getElementById('iframeContainer'+@@AUTOID@@); 
+const fullscreenButton = document.getElementById('fullscreenButton'+@@AUTOID@@);
+const exitFullscreenButton = document.getElementById('exitFullscreenButton'+@@AUTOID@@);
 const details = document.getElementById('Details'+@@AUTOID@@);
-const detailsButton = document.getElementById('detailsButton');
+const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 // function calls to create the temlate on moodle
 createNameForSummary(nameForSummary);
 assignHeaderLinks(url);
 onLoad(url);
 
-window.addEventListener('DOMContentLoaded', function() {
-  let firstElementHeight = document.querySelector('.container > :first-child').offsetHeight;
-  let elements = document.querySelectorAll('.container > div');
-
-  for (let i = 0; i < elements.length; i++) {
-        elements[i].style.height = firstElementHeight + 'px';
-  }
-});
 
 // function to assign the header links
 function assignHeaderLinks(url) {
@@ -32,9 +24,8 @@ function assignHeaderLinks(url) {
 //creates the name for the template
 function createNameForSummary(name) {
   if (typeof(name) != 'undefined') {
-    const summary = document.getElementById('detailsButton');
     name = ""+ name; // you can add emoji to the summary title here, e.g. 🎦
-    summary.textContent = name; // set the name of the button containing the padlet board
+    detailsButton.textContent = name; // set the name of the button containing the padlet board
   } 
 }
 
@@ -71,13 +62,16 @@ details.addEventListener("toggle", (event) => {
       detailsButton.style.color = '#468ff4';
       detailsButton.style.backgroundColor = '#CCCCCC';
       detailsButton.style.width = '';
+      detailsButton.style.borderBottomRightRadius = '0px';
+      detailsButton.style.borderBottomLeftRadius = '0px';
       headerLink.style.display = 'none';
     } else {
       /* the element was toggled closed */
       detailsButton.style.backgroundColor = '';
       detailsButton.style.color = '';
+      detailsButton.style.borderBottomRightRadius = '5px';
+      detailsButton.style.borderBottomLeftRadius = '5px';
       headerLink.style.display = 'block';
-      headerdownload.style.display = 'block';
     }
   });
   

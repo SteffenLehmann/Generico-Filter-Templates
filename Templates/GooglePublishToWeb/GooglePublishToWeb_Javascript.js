@@ -1,33 +1,48 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = '@@Name: The name of the button containing the google document@@'; // user input
+const summaryName = '@@Name: The name of the button containing the google document@@';
 const pURL = '@@Google Publish to Web Link: it is the second share option@@'; // user input
 const dURL = '@@Google shared URL: Remember to make it public for everyone@@'; // user input
-
 // getting the elements from the HTML
-const fullscreenIframeContainer = document.getElementById('iframeContainer'); 
-const fullscreenButton = document.getElementById('fullscreenButton');
-const exitFullscreenButton = document.getElementById('exitFullscreenButton');
+const fullscreenIframeContainer = document.getElementById('iframeContainer'+@@AUTOID@@); 
+const fullscreenButton = document.getElementById('fullscreenButton'+@@AUTOID@@);
+const exitFullscreenButton = document.getElementById('exitFullscreenButton'+@@AUTOID@@);
 const details = document.getElementById('Details'+@@AUTOID@@);
-const detailsButton = document.getElementById('detailsButton');
+const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 const headerdownload = document.getElementById('DownloadLinkHeader'+@@AUTOID@@);
+
+// ID for each template
+const templateTag = getUniqueTag();
 
 // function calls to create the temlate on moodle
 const embedURLArray = constructEmbedURL(pURL);
 const downloadURL = constructDownloadURL(dURL);
-createNameForSummary(nameForSummary, embedURLArray[1]);
+createNameForSummary(summaryName, embedURLArray[1]);
 assignHeaderLinks(dURL, downloadURL);
 onLoad(embedURLArray[0], dURL, downloadURL);
 
-window.addEventListener('DOMContentLoaded', function() {
-      let firstElementHeight = document.querySelector('.container > :first-child').offsetHeight;
-      let elements = document.querySelectorAll('.container > div');
+// creates the name for the template
+function createNameForSummary(nameforbutton, ID) {
+      let name = nameforbutton;
+      if (typeof(name) != 'undefined') {
+            if (ID == 'presentation'){{name = "👩‍🏫 "+ name;}}
+            else if (ID == 'document'){{name = "📄 "+ name;}}
+            else if (ID == 'forms'){{name = "📝 "+ name;}}
+            else if (ID == 'spreadsheets'){{name = "📊 "+ name;}}
+      detailsButton.textContent = name; // set the name of the button containing the padlet board
+  } 
+}
 
-      for (let i = 0; i < elements.length; i++) {
-            elements[i].style.height = firstElementHeight + 'px';
+function getUniqueTag() {
+      let isCodeExecuted = false;
+
+      if (!isCodeExecuted) {
+            const uniqueTag = crypto.randomUUID();
+            isCodeExecuted = true;
+            return uniqueTag;
       }
-});
+}
 
 // function to assign the header links
 function assignHeaderLinks(url, downloadURL) {
@@ -35,19 +50,6 @@ function assignHeaderLinks(url, downloadURL) {
       headerdownload.href = ""+downloadURL;
 }
 
-
-// creates the name for the template
-function createNameForSummary(nameforbutton, ID) {
-      let name = nameforbutton;
-      if (typeof(name) != 'undefined') {
-            const summary = document.getElementById('detailsButton');
-            if (ID == 'presentation'){{name = "👩‍🏫 "+ name;}}
-            else if (ID == 'document'){{name = "📄 "+ name;}}
-            else if (ID == 'forms'){{name = "📝 "+ name;}}
-            else if (ID == 'spreadsheets'){{name = "📊 "+ name;}}
-      summary.textContent = name; // set the name of the button containing the padlet board
-  } 
-}
 
 // set the SameSite attribute for the cookies
 function setSameSiteAttribute(sameSiteValue) {
@@ -138,12 +140,16 @@ details.addEventListener("toggle", (event) => {
         /* the element was toggled open */
         detailsButton.style.color = '#468ff4';
         detailsButton.style.backgroundColor = '#CCCCCC';
+        detailsButton.style.borderBottomRightRadius = '0px';
+        detailsButton.style.borderBottomLeftRadius = '0px';
         headerLink.style.display = 'none';
         headerdownload.style.display = 'none';
       } else {
         /* the element was toggled closed */
         detailsButton.style.backgroundColor = '';
         detailsButton.style.color = '';
+        detailsButton.style.borderBottomRightRadius = '5px';
+        detailsButton.style.borderBottomLeftRadius = '5px';
         headerLink.style.display = 'block';
         headerdownload.style.display = 'block';
       }

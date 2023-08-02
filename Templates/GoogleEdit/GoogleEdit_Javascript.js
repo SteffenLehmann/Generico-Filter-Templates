@@ -4,11 +4,11 @@ const nameForSummary = '@@Name: The name of the button containing the google doc
 const dURL = '@@Google shared URL: Remember to make it public for everyone@@'; // user input
 
 // getting the elements from the HTML
-const fullscreenIframeContainer = document.getElementById('iframeContainer'); 
-const fullscreenButton = document.getElementById('fullscreenButton');
-const exitFullscreenButton = document.getElementById('exitFullscreenButton');
+const fullscreenIframeContainer = document.getElementById('iframeContainer'+@@AUTOID@@); 
+const fullscreenButton = document.getElementById('fullscreenButton'+@@AUTOID@@);
+const exitFullscreenButton = document.getElementById('exitFullscreenButton'+@@AUTOID@@);
 const details = document.getElementById('Details'+@@AUTOID@@);
-const detailsButton = document.getElementById('detailsButton');
+const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 const headerdownload = document.getElementById('DownloadLinkHeader'+@@AUTOID@@);
 
@@ -21,14 +21,7 @@ assignHeaderLinks(dURL, downloadURL[0]);
 //hideEnterFullscreenButtonOnPresentation(downloadURL[1]);
 onLoad(dURL, downloadURL[0]);
 
-window.addEventListener('DOMContentLoaded', function() {
-      let firstElementHeight = document.querySelector('.container > :first-child').offsetHeight;
-      let elements = document.querySelectorAll('.container > div');
 
-      for (let i = 0; i < elements.length; i++) {
-            elements[i].style.height = firstElementHeight + 'px';
-      }
-});
 
 // function to assign the header links
 function assignHeaderLinks(url, downloadURL) {
@@ -46,7 +39,7 @@ function createNameForSummary(nameforbutton, ID) {
             else if (ID == 'document'){{name = "📄 "+ name;}}
             else if (ID == 'forms'){{name = "📝 "+ name;}}
             else if (ID == 'spreadsheets'){{name = "📊 "+ name;}}
-      summary.textContent = name; // set the name of the button containing the padlet board
+      detailsButton.textContent = name; // set the name of the button containing the padlet board
   } 
 }
 
@@ -107,6 +100,8 @@ details.addEventListener("toggle", (event) => {
         /* the element was toggled open */
         detailsButton.style.color = '#468ff4';
         detailsButton.style.backgroundColor = '#CCCCCC';
+        detailsButton.style.borderBottomRightRadius = '0px';
+        detailsButton.style.borderBottomLeftRadius = '0px';
         headerLink.style.display = 'none';
         headerdownload.style.display = 'none';
 
@@ -114,6 +109,8 @@ details.addEventListener("toggle", (event) => {
         /* the element was toggled closed */
         detailsButton.style.backgroundColor = '';
         detailsButton.style.color = '';
+        detailsButton.style.borderBottomRightRadius = '5px';
+        detailsButton.style.borderBottomLeftRadius = '5px';
         headerLink.style.display = 'block';
         headerdownload.style.display = 'block';
       }
