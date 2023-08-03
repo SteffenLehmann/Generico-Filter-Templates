@@ -43,7 +43,6 @@ function onLoad(url) {
     if(typeof(url) != 'undefined'){
         const id = url.split("/")[url.split("/").length-2];
         const embedurl = "https://prezi.com/p/embed/" + id + '/'
-        console.log(embedurl);
         document.getElementById('Details'+@@AUTOID@@).onclick= function() {
             document.getElementById('Content'+@@AUTOID@@).src = ""+embedurl;
             document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;

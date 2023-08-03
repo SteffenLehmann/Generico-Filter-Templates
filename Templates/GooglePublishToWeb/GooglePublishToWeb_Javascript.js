@@ -11,9 +11,7 @@ const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 const headerdownload = document.getElementById('DownloadLinkHeader'+@@AUTOID@@);
-
-// ID for each template
-const templateTag = getUniqueTag();
+const headerContainer = document.getElementById('HeaderContainer'+@@AUTOID@@);
 
 // function calls to create the temlate on moodle
 const embedURLArray = constructEmbedURL(pURL);
@@ -21,6 +19,8 @@ const downloadURL = constructDownloadURL(dURL);
 createNameForSummary(summaryName, embedURLArray[1]);
 assignHeaderLinks(dURL, downloadURL);
 onLoad(embedURLArray[0], dURL, downloadURL);
+
+console.log('GooglePublishToWeb_Javascript.js loaded');
 
 // creates the name for the template
 function createNameForSummary(nameforbutton, ID) {
@@ -32,16 +32,6 @@ function createNameForSummary(nameforbutton, ID) {
             else if (ID == 'spreadsheets'){{name = "📊 "+ name;}}
       detailsButton.textContent = name; // set the name of the button containing the padlet board
   } 
-}
-
-function getUniqueTag() {
-      let isCodeExecuted = false;
-
-      if (!isCodeExecuted) {
-            const uniqueTag = crypto.randomUUID();
-            isCodeExecuted = true;
-            return uniqueTag;
-      }
 }
 
 // function to assign the header links
@@ -93,8 +83,6 @@ function constructEmbedURL(URL){
       if (typeof(URL) != 'undefined') {
             const embedID = URL.split("/")[URL.split("/").length-2];
             const embedType = URL.split("/")[URL.split("/").length-5];
-            console.log("embedID " +embedID);
-            console.log("embedType " +embedType);
             let embedURL;
             let embedURLend;
             
@@ -183,7 +171,6 @@ function enterFullscreen() {
     
     // Function to exit fullscreen
 function exitFullscreen() {
-      console.log('exitFullscreen');
       if (document.exitFullscreen) {
         document.exitFullscreen();
       } else if (document.mozCancelFullScreen) {
@@ -215,4 +202,63 @@ function handleFullscreenChange() {
 // Event listener for the exit fullscreen button
 exitFullscreenButton.addEventListener('click', () => {
       exitFullscreen();
+});
+
+
+// function to get the background color of the page
+function getBackgroundColor() {
+      const bodyElement = document.body;
+      const computedStyle = window.getComputedStyle(bodyElement);
+      const backgroundColor = computedStyle.backgroundColor;
+
+      return backgroundColor;
+  }
+
+// check the background color of the page
+let previouisBackgroundColor = getBackgroundColor();
+
+function setBackgrounColor(backGroundColor) {
+      if (backGroundColor == 'rgb(255, 255, 255)') {
+            // Light mode
+            console.log('Background color changed to white');
+            detailsButton.classList.add('detailsCollapsible');
+            detailsButton.classList.remove('detailsCollapsibleDarkMode');
+            headerLink.classList.add('HeaderLink');
+            headerLink.classList.remove('HeaderLinkDarkMode');
+            if (typeof(headerdownload) != 'undefined') {
+                  headerdownload.classList.add('HeaderLink');
+                  headerdownload.classList.remove('HeaderLinkDarkMode');
+            }
+      } else if (backGroundColor == 'rgb(25, 26, 30)') {
+            // Dark mode
+            console.log('Background color changed to black');
+            detailsButton.classList.add('detailsCollapsibleDarkMode');
+            detailsButton.classList.remove('detailsCollapsible');
+            headerLink.classList.add('HeaderLinkDarkMode');
+            headerLink.classList.remove('HeaderLink');
+            if (typeof(headerdownload) != 'undefined') {
+                  headerdownload.classList.add('HeaderLinkDarkMode');
+                  headerdownload.classList.remove('HeaderLink');
+            }
+      }
+}
+
+// custom event to check the background color of the page
+function checkBackgroundColor() {
+      const currentBackgroundColor = getBackgroundColor();
+      if (currentBackgroundColor !== previouisBackgroundColor) {
+            previouisBackgroundColor = currentBackgroundColor;
+            // Trigger the custom event
+            const event = new CustomEvent('backgroundColorChanged', {detail: currentBackgroundColor});
+            document.dispatchEvent(event);
+      }
+}
+// listen interval for the background color event 
+setInterval(checkBackgroundColor, 500);
+
+// event listener for the background color change
+document.addEventListener('backgroundColorChanged', (event) => {
+      const newBackgroundColor = event.detail;
+      console.log('Background color changed:', newBackgroundColor);
+      setBackgrounColor(newBackgroundColor);
 });
