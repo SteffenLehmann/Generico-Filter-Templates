@@ -18,6 +18,11 @@ const embedURLArray = constructEmbedURL(pURL);
 const downloadURL = constructDownloadURL(dURL);
 createNameForSummary(summaryName, embedURLArray[1]);
 assignHeaderLinks(dURL, downloadURL);
+
+// check the background color of the page
+let previouisBackgroundColor = getBackgroundColor();
+setBackgrounColor(previouisBackgroundColor);
+
 onLoad(embedURLArray[0], dURL, downloadURL);
 
 console.log('GooglePublishToWeb_Javascript.js loaded');
@@ -214,11 +219,11 @@ function getBackgroundColor() {
       return backgroundColor;
   }
 
-// check the background color of the page
-let previouisBackgroundColor = getBackgroundColor();
+
 
 function setBackgrounColor(backGroundColor) {
       if (backGroundColor == 'rgb(255, 255, 255)') {
+            if (detailsButton.classList.contains('detailsCollapsible')) {return;}
             // Light mode
             console.log('Background color changed to white');
             detailsButton.classList.add('detailsCollapsible');
@@ -230,6 +235,7 @@ function setBackgrounColor(backGroundColor) {
                   headerdownload.classList.remove('HeaderLinkDarkMode');
             }
       } else if (backGroundColor == 'rgb(25, 26, 30)') {
+            if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
             // Dark mode
             console.log('Background color changed to black');
             detailsButton.classList.add('detailsCollapsibleDarkMode');

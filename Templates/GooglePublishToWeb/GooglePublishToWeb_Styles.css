@@ -130,7 +130,7 @@
     text-decoration: none;
     padding: 10px;
     border-radius: 5px; /* Rounded borders */
-    color: #FFFFFF;
+    color: #FFFFFF !important; 
     font-size: 16px;
     font-family: "Poppins", sans-serif;
     font-weight: 400;
@@ -139,7 +139,7 @@
 }
 .HeaderLinkDarkMode:hover{
     background-color: #CCCCCC;
-    color: #468ff4;
+    color: #468ff4 !important;
 }
 
 .HeaderLinkContainer{
