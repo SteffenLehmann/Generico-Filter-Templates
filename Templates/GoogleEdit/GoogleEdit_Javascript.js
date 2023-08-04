@@ -18,6 +18,10 @@ const downloadURL = constructDownloadURL(dURL);
 createNameForSummary(nameForSummary, downloadURL[1]);
 assignHeaderLinks(dURL, downloadURL[0]);
 
+// check the background color of the page
+let previouisBackgroundColor = getBackgroundColor();
+setBackgrounColor(previouisBackgroundColor);
+
 //hideEnterFullscreenButtonOnPresentation(downloadURL[1]);
 onLoad(dURL, downloadURL[0]);
 
@@ -176,4 +180,59 @@ function handleFullscreenChange() {
 // Event listener for the exit fullscreen button
 exitFullscreenButton.addEventListener('click', () => {
       exitFullscreen();
+});
+
+// function to get the background color of the page
+function getBackgroundColor() {
+      const bodyElement = document.body;
+      const computedStyle = window.getComputedStyle(bodyElement);
+      const backgroundColor = computedStyle.backgroundColor;
+
+      return backgroundColor;
+  }
+
+function setBackgrounColor(backGroundColor) {
+      if (backGroundColor == 'rgb(255, 255, 255)') {
+            if (detailsButton.classList.contains('detailsCollapsible')) {return;}
+            // Light mode
+            detailsButton.classList.add('detailsCollapsible');
+            detailsButton.classList.remove('detailsCollapsibleDarkMode');
+            headerLink.classList.add('HeaderLink');
+            headerLink.classList.remove('HeaderLinkDarkMode');
+            if (typeof(headerdownload) != 'undefined') {
+                  headerdownload.classList.add('HeaderLink');
+                  headerdownload.classList.remove('HeaderLinkDarkMode');
+            }
+      } else if (backGroundColor == 'rgb(25, 26, 30)') {
+            if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
+            // Dark mode
+            detailsButton.classList.add('detailsCollapsibleDarkMode');
+            detailsButton.classList.remove('detailsCollapsible');
+            headerLink.classList.add('HeaderLinkDarkMode');
+            headerLink.classList.remove('HeaderLink');
+            if (typeof(headerdownload) != 'undefined') {
+                  headerdownload.classList.add('HeaderLinkDarkMode');
+                  headerdownload.classList.remove('HeaderLink');
+            }
+      }
+}
+
+// custom event to check the background color of the page
+function checkBackgroundColor() {
+      const currentBackgroundColor = getBackgroundColor();
+      if (currentBackgroundColor !== previouisBackgroundColor) {
+            previouisBackgroundColor = currentBackgroundColor;
+            // Trigger the custom event
+            const event = new CustomEvent('backgroundColorChanged', {detail: currentBackgroundColor});
+            document.dispatchEvent(event);
+      }
+}
+// listen interval for the background color event 
+setInterval(checkBackgroundColor, 500);
+
+// event listener for the background color change
+document.addEventListener('backgroundColorChanged', (event) => {
+      const newBackgroundColor = event.detail;
+      console.log('Background color changed:', newBackgroundColor);
+      setBackgrounColor(newBackgroundColor);
 });

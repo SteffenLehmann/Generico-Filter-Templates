@@ -25,7 +25,6 @@ setBackgrounColor(previouisBackgroundColor);
 
 onLoad(embedURLArray[0], dURL, downloadURL);
 
-console.log('GooglePublishToWeb_Javascript.js loaded');
 
 // creates the name for the template
 function createNameForSummary(nameforbutton, ID) {
@@ -219,13 +218,10 @@ function getBackgroundColor() {
       return backgroundColor;
   }
 
-
-
 function setBackgrounColor(backGroundColor) {
       if (backGroundColor == 'rgb(255, 255, 255)') {
             if (detailsButton.classList.contains('detailsCollapsible')) {return;}
             // Light mode
-            console.log('Background color changed to white');
             detailsButton.classList.add('detailsCollapsible');
             detailsButton.classList.remove('detailsCollapsibleDarkMode');
             headerLink.classList.add('HeaderLink');
@@ -237,7 +233,6 @@ function setBackgrounColor(backGroundColor) {
       } else if (backGroundColor == 'rgb(25, 26, 30)') {
             if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
             // Dark mode
-            console.log('Background color changed to black');
             detailsButton.classList.add('detailsCollapsibleDarkMode');
             detailsButton.classList.remove('detailsCollapsible');
             headerLink.classList.add('HeaderLinkDarkMode');

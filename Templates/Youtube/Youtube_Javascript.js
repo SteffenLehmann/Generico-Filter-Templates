@@ -11,6 +11,9 @@ const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 // function calls to create the temlate on moodle
 createNameForSummary(nameForSummary);
 assignHeaderLinks(YouTubeURL);
+// check the background color of the page
+let previouisBackgroundColor = getBackgroundColor();
+setBackgrounColor(previouisBackgroundColor);
 onLoad(YouTubeURL);
 
 //creates the name for the template
@@ -80,3 +83,50 @@ details.addEventListener("toggle", (event) => {
       headerLink.style.display = 'block';
     }
   });
+
+// function to get the background color of the page
+function getBackgroundColor() {
+  const bodyElement = document.body;
+  const computedStyle = window.getComputedStyle(bodyElement);
+  const backgroundColor = computedStyle.backgroundColor;
+
+  return backgroundColor;
+}
+
+function setBackgrounColor(backGroundColor) {
+  if (backGroundColor == 'rgb(255, 255, 255)') {
+        if (detailsButton.classList.contains('detailsCollapsible')) {return;}
+        // Light mode
+        detailsButton.classList.add('detailsCollapsible');
+        detailsButton.classList.remove('detailsCollapsibleDarkMode');
+        headerLink.classList.add('HeaderLink');
+        headerLink.classList.remove('HeaderLinkDarkMode');
+  } else if (backGroundColor == 'rgb(25, 26, 30)') {
+        if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
+        // Dark mode
+        detailsButton.classList.add('detailsCollapsibleDarkMode');
+        detailsButton.classList.remove('detailsCollapsible');
+        headerLink.classList.add('HeaderLinkDarkMode');
+        headerLink.classList.remove('HeaderLink');
+  }
+}
+
+// custom event to check the background color of the page
+function checkBackgroundColor() {
+  const currentBackgroundColor = getBackgroundColor();
+  if (currentBackgroundColor !== previouisBackgroundColor) {
+        previouisBackgroundColor = currentBackgroundColor;
+        // Trigger the custom event
+        const event = new CustomEvent('backgroundColorChanged', {detail: currentBackgroundColor});
+        document.dispatchEvent(event);
+  }
+}
+// listen interval for the background color event 
+setInterval(checkBackgroundColor, 500);
+
+// event listener for the background color change
+document.addEventListener('backgroundColorChanged', (event) => {
+  const newBackgroundColor = event.detail;
+  console.log('Background color changed:', newBackgroundColor);
+  setBackgrounColor(newBackgroundColor);
+});
