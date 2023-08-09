@@ -59,6 +59,7 @@ function onLoad(url, embedURL, downloadURL){
                 document.getElementById('Content'+@@AUTOID@@).src = ""+embedURL;
                 document.getElementById('ShareLink'+@@AUTOID@@).href = ""+ url;
                 document.getElementById('Download'+@@AUTOID@@).href = ""+downloadURL;
+                console.log("embedURL " +embedURL);
                 // set the SameSite attribute for the cookies
                 setSameSiteAttribute('None');
             };
@@ -70,10 +71,8 @@ function onLoad(url, embedURL, downloadURL){
 function constructURLs(URL){
       if(typeof(URL) != 'undefined') {
             const ID = URL.split("/")[URL.split("/").length-2];
-
             const embedURL = 'https://drive.google.com/uc?export=preview&id=' + ID;
             const downloadableURL = 'https://drive.google.com/uc?export=download&id=' + ID;
-            console.log("embedURL URL "+embedURL);
             return [embedURL ,downloadableURL];
       }
 } 
