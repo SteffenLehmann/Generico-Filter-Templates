@@ -75,7 +75,10 @@
     font-weight: 400;
     line-height: 1.6;
 }
-
+.Indent{
+    padding-left: 10px;
+    font-family: "Poppins", sans-serif;
+}
 .Link:hover{
     background-color: #666666;
     border: 1px solid #666666;
@@ -148,4 +151,9 @@
 }
 .HeaderLinkContainer > :first-child{
     flex: 1;
+}
+
+.NameContainer{
+    font-family: "Poppins", sans-serif;
+    color: #212121;
 }

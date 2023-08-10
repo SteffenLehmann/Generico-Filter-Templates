@@ -17,6 +17,7 @@
 .detailsCollapsible:hover{
     background-color: #CCCCCC;
     color: #468ff4;
+    font-family: "Poppins", sans-serif;
 }
 .Indent{
     padding-left: 10px;
