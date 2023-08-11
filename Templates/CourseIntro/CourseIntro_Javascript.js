@@ -1,18 +1,24 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = '@@Name: The name of the button containing the google PDF@@'; // user input
-const dURL = '@@Google shared URL: Remember to make it public for everyone@@'; // user input
+const studieCurriculum = "@@Studie curriculum module link@@"
+const courseDescriptions = '@@Course description: please add a discribtion@@'; // user input
+const examDescriptions = '@@Google shared URL: Remember to make it public for everyone@@'; // user input
 
 // getting the elements from the HTML
 const fullscreenIframeContainer = document.getElementById('iframeContainer'+@@AUTOID@@); 
 const fullscreenButton = document.getElementById('fullscreenButton'+@@AUTOID@@);
 const exitFullscreenButton = document.getElementById('exitFullscreenButton'+@@AUTOID@@);
-const details = document.getElementById('Details'+@@AUTOID@@);
+const details1 = document.getElementById('Details1'+@@AUTOID@@);
+const details2 = document.getElementById('Details2'+@@AUTOID@@);
+const details3 = document.getElementById('Details3'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
+const courseInfoButton = document.getElementById('courseInfoButton'+@@AUTOID@@);
+const examInfoButton = document.getElementById('exam'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 
-
-// function calls to create the temlate on moodle
+const detailsList = [details1, details2, details3];
+const detailsContent = [courseInfoButton, examInfoButton, examInfoButton];
+/* // function calls to create the temlate on moodle
 const embedURL = constructURLs(dURL);
 createNameForSummary(nameForSummary);
 assignHeaderLinks(dURL);
@@ -24,7 +30,7 @@ setBackgrounColor(previouisBackgroundColor);
 //hideEnterFullscreenButtonOnPresentation(downloadURL[1]);
 onLoad(dURL, embedURL);
 
-
+ */
 // function to assign the header links
 function assignHeaderLinks(url) {
       headerLink.href = ""+ url;
@@ -56,7 +62,7 @@ function setSameSiteAttribute(sameSiteValue) {
 // on load function e.g. when the Collapsible button is clicked
 function onLoad(url, embedURL){
       if (typeof(url) != 'undefined') {
-            document.getElementById('Details'+@@AUTOID@@).onclick= function() {
+            document.getElementById('Details1'+@@AUTOID@@).onclick= function() {
                 document.getElementById('Content'+@@AUTOID@@).src = ""+embedURL;
                 document.getElementById('ShareLink'+@@AUTOID@@).href = ""+ url;
                 // set the SameSite attribute for the cookies
@@ -80,28 +86,46 @@ function constructURLs(URL){
             return embedURL;
       }
 } 
-
 // event listener for the details element state change
-details.addEventListener("toggle", (event) => {
+
+detailsList.forEach(detail => {
+      detail.addEventListener("toggle", (event) => {
+            console.log("toggle");
+            let indexOfDetail = detailsList.indexOf(detail);
+            detailsStateChange(detail, indexOfDetail)}
+      );
+});      
+function detailsStateChange(element) {
+      if (element.opem){
+            console.log("open");
+            /* the element was toggled open */
+            detailsButton.style.color = '#468ff4';
+            detailsButton.style.backgroundColor = '#CCCCCC';
+            detailsButton.style.borderBottomRightRadius = '0px';
+            detailsButton.style.borderBottomLeftRadius = '0px';
+            headerLink.style.display = 'none';
+      } else {
+            console.log("closed");
+            /* the element was toggled closed */
+            detailsButton.style.backgroundColor = '';
+            detailsButton.style.color = '';
+            detailsButton.style.borderBottomRightRadius = '5px';
+            detailsButton.style.borderBottomLeftRadius = '5px';
+            headerLink.style.display = 'block';
+      }
+      
+}
+
+
+
+/* details.addEventListener("toggle", (event) => {
       if (details.open) {
-        /* the element was toggled open */
-        detailsButton.style.color = '#468ff4';
-        detailsButton.style.backgroundColor = '#CCCCCC';
-        detailsButton.style.borderBottomRightRadius = '0px';
-        detailsButton.style.borderBottomLeftRadius = '0px';
-        headerLink.style.display = 'none';
-        headerdownload.style.display = 'none';
+       
 
       } else {
-        /* the element was toggled closed */
-        detailsButton.style.backgroundColor = '';
-        detailsButton.style.color = '';
-        detailsButton.style.borderBottomRightRadius = '5px';
-        detailsButton.style.borderBottomLeftRadius = '5px';
-        headerLink.style.display = 'block';
-        headerdownload.style.display = 'block';
+        
       }
-});
+}); */
     
 // hide exit fullscreen button
 function hideFullscreenExitButton() {
