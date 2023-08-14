@@ -14,15 +14,15 @@
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
 }
+
 .detailsCollapsible:hover{
     background-color: #CCCCCC;
     color: #468ff4;
-    font-family: "Poppins", sans-serif;
-}
-.Indent{
-    padding-left: 10px;
 }
 
+.detailsCollapsible:focus-visible{
+    outline: 2px solid #468ff4;
+}
 .detailsCollapsibleDarkMode{
     pointer: cursor; 
     padding: 10px; 
@@ -43,4 +43,8 @@
 .detailsCollapsibleDarkMode:hover{
     background-color: #CCCCCC;
     color: #468ff4;
+}
+
+.detailsCollapsibleDarkMode:focus-visible{
+    outline: 2px solid #468ff4;
 }

@@ -2,6 +2,7 @@
 
 .TemplateContainer{
     width: 100%;
+    overflow: auto;
 }
 
 .detailsCollapsible{
@@ -19,6 +20,7 @@
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
+    overflow: visible;
 }
 
 .detailsCollapsible:hover{
@@ -26,6 +28,10 @@
     color: #468ff4;
 }
 
+.detailsCollapsible:focus-visible{
+    outline: 2px solid #468ff4;
+    outline-offset: 5px;
+}
 .detailsCollapsibleDarkMode{
     pointer: cursor; 
     padding: 10px; 
@@ -46,6 +52,10 @@
 .detailsCollapsibleDarkMode:hover{
     background-color: #CCCCCC;
     color: #468ff4;
+}
+
+.detailsCollapsibleDarkMode:focus-visible{
+    outline: 2px solid #468ff4;
 }
 .present_wrapper {
     position: relative;
@@ -75,10 +85,7 @@
     font-weight: 400;
     line-height: 1.6;
 }
-.Indent{
-    padding-left: 10px;
-    font-family: "Poppins", sans-serif;
-}
+
 .Link:hover{
     background-color: #666666;
     border: 1px solid #666666;
@@ -148,12 +155,9 @@
 .HeaderLinkContainer{
     display: flex;
     align-items: center;
+    padding-inline-start: 10px;
+    padding-inline-end: 5px;
 }
 .HeaderLinkContainer > :first-child{
     flex: 1;
-}
-
-.NameContainer{
-    font-family: "Poppins", sans-serif;
-    color: #212121;
 }
