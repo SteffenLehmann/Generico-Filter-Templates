@@ -3,6 +3,12 @@
 const studieCurriculum = "@@Studie curriculum module link@@"
 const courseDescriptions = '@@Course description: please add a discribtion@@'; // user input
 const examDescriptions = '@@Google shared URL: Remember to make it public for everyone@@'; // user input
+const educatorName = '@@Name of the teacher@@'; // user input
+const educatorLink = '@@Email or profile link for the teacher@@'; // user input
+const coordiatorName = '@@Name of the coordinator@@'; // user input
+const coordiatorLink = '@@Email or profile link for the coordinator@@'; // user input
+const secretaryName = '@@Name of the secretary@@'; // user input
+const secretaryLink = '@@Email or profile link for the secretary@@'; // user input
 
 // getting the elements from the HTML
 const fullscreenIframeContainer = document.getElementById('iframeContainer'+@@AUTOID@@); 
@@ -15,35 +21,39 @@ const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const courseInfoButton = document.getElementById('courseInfoButton'+@@AUTOID@@);
 const examInfoButton = document.getElementById('exam'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
-
 const detailsList = [details1, details2, details3];
-const detailsContent = [courseInfoButton, examInfoButton, examInfoButton];
-/* // function calls to create the temlate on moodle
-const embedURL = constructURLs(dURL);
-createNameForSummary(nameForSummary);
-assignHeaderLinks(dURL);
+
+function addEducatorInfo(educatorName, educatorLink, coordiatorName, coordiatorLink, secretaryName, secretaryLink) {
+      if (typeof(educatorName) != 'undefined' || typeof(educatorLink) != 'undefined') {
+            const educatorElement = document.getElementById('educator'+@@AUTOID@@);
+            educatorElement.innerHTML = educatorName;
+            educatorElement.href = educatorLink;
+      }
+      if (typeof(coordiatorName) != 'undefined' || typeof(coordiatorLink) != 'undefined') {
+            const coordinatorElement = document.getElementById('coordinator'+@@AUTOID@@);
+            coordinatorElement.innerHTML = coordiatorName;
+            coordinatorElement.href = coordiatorLink;
+      }
+      if (typeof(secretaryName) != 'undefined' || typeof(secretaryLink) != 'undefined') {
+            const secretaryElement = document.getElementById('secretary'+@@AUTOID@@);
+            secretaryElement.innerHTML = secretaryName;
+            secretaryElement.href = secretaryLink;
+      }
+}
+// function calls to create the temlate on moodle
+assignHeaderLinks(studieCurriculum);
+addEducatorInfo(educatorName, educatorLink, coordiatorName, coordiatorLink, secretaryName, secretaryLink);
 
 // check the background color of the page
 let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
 
 //hideEnterFullscreenButtonOnPresentation(downloadURL[1]);
-onLoad(dURL, embedURL);
+onLoad(studieCurriculum, courseDescriptions, examDescriptions);
 
- */
 // function to assign the header links
 function assignHeaderLinks(url) {
       headerLink.href = ""+ url;
-}
-
-
-// creates the name for the template
-function createNameForSummary(nameforbutton) {
-      let name = nameforbutton;
-      if (typeof(name) != 'undefined') {
-            name = "📝 "+ name;
-      } 
-      //detailsButton.textContent = name; // set the name of the button containing the padlet board
 }
 
 // set the SameSite attribute for the cookies
@@ -60,73 +70,65 @@ function setSameSiteAttribute(sameSiteValue) {
     }
     
 // on load function e.g. when the Collapsible button is clicked
-function onLoad(url, embedURL){
+function onLoad(url, courseText, examText){
       if (typeof(url) != 'undefined') {
-            document.getElementById('Details1'+@@AUTOID@@).onclick= function() {
-                document.getElementById('Content'+@@AUTOID@@).src = ""+embedURL;
+            details1.onclick= function() {
+                document.getElementById('Content'+@@AUTOID@@).src = ""+url;
                 document.getElementById('ShareLink'+@@AUTOID@@).href = ""+ url;
                 // set the SameSite attribute for the cookies
                 setSameSiteAttribute('None');
             };
       }
-}
-// hide the enter fullscreen button on if the iframe is a presentation
-function hideEnterFullscreenButtonOnPresentation(type) {
-      if (type == 'presentation'){
-            fullscreenButton.style.display = 'none';
-      } 
-}
-
-// function to construct the download URL
-function constructURLs(URL){
-      if(typeof(URL) != 'undefined') {
-            const ID = URL.split("/")[URL.split("/").length-2];
-    
-            const embedURL = 'https://drive.google.com/forms/d/e/' + ID + '/viewform?embedded=true';
-            return embedURL;
+      if (typeof(courseText) != 'undefined') {
+            details2.onclick= function() {
+                  document.getElementById('courseInfo'+@@AUTOID@@).innerHTML = courseText;
+            };
       }
-} 
-// event listener for the details element state change
+      if (typeof(examText) != 'undefined') {
+            details3.onclick= function() {
+                  document.getElementById('examInfo'+@@AUTOID@@).innerHTML = examText;
+            };
+      }
+}
 
+
+// event listener for the details element state change
 detailsList.forEach(detail => {
       detail.addEventListener("toggle", (event) => {
-            console.log("toggle");
+            console.log("toggled");
             let indexOfDetail = detailsList.indexOf(detail);
             detailsStateChange(detail, indexOfDetail)}
       );
-});      
-function detailsStateChange(element) {
-      if (element.opem){
-            console.log("open");
+});   
+
+function detailsStateChange(element, index) {
+      const detailsContentList = [detailsButton, courseInfoButton, examInfoButton];
+      buttonForElement = detailsContentList[index];
+      if (element.open){
+            console.log("opened " + element);
+            console.log(element);
             /* the element was toggled open */
-            detailsButton.style.color = '#468ff4';
-            detailsButton.style.backgroundColor = '#CCCCCC';
-            detailsButton.style.borderBottomRightRadius = '0px';
-            detailsButton.style.borderBottomLeftRadius = '0px';
-            headerLink.style.display = 'none';
+            buttonForElement.style.color = '#468ff4';
+            buttonForElement.style.backgroundColor = '#CCCCCC';
+            buttonForElement.style.borderBottomRightRadius = '0px';
+            buttonForElement.style.borderBottomLeftRadius = '0px';
+            if (index == 0) {
+                  headerLink.style.display = 'none';
+            }
+            
       } else {
-            console.log("closed");
+            console.log("closed "+ element);
             /* the element was toggled closed */
-            detailsButton.style.backgroundColor = '';
-            detailsButton.style.color = '';
-            detailsButton.style.borderBottomRightRadius = '5px';
-            detailsButton.style.borderBottomLeftRadius = '5px';
-            headerLink.style.display = 'block';
+            buttonForElement.style.backgroundColor = '';
+            buttonForElement.style.color = '';
+            buttonForElement.style.borderBottomRightRadius = '5px';
+            buttonForElement.style.borderBottomLeftRadius = '5px';
+            if (index == 0) {
+                  headerLink.style.display = 'block';
+            }
       }
-      
 }
 
-
-
-/* details.addEventListener("toggle", (event) => {
-      if (details.open) {
-       
-
-      } else {
-        
-      }
-}); */
-    
 // hide exit fullscreen button
 function hideFullscreenExitButton() {
       exitFullscreenButton.style.display = 'none';
