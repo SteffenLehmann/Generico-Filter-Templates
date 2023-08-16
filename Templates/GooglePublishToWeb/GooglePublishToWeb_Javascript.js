@@ -1,6 +1,6 @@
 // Custom JS
 // user input from Moodle
-const summaryName = '@@Name: The name of the button containing the google document@@';
+const summaryName = '@@Name: The name of the button containing the google document@@'; // user input
 const pURL = '@@Google Publish to Web Link: it is the second share option@@'; // user input
 const dURL = '@@Google shared URL: Remember to make it public for everyone@@'; // user input
 // getting the elements from the HTML
