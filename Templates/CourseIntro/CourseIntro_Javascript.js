@@ -1,14 +1,14 @@
 // Custom JS
 // user input from Moodle
 const studieCurriculum = "@@Studie curriculum module link@@"
-const courseDescriptions = '@@Course description: please add a discribtion@@'; // user input
-const examDescriptions = '@@Google shared URL: Remember to make it public for everyone@@'; // user input
-const educatorName = '@@Name of the teacher@@'; // user input
-const educatorLink = '@@Email or profile link for the teacher@@'; // user input
-const coordiatorName = '@@Name of the coordinator@@'; // user input
-const coordiatorLink = '@@Email or profile link for the coordinator@@'; // user input
-const secretaryName = '@@Name of the secretary@@'; // user input
-const secretaryLink = '@@Email or profile link for the secretary@@'; // user input
+const courseDescriptions = '@@Course description: please add a description@@'; // user input
+const examDescriptions = '@@Exam Description: please add a description@@'; // user input
+const educatorName = '@@Teacher: Name of the teacher@@'; // user input
+const educatorLink = '@@Teacher: Email or profile link for the teacher@@'; // user input
+const coordiatorName = '@@Coordinator: Name of the coordinator@@'; // user input
+const coordiatorLink = '@@Coordinator: Email or profile link for the coordinator@@'; // user input
+const secretaryName = '@@Secretary: Name of the secretary@@'; // user input
+const secretaryLink = '@@Secretary: Email or profile link for the secretary@@'; // user input
 
 // getting the elements from the HTML
 const fullscreenIframeContainer = document.getElementById('iframeContainer'+@@AUTOID@@); 
