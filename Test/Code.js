@@ -1,19 +1,11 @@
-googleShare = 'https://drive.google.com/file/d/1guzU9Oi94Eulk5FU3ICbO0py0mFc5Kkt/view?usp=sharing'
+const URL = "https://open.spotify.com/episode/5QgCmmTyfEvtg2Fdkv0T2s?si=84R-SM8ERfWoEbLlG8r_-Q";
 
-GoogleEmbed = 'https://drive.google.com/file/d/1guzU9Oi94Eulk5FU3ICbO0py0mFc5Kkt/preview' 
-
-
-function constructURLs(URL){
-  if(typeof(URL) != 'undefined') {
-        const ID = URL.split("/")[URL.split("/").length-2];
-
-        const embedURL = 'https://drive.google.com/forms/d/e/' + ID + '/preview';
-        return embedURL;
+function constructEmbedURL(URL){
+  if (typeof(URL) != 'undefined') {
+        URL = URL.split("/")[URL.split("/").length-1];
+        URL = URL.split("?")[0];
+        return URL;
   }
-} 
+}
 
-console.log(constructURLs(googleShare))
-
-<video width="320" height="240" controls>
-  <source src="https://drive.google.com/uc?export=preview&id=1guzU9Oi94Eulk5FU3ICbO0py0mFc5Kkt" type="video/mp4">
-</video>
+console.log(constructEmbedURL(URL));

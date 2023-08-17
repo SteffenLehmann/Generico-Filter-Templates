@@ -1,0 +1,182 @@
+// Custom CSS
+
+.TemplateContainer{
+    width: 100%;
+    overflow: auto;
+}
+
+.detailsCollapsible{
+    pointer: cursor; 
+    padding: 10px; 
+    border: none; 
+    text-align: left; 
+    outline: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #212121;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    overflow: visible;
+}
+
+.detailsCollapsible:hover{
+    background-color: #CCCCCC;
+    color: #468ff4;
+}
+
+.detailsCollapsible:focus-visible{
+    outline: 2px solid #468ff4;
+    outline-offset: 5px;
+}
+.detailsCollapsibleDarkMode{
+    pointer: cursor; 
+    padding: 10px; 
+    border: none; 
+    text-align: left; 
+    outline: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #FFFFFF;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.detailsCollapsibleDarkMode:hover{
+    background-color: #CCCCCC;
+    color: #468ff4;
+}
+
+.detailsCollapsibleDarkMode:focus-visible{
+    outline: 2px solid #468ff4;
+}
+.present_wrapper {
+    position: relative;
+    padding-bottom: 60 %;
+    overflow: hidden;
+    height: 700px;
+}
+
+.Link-container{
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+}
+
+.Link{
+    display: block;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #CCCCCC;
+    background-color: #CCCCCC; 
+    border-radius: 5px; /* Rounded borders */
+    margin-bottom: 5px;
+    margin: 0 5px;
+    color: #131314;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.Link:hover{
+    background-color: #666666;
+    border: 1px solid #666666;
+    color: #468ff4;
+}
+.iframeButton{
+    display: none;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    display: block;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #CCCCCC;
+    background-color: #CCCCCC; 
+    border-radius: 5px; /* Rounded borders */
+    margin-bottom: 5px;
+    margin: 0 5px;
+    color: #131314;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+}
+.iframeButton:hover{
+    background-color: #666666;
+    border: 1px solid #666666;
+    color: #468ff4;
+}
+
+  .IframeStyle{
+    width: 100%;
+    height: 100%;
+  }
+
+.HeaderLink{
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px; /* Rounded borders */
+    color: #212121;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    right: 0;
+}
+.HeaderLink:hover{
+    background-color: #CCCCCC;
+    color: #468ff4;
+}
+.HeaderLinkDarkMode{
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px; /* Rounded borders */
+    color: #FFFFFF !important; 
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    right: 0;
+}
+.HeaderLinkDarkMode:hover{
+    background-color: #CCCCCC;
+    color: #468ff4 !important;
+}
+
+.HeaderLinkContainer{
+    display: flex;
+    align-items: center;
+    padding-inline-start: 10px;
+    padding-inline-end: 5px;
+}
+.HeaderLinkContainer > :first-child{
+    flex: 1;
+}
+.episodes {
+    display: flex;
+    flex-direction: column;
+  }
+
+.episode {
+    min-width: max-content;
+    margin-bottom: .8rem;
+    padding: .8rem 1rem;
+    border-radius: 10px;
+    border: 0;
+    background: #191414;
+    color: #fff;
+    cursor: pointer;
+}
+
+.episode:hover {
+    background: #1Db954;
+}
