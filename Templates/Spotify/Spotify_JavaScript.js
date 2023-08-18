@@ -1,45 +1,72 @@
 
+const summaryName = '@@Name: The name of the button containing the google document@@'; // user input
 
-/* const URL1 = "https://open.spotify.com/episode/5QgCmmTyfEvtg2Fdkv0T2s?si=84R-SM8ERfWoEbLlG8r_-Q";
-const URL2 = "https://open.spotify.com/episode/5QgCmmTyfEvtg2Fdkv0T2s?si=84R-SM8ERfWoEbLlG8r_-Q";
-const URL3 = "https://open.spotify.com/episode/5QgCmmTyfEvtg2Fdkv0T2s?si=84R-SM8ERfWoEbLlG8r_-Q";
+const inputArrayFull = ["@@Episode1@@", "@@Episode1Name@@", "@@Episode2Optional@@", "@@Episode2NameOptional@@", "@@Episode3Optional@@", "@@Episode3NameOptional@@", "@@Episode4Optional@@", "@@Episode4NameOptional@@", "@@Episode5Optional@@", "@@Episode5NameOptional@@", "@@Episode6Optional@@", "@@Episode6NameOptional@@", "@@Episode7Optional@@", "@@Episode7NameOptional@@"];
 
+
+const episodeContainer = document.getElementsByClassName("episodes"+@@AUTOID@@);
+
+const [urlArray, nameArray] = splitArrayByEvenIndices(inputArrayFull);
+const [urlArrayFiltered, nameArrayFiltered] = dropUndefinedIndices(urlArray, nameArray);
+const idArray = constructId(urlArrayFiltered);
+generateButtons(idArray, nameArrayFiltered);
+
+// construct id from array
+function constructId(urlArray) {
+  const idArray = [];
+  for (let i = 0; i < urlArray.length; i++) {
+    idArray.push(constructEmbedURL(urlArray[i]));
+  }
+  return idArray;
+}
 function constructEmbedURL(URL){
   if (typeof(URL) != 'undefined') {
         URL = URL.split("/")[URL.split("/").length-1];
         URL = URL.split("?")[0];
         return URL;
   }
-} */
+}
 
-// on load function e.g. when the Collapsible button is clicked
+function splitArrayByEvenIndices(inputArray) {
+  const evenIndexArray = [];
+  const oddIndexArray = [];
 
+  for (let i = 0; i < inputArray.length; i++) {
+    if (i % 2 === 0) {
+      evenIndexArray.push(inputArray[i]);
+    } else {
+      oddIndexArray.push(inputArray[i]);
+    }
+  }
+  return [evenIndexArray, oddIndexArray];
+}
 
+function dropUndefinedIndices(array1, array2) {
+  const indicesWithUndefinedValues = compareArrays(array1, array2);
 
-/* window.onSpotifyIframeApiReady = (IFrameAPI) => {
-    const element = document.getElementById('embedIframe'+@@AUTOID@@);
-    const options = {
-      width: '100%',
-      height: '200',
-      uri: 'spotify:episode:7makk4oTQel546B0PZlDM5'
-    };
-    const callback = (EmbedController) => {
-      document.querySelectorAll('.episode').forEach(
-        episode => {
-          episode.addEventListener('click', () => {
-            EmbedController.loadUri(episode.dataset.spotifyId)
-          });
-        })
-    };
-    IFrameAPI.createController(element, options, callback);
-} */
-console.log("Spotify_JavaScript.js loaded");
-window.onSpotifyIframeApiReady = (IFrameAPI) => {
-    let element = document.getElementById('embed-iframe');
-    let options = {
-        uri: 'spotify:episode:7makk4oTQel546B0PZlDM5'
-      };
-    let callback = (EmbedController) => {};
-    IFrameAPI.createController(element, options, callback);
-  };
-  
+  // Create new arrays without the elements at the indices with undefined values
+  const newArray1 = array1.filter((_, index) => !indicesWithUndefinedValues.includes(index));
+  const newArray2 = array2.filter((_, index) => !indicesWithUndefinedValues.includes(index));
+
+  return [newArray1, newArray2];
+}
+
+function compareArrays(array1, array2) {
+  const indicesWithUndefinedValues = [];
+  for (let i = 0; i < array1.length; i++) {
+    if (typeof array1[i] === 'undefined' || typeof array2[i] === 'undefined') {
+      indicesWithUndefinedValues.push(i);
+    }
+  }
+  return indicesWithUndefinedValues;
+}
+
+// Function to generate buttons based on the array of IDs
+function generateButtons(idArray, textArray) {
+  for (let i = 0; i < idArray.length; i++) {
+    const button = document.createElement("button");
+    button.textContent = textArray[i];
+    button.setAttribute("data-spotify-id", idArray[i]);
+    episodeContainer.appendChild(button);
+  }
+}

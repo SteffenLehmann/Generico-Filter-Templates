@@ -161,12 +161,12 @@
 .HeaderLinkContainer > :first-child{
     flex: 1;
 }
-.episodes {
+  .episodes {
     display: flex;
     flex-direction: column;
   }
 
-.episode {
+  .episode {
     min-width: max-content;
     margin-bottom: .8rem;
     padding: .8rem 1rem;
@@ -175,8 +175,8 @@
     background: #191414;
     color: #fff;
     cursor: pointer;
-}
+  }
 
-.episode:hover {
+  .episode:hover {
     background: #1Db954;
-}
+  }
