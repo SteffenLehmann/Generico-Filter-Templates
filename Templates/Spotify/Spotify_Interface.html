@@ -1,44 +1,11 @@
-
 <div class="TemplateContainer@@AUTOID@@">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" as="style" style="margin-left: auto;">
     <div id="HeaderContainer@@AUTOID@@" class="HeaderLinkContainer">
         <details id="Details@@AUTOID@@" closed="">
             <summary id="detailsButton@@AUTOID@@" class="detailsCollapsible" tabindex="0"></summary>
-            <div id="episodes@@AUTOID@@" class="episodes">
-                <button class="episode" data-spotify-id="spotify:episode:7makk4oTQel546B0PZlDM5">
-                    My Path to Spotify: Women in Engineering
-                </button>
-                <button class="episode" data-spotify-id="spotify:episode:43cbJh4ccRD7lzM2730YK3">
-                    What is Backstage?
-                </button>
-                <button class="episode" data-spotify-id="spotify:episode:6I3ZzCxRhRkNqnQNo8AZPV">
-                    Introducing Nerd Out@Spotify
-                </button>
-            </div>
-            
-            <div id="embed-iframe@@AUTOID@@"></div>
-            <script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async>
-            </script>
-            <script type="text/javascript">
-            window.onSpotifyIframeApiReady = (IFrameAPI) => {
-                const element = document.getElementById('embed-iframe'+@@AUTOID@@);
-                const options = {
-                width: '100%',
-                height: '200',
-                uri: 'spotify:episode:7makk4oTQel546B0PZlDM5'
-                };
-                const callback = (EmbedController) => {
-                document.querySelectorAll('.episode').forEach(
-                    episode => {
-                    episode.addEventListener('click', () => {
-                        EmbedController.loadUri(episode.dataset.spotifyId)
-                    });
-                    })
-                };
-                IFrameAPI.createController(element, options, callback);
-            };
-            </script>
+            <iframe  id="content@@AUTOID@@" style="border-radius: 0px 0px 5px 5px;" src="" width="100%" height="352" frameBorder="0" allowfullscreen=""  clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> 
         </details>
+        <a id="ShareLinkHeader@@AUTOID@@" href="" target="_blank" class="HeaderLink" as="style" aria-label="Open content in a new tab"><i class="fas fa-external-link-alt"></i></a>
     </div>
 </div>
 <script>

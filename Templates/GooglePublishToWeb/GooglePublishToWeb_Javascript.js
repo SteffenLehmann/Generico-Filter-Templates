@@ -11,7 +11,7 @@ const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 const headerdownload = document.getElementById('DownloadLinkHeader'+@@AUTOID@@);
-const headerContainer = document.getElementById('HeaderContainer'+@@AUTOID@@);
+
 
 // function calls to create the temlate on moodle
 const embedURLArray = constructEmbedURL(pURL);
