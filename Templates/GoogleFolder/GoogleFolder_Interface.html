@@ -1,10 +1,14 @@
 <div class="TemplateContainer@@AUTOID@@">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" as="style" style="margin-left: auto;">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <div id="HeaderContainer@@AUTOID@@" class="HeaderLinkContainer">
         <details id="Details@@AUTOID@@" closed="">
             <summary id="detailsButton@@AUTOID@@" class="detailsCollapsible" tabindex="0"></summary>
-            <iframe  id="content@@AUTOID@@" style="border-radius: 0px 0px 5px 5px;" src="" width="100%" height="352" frameBorder="0" allowfullscreen=""  clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> 
+            <div id="iframeContainer@@AUTOID@@" class="present_wrapper" >
+                <iframe id="Content@@AUTOID@@" class="IframeStyle" src="" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" allow="camera;microphone;geolocation" as="style" ></iframe>
+            </div>
+            <div class="Link-container">
+                <a id="ShareLink@@AUTOID@@" href="" target="_blank" class="Link" as="style" style="margin-left: auto;" aria-label="Open content in a new tab"><i class="fas fa-external-link-alt"></i> Link</a>
+            </div>
         </details>
         <a id="ShareLinkHeader@@AUTOID@@" href="" target="_blank" class="HeaderLink" as="style" aria-label="Open content in a new tab"><i class="fas fa-external-link-alt"></i></a>
     </div>
