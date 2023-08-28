@@ -52,3 +52,8 @@
 .Indent{
     padding-left: 10px;
 }
+
+.details{
+    padding-inline-start: 10px;
+    padding-inline-end: 5px;
+}
