@@ -1,59 +1,56 @@
-.detailsCollapsible{
-    pointer: cursor; 
-    padding: 10px; 
-    border: none; 
-    text-align: left; 
-    outline: none;
-    font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.5;
-    color: #212121;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
+.detailsCollapsible {
+  pointer: cursor;
+  padding: 10px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #212121;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
-.detailsCollapsible:hover{
-    background-color: #CCCCCC;
-    color: #468ff4;
+.detailsCollapsible:hover {
+  background-color: #cccccc;
+  color: #468ff4;
 }
 
-.detailsCollapsible:focus-visible{
-    outline: 2px solid #468ff4;
+.detailsCollapsible:focus-visible {
+  outline: 2px solid #468ff4;
 }
-.detailsCollapsibleDarkMode{
-    pointer: cursor; 
-    padding: 10px; 
-    border: none; 
-    text-align: left; 
-    outline: none;
-    font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.5;
-    color: #FFFFFF;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-
-.detailsCollapsibleDarkMode:hover{
-    background-color: #CCCCCC;
-    color: #468ff4;
+.detailsCollapsibleDarkMode {
+  pointer: cursor;
+  padding: 10px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #ffffff;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
-.detailsCollapsibleDarkMode:focus-visible{
-    outline: 2px solid #468ff4;
+.detailsCollapsibleDarkMode:hover {
+  background-color: #cccccc;
+  color: #468ff4;
 }
 
-.Indent{
-    padding-left: 10px;
+.detailsCollapsibleDarkMode:focus-visible {
+  outline: 2px solid #468ff4;
 }
 
-.details{
-    padding-inline-start: 10px;
-    padding-inline-end: 5px;
+.details {
+  padding-inline-start: 10px;
+  padding-inline-end: 5px;
+  text-indent: 10px;
 }
