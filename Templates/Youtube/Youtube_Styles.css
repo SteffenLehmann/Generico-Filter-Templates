@@ -1,11 +1,11 @@
-// Custom CSS
+// YouTube Styles
 
-.TemplateContainer{
+.TemplateContainerYouTube{
     width: 100%;
     overflow: auto;
 }
 
-.detailsCollapsible{
+.detailsCollapsibleYouTube{
     pointer: cursor; 
     padding: 10px; 
     border: none; 
@@ -23,16 +23,16 @@
     overflow: visible;
 }
 
-.detailsCollapsible:hover{
+.detailsCollapsibleYouTube:hover{
     background-color: #CCCCCC;
     color: #468ff4;
 }
 
-.detailsCollapsible:focus-visible{
+.detailsCollapsibleYouTube:focus-visible{
     outline: 2px solid #468ff4;
     outline-offset: 5px;
 }
-.detailsCollapsibleDarkMode{
+.detailsCollapsibleDarkModeYouTube{
     pointer: cursor; 
     padding: 10px; 
     border: none; 
@@ -49,28 +49,28 @@
     border-bottom-left-radius: 5px;
 }
 
-.detailsCollapsibleDarkMode:hover{
+.detailsCollapsibleDarkModeYouTube:hover{
     background-color: #CCCCCC;
     color: #468ff4;
 }
 
-.detailsCollapsibleDarkMode:focus-visible{
+.detailsCollapsibleDarkModeYouTube:focus-visible{
     outline: 2px solid #468ff4;
 }
-.present_wrapper {
+.present_wrapperYouTube {
     position: relative;
     padding-bottom: 60 %;
     overflow: hidden;
     height: 700px;
     padding-left: 0 !important;}
 
-.Link-container{
+.Link-containerYouTube{
     padding: 10px;
     border-radius: 5px;
     display: flex;
 }
 
-.Link{
+.LinkYouTube{
     display: block;
     text-decoration: none;
     padding: 5px 10px;
@@ -86,12 +86,12 @@
     line-height: 1.6;
 }
 
-.Link:hover{
+.LinkYouTube:hover{
     background-color: #666666;
     border: 1px solid #666666;
     color: #468ff4;
 }
-.iframeButton{
+.iframeButtonYouTube{
     display: none;
     position: absolute;
     bottom: 5px;
@@ -110,18 +110,18 @@
     font-weight: 400;
     line-height: 1.5;
 }
-.iframeButton:hover{
+.iframeButtonYouTube:hover{
     background-color: #666666;
     border: 1px solid #666666;
     color: #468ff4;
 }
 
-  .IframeStyle{
+  .IframeStyleYouTube{
     width: 100%;
     height: 100%;
   }
 
-.HeaderLink{
+.HeaderLinkYouTube{
     text-decoration: none;
     padding: 10px;
     border-radius: 5px; /* Rounded borders */
@@ -132,11 +132,11 @@
     line-height: 1.6;
     right: 0;
 }
-.HeaderLink:hover{
+.HeaderLinkYouTube:hover{
     background-color: #CCCCCC;
     color: #468ff4;
 }
-.HeaderLinkDarkMode{
+.HeaderLinkDarkModeYouTube{
     text-decoration: none;
     padding: 10px;
     border-radius: 5px; /* Rounded borders */
@@ -147,17 +147,17 @@
     line-height: 1.6;
     right: 0;
 }
-.HeaderLinkDarkMode:hover{
+.HeaderLinkDarkModeYouTube:hover{
     background-color: #CCCCCC;
     color: #468ff4 !important;
 }
 
-.HeaderLinkContainer{
+.HeaderLinkContainerYouTube{
     display: flex;
     align-items: center;
     width: 100%;
 }
-.HeaderLinkContainer > :first-child{
+.HeaderLinkContainerYouTube > :first-child{
     flex: 1;
 }
 

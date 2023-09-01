@@ -10,6 +10,7 @@ const exitFullscreenButton = document.getElementById('exitFullscreenButton'+@@AU
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
+const link = document.getElementById('ShareLink'+@@AUTOID@@);
 
 
 // function calls to create the temlate on moodle
@@ -161,19 +162,27 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {
       if (backGroundColor == 'rgb(255, 255, 255)') {
-            if (detailsButton.classList.contains('detailsCollapsible')) {return;}
+            if (detailsButton.classList.contains('detailsCollapsibleUrl')) {return;}
             // Light mode
-            detailsButton.classList.add('detailsCollapsible');
-            detailsButton.classList.remove('detailsCollapsibleDarkMode');
-            headerLink.classList.add('HeaderLink');
-            headerLink.classList.remove('HeaderLinkDarkMode');
+            detailsButton.classList.add('detailsCollapsibleUrl');
+            detailsButton.classList.remove('detailsCollapsibleDarkModeUrl');
+            headerLink.classList.add('HeaderLinkUrl');
+            headerLink.classList.remove('HeaderLinkDarkModeUrl');
+            link.classList.add('LinkUrl');
+            link.classList.remove('LinkDarkModeUrl');
+            fullscreenButton.classList.add('LinkUrl');
+            fullscreenButton.classList.remove('LinkDarkModeUrl');
       } else if (backGroundColor == 'rgb(25, 26, 30)') {
-            if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
+            if (detailsButton.classList.contains('detailsCollapsibleDarkModeUrl')) {return;}
             // Dark mode
-            detailsButton.classList.add('detailsCollapsibleDarkMode');
-            detailsButton.classList.remove('detailsCollapsible');
-            headerLink.classList.add('HeaderLinkDarkMode');
-            headerLink.classList.remove('HeaderLink');
+            detailsButton.classList.add('detailsCollapsibleDarkModeUrl');
+            detailsButton.classList.remove('detailsCollapsibleUrl');
+            headerLink.classList.add('HeaderLinkDarkModeUrl');
+            headerLink.classList.remove('HeaderLinkUrl');
+            link.classList.add('LinkDarkModeUrl');
+            link.classList.remove('LinkUrl');
+            fullscreenButton.classList.add('LinkDarkModeUrl');
+            fullscreenButton.classList.remove('LinkUrl');
       }
 }
 

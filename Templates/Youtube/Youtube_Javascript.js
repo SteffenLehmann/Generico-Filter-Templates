@@ -95,19 +95,19 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {
   if (backGroundColor == 'rgb(255, 255, 255)') {
-        if (detailsButton.classList.contains('detailsCollapsible')) {return;}
+        if (detailsButton.classList.contains('detailsCollapsibleYouTube')) {return;}
         // Light mode
-        detailsButton.classList.add('detailsCollapsible');
-        detailsButton.classList.remove('detailsCollapsibleDarkMode');
-        headerLink.classList.add('HeaderLink');
-        headerLink.classList.remove('HeaderLinkDarkMode');
+        detailsButton.classList.add('detailsCollapsibleYouTube');
+        detailsButton.classList.remove('detailsCollapsibleDarkModeYouTube');
+        headerLink.classList.add('HeaderLinkYouTube');
+        headerLink.classList.remove('HeaderLinkDarkModeYouTube');
   } else if (backGroundColor == 'rgb(25, 26, 30)') {
-        if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
+        if (detailsButton.classList.contains('detailsCollapsibleDarkModeYouTube')) {return;}
         // Dark mode
-        detailsButton.classList.add('detailsCollapsibleDarkMode');
-        detailsButton.classList.remove('detailsCollapsible');
-        headerLink.classList.add('HeaderLinkDarkMode');
-        headerLink.classList.remove('HeaderLink');
+        detailsButton.classList.add('detailsCollapsibleDarkModeYouTube');
+        detailsButton.classList.remove('detailsCollapsibleYouTube');
+        headerLink.classList.add('HeaderLinkDarkModeYouTube');
+        headerLink.classList.remove('HeaderLinkYouTube');
   }
 }
 
