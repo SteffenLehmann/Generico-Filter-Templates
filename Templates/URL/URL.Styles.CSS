@@ -62,6 +62,7 @@
   padding-bottom: 60 %;
   overflow: hidden;
   height: 700px;
+  padding-left: 0 !important;
 }
 
 .Link-container {
@@ -155,8 +156,6 @@
 .HeaderLinkContainer {
   display: flex;
   align-items: center;
-  padding-inline-start: 10px;
-  padding-inline-end: 5px;
 }
 .HeaderLinkContainer > :first-child {
   flex: 1;

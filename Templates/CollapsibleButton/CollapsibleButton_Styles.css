@@ -49,8 +49,24 @@
   outline: 2px solid #468ff4;
 }
 
-.details {
-  padding-inline-start: 10px;
-  padding-inline-end: 5px;
-  text-indent: 10px;
+.detailsStyle{
+  width: 100%;
 }
+
+.detailsStyle div{
+  padding-left: 10px;
+  text-indent: 10px
+  background-color: aquamarine;
+}
+
+.TemplateContainerCollasible{
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  padding-left: 0 !important;
+}
+
+.Indent{
+  width: inherit;
+}
+
