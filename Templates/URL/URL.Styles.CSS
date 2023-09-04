@@ -62,7 +62,6 @@
   padding-bottom: 60 %;
   overflow: hidden;
   height: 700px;
-  padding-left: 0 !important;
 }
 
 .Link-containerUrl {
@@ -75,7 +74,7 @@
   display: block;
   text-decoration: none;
   padding: 5px 10px;
-  border: 1px solid #cccccc;
+  border: 1px solid #CCCCCC;
   background-color: #cccccc;
   border-radius: 5px; /* Rounded borders */
   margin-bottom: 5px;
@@ -96,12 +95,12 @@
   display: block;
   text-decoration: none;
   padding: 5px 10px;
-  border: 1px solid #cccccc;
-  background-color: #cccccc;
+  border: transparent; 
+  background-color: transparent;
   border-radius: 5px; /* Rounded borders */
   margin-bottom: 5px;
   margin: 0 5px;
-  color: #ffffff;
+  color: #ffffff !important;
   font-size: 16px;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -109,7 +108,7 @@
 }
 .LinkDarkModeUrl:hover {
   background-color: #cccccc;
-  color: #468ff4;
+  color: #468ff4 !important;;
 }
 .iframeButtonUrl {
   display: none;
