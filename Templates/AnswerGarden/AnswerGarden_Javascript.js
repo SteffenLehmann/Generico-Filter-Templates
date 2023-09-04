@@ -10,6 +10,7 @@ const exitFullscreenButton = document.getElementById('exitFullscreenButton'+@@AU
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
+const link = document.getElementById('ShareLink'+@@AUTOID@@);
 // function calls to create the temlate on moodle
 createNameForSummary(nameForSummary);
 assignHeaderLinks(url);
@@ -153,19 +154,27 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {
   if (backGroundColor == 'rgb(255, 255, 255)') {
-        if (detailsButton.classList.contains('detailsCollapsible')) {return;}
+        if (detailsButton.classList.contains('detailsCollapsibleAG')) {return;}
         // Light mode
-        detailsButton.classList.add('detailsCollapsible');
-        detailsButton.classList.remove('detailsCollapsibleDarkMode');
-        headerLink.classList.add('HeaderLink');
-        headerLink.classList.remove('HeaderLinkDarkMode');
+        detailsButton.classList.add('detailsCollapsibleAG');
+        detailsButton.classList.remove('detailsCollapsibleDarkModeAG');
+        headerLink.classList.add('HeaderLinkAG');
+        headerLink.classList.remove('HeaderLinkDarkModeAG');
+        link.classList.add('LinkAG');
+        link.classList.remove('LinkDarkModeAG');
+        fullscreenButton.classList.add('LinkAG');
+        fullscreenButton.classList.remove('LinkDarkModeAG');
   } else if (backGroundColor == 'rgb(25, 26, 30)') {
-        if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
+        if (detailsButton.classList.contains('detailsCollapsibleDarkModeAG')) {return;}
         // Dark mode
-        detailsButton.classList.add('detailsCollapsibleDarkMode');
-        detailsButton.classList.remove('detailsCollapsible');
-        headerLink.classList.add('HeaderLinkDarkMode');
-        headerLink.classList.remove('HeaderLink');
+        detailsButton.classList.add('detailsCollapsibleDarkModeAG');
+        detailsButton.classList.remove('detailsCollapsibleAG');
+        headerLink.classList.add('HeaderLinkDarkModeAG');
+        headerLink.classList.remove('HeaderLinkAG');
+        link.classList.add('LinkDarkModeAG');
+        link.classList.remove('LinkAG');
+        fullscreenButton.classList.add('LinkDarkModeAG');
+        fullscreenButton.classList.remove('LinkAG');
   }
 }
 
@@ -185,6 +194,5 @@ setInterval(checkBackgroundColor, 500);
 // event listener for the background color change
 document.addEventListener('backgroundColorChanged', (event) => {
   const newBackgroundColor = event.detail;
-  console.log('Background color changed:', newBackgroundColor);
   setBackgrounColor(newBackgroundColor);
 });

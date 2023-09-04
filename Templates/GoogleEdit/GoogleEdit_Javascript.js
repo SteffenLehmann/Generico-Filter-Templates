@@ -11,7 +11,8 @@ const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 const headerdownload = document.getElementById('DownloadLinkHeader'+@@AUTOID@@);
-
+const shareLink = document.getElementById('ShareLink'+@@AUTOID@@);
+const downloadLink = document.getElementById('Download'+@@AUTOID@@);
 
 // function calls to create the temlate on moodle
 const downloadURL = constructDownloadURL(dURL);
@@ -193,26 +194,38 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {
       if (backGroundColor == 'rgb(255, 255, 255)') {
-            if (detailsButton.classList.contains('detailsCollapsible')) {return;}
+            if (detailsButton.classList.contains('detailsCollapsibleGoogleEdit')) {return;}
             // Light mode
-            detailsButton.classList.add('detailsCollapsible');
-            detailsButton.classList.remove('detailsCollapsibleDarkMode');
-            headerLink.classList.add('HeaderLink');
-            headerLink.classList.remove('HeaderLinkDarkMode');
+            detailsButton.classList.add('detailsCollapsibleGoogleEdit');
+            detailsButton.classList.remove('detailsCollapsibleDarkModeGoogleEdit');
+            headerLink.classList.add('HeaderLinkGoogleEdit');
+            headerLink.classList.remove('HeaderLinkDarkModeGoogleEdit');
+            shareLink.classList.add('LinkGoogleEdit');
+            shareLink.classList.remove('LinkDarkModeGoogleEdit');
+            fullscreenButton.classList.add('LinkGoogleEdit');
+            fullscreenButton.classList.remove('LinkDarkModeGoogleEdit');
             if (typeof(headerdownload) != 'undefined') {
-                  headerdownload.classList.add('HeaderLink');
-                  headerdownload.classList.remove('HeaderLinkDarkMode');
+                  headerdownload.classList.add('HeaderLinkGoogleEdit');
+                  headerdownload.classList.remove('HeaderLinkDarkModeGoogleEdit');
+                  downloadLink.classList.add('LinkGoogleEdit');
+                  downloadLink.classList.remove('LinkDarkModeGoogleEdit');
             }
       } else if (backGroundColor == 'rgb(25, 26, 30)') {
-            if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
+            if (detailsButton.classList.contains('detailsCollapsibleDarkModeGoogleEdit')) {return;}
             // Dark mode
-            detailsButton.classList.add('detailsCollapsibleDarkMode');
-            detailsButton.classList.remove('detailsCollapsible');
-            headerLink.classList.add('HeaderLinkDarkMode');
-            headerLink.classList.remove('HeaderLink');
+            detailsButton.classList.add('detailsCollapsibleDarkModeGoogleEdit');
+            detailsButton.classList.remove('detailsCollapsibleGoogleEdit');
+            headerLink.classList.add('HeaderLinkDarkModeGoogleEdit');
+            headerLink.classList.remove('HeaderLinkGoogleEdit');
+            shareLink.classList.add('LinkDarkModeGoogleEdit');
+            shareLink.classList.remove('LinkGoogleEdit');
+            fullscreenButton.classList.add('LinkDarkModeGoogleEdit');
+            fullscreenButton.classList.remove('LinkGoogleEdit');
             if (typeof(headerdownload) != 'undefined') {
-                  headerdownload.classList.add('HeaderLinkDarkMode');
-                  headerdownload.classList.remove('HeaderLink');
+                  headerdownload.classList.add('HeaderLinkDarkModeGoogleEdit');
+                  headerdownload.classList.remove('HeaderLinkGoogleEdit');
+                  downloadLink.classList.add('LinkDarkModeGoogleEdit');
+                  downloadLink.classList.remove('LinkGoogleEdit');
             }
       }
 }
@@ -233,6 +246,5 @@ setInterval(checkBackgroundColor, 500);
 // event listener for the background color change
 document.addEventListener('backgroundColorChanged', (event) => {
       const newBackgroundColor = event.detail;
-      console.log('Background color changed:', newBackgroundColor);
       setBackgrounColor(newBackgroundColor);
 });

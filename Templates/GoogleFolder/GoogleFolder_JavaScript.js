@@ -6,6 +6,7 @@ const dURL = '@@Google shared URL: Remember to make it public for everyone@@'; /
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
+const shareLink = document.getElementById('ShareLink'+@@AUTOID@@);
 
 // function calls to create the temlate on moodle
 createNameForSummary(summaryName);
@@ -75,7 +76,6 @@ details.addEventListener("toggle", (event) => {
       detailsButton.style.borderBottomRightRadius = '0px';
       detailsButton.style.borderBottomLeftRadius = '0px';
       headerLink.style.display = 'none';
-      headerdownload.style.display = 'none';
     } else {
       /* the element was toggled closed */
       detailsButton.style.backgroundColor = '';
@@ -83,7 +83,6 @@ details.addEventListener("toggle", (event) => {
       detailsButton.style.borderBottomRightRadius = '5px';
       detailsButton.style.borderBottomLeftRadius = '5px';
       headerLink.style.display = 'block';
-      headerdownload.style.display = 'block';
     }
 });
 
@@ -98,27 +97,23 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {
     if (backGroundColor == 'rgb(255, 255, 255)') {
-          if (detailsButton.classList.contains('detailsCollapsible')) {return;}
+          if (detailsButton.classList.contains('detailsCollapsibleGoogleFolder')) {return;}
           // Light mode
-          detailsButton.classList.add('detailsCollapsible');
-          detailsButton.classList.remove('detailsCollapsibleDarkMode');
-          headerLink.classList.add('HeaderLink');
-          headerLink.classList.remove('HeaderLinkDarkMode');
-          if (typeof(headerdownload) != 'undefined') {
-                headerdownload.classList.add('HeaderLink');
-                headerdownload.classList.remove('HeaderLinkDarkMode');
-          }
+          detailsButton.classList.add('detailsCollapsibleGoogleFolder');
+          detailsButton.classList.remove('detailsCollapsibleDarkModeGoogleFolder');
+          headerLink.classList.add('HeaderLinkGoogleFolder');
+          headerLink.classList.remove('HeaderLinkDarkModeGoogleFolder');
+          shareLink.classList.add('LinkGoogleFolder');
+          shareLink.classList.remove('LinkDarkModeGoogleFolder');
     } else if (backGroundColor == 'rgb(25, 26, 30)') {
-          if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
+          if (detailsButton.classList.contains('detailsCollapsibleDarkModeGoogleFolder')) {return;}
           // Dark mode
-          detailsButton.classList.add('detailsCollapsibleDarkMode');
-          detailsButton.classList.remove('detailsCollapsible');
-          headerLink.classList.add('HeaderLinkDarkMode');
-          headerLink.classList.remove('HeaderLink');
-          if (typeof(headerdownload) != 'undefined') {
-                headerdownload.classList.add('HeaderLinkDarkMode');
-                headerdownload.classList.remove('HeaderLink');
-          }
+          detailsButton.classList.add('detailsCollapsibleDarkModeGoogleFolder');
+          detailsButton.classList.remove('detailsCollapsibleGoogleFolder');
+          headerLink.classList.add('HeaderLinkDarkModeGoogleFolder');
+          headerLink.classList.remove('HeaderLinkGoogleFolder');
+          shareLink.classList.add('LinkDarkModeGoogleFolder');
+          shareLink.classList.remove('LinkGoogleFolder');
     }
 }
 
@@ -138,6 +133,5 @@ setInterval(checkBackgroundColor, 500);
 // event listener for the background color change
 document.addEventListener('backgroundColorChanged', (event) => {
     const newBackgroundColor = event.detail;
-    console.log('Background color changed:', newBackgroundColor);
     setBackgrounColor(newBackgroundColor);
 });
