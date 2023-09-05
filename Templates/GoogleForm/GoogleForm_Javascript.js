@@ -10,6 +10,7 @@ const exitFullscreenButton = document.getElementById('exitFullscreenButton'+@@AU
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
+const sharelink = document.getElementById('ShareLink'+@@AUTOID@@);
 
 
 // function calls to create the temlate on moodle
@@ -176,19 +177,27 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {
       if (backGroundColor == 'rgb(255, 255, 255)') {
-            if (detailsButton.classList.contains('detailsCollapsible')) {return;}
+            if (detailsButton.classList.contains('detailsCollapsibleGoogleForm')) {return;}
             // Light mode
-            detailsButton.classList.add('detailsCollapsible');
-            detailsButton.classList.remove('detailsCollapsibleDarkMode');
-            headerLink.classList.add('HeaderLink');
-            headerLink.classList.remove('HeaderLinkDarkMode');
+            detailsButton.classList.add('detailsCollapsibleGoogleForm');
+            detailsButton.classList.remove('detailsCollapsibleDarkModeGoogleForm');
+            headerLink.classList.add('HeaderLinkGoogleForm');
+            headerLink.classList.remove('HeaderLinkDarkModeGoogleForm');
+            sharelink.classList.add('LinkGoogleForm');
+            sharelink.classList.remove('LinkDarkModeGoogleForm');
+            fullscreenButton.classList.add('LinkGoogleForm');
+            fullscreenButton.classList.remove('LinkDarkModeGoogleForm');
       } else if (backGroundColor == 'rgb(25, 26, 30)') {
-            if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
+            if (detailsButton.classList.contains('detailsCollapsibleDarkModeGoogleForm')) {return;}
             // Dark mode
-            detailsButton.classList.add('detailsCollapsibleDarkMode');
-            detailsButton.classList.remove('detailsCollapsible');
-            headerLink.classList.add('HeaderLinkDarkMode');
-            headerLink.classList.remove('HeaderLink');
+            detailsButton.classList.add('detailsCollapsibleDarkModeGoogleForm');
+            detailsButton.classList.remove('detailsCollapsibleGoogleForm');
+            headerLink.classList.add('HeaderLinkDarkModeGoogleForm');
+            headerLink.classList.remove('HeaderLinkGoogleForm');
+            sharelink.classList.add('LinkDarkModeGoogleForm');
+            sharelink.classList.remove('LinkGoogleForm');
+            fullscreenButton.classList.add('LinkDarkModeGoogleForm');
+            fullscreenButton.classList.remove('LinkGoogleForm');
       }
 }
 

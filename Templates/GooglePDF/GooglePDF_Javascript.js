@@ -11,25 +11,28 @@ const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 const headerdownload = document.getElementById('DownloadLinkHeader'+@@AUTOID@@);
+const sharelink = document.getElementById('ShareLink'+@@AUTOID@@);
+const download = document.getElementById('Download'+@@AUTOID@@);
 
 
 // function calls to create the temlate on moodle
-const embedAndDownloadURL = constructURLs(dURL);
 createNameForSummary(nameForSummary);
-assignHeaderLinks(dURL, embedAndDownloadURL[1]);
+assignHeaderLinks(dURL);
 
 // check the background color of the page
 let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
 
 //hideEnterFullscreenButtonOnPresentation(downloadURL[1]);
-onLoad(dURL, embedAndDownloadURL[1], embedAndDownloadURL[0]);
+onLoad(dURL);
 
 
 // function to assign the header links
-function assignHeaderLinks(url, downloadURL) {
+function assignHeaderLinks(url) {
+      const urlArray = constructURLs(url);
+      console.log("urlArray" + urlArray);
       headerLink.href = ""+ url;
-      headerdownload.href = ""+downloadURL;
+      headerdownload.href = ""+urlArray[1];
 }
 
 
@@ -38,8 +41,9 @@ function createNameForSummary(nameforbutton) {
       let name = nameforbutton;
       if (typeof(name) != 'undefined') {
             name = "📄 "+ name;
-      } 
-      detailsButton.textContent = name; // set the name of the button containing the padlet board
+      }
+      document.getElementById('detailsButton'+@@AUTOID@@).textContent = name; 
+      //detailsButton.textContent = name; // set the name of the button containing the padlet board
 }
 
 // set the SameSite attribute for the cookies
@@ -56,12 +60,13 @@ function setSameSiteAttribute(sameSiteValue) {
     }
     
 // on load function e.g. when the Collapsible button is clicked
-function onLoad(url, downloadURL, embedURL){
+function onLoad(url){
+      const urlArray = constructURLs(url);
       if (typeof(url) != 'undefined') {
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
-                document.getElementById('Content'+@@AUTOID@@).src = ""+embedURL;
+                document.getElementById('Content'+@@AUTOID@@).src = ""+urlArray[0];
                 document.getElementById('ShareLink'+@@AUTOID@@).href = ""+ url;
-                document.getElementById('Download'+@@AUTOID@@).href = ""+downloadURL;
+                document.getElementById('Download'+@@AUTOID@@).href = ""+urlArray[1];
                 // set the SameSite attribute for the cookies
                 setSameSiteAttribute('None');
             };
@@ -181,26 +186,38 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {
       if (backGroundColor == 'rgb(255, 255, 255)') {
-            if (detailsButton.classList.contains('detailsCollapsible')) {return;}
+            if (detailsButton.classList.contains('detailsCollapsibleGooglePDF')) {return;}
             // Light mode
-            detailsButton.classList.add('detailsCollapsible');
-            detailsButton.classList.remove('detailsCollapsibleDarkMode');
-            headerLink.classList.add('HeaderLink');
-            headerLink.classList.remove('HeaderLinkDarkMode');
+            detailsButton.classList.add('detailsCollapsibleGooglePDF');
+            detailsButton.classList.remove('detailsCollapsibleDarkModeGooglePDF');
+            headerLink.classList.add('HeaderLinkGooglePDF');
+            headerLink.classList.remove('HeaderLinkDarkModeGooglePDF');
+            sharelink.classList.add('LinkGooglePDF');
+            sharelink.classList.remove('LinkDarkModeGooglePDF');
+            fullscreenButton.classList.add('LinkGooglePDF');
+            fullscreenButton.classList.remove('LinkDarkModeGooglePDF');
             if (typeof(headerdownload) != 'undefined') {
-                  headerdownload.classList.add('HeaderLink');
-                  headerdownload.classList.remove('HeaderLinkDarkMode');
+                  headerdownload.classList.add('HeaderLinkGooglePDF');
+                  headerdownload.classList.remove('HeaderLinkDarkModeGooglePDF');
+                  download.classList.add('LinkGooglePDF');
+                  download.classList.remove('LinkDarkModeGooglePDF');
             }
       } else if (backGroundColor == 'rgb(25, 26, 30)') {
-            if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
+            if (detailsButton.classList.contains('detailsCollapsibleDarkModeGooglePDF')) {return;}
             // Dark mode
-            detailsButton.classList.add('detailsCollapsibleDarkMode');
-            detailsButton.classList.remove('detailsCollapsible');
-            headerLink.classList.add('HeaderLinkDarkMode');
-            headerLink.classList.remove('HeaderLink');
+            detailsButton.classList.add('detailsCollapsibleDarkModeGooglePDF');
+            detailsButton.classList.remove('detailsCollapsibleGooglePDF');
+            headerLink.classList.add('HeaderLinkDarkModeGooglePDF');
+            headerLink.classList.remove('HeaderLinkGooglePDF');
+            sharelink.classList.add('LinkDarkModeGooglePDF');
+            sharelink.classList.remove('LinkGooglePDF');
+            fullscreenButton.classList.add('LinkDarkModeGooglePDF');
+            fullscreenButton.classList.remove('LinkGooglePDF');
             if (typeof(headerdownload) != 'undefined') {
-                  headerdownload.classList.add('HeaderLinkDarkMode');
-                  headerdownload.classList.remove('HeaderLink');
+                  headerdownload.classList.add('HeaderLinkDarkModeGooglePDF');
+                  headerdownload.classList.remove('HeaderLinkGooglePDF');
+                  download.classList.add('LinkDarkModeGooglePDF');
+                  download.classList.remove('LinkGooglePDF');
             }
       }
 }

@@ -1,11 +1,11 @@
 // Custom CSS
 
-.TemplateContainer{
+.TemplateContainerGooglePDF{
     width: 100%;
     overflow: auto;
 }
 
-.detailsCollapsible{
+.detailsCollapsibleGooglePDF{
     pointer: cursor; 
     padding: 10px; 
     border: none; 
@@ -23,16 +23,16 @@
     overflow: visible;
 }
 
-.detailsCollapsible:hover{
+.detailsCollapsibleGooglePDF:hover{
     background-color: #CCCCCC;
     color: #468ff4;
 }
 
-.detailsCollapsible:focus-visible{
+.detailsCollapsibleGooglePDF:focus-visible{
     outline: 2px solid #468ff4;
     outline-offset: 5px;
 }
-.detailsCollapsibleDarkMode{
+.detailsCollapsibleDarkModeGooglePDF{
     pointer: cursor; 
     padding: 10px; 
     border: none; 
@@ -49,28 +49,28 @@
     border-bottom-left-radius: 5px;
 }
 
-.detailsCollapsibleDarkMode:hover{
+.detailsCollapsibleDarkModeGooglePDF:hover{
     background-color: #CCCCCC;
     color: #468ff4;
 }
 
-.detailsCollapsibleDarkMode:focus-visible{
+.detailsCollapsibleDarkModeGooglePDF:focus-visible{
     outline: 2px solid #468ff4;
 }
-.present_wrapper {
+.present_wrapperGooglePDF {
     position: relative;
     padding-bottom: 60 %;
     overflow: hidden;
     height: 700px;
 }
 
-.Link-container{
+.Link-containerGooglePDF{
     padding: 10px;
     border-radius: 5px;
     display: flex;
 }
 
-.Link{
+.LinkGooglePDF{
     display: block;
     text-decoration: none;
     padding: 5px 10px;
@@ -85,13 +85,31 @@
     font-weight: 400;
     line-height: 1.6;
 }
-
-.Link:hover{
+.LinkDarkModeGooglePDF {
+    display: block;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: transparent; 
+    background-color: transparent;
+    border-radius: 5px; /* Rounded borders */
+    margin-bottom: 5px;
+    margin: 0 5px;
+    color: #ffffff !important;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .LinkDarkModeGooglePDF:hover {
+    background-color: #cccccc;
+    color: #468ff4 !important;;
+  }
+.LinkGooglePDF:hover{
     background-color: #666666;
     border: 1px solid #666666;
     color: #468ff4;
 }
-.iframeButton{
+.iframeButtonGooglePDF{
     display: none;
     position: absolute;
     bottom: 5px;
@@ -110,18 +128,18 @@
     font-weight: 400;
     line-height: 1.5;
 }
-.iframeButton:hover{
+.iframeButtonGooglePDF:hover{
     background-color: #666666;
     border: 1px solid #666666;
     color: #468ff4;
 }
 
-  .IframeStyle{
+  .IframeStyleGooglePDF{
     width: 100%;
     height: 100%;
   }
 
-.HeaderLink{
+.HeaderLinkGooglePDF{
     text-decoration: none;
     padding: 10px;
     border-radius: 5px; /* Rounded borders */
@@ -132,11 +150,11 @@
     line-height: 1.6;
     right: 0;
 }
-.HeaderLink:hover{
+.HeaderLinkGooglePDF:hover{
     background-color: #CCCCCC;
     color: #468ff4;
 }
-.HeaderLinkDarkMode{
+.HeaderLinkDarkModeGooglePDF{
     text-decoration: none;
     padding: 10px;
     border-radius: 5px; /* Rounded borders */
@@ -147,15 +165,15 @@
     line-height: 1.6;
     right: 0;
 }
-.HeaderLinkDarkMode:hover{
+.HeaderLinkDarkModeGooglePDF:hover{
     background-color: #CCCCCC;
     color: #468ff4 !important;
 }
 
-.HeaderLinkContainer{
+.HeaderLinkContainerGooglePDF{
     display: flex;
     align-items: center;
 }
-.HeaderLinkContainer > :first-child{
+.HeaderLinkContainerGooglePDF > :first-child{
     flex: 1;
 }
