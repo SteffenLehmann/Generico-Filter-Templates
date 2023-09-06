@@ -7,6 +7,7 @@ const url = '@@Miro URL: Copy the link/URL of the Miro board you want to embed@@
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
+const sharelink = document.getElementById('ShareLink'+@@AUTOID@@);
 
 // function calls to create the temlate on moodle
 createNameForSummary(nameForSummary);
@@ -93,19 +94,23 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {
   if (backGroundColor == 'rgb(255, 255, 255)') {
-        if (detailsButton.classList.contains('detailsCollapsible')) {return;}
+        if (detailsButton.classList.contains('detailsCollapsibleMiro')) {return;}
         // Light mode
-        detailsButton.classList.add('detailsCollapsible');
-        detailsButton.classList.remove('detailsCollapsibleDarkMode');
-        headerLink.classList.add('HeaderLink');
-        headerLink.classList.remove('HeaderLinkDarkMode');
+        detailsButton.classList.add('detailsCollapsibleMiro');
+        detailsButton.classList.remove('detailsCollapsibleDarkModeMiro');
+        headerLink.classList.add('HeaderLinkMiro');
+        headerLink.classList.remove('HeaderLinkDarkModeMiro');
+        sharelink.classList.add('LinkMiro');
+        sharelink.classList.remove('LinkDarkModeMiro');
   } else if (backGroundColor == 'rgb(25, 26, 30)') {
-        if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
+        if (detailsButton.classList.contains('detailsCollapsibleDarkModeMiro')) {return;}
         // Dark mode
-        detailsButton.classList.add('detailsCollapsibleDarkMode');
-        detailsButton.classList.remove('detailsCollapsible');
-        headerLink.classList.add('HeaderLinkDarkMode');
-        headerLink.classList.remove('HeaderLink');
+        detailsButton.classList.add('detailsCollapsibleDarkModeMiro');
+        detailsButton.classList.remove('detailsCollapsibleMiro');
+        headerLink.classList.add('HeaderLinkDarkModeMiro');
+        headerLink.classList.remove('HeaderLinkMiro');
+        sharelink.classList.add('LinkDarkModeMiro');
+        sharelink.classList.remove('LinkMiro');
   }
 }
 

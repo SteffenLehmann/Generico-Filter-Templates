@@ -7,6 +7,7 @@ const preziURL = '@@Prezi URL: From your Prezi dashboard find the presentation y
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
+const sharelink = document.getElementById('ShareLink'+@@AUTOID@@);
 
 // function calls to create the temlate on moodle
 createNameForSummary(nameForSummary);
@@ -85,19 +86,23 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {
   if (backGroundColor == 'rgb(255, 255, 255)') {
-        if (detailsButton.classList.contains('detailsCollapsible')) {return;}
+        if (detailsButton.classList.contains('detailsCollapsiblePrezi')) {return;}
         // Light mode
-        detailsButton.classList.add('detailsCollapsible');
-        detailsButton.classList.remove('detailsCollapsibleDarkMode');
-        headerLink.classList.add('HeaderLink');
-        headerLink.classList.remove('HeaderLinkDarkMode');
+        detailsButton.classList.add('detailsCollapsiblePrezi');
+        detailsButton.classList.remove('detailsCollapsibleDarkModePrezi');
+        headerLink.classList.add('HeaderLinkPrezi');
+        headerLink.classList.remove('HeaderLinkDarkModePrezi');
+        sharelink.classList.add('LinkPrezi');
+        sharelink.classList.remove('LinkDarkModePrezi');
   } else if (backGroundColor == 'rgb(25, 26, 30)') {
-        if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
+        if (detailsButton.classList.contains('detailsCollapsibleDarkModePrezi')) {return;}
         // Dark mode
-        detailsButton.classList.add('detailsCollapsibleDarkMode');
-        detailsButton.classList.remove('detailsCollapsible');
-        headerLink.classList.add('HeaderLinkDarkMode');
-        headerLink.classList.remove('HeaderLink');
+        detailsButton.classList.add('detailsCollapsibleDarkModePrezi');
+        detailsButton.classList.remove('detailsCollapsiblePrezi');
+        headerLink.classList.add('HeaderLinkDarkModePrezi');
+        headerLink.classList.remove('HeaderLinkPrezi');
+        sharelink.classList.add('LinkDarkModePrezi');
+        sharelink.classList.remove('LinkPrezi');
   }
 }
 

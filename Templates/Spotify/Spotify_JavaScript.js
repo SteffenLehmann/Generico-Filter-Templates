@@ -84,26 +84,26 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {
   if (backGroundColor == 'rgb(255, 255, 255)') {
-        if (detailsButton.classList.contains('detailsCollapsible')) {return;}
+        if (detailsButton.classList.contains('detailsCollapsibleSpotify')) {return;}
         // Light mode
-        detailsButton.classList.add('detailsCollapsible');
-        detailsButton.classList.remove('detailsCollapsibleDarkMode');
-        headerLink.classList.add('HeaderLink');
-        headerLink.classList.remove('HeaderLinkDarkMode');
+        detailsButton.classList.add('detailsCollapsibleSpotify');
+        detailsButton.classList.remove('detailsCollapsibleDarkModeSpotify');
+        headerLink.classList.add('HeaderLinkSpotify');
+        headerLink.classList.remove('HeaderLinkDarkModeSpotify');
         if (typeof(headerdownload) != 'undefined') {
-              headerdownload.classList.add('HeaderLink');
-              headerdownload.classList.remove('HeaderLinkDarkMode');
+              headerdownload.classList.add('HeaderLinkSpotify');
+              headerdownload.classList.remove('HeaderLinkDarkModeSpotify');
         }
   } else if (backGroundColor == 'rgb(25, 26, 30)') {
-        if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
+        if (detailsButton.classList.contains('detailsCollapsibleDarkModeSpotify')) {return;}
         // Dark mode
-        detailsButton.classList.add('detailsCollapsibleDarkMode');
-        detailsButton.classList.remove('detailsCollapsible');
-        headerLink.classList.add('HeaderLinkDarkMode');
-        headerLink.classList.remove('HeaderLink');
+        detailsButton.classList.add('detailsCollapsibleDarkModeSpotify');
+        detailsButton.classList.remove('detailsCollapsibleSpotify');
+        headerLink.classList.add('HeaderLinkDarkModeSpotify');
+        headerLink.classList.remove('HeaderLinkSpotify');
         if (typeof(headerdownload) != 'undefined') {
-              headerdownload.classList.add('HeaderLinkDarkMode');
-              headerdownload.classList.remove('HeaderLink');
+              headerdownload.classList.add('HeaderLinkDarkModeSpotify');
+              headerdownload.classList.remove('HeaderLinkSpotify');
         }
   }
 }

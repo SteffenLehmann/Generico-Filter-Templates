@@ -7,7 +7,7 @@ const sharedURL = '@@Panopto shared video URL: remember to set it to public@@'
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
-
+const sharelink = document.getElementById('ShareLink'+@@AUTOID@@);
 // function calls to create the temlate on moodle
 createNameForSummary(nameForSummary);
 assignHeaderLinks(sharedURL);
@@ -96,19 +96,23 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {
   if (backGroundColor == 'rgb(255, 255, 255)') {
-        if (detailsButton.classList.contains('detailsCollapsible')) {return;}
+        if (detailsButton.classList.contains('detailsCollapsiblePanopto')) {return;}
         // Light mode
-        detailsButton.classList.add('detailsCollapsible');
-        detailsButton.classList.remove('detailsCollapsibleDarkMode');
-        headerLink.classList.add('HeaderLink');
-        headerLink.classList.remove('HeaderLinkDarkMode');
+        detailsButton.classList.add('detailsCollapsiblePanopto');
+        detailsButton.classList.remove('detailsCollapsibleDarkModePanopto');
+        headerLink.classList.add('HeaderLinkPanopto');
+        headerLink.classList.remove('HeaderLinkDarkModePanopto');
+        sharelink.classList.add('LinkPanopto');
+        sharelink.classList.remove('LinkDarkModePanopto');
   } else if (backGroundColor == 'rgb(25, 26, 30)') {
-        if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
+        if (detailsButton.classList.contains('detailsCollapsibleDarkModePanopto')) {return;}
         // Dark mode
-        detailsButton.classList.add('detailsCollapsibleDarkMode');
-        detailsButton.classList.remove('detailsCollapsible');
-        headerLink.classList.add('HeaderLinkDarkMode');
-        headerLink.classList.remove('HeaderLink');
+        detailsButton.classList.add('detailsCollapsibleDarkModePanopto');
+        detailsButton.classList.remove('detailsCollapsiblePanopto');
+        headerLink.classList.add('HeaderLinkDarkModePanopto');
+        headerLink.classList.remove('HeaderLinkPanopto');
+        sharelink.classList.add('LinkDarkModePanopto');
+        sharelink.classList.remove('LinkPanopto');
   }
 }
 

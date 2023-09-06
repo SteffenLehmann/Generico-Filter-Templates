@@ -1,11 +1,11 @@
 // Custom CSS
 
-.TemplateContainer{
+.TemplateContainerMentimeter{
     width: 100%;
     overflow: auto;
 }
 
-.detailsCollapsible{
+.detailsCollapsibleMentimeter{
     pointer: cursor; 
     padding: 10px; 
     border: none; 
@@ -23,16 +23,16 @@
     overflow: visible;
 }
 
-.detailsCollapsible:hover{
+.detailsCollapsibleMentimeter:hover{
     background-color: #CCCCCC;
     color: #468ff4;
 }
 
-.detailsCollapsible:focus-visible{
+.detailsCollapsibleMentimeter:focus-visible{
     outline: 2px solid #468ff4;
     outline-offset: 5px;
 }
-.detailsCollapsibleDarkMode{
+.detailsCollapsibleDarkModeMentimeter{
     pointer: cursor; 
     padding: 10px; 
     border: none; 
@@ -49,15 +49,15 @@
     border-bottom-left-radius: 5px;
 }
 
-.detailsCollapsibleDarkMode:hover{
+.detailsCollapsibleDarkModeMentimeter:hover{
     background-color: #CCCCCC;
     color: #468ff4;
 }
 
-.detailsCollapsibleDarkMode:focus-visible{
+.detailsCollapsibleDarkModeMentimeter:focus-visible{
     outline: 2px solid #468ff4;
 }
-.present_wrapper {
+.present_wrapperMentimeter {
     position: relative;
     padding-bottom: 60 %;
     overflow: hidden;
@@ -65,13 +65,13 @@
     padding-left: 0 !important;
 }
 
-.Link-container{
+.Link-containerMentimeter{
     padding: 10px;
     border-radius: 5px;
     display: flex;
 }
 
-.Link{
+.LinkMentimeter{
     display: block;
     text-decoration: none;
     padding: 5px 10px;
@@ -87,12 +87,32 @@
     line-height: 1.6;
 }
 
-.Link:hover{
+.LinkMentimeter:hover{
     background-color: #666666;
     border: 1px solid #666666;
     color: #468ff4;
 }
-.iframeButton{
+
+.LinkDarkModeMentimeter {
+    display: block;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: transparent; 
+    background-color: transparent;
+    border-radius: 5px; /* Rounded borders */
+    margin-bottom: 5px;
+    margin: 0 5px;
+    color: #ffffff !important;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .LinkDarkModeMentimeter:hover {
+    background-color: #cccccc;
+    color: #468ff4 !important;;
+  }
+.iframeButtonMentimeter{
     display: none;
     position: absolute;
     bottom: 5px;
@@ -111,18 +131,18 @@
     font-weight: 400;
     line-height: 1.5;
 }
-.iframeButton:hover{
+.iframeButtonMentimeter:hover{
     background-color: #666666;
     border: 1px solid #666666;
     color: #468ff4;
 }
 
-  .IframeStyle{
+  .IframeStyleMentimeter{
     width: 100%;
     height: 100%;
   }
 
-.HeaderLink{
+.HeaderLinkMentimeter{
     text-decoration: none;
     padding: 10px;
     border-radius: 5px; /* Rounded borders */
@@ -133,11 +153,11 @@
     line-height: 1.6;
     right: 0;
 }
-.HeaderLink:hover{
+.HeaderLinkMentimeter:hover{
     background-color: #CCCCCC;
     color: #468ff4;
 }
-.HeaderLinkDarkMode{
+.HeaderLinkDarkModeMentimeter{
     text-decoration: none;
     padding: 10px;
     border-radius: 5px; /* Rounded borders */
@@ -148,15 +168,15 @@
     line-height: 1.6;
     right: 0;
 }
-.HeaderLinkDarkMode:hover{
+.HeaderLinkDarkModeMentimeter:hover{
     background-color: #CCCCCC;
     color: #468ff4 !important;
 }
 
-.HeaderLinkContainer{
+.HeaderLinkContainerMentimeter{
     display: flex;
     align-items: center;
 }
-.HeaderLinkContainer > :first-child{
+.HeaderLinkContainerMentimeter > :first-child{
     flex: 1;
 }

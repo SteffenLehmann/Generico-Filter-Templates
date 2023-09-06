@@ -9,6 +9,8 @@ const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 const headerdownload = document.getElementById('DownloadLinkHeader'+@@AUTOID@@);
+const sharelink = document.getElementById('ShareLink'+@@AUTOID@@);
+const download = document.getElementById('Download'+@@AUTOID@@);
 
 // function calls to create the temlate on moodle
 createNameForSummary(nameForSummary);
@@ -150,26 +152,34 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {
   if (backGroundColor == 'rgb(255, 255, 255)') {
-        if (detailsButton.classList.contains('detailsCollapsible')) {return;}
+        if (detailsButton.classList.contains('detailsCollapsibleMentimeter')) {return;}
         // Light mode
-        detailsButton.classList.add('detailsCollapsible');
-        detailsButton.classList.remove('detailsCollapsibleDarkMode');
-        headerLink.classList.add('HeaderLink');
-        headerLink.classList.remove('HeaderLinkDarkMode');
+        detailsButton.classList.add('detailsCollapsibleMentimeter');
+        detailsButton.classList.remove('detailsCollapsibleDarkModeMentimeter');
+        headerLink.classList.add('HeaderLinkMentimeter');
+        headerLink.classList.remove('HeaderLinkDarkModeMentimeter');
+        sharelink.classList.add('LinkMentimeter');
+        sharelink.classList.remove('LinkDarkModeMentimeter');
         if (typeof(headerdownload) != 'undefined') {
-              headerdownload.classList.add('HeaderLink');
-              headerdownload.classList.remove('HeaderLinkDarkMode');
+              headerdownload.classList.add('HeaderLinkMentimeter');
+              headerdownload.classList.remove('HeaderLinkDarkModeMentimeter');
+              download.classList.add('LinkMentimeter');
+              download.classList.remove('LinkDarkModeMentimeter');
         }
   } else if (backGroundColor == 'rgb(25, 26, 30)') {
-        if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
+        if (detailsButton.classList.contains('detailsCollapsibleDarkModeMentimeter')) {return;}
         // Dark mode
-        detailsButton.classList.add('detailsCollapsibleDarkMode');
-        detailsButton.classList.remove('detailsCollapsible');
-        headerLink.classList.add('HeaderLinkDarkMode');
-        headerLink.classList.remove('HeaderLink');
+        detailsButton.classList.add('detailsCollapsibleDarkModeMentimeter');
+        detailsButton.classList.remove('detailsCollapsibleMentimeter');
+        headerLink.classList.add('HeaderLinkDarkModeMentimeter');
+        headerLink.classList.remove('HeaderLinkMentimeter');
+        sharelink.classList.add('LinkDarkModeMentimeter');
+        sharelink.classList.remove('LinkMentimeter');
         if (typeof(headerdownload) != 'undefined') {
-              headerdownload.classList.add('HeaderLinkDarkMode');
-              headerdownload.classList.remove('HeaderLink');
+              headerdownload.classList.add('HeaderLinkDarkModeMentimeter');
+              headerdownload.classList.remove('HeaderLinkMentimeter');
+              download.classList.add('LinkDarkModeMentimeter');
+              download.classList.remove('LinkMentimeter');
         }
   }
 }

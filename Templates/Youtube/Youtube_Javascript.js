@@ -6,6 +6,7 @@ const YouTubeURL = '@@YouTube URL: Copy in the link/URL of the video you want to
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
+const sharelink = document.getElementById('ShareLink'+@@AUTOID@@);
 
 
 // function calls to create the temlate on moodle
@@ -101,6 +102,8 @@ function setBackgrounColor(backGroundColor) {
         detailsButton.classList.remove('detailsCollapsibleDarkModeYouTube');
         headerLink.classList.add('HeaderLinkYouTube');
         headerLink.classList.remove('HeaderLinkDarkModeYouTube');
+        sharelink.classList.add('LinkYouTube');
+        sharelink.classList.remove('LinkDarkModeYouTube');
   } else if (backGroundColor == 'rgb(25, 26, 30)') {
         if (detailsButton.classList.contains('detailsCollapsibleDarkModeYouTube')) {return;}
         // Dark mode
@@ -108,6 +111,8 @@ function setBackgrounColor(backGroundColor) {
         detailsButton.classList.remove('detailsCollapsibleYouTube');
         headerLink.classList.add('HeaderLinkDarkModeYouTube');
         headerLink.classList.remove('HeaderLinkYouTube');
+        sharelink.classList.add('LinkDarkModeYouTube');
+        sharelink.classList.remove('LinkYouTube');
   }
 }
 

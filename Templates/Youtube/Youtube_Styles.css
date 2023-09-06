@@ -91,6 +91,27 @@
     border: 1px solid #666666;
     color: #468ff4;
 }
+
+.LinkDarkModeYouTube {
+    display: block;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: transparent; 
+    background-color: transparent;
+    border-radius: 5px; /* Rounded borders */
+    margin-bottom: 5px;
+    margin: 0 5px;
+    color: #ffffff !important;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+.LinkDarkModeYouTube:hover {
+    background-color: #cccccc;
+    color: #468ff4 !important;;
+  }
+
 .iframeButtonYouTube{
     display: none;
     position: absolute;

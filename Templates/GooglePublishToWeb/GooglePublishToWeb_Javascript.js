@@ -11,6 +11,8 @@ const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 const headerdownload = document.getElementById('DownloadLinkHeader'+@@AUTOID@@);
+const sharelink = document.getElementById('ShareLink'+@@AUTOID@@);
+const download = document.getElementById('Download'+@@AUTOID@@);
 
 
 // function calls to create the temlate on moodle
@@ -220,26 +222,38 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {
       if (backGroundColor == 'rgb(255, 255, 255)') {
-            if (detailsButton.classList.contains('detailsCollapsible')) {return;}
+            if (detailsButton.classList.contains('detailsCollapsibleGooglePub')) {return;}
             // Light mode
-            detailsButton.classList.add('detailsCollapsible');
-            detailsButton.classList.remove('detailsCollapsibleDarkMode');
-            headerLink.classList.add('HeaderLink');
-            headerLink.classList.remove('HeaderLinkDarkMode');
+            detailsButton.classList.add('detailsCollapsibleGooglePub');
+            detailsButton.classList.remove('detailsCollapsibleDarkModeGooglePub');
+            headerLink.classList.add('HeaderLinkGooglePub');
+            headerLink.classList.remove('HeaderLinkDarkModeGooglePub');
+            sharelink.classList.add('LinkGooglePub');
+            sharelink.classList.remove('LinkDarkModeGooglePub');
+            fullscreenButton.classList.add('LinkGooglePub');
+            fullscreenButton.classList.remove('LinkDarkModeGooglePub');
             if (typeof(headerdownload) != 'undefined') {
-                  headerdownload.classList.add('HeaderLink');
-                  headerdownload.classList.remove('HeaderLinkDarkMode');
+                  headerdownload.classList.add('HeaderLinkGooglePub');
+                  headerdownload.classList.remove('HeaderLinkDarkModeGooglePub');
+                  download.classList.add('LinkGooglePub');
+                  download.classList.remove('LinkDarkModeGooglePub');
             }
       } else if (backGroundColor == 'rgb(25, 26, 30)') {
-            if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
+            if (detailsButton.classList.contains('detailsCollapsibleDarkModeGooglePub')) {return;}
             // Dark mode
-            detailsButton.classList.add('detailsCollapsibleDarkMode');
-            detailsButton.classList.remove('detailsCollapsible');
-            headerLink.classList.add('HeaderLinkDarkMode');
-            headerLink.classList.remove('HeaderLink');
+            detailsButton.classList.add('detailsCollapsibleDarkModeGooglePub');
+            detailsButton.classList.remove('detailsCollapsibleGooglePub');
+            headerLink.classList.add('HeaderLinkDarkModeGooglePub');
+            headerLink.classList.remove('HeaderLinkGooglePub');
+            sharelink.classList.add('LinkDarkModeGooglePub');
+            sharelink.classList.remove('LinkGooglePub');
+            fullscreenButton.classList.add('LinkDarkModeGooglePub');
+            fullscreenButton.classList.remove('LinkGooglePub');
             if (typeof(headerdownload) != 'undefined') {
-                  headerdownload.classList.add('HeaderLinkDarkMode');
-                  headerdownload.classList.remove('HeaderLink');
+                  headerdownload.classList.add('HeaderLinkDarkModeGooglePub');
+                  headerdownload.classList.remove('HeaderLinkGooglePub');
+                  download.classList.add('LinkDarkModeGooglePub');
+                  download.classList.remove('LinkGooglePub');
             }
       }
 }

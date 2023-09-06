@@ -1,11 +1,11 @@
 // Custom CSS
 
-.TemplateContainer{
+.TemplateContainerSpotify{
     width: 100%;
     overflow: auto;
 }
 
-.detailsCollapsible{
+.detailsCollapsibleSpotify{
     pointer: cursor; 
     padding: 10px; 
     border: none; 
@@ -23,16 +23,16 @@
     overflow: visible;
 }
 
-.detailsCollapsible:hover{
+.detailsCollapsibleSpotify:hover{
     background-color: #CCCCCC;
     color: #468ff4;
 }
 
-.detailsCollapsible:focus-visible{
+.detailsCollapsibleSpotify:focus-visible{
     outline: 2px solid #468ff4;
     outline-offset: 5px;
 }
-.detailsCollapsibleDarkMode{
+.detailsCollapsibleDarkModeSpotify{
     pointer: cursor; 
     padding: 10px; 
     border: none; 
@@ -49,15 +49,15 @@
     border-bottom-left-radius: 5px;
 }
 
-.detailsCollapsibleDarkMode:hover{
+.detailsCollapsibleDarkModeSpotify:hover{
     background-color: #CCCCCC;
     color: #468ff4;
 }
 
-.detailsCollapsibleDarkMode:focus-visible{
+.detailsCollapsibleDarkModeSpotify:focus-visible{
     outline: 2px solid #468ff4;
 }
-.present_wrapper {
+.present_wrapperSpotify {
     position: relative;
     padding-bottom: 60 %;
     overflow: hidden;
@@ -65,13 +65,13 @@
     padding-left: 0 !important;
 }
 
-.Link-container{
+.Link-containerSpotify{
     padding: 10px;
     border-radius: 5px;
     display: flex;
 }
 
-.Link{
+.LinkSpotify{
     display: block;
     text-decoration: none;
     padding: 5px 10px;
@@ -87,12 +87,31 @@
     line-height: 1.6;
 }
 
-.Link:hover{
+.LinkSpotify:hover{
     background-color: #666666;
     border: 1px solid #666666;
     color: #468ff4;
 }
-.iframeButton{
+.LinkDarkModeSpotify {
+    display: block;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: transparent; 
+    background-color: transparent;
+    border-radius: 5px; /* Rounded borders */
+    margin-bottom: 5px;
+    margin: 0 5px;
+    color: #ffffff !important;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .LinkDarkModeSpotify:hover {
+    background-color: #cccccc;
+    color: #468ff4 !important;;
+  }
+.iframeButtonSpotify{
     display: none;
     position: absolute;
     bottom: 5px;
@@ -111,18 +130,18 @@
     font-weight: 400;
     line-height: 1.5;
 }
-.iframeButton:hover{
+.iframeButtonSpotify:hover{
     background-color: #666666;
     border: 1px solid #666666;
     color: #468ff4;
 }
 
-  .IframeStyle{
+  .IframeStyleSpotify{
     width: 100%;
     height: 100%;
   }
 
-.HeaderLink{
+.HeaderLinkSpotify{
     text-decoration: none;
     padding: 10px;
     border-radius: 5px; /* Rounded borders */
@@ -133,11 +152,11 @@
     line-height: 1.6;
     right: 0;
 }
-.HeaderLink:hover{
+.HeaderLinkSpotify:hover{
     background-color: #CCCCCC;
     color: #468ff4;
 }
-.HeaderLinkDarkMode{
+.HeaderLinkDarkModeSpotify{
     text-decoration: none;
     padding: 10px;
     border-radius: 5px; /* Rounded borders */
@@ -148,34 +167,15 @@
     line-height: 1.6;
     right: 0;
 }
-.HeaderLinkDarkMode:hover{
+.HeaderLinkDarkModeSpotify:hover{
     background-color: #CCCCCC;
     color: #468ff4 !important;
 }
 
-.HeaderLinkContainer{
+.HeaderLinkContainerSpotify{
     display: flex;
     align-items: center;
 }
-.HeaderLinkContainer > :first-child{
+.HeaderLinkContainerSpotify > :first-child{
     flex: 1;
 }
-  .episodes {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .episode {
-    min-width: max-content;
-    margin-bottom: .8rem;
-    padding: .8rem 1rem;
-    border-radius: 10px;
-    border: 0;
-    background: #191414;
-    color: #fff;
-    cursor: pointer;
-  }
-
-  .episode:hover {
-    background: #1Db954;
-  }

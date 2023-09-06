@@ -10,6 +10,7 @@ const exitFullscreenButton = document.getElementById('exitFullscreenButton'+@@AU
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
+const sharelink = document.getElementById('ShareLink'+@@AUTOID@@);
 
 
 // function calls to create the temlate on moodle
@@ -151,27 +152,27 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {
   if (backGroundColor == 'rgb(255, 255, 255)') {
-        if (detailsButton.classList.contains('detailsCollapsible')) {return;}
+        if (detailsButton.classList.contains('detailsCollapsibleSurveyXact')) {return;}
         // Light mode
-        detailsButton.classList.add('detailsCollapsible');
-        detailsButton.classList.remove('detailsCollapsibleDarkMode');
-        headerLink.classList.add('HeaderLink');
-        headerLink.classList.remove('HeaderLinkDarkMode');
-        if (typeof(headerdownload) != 'undefined') {
-              headerdownload.classList.add('HeaderLink');
-              headerdownload.classList.remove('HeaderLinkDarkMode');
-        }
+        detailsButton.classList.add('detailsCollapsibleSurveyXact');
+        detailsButton.classList.remove('detailsCollapsibleDarkModeSurveyXact');
+        headerLink.classList.add('HeaderLinkSurveyXact');
+        headerLink.classList.remove('HeaderLinkDarkModeSurveyXact');
+        sharelink.classList.add('LinkSurveyXact');
+        sharelink.classList.remove('LinkDarkModeSurveyXact');
+        fullscreenButton.classList.add('LinkSurveyXact');
+        fullscreenButton.classList.remove('LinkDarkModeSurveyXact');
   } else if (backGroundColor == 'rgb(25, 26, 30)') {
-        if (detailsButton.classList.contains('detailsCollapsibleDarkMode')) {return;}
+        if (detailsButton.classList.contains('detailsCollapsibleDarkModeSurveyXact')) {return;}
         // Dark mode
-        detailsButton.classList.add('detailsCollapsibleDarkMode');
-        detailsButton.classList.remove('detailsCollapsible');
-        headerLink.classList.add('HeaderLinkDarkMode');
-        headerLink.classList.remove('HeaderLink');
-        if (typeof(headerdownload) != 'undefined') {
-              headerdownload.classList.add('HeaderLinkDarkMode');
-              headerdownload.classList.remove('HeaderLink');
-        }
+        detailsButton.classList.add('detailsCollapsibleDarkModeSurveyXact');
+        detailsButton.classList.remove('detailsCollapsibleSurveyXact');
+        headerLink.classList.add('HeaderLinkDarkModeSurveyXact');
+        headerLink.classList.remove('HeaderLinkSurveyXact');
+        sharelink.classList.add('LinkDarkModeSurveyXact');
+        sharelink.classList.remove('LinkSurveyXact');
+        fullscreenButton.classList.add('LinkDarkModeSurveyXact');
+        fullscreenButton.classList.remove('LinkSurveyXact');
   }
 }
 
