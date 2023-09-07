@@ -1,6 +1,24 @@
 // Custom JS
+
 // user input from Moodle
-const dURL = '@@Google shared URL: Remember to make it public for everyone@@'; // user input
+const nameForSummary= getLongInput('@@Name@@', "Name", opts)
+const dURL = getLongInput('@@Google shared URL: Remember to make it public for everyone@@', 'Google shared URL: Remember to make it public for everyone', opts)
+
+
+function getLongInput(original, bare,  opts) {
+      bare = bare.replace(/\s/g, "");
+      if (original === undefined) {
+            for(const obj_new of Object.keys(opts)) {
+                  const obj_sanitised = obj_new.replace(/\s/g, "");
+                  if(bare == obj_sanitised) {
+                        return opts[obj_new];
+                  }
+            }
+      }
+      
+      return original;
+}
+
 
 // getting the elements from the HTML
 const fullscreenIframeContainer = document.getElementById('iframeContainer'+@@AUTOID@@); 
@@ -13,15 +31,13 @@ const headerdownload = document.getElementById('DownloadLinkHeader'+@@AUTOID@@);
 const sharelink = document.getElementById('ShareLink'+@@AUTOID@@);
 const download = document.getElementById('Download'+@@AUTOID@@);
 
-
 // function calls to create the temlate on moodle
-//createNameForSummary(nameForSummary);
+createNameForSummary(nameForSummary);
 assignHeaderLinks(dURL);
 
 // check the background color of the page
 let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
-
 //hideEnterFullscreenButtonOnPresentation(downloadURL[1]);
 onLoad(dURL);
 
@@ -57,19 +73,19 @@ function setSameSiteAttribute(sameSiteValue) {
         document.cookie = `${name}=${value}; SameSite=${sameSiteValue}; Secure`;
       }
     }
-    
+
 // on load function e.g. when the Collapsible button is clicked
-function onLoad(url){
+function onLoad(url){  
       if (typeof(url) != 'undefined') {
-        console.log("url " + url);
         const urlArray = constructURLs(url); 
         document.getElementById('Details'+@@AUTOID@@).onclick= function() {
-                document.getElementById('Content'+@@AUTOID@@).src = ""+urlArray[0];
-                document.getElementById('ShareLink'+@@AUTOID@@).href = ""+ url;
-                document.getElementById('Download'+@@AUTOID@@).href = ""+urlArray[1];
-                // set the SameSite attribute for the cookies
-                setSameSiteAttribute('None');
-            };
+
+            document.getElementById('Content'+@@AUTOID@@).src = ""+urlArray[0];
+            document.getElementById('ShareLink'+@@AUTOID@@).href = ""+ url;
+            document.getElementById('Download'+@@AUTOID@@).href = ""+urlArray[1];
+            // set the SameSite attribute for the cookies
+            setSameSiteAttribute('None');
+      };
       }
 }
 // hide the enter fullscreen button on if the iframe is a presentation
