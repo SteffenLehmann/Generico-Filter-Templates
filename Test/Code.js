@@ -4,7 +4,10 @@
 const nameForSummary= getLongInput('@@Name@@', "Name", opts)
 const dURL = getLongInput('@@Google shared URL: Remember to make it public for everyone@@', 'Google shared URL: Remember to make it public for everyone', opts)
 
-
+/* 
+  function to get the user input from the generico object opts. 
+  the original input and the bare input must be the same except for the @@@@.
+*/
 function getLongInput(original, bare,  opts) {
       bare = bare.replace(/\s/g, "");
       if (original === undefined) {

@@ -1,6 +1,24 @@
 
-const summaryName = '@@Name: The name of the button containing the google document@@'; // user input
-const url = '@@URL: The URL for the podcast episode@@'; // user input
+const summaryName = getLongInput('@@Name: The name of the button containing the google document@@','Name: The name of the button containing the google document', opts);
+const url = getLongInput('@@URL: The URL for the podcast episode@@', "URL: The URL for the podcast episode", opts);
+
+/* 
+  function to get the user input from the generico object opts. 
+  the original input and the bare input must be the same except for the @@@@.
+*/
+function getLongInput(original, bare,  opts) {
+  bare = bare.replace(/\s/g, "");
+  if (original === undefined) {
+        for(const obj_new of Object.keys(opts)) {
+              const obj_sanitised = obj_new.replace(/\s/g, "");
+              if(bare == obj_sanitised) {
+                    return opts[obj_new];
+              }
+        }
+  }
+  
+  return original;
+}
 
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);

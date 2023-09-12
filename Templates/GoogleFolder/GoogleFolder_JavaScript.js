@@ -1,7 +1,25 @@
 // Custom JS
 // user input from Moodle
-const summaryName = '@@Name: The name of the button containing the google document@@'; // user input
-const dURL = '@@Google shared URL: Remember to make it public for everyone@@'; // user input
+const summaryName = getLongInput('@@Name: The name of the button containing the google document@@', 'Name: The name of the button containing the google document', opts);
+const dURL = getLongInput('@@Google shared URL: Remember to make it public for everyone@@', 'Google shared URL: Remember to make it public for everyone', opts);
+
+/* 
+  function to get the user input from the generico object opts. 
+  the original input and the bare input must be the same except for the @@@@.
+*/
+function getLongInput(original, bare,  opts) {
+    bare = bare.replace(/\s/g, "");
+    if (original === undefined) {
+          for(const obj_new of Object.keys(opts)) {
+                const obj_sanitised = obj_new.replace(/\s/g, "");
+                if(bare == obj_sanitised) {
+                    return opts[obj_new];
+                }
+            }
+    }
+    
+    return original;
+}
 // getting the elements from the HTML
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);

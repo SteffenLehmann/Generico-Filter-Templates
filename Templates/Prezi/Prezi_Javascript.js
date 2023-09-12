@@ -1,7 +1,27 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = '@@Name: The name of the button containing the Prezi presentation@@'; // user input
-const preziURL = '@@Prezi URL: From your Prezi dashboard find the presentation you would like to share. Click the three dots in its thumbnail and select Sharing and privacy from the list. Then you can copy the link.@@';
+const nameForSummary = getLongInput('@@Name: The name of the button containing the Prezi presentation@@','Name: The name of the button containing the Prezi presentation', opts);
+const preziURL = getLongInput('@@Prezi URL: From your Prezi dashboard find the presentation you would like to share. Click the three dots in its thumbnail and select Sharing and privacy from the list. Then you can copy the link.@@', "Prezi URL: From your Prezi dashboard find the presentation you would like to share. Click the three dots in its thumbnail and select Sharing and privacy from the list. Then you can copy the link.", opts);
+
+
+/* 
+  function to get the user input from the generico object opts. 
+  the original input and the bare input must be the same except for the @@@@.
+*/
+function getLongInput(original, bare,  opts) {
+  bare = bare.replace(/\s/g, "");
+  if (original === undefined) {
+        for(const obj_new of Object.keys(opts)) {
+              const obj_sanitised = obj_new.replace(/\s/g, "");
+              if(bare == obj_sanitised) {
+                    return opts[obj_new];
+              }
+        }
+  }
+  
+  return original;
+}
+
 
 // getting the elements from the HTML
 const details = document.getElementById('Details'+@@AUTOID@@);

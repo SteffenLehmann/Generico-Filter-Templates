@@ -1,8 +1,25 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = '@@Name: The name of the button containing the survey@@'; // user input
-const url = '@@SurveyXact URL: the distribution link of the survey@@';
+const nameForSummary = getLongInput('@@Name: The name of the button containing the survey@@','Name: The name of the button containing the survey', opts);
+const url = getLongInput('@@SurveyXact URL: the distribution link of the survey@@', "SurveyXact URL: the distribution link of the survey", opts);
 
+/* 
+  function to get the user input from the generico object opts. 
+  the original input and the bare input must be the same except for the @@@@.
+*/
+function getLongInput(original, bare,  opts) {
+  bare = bare.replace(/\s/g, "");
+  if (original === undefined) {
+        for(const obj_new of Object.keys(opts)) {
+              const obj_sanitised = obj_new.replace(/\s/g, "");
+              if(bare == obj_sanitised) {
+                    return opts[obj_new];
+              }
+        }
+  }
+  
+  return original;
+}
 // getting the elements from the HTML
 const fullscreenIframeContainer = document.getElementById('iframeContainer'+@@AUTOID@@); 
 const fullscreenButton = document.getElementById('fullscreenButton'+@@AUTOID@@);
