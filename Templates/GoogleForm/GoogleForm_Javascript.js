@@ -1,7 +1,7 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = getLongInput('@@Name: The name of the button containing the google PDF@@',"Name: The name of the button containing the google PDF", opts);
-const dURL = getLongInput('@@Google shared URL: Remember to make it public for everyone@@',"Google shared URL: Remember to make it public for everyone", opts);
+const nameForSummary = getLongInput('@@Name: The name of the button containing the google form@@',"Name: The name of the button containing the google form", opts);
+const dURL = getLongInput('@@Google shared URL: DO NOT shorten the URL@@',"Google shared URL: DO NOT shorten the URL", opts);
 /* 
   function to get the user input from the generico object opts. 
   the original input and the bare input must be the same except for the @@@@.
@@ -16,7 +16,7 @@ function getLongInput(original, bare,  opts) {
                   }
             }
       }
-      
+
       return original;
 }
 // getting the elements from the HTML
@@ -107,7 +107,6 @@ details.addEventListener("toggle", (event) => {
         detailsButton.style.borderBottomRightRadius = '0px';
         detailsButton.style.borderBottomLeftRadius = '0px';
         headerLink.style.display = 'none';
-        headerdownload.style.display = 'none';
 
       } else {
         /* the element was toggled closed */
@@ -116,7 +115,6 @@ details.addEventListener("toggle", (event) => {
         detailsButton.style.borderBottomRightRadius = '5px';
         detailsButton.style.borderBottomLeftRadius = '5px';
         headerLink.style.display = 'block';
-        headerdownload.style.display = 'block';
       }
 });
     
