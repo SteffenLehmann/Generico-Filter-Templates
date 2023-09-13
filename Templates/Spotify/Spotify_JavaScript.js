@@ -4,7 +4,7 @@ const url = getLongInput('@@URL: The URL for the podcast episode@@', "URL: The U
 
 /* 
   function to get the user input from the generico object opts. 
-  the original input and the bare input must be the same except for the @@@@.
+  the original input and the bare input must be the same except for the @.
 */
 function getLongInput(original, bare,  opts) {
   bare = bare.replace(/\s/g, "");

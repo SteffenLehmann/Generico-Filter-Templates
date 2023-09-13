@@ -5,7 +5,7 @@ const sharedURL = getLongInput('@@Panopto shared video URL: remember to set it t
 
 /* 
   function to get the user input from the generico object opts. 
-  the original input and the bare input must be the same except for the @@@@.
+  the original input and the bare input must be the same except for the @.
 */
 function getLongInput(original, bare,  opts) {
   bare = bare.replace(/\s/g, "");

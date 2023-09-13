@@ -5,7 +5,7 @@ const YouTubeURL = getLongInput('@@YouTube URL: Copy in the link/URL of the vide
 
 /* 
   function to get the user input from the generico object opts. 
-  the original input and the bare input must be the same except for the @@@@.
+  the original input and the bare input must be the same except for the @.
 */
 function getLongInput(original, bare,  opts) {
   bare = bare.replace(/\s/g, "");

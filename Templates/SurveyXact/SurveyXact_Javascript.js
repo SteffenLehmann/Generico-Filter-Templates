@@ -5,7 +5,7 @@ const url = getLongInput('@@SurveyXact URL: the distribution link of the survey@
 
 /* 
   function to get the user input from the generico object opts. 
-  the original input and the bare input must be the same except for the @@@@.
+  the original input and the bare input must be the same except for the @.
 */
 function getLongInput(original, bare,  opts) {
   bare = bare.replace(/\s/g, "");
