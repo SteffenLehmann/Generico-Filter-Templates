@@ -1,0 +1,180 @@
+// H5P Styles
+
+.TemplateContainerH5P {
+  width: 100%;
+  overflow: auto;
+}
+
+.detailsCollapsibleH5P {
+  pointer: cursor;
+  padding: 10px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #212121;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  overflow: visible;
+}
+
+.detailsCollapsibleH5P:hover {
+  background-color: #cccccc;
+  color: #468ff4;
+}
+
+.detailsCollapsibleH5P:focus-visible {
+  outline: 2px solid #468ff4;
+  outline-offset: 5px;
+}
+.detailsCollapsibleDarkModeH5P {
+  pointer: cursor;
+  padding: 10px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #ffffff;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.detailsCollapsibleDarkModeH5P:hover {
+  background-color: #cccccc;
+  color: #468ff4;
+}
+
+.detailsCollapsibleDarkModeH5P:focus-visible {
+  outline: 2px solid #468ff4;
+}
+.present_wrapperH5P {
+  position: relative;
+  padding-bottom: 60 %;
+  overflow: hidden;
+  height: 700px;
+}
+
+.Link-containerH5P {
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+}
+
+.LinkH5P {
+  display: block;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #CCCCCC;
+  background-color: #cccccc;
+  border-radius: 5px; /* Rounded borders */
+  margin-bottom: 5px;
+  margin: 0 5px;
+  color: #131314;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.LinkH5P:hover {
+  background-color: #666666;
+  border: 1px solid #666666;
+  color: #468ff4;
+}
+.LinkDarkModeH5P {
+  display: block;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: transparent; 
+  background-color: transparent;
+  border-radius: 5px; /* Rounded borders */
+  margin-bottom: 5px;
+  margin: 0 5px;
+  color: #ffffff !important;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+.LinkDarkModeH5P:hover {
+  background-color: #cccccc;
+  color: #468ff4 !important;;
+}
+.iframeButtonH5P {
+  display: none;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  display: block;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #cccccc;
+  background-color: #cccccc;
+  border-radius: 5px; /* Rounded borders */
+  margin-bottom: 5px;
+  margin: 0 5px;
+  color: #131314;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.iframeButtonH5P:hover {
+  background-color: #666666;
+  border: 1px solid #666666;
+  color: #468ff4;
+}
+
+.IframeStyleH5P {
+  width: 100%;
+  height: 100%;
+}
+
+.HeaderLinkH5P {
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px; /* Rounded borders */
+  color: #212121;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  right: 0;
+}
+.HeaderLinkH5P:hover {
+  background-color: #cccccc;
+  color: #468ff4;
+}
+.HeaderLinkDarkModeH5P {
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px; /* Rounded borders */
+  color: #ffffff !important;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  right: 0;
+}
+.HeaderLinkDarkModeH5P:hover {
+  background-color: #cccccc;
+  color: #468ff4 !important;
+}
+
+.HeaderLinkContainerH5P {
+  display: flex;
+  align-items: center;
+}
+.HeaderLinkContainerH5P > :first-child {
+  flex: 1;
+}
