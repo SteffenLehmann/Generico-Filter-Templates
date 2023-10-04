@@ -1,5 +1,5 @@
 
-const summaryName = getLongInput('@@Name: The name of the button containing the google document@@','Name: The name of the button containing the google document', opts);
+const summaryName = getLongInput('@@Name: The name of the button containing the podcast@@','Name: The name of the button containing the podcast', opts);
 const url = getLongInput('@@URL: The URL for the podcast episode@@', "URL: The URL for the podcast episode", opts);
 
 /* 

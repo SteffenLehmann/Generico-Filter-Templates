@@ -30,7 +30,6 @@
 
 .detailsCollapsiblePrezi:focus-visible{
     outline: 2px solid #468ff4;
-    outline-offset: 5px;
 }
 .detailsCollapsibleDarkModePrezi{
     pointer: cursor; 
