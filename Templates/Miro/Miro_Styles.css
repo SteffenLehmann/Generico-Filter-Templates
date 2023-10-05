@@ -21,6 +21,7 @@
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     overflow: visible;
+    border: 2px solid transparent;
 }
 
 .detailsCollapsibleMiro:hover{
@@ -29,7 +30,8 @@
 }
 
 .detailsCollapsibleMiro:focus-visible{
-    outline: 2px solid #468ff4;
+    outline: none;
+    border-color: #468ff4;
 }
 .detailsCollapsibleDarkModeMiro{
     pointer: cursor; 
@@ -46,6 +48,7 @@
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
+    border: 2px solid transparent;
 }
 
 .detailsCollapsibleDarkModeMiro:hover{
@@ -54,7 +57,8 @@
 }
 
 .detailsCollapsibleDarkModeMiro:focus-visible{
-    outline: 2px solid #468ff4;
+    outline: none;
+    border-color: #468ff4;
 }
 .present_wrapperMiro {
     position: relative;
@@ -149,10 +153,15 @@
     font-weight: 400;
     line-height: 1.6;
     right: 0;
+    border: 2px solid transparent;
 }
 .HeaderLinkMiro:hover{
     background-color: #CCCCCC;
     color: #468ff4;
+}
+.HeaderLinkMiro:focus-visible{
+    outline: none;
+    border-color: #468ff4;
 }
 .HeaderLinkDarkModeMiro{
     text-decoration: none;
@@ -168,8 +177,12 @@
 .HeaderLinkDarkModeMiro:hover{
     background-color: #CCCCCC;
     color: #468ff4 !important;
+    border: 2px solid transparent;
 }
-
+.HeaderLinkDarkModeMiro:focus-visible{
+    outline: none;
+    border-color: #468ff4;
+}
 .HeaderLinkContainerMiro{
     display: flex;
     align-items: center;

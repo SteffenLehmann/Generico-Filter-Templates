@@ -21,6 +21,7 @@
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     overflow: visible;
+    border: 2px solid transparent;
 }
 
 .detailsCollapsibleGoogleEdit:hover{
@@ -29,7 +30,8 @@
 }
 
 .detailsCollapsibleGoogleEdit:focus-visible{
-    outline: 2px solid #468ff4;
+    outline: none;
+    border-color: #468ff4;
 }
 .detailsCollapsibleDarkModeGoogleEdit{
     pointer: cursor; 
@@ -46,6 +48,7 @@
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
+    border: 2px solid transparent;
 }
 
 .detailsCollapsibleDarkModeGoogleEdit:hover{
@@ -54,7 +57,8 @@
 }
 
 .detailsCollapsibleDarkModeGoogleEdit:focus-visible{
-    outline: 2px solid #468ff4;
+    outline: none;
+    border-color: #468ff4;
 }
 .present_wrapperGoogleEdit {
     position: relative;
@@ -149,10 +153,15 @@
     font-weight: 400;
     line-height: 1.6;
     right: 0;
+    border: 2px solid transparent;
 }
 .HeaderLinkGoogleEdit:hover{
     background-color: #CCCCCC;
     color: #468ff4;
+}
+.HeaderLinkGoogleEdit:focus-visible{
+    outline: none;
+    border-color: #468ff4;
 }
 .HeaderLinkDarkModeGoogleEdit{
     text-decoration: none;
@@ -164,12 +173,16 @@
     font-weight: 400;
     line-height: 1.6;
     right: 0;
+    border: 2px solid transparent;
 }
 .HeaderLinkDarkModeGoogleEdit:hover{
     background-color: #CCCCCC;
     color: #468ff4 !important;
 }
-
+.HeaderLinkDarkModeGoogleEdit:focus-visible{
+    outline: none;
+    border-color: #468ff4;
+}
 .HeaderLinkContainerGoogleEdit{
     display: flex;
     align-items: center;

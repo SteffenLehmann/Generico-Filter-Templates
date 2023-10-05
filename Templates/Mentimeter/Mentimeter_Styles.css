@@ -21,6 +21,7 @@
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     overflow: visible;
+    border: 2px solid transparent;
 }
 
 .detailsCollapsibleMentimeter:hover{
@@ -29,7 +30,8 @@
 }
 
 .detailsCollapsibleMentimeter:focus-visible{
-    outline: 2px solid #468ff4;
+    outline: none;
+    border: 2px solid #468ff4;
 }
 .detailsCollapsibleDarkModeMentimeter{
     pointer: cursor; 
@@ -46,6 +48,7 @@
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
+    border: 2px solid transparent;
 }
 
 .detailsCollapsibleDarkModeMentimeter:hover{
@@ -54,7 +57,8 @@
 }
 
 .detailsCollapsibleDarkModeMentimeter:focus-visible{
-    outline: 2px solid #468ff4;
+    outline: none;
+    border: 2px solid #468ff4;
 }
 .present_wrapperMentimeter {
     position: relative;
@@ -151,10 +155,15 @@
     font-weight: 400;
     line-height: 1.6;
     right: 0;
+    border: 2px solid transparent;
 }
 .HeaderLinkMentimeter:hover{
     background-color: #CCCCCC;
     color: #468ff4;
+}
+.HeaderLinkMentimeter:focus-visible{
+    outline: none;
+    border: 2px solid #468ff4;
 }
 .HeaderLinkDarkModeMentimeter{
     text-decoration: none;
@@ -166,12 +175,16 @@
     font-weight: 400;
     line-height: 1.6;
     right: 0;
+    border: 2px solid transparent;
 }
 .HeaderLinkDarkModeMentimeter:hover{
     background-color: #CCCCCC;
     color: #468ff4 !important;
 }
-
+.HeaderLinkDarkModeMentimeter:focus-visible{
+    outline: none;
+    border: 2px solid #468ff4;
+}
 .HeaderLinkContainerMentimeter{
     display: flex;
     align-items: center;

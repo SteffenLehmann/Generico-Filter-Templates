@@ -1,6 +1,6 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = getLongInput('@@Name: The name of the button containing webpage@@', 'Name: The name of the button containing webpage', opts);
+const nameForSummary = getLongInput('@@Name: The name of the button containing the webpage@@', 'Name: The name of the button containing the webpage', opts);
 const dURL = getLongInput('@@Website URL: some websites might not allow embed@@', "Website URL: some websites might not allow embed", opts);
 
 /* 

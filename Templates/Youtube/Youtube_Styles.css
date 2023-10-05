@@ -22,6 +22,7 @@
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     overflow: visible;
+    border: 2px solid transparent;
 }
 
 .detailsCollapsibleYouTube:hover{
@@ -30,7 +31,8 @@
 }
 
 .detailsCollapsibleYouTube:focus-visible{
-    outline: 2px solid #468ff4;
+    outline: none;
+    border: 2px solid #468ff4;
 }
 .detailsCollapsibleDarkModeYouTube{
     pointer: cursor; 
@@ -47,6 +49,7 @@
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
+    border: 2px solid transparent;
 }
 
 .detailsCollapsibleDarkModeYouTube:hover{
@@ -55,7 +58,8 @@
 }
 
 .detailsCollapsibleDarkModeYouTube:focus-visible{
-    outline: 2px solid #468ff4;
+    outline: none;
+    border: 2px solid #468ff4;
 }
 .present_wrapperYouTube {
     position: relative;
@@ -152,10 +156,15 @@
     font-weight: 400;
     line-height: 1.6;
     right: 0;
+    border: 2px solid transparent;
 }
 .HeaderLinkYouTube:hover{
     background-color: #CCCCCC;
     color: #468ff4;
+}
+.HeaderLinkYouTube:focus-visible{
+    outline: none;
+    border: 2px solid #468ff4;
 }
 .HeaderLinkDarkModeYouTube{
     text-decoration: none;
@@ -167,12 +176,16 @@
     font-weight: 400;
     line-height: 1.6;
     right: 0;
+    border: 2px solid transparent;
 }
 .HeaderLinkDarkModeYouTube:hover{
     background-color: #CCCCCC;
     color: #468ff4 !important;
 }
-
+.HeaderLinkDarkModeYouTube:focus-visible{
+    outline: none;
+    border: 2px solid #468ff4;
+}
 .HeaderLinkContainerYouTube{
     display: flex;
     align-items: center;

@@ -21,6 +21,7 @@
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   overflow: visible;
+  border: 2px solid transparent;
 }
 
 .detailsCollapsibleH5P:hover {
@@ -29,7 +30,8 @@
 }
 
 .detailsCollapsibleH5P:focus-visible {
-  outline: 2px solid #468ff4;
+  outline: none;
+  border-color: #468ff4;
 }
 .detailsCollapsibleDarkModeH5P {
   pointer: cursor;
@@ -46,6 +48,7 @@
   border-top-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
+  border: 2px solid transparent;
 }
 
 .detailsCollapsibleDarkModeH5P:hover {
@@ -54,7 +57,8 @@
 }
 
 .detailsCollapsibleDarkModeH5P:focus-visible {
-  outline: 2px solid #468ff4;
+  outline: none;
+  border-color: #468ff4;
 }
 .present_wrapperH5P {
   position: relative;
@@ -149,10 +153,15 @@
   font-weight: 400;
   line-height: 1.6;
   right: 0;
+  border: 2px solid transparent;
 }
 .HeaderLinkH5P:hover {
   background-color: #cccccc;
   color: #468ff4;
+}
+.HeaderLinkH5P:focus-visible {
+  outline: none;
+  border-color: #468ff4;
 }
 .HeaderLinkDarkModeH5P {
   text-decoration: none;
@@ -164,10 +173,15 @@
   font-weight: 400;
   line-height: 1.6;
   right: 0;
+  border: 2px solid transparent;
 }
 .HeaderLinkDarkModeH5P:hover {
   background-color: #cccccc;
   color: #468ff4 !important;
+}
+.HeaderLinkDarkModeH5P:focus-visible {
+  outline: none;
+  border-color: #468ff4;
 }
 
 .HeaderLinkContainerH5P {

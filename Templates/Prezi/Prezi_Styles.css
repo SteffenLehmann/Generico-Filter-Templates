@@ -21,6 +21,7 @@
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     overflow: visible;
+    border: 2px solid transparent;
 }
 
 .detailsCollapsiblePrezi:hover{
@@ -29,7 +30,8 @@
 }
 
 .detailsCollapsiblePrezi:focus-visible{
-    outline: 2px solid #468ff4;
+    outline: none;
+    border-color: #468ff4;
 }
 .detailsCollapsibleDarkModePrezi{
     pointer: cursor; 
@@ -46,6 +48,7 @@
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
+    border: 2px solid transparent;
 }
 
 .detailsCollapsibleDarkModePrezi:hover{
@@ -54,7 +57,8 @@
 }
 
 .detailsCollapsibleDarkModePrezi:focus-visible{
-    outline: 2px solid #468ff4;
+    outline: none;
+    border-color: #468ff4;
 }
 .present_wrapperPrezi {
     position: relative;
@@ -150,10 +154,15 @@
     font-weight: 400;
     line-height: 1.6;
     right: 0;
+    border: 2px solid transparent;
 }
 .HeaderLinkPrezi:hover{
     background-color: #CCCCCC;
     color: #468ff4;
+}
+.HeaderLinkPrezi:focus-visible{
+    outline: none;
+    border-color: #468ff4;
 }
 .HeaderLinkDarkModePrezi{
     text-decoration: none;
@@ -165,12 +174,16 @@
     font-weight: 400;
     line-height: 1.6;
     right: 0;
+    border: 2px solid transparent;
 }
 .HeaderLinkDarkModePrezi:hover{
     background-color: #CCCCCC;
     color: #468ff4 !important;
 }
-
+.HeaderLinkDarkModePrezi:focus-visible{
+    outline: none;
+    border-color: #468ff4;
+}
 .HeaderLinkContainerPrezi{
     display: flex;
     align-items: center;

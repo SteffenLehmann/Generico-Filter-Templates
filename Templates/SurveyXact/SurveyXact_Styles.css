@@ -21,6 +21,7 @@
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     overflow: visible;
+    border: 2px solid transparent;
 }
 
 .detailsCollapsibleSurveyXact:hover{
@@ -29,7 +30,8 @@
 }
 
 .detailsCollapsibleSurveyXact:focus-visible{
-    outline: 2px solid #468ff4;
+    outline: none;
+    border: 2px solid #468ff4;
 }
 .detailsCollapsibleDarkModeSurveyXact{
     pointer: cursor; 
@@ -46,6 +48,7 @@
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
+    border: 2px solid transparent;
 }
 
 .detailsCollapsibleDarkModeSurveyXact:hover{
@@ -54,7 +57,8 @@
 }
 
 .detailsCollapsibleDarkModeSurveyXact:focus-visible{
-    outline: 2px solid #468ff4;
+    outline: none;
+    border: 2px solid #468ff4;
 }
 .present_wrapperSurveyXact {
     position: relative;
@@ -150,10 +154,15 @@
     font-weight: 400;
     line-height: 1.6;
     right: 0;
+    border: 2px solid transparent;
 }
 .HeaderLinkSurveyXact:hover{
     background-color: #CCCCCC;
     color: #468ff4;
+}
+.HeaderLinkSurveyXact:focus-visible{
+    outline: none;
+    border: 2px solid #468ff4;
 }
 .HeaderLinkDarkModeSurveyXact{
     text-decoration: none;
@@ -165,12 +174,16 @@
     font-weight: 400;
     line-height: 1.6;
     right: 0;
+    border: 2px solid transparent;
 }
 .HeaderLinkDarkModeSurveyXact:hover{
     background-color: #CCCCCC;
     color: #468ff4 !important;
 }
-
+.HeaderLinkDarkModeSurveyXact:focus-visible{
+    outline: none;
+    border: 2px solid #468ff4;
+}
 .HeaderLinkContainerSurveyXact{
     display: flex;
     align-items: center;

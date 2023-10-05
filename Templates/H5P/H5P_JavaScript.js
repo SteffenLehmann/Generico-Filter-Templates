@@ -1,6 +1,6 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = getLongInput('@@Name: The name of the button containing video@@', 'Name: The name of the button containing video', opts);
+const nameForSummary = getLongInput('@@Name: The name of the button containing the video@@', 'Name: The name of the button containing the video', opts);
 const dURL = getLongInput('@@H5P Interactive Video URL: the URL when you are in the Interactive Video actvitiy in Moodle@@', "H5P Interactive Video URL: the URL when you are in the Interactive Video actvitiy in Moodle", opts);
 
 /* 

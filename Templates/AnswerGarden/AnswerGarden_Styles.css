@@ -21,6 +21,7 @@
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     overflow: visible;
+    border: 2px solid transparent;
 }
 
 .detailsCollapsibleAG:hover{
@@ -29,7 +30,7 @@
 }
 
 .detailsCollapsibleAG:focus-visible{
-    outline: 2px solid #468ff4;
+    border-color: #468ff4;
 }
 .detailsCollapsibleDarkModeAG{
     pointer: cursor; 
@@ -46,6 +47,7 @@
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
+    border: 2px solid transparent;
 }
 
 .detailsCollapsibleDarkModeAG:hover{
@@ -54,7 +56,7 @@
 }
 
 .detailsCollapsibleDarkModeAG:focus-visible{
-    outline: 2px solid #468ff4;
+    border-color: #468ff4;
 }
 .present_wrapperAG {
     position: relative;
@@ -150,10 +152,15 @@
     font-weight: 400;
     line-height: 1.6;
     right: 0;
+    border: 2px solid transparent;
 }
 .HeaderLinkAG:hover{
     background-color: #CCCCCC;
     color: #468ff4;
+}
+.HeaderLinkAG:focus-visible{
+    border-color: #468ff4;
+    outline: none;
 }
 .HeaderLinkDarkModeAG{
     text-decoration: none;
@@ -165,10 +172,15 @@
     font-weight: 400;
     line-height: 1.6;
     right: 0;
+    border: 2px solid transparent;
 }
 .HeaderLinkDarkModeAG:hover{
     background-color: #CCCCCC;
     color: #468ff4 !important;
+}
+.HeaderLinkDarkModeAG:focus-visible{
+    border-color: #468ff4;
+    outline: none;
 }
 
 .HeaderLinkContainerAG{

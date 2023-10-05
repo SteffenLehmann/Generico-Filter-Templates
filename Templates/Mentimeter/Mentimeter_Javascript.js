@@ -2,7 +2,6 @@
 // user input from Moodle
 const nameForSummary = getLongInput('@@Name: The name of the button containing the Mentimenter presentation@@', "Name: The name of the button containing the Mentimenter presentation", opts);
 const sharedURL = getLongInput('@@Mentimeter shared video URL: Remember to change the settings to share with everyone@@', "Mentimeter shared video URL: Remember to change the settings to share with everyone", opts);
-const presentationName = getLongInput('@@Download results (OPTIONAL!): The file name of the Mentimenter presentation@@', "Download results (OPTIONAL!): The file name of the Mentimenter presentation", opts);
 
 /* 
   function to get the user input from the generico object opts. 
@@ -31,7 +30,7 @@ const download = document.getElementById('Download'+@@AUTOID@@);
 
 // function calls to create the temlate on moodle
 createNameForSummary(nameForSummary);
-const urls = constructURLS(sharedURL, presentationName);
+const urls = constructURLS(sharedURL);
 assignHeaderLinks(sharedURL, urls[1]);
 // check the background color of the page
 let previouisBackgroundColor = getBackgroundColor();
@@ -93,15 +92,10 @@ function setSameSiteAttribute(sameSiteValue) {
 }
 
 // function to construct the embed and download url
-function constructURLS(url, name) {
+function constructURLS(url) {
   if (typeof (url) != 'undefined') {
       const id = idFromURL(url);
       const embedURL = "https://www.mentimeter.com/app/presentation/" + id + "/embed";
-      if (typeof (name) != 'undefined') {
-        const renamedPresentation = reNamePresentationName(name);
-        const resultsPDF = 'https://static.mentimeter.com/screenshot/pdfs/' + renamedPresentation + '.pdf' + '?seriesId=' + id + '&screenshotTargetUrl=https%3A%2F%2Fwww.mentimeter.com%2Fpreview';
-        return [embedURL, resultsPDF];
-      }
       return [embedURL];
   }
 }
