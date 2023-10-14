@@ -1,7 +1,7 @@
 // Custom JS
 // user input from Moodle
 const nameForSummary = getLongInput('@@Name: The name of the button containing the YouTube video@@', "Name: The name of the button containing the YouTube video", opts);
-const YouTubeURL = getLongInput('@@YouTube URL: Copy in the link/URL of the video you want to embed@@', "YouTube URL: Copy in the link/URL of the video you want to embed", opts);
+const youTubeURL = getLongInput('@@YouTube URL: Copy in the link/URL of the video you want to embed@@', "YouTube URL: Copy in the link/URL of the video you want to embed", opts);
 
 /* 
   function to get the user input from the generico object opts. 
@@ -20,6 +20,7 @@ function getLongInput(original, bare,  opts) {
   
   return original;
 }
+
 // getting the elements from the HTML
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
@@ -29,11 +30,11 @@ const sharelink = document.getElementById('ShareLink'+@@AUTOID@@);
 
 // function calls to create the temlate on moodle
 createNameForSummary(nameForSummary);
-assignHeaderLinks(YouTubeURL);
+assignHeaderLinks(youTubeURL);
 // check the background color of the page
 let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
-onLoad(YouTubeURL);
+onLoad(youTubeURL);
 
 //creates the name for the template
 function createNameForSummary(name) {
