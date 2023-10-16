@@ -1,6 +1,6 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = getLongInput('@@Name: The name of the button containing the AnswerGarden board@@', 'Name: The name of the button containing the AnswerGarden board', opts);
+const nameForSummary = getLongInput('@@Name: The name of the button that will contain the AnswerGarden board@@', 'Name: The name of the button that will contain the AnswerGarden board', opts);
 const url = getLongInput('@@AnswerGarden URL@@', 'AnswerGarden URL', opts); 
 
 /* 

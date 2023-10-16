@@ -1,6 +1,6 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = getLongInput('@@Name: The name of the button containing the Prezi presentation@@','Name: The name of the button containing the Prezi presentation', opts);
+const nameForSummary = getLongInput('@@Name: The name of the button that will contain the Prezi presentation@@','Name: The name of the button that will contain the Prezi presentation', opts);
 const preziURL = getLongInput('@@Prezi URL: From your Prezi dashboard find the presentation you would like to share. Click the three dots in its thumbnail and select Sharing and privacy from the list. Then you can copy the link.@@', "Prezi URL: From your Prezi dashboard find the presentation you would like to share. Click the three dots in its thumbnail and select Sharing and privacy from the list. Then you can copy the link.", opts);
 
 

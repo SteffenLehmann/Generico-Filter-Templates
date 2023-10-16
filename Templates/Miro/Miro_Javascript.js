@@ -1,7 +1,7 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = getLongInput('@@Name: The name of the button containing the Miro board@@', "Name: The name of the button containing the Miro board", opts);
-const url = getLongInput('@@Miro URL: Copy the link/URL of the Miro board you want to embed@@', "Miro URL: Copy the link/URL of the Miro board you want to embed", opts);
+const nameForSummary = getLongInput('@@Name: The name of the button that will contain the Miro board@@', "Name: The name of the button that will contain the Miro board", opts);
+const url = getLongInput('@@Miro share URL: Copy the browser link/URL of the Miro board you want to embed@@', "Miro share URL: Copy the browser link/URL of the Miro board you want to embed", opts);
 
 /* 
   function to get the user input from the generico object opts. 

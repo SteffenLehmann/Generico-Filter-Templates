@@ -1,6 +1,6 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = getLongInput('@@Name: The name of the button containing the survey@@','Name: The name of the button containing the survey', opts);
+const nameForSummary = getLongInput('@@Name: The name of the button that will contain the survey@@','Name: The name of the button that will contain the survey', opts);
 const url = getLongInput('@@SurveyXact URL: the distribution link of the survey@@', "SurveyXact URL: the distribution link of the survey", opts);
 
 /* 

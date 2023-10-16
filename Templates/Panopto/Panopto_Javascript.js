@@ -1,7 +1,7 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = getLongInput('@@Name: The name of the button containing the Panopto video@@', "Name: The name of the button containing the Panopto video", opts);
-const sharedURL = getLongInput('@@Panopto shared video URL: remember to set it to public@@', "Panopto shared video URL: remember to set it to public", opts);
+const nameForSummary = getLongInput('@@Name: The name of the button that will contain the Panopto video@@', "Name: The name of the button that will contain the Panopto video", opts);
+const sharedURL = getLongInput('@@Panopto AAU share URL: remember to set it to public@@', "Panopto AAU share URL: remember to set it to public", opts);
 
 /* 
   function to get the user input from the generico object opts. 

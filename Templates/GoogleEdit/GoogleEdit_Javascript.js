@@ -1,7 +1,7 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = getLongInput('@@Name: The name of the button containing the google document@@', 'Name: The name of the button containing the google document', opts);
-const dURL = getLongInput('@@Google shared URL: Remember to make it public for everyone@@',"Google shared URL: Remember to make it public for everyone", opts);
+const nameForSummary = getLongInput('@@Name: The name of the button that will contain the google document@@', 'Name: The name of the button that will contain the google document', opts);
+const dURL = getLongInput('@@Google share URL: Remember to make it public for everyone@@',"Google share URL: Remember to make it public for everyone", opts);
 
 
 /* 

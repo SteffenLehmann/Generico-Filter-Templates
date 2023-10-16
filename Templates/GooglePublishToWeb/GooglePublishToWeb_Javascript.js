@@ -1,8 +1,8 @@
 // Custom JS
 // user input from Moodle
-const summaryName = getLongInput("@@Name: The name of the button containing the google document@@", 'Name: The name of the button containing the google document', opts);
-const pURL = getLongInput("@@Google Publish to Web Link: it is the second share option@@", 'Google Publish to Web Link: it is the second share option', opts);
-const dURL = getLongInput("@@Google shared URL: Remember to make it public for everyone@@", 'Google shared URL: Remember to make it public for everyone', opts);
+const summaryName = getLongInput("@@Name: The name of the button that will contain the google document@@", 'Name: The name of the button that will contain the google document', opts);
+const pURL = getLongInput("@@Google Publish to Web Link: open the file menu in the top left corner and find the share section then select publish to web@@", 'Google Publish to Web Link: open the file menu in the top left corner and find the share section then select publish to web', opts);
+const dURL = getLongInput("@@Google share URL: Remember to make it public for everyone@@", 'Google share URL: Remember to make it public for everyone', opts);
 
 /* 
   function to get the user input from the generico object opts. 

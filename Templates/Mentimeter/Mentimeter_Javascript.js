@@ -1,7 +1,7 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = getLongInput('@@Name: The name of the button containing the Mentimenter presentation@@', "Name: The name of the button containing the Mentimenter presentation", opts);
-const sharedURL = getLongInput('@@Mentimeter shared video URL: Remember to change the settings to share with everyone@@', "Mentimeter shared video URL: Remember to change the settings to share with everyone", opts);
+const nameForSummary = getLongInput('@@Name: The name of the button that will contain the Mentimenter presentation@@', "Name: The name of the button that will contain the Mentimenter presentation", opts);
+const sharedURL = getLongInput('@@Mentimeter share URL: Remember to change the settings to share with everyone@@', "Mentimeter share URL: Remember to change the settings to share with everyone", opts);
 
 /* 
   function to get the user input from the generico object opts. 

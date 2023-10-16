@@ -1,7 +1,7 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = getLongInput('@@Name: The name of the button containing the padlet board@@','Name: The name of the button containing the padlet board', opts);
-const url = getLongInput('@@Padlet shared URL: Remember to make it public for everyone@@', "Padlet shared URL: Remember to make it public for everyone", opts);
+const nameForSummary = getLongInput('@@Name: The name of the button that will contain the padlet board@@','Name: The name of the button that will contain the padlet board', opts);
+const url = getLongInput('@@Padlet share URL: Remember to make it public for everyone@@', "Padlet share URL: Remember to make it public for everyone", opts);
 
 /* 
   function to get the user input from the generico object opts. 

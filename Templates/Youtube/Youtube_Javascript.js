@@ -1,6 +1,6 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = getLongInput('@@Name: The name of the button containing the YouTube video@@', "Name: The name of the button containing the YouTube video", opts);
+const nameForSummary = getLongInput('@@Name: The name of the button that will contain the YouTube video@@', "Name: The name of the button that will contain the YouTube video", opts);
 const youTubeURL = getLongInput('@@YouTube URL: Copy in the link/URL of the video you want to embed@@', "YouTube URL: Copy in the link/URL of the video you want to embed", opts);
 
 /* 
