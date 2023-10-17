@@ -1,6 +1,6 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = getLongInput('@@Name: The name of the button that will contain the google form@@',"Name: The name of the button that will contain the google form", opts);
+const nameForSummary = getLongInput('@@Name: The name of the button that will contain the Google form@@',"Name: The name of the button that will contain the Google form", opts);
 const dURL = getLongInput('@@Google share URL: DO NOT shorten the URL@@',"Google share URL: DO NOT shorten the URL", opts);
 /* 
   function to get the user input from the generico object opts. 
