@@ -7,6 +7,10 @@ setBackgrounColor(previouisBackgroundColor);
 
 // event listener for the details element state change
 details.addEventListener("toggle", (event) => {
+  toggleDetails();
+});
+
+function toggleDetails() {
   if (details.open) {
     /* the element was toggled open */
     detailsButton.style.color = "#468ff4";
@@ -16,7 +20,7 @@ details.addEventListener("toggle", (event) => {
     detailsButton.style.backgroundColor = "";
     detailsButton.style.color = "";
   }
-});
+}
 
 // function to get the background color of the page
 function getBackgroundColor() {
@@ -27,7 +31,7 @@ function getBackgroundColor() {
   return backgroundColor;
 }
 
-function setBackgrounColor(backGroundColor) {
+function setBackgrounColor(backGroundColor) {   
   if (backGroundColor == "rgb(255, 255, 255)") {
     if (detailsButton.classList.contains("detailsCollapsible")) {
       return;
@@ -65,4 +69,11 @@ document.addEventListener("backgroundColorChanged", (event) => {
   const newBackgroundColor = event.detail;
   console.log("Background color changed:", newBackgroundColor);
   setBackgrounColor(newBackgroundColor);
+});
+
+
+const closeButton = document.getElementById('closeButtonCollapsible'+@@AUTOID@@)
+console.log(typeof(closeButton));
+closeButton.addEventListener("click", function(){ 
+  details.removeAttribute("open");
 });

@@ -26,7 +26,7 @@
   border-color: #468ff4;
 }
 .detailsCollapsibleDarkMode {
-  pointer: cursor;
+  cursor: pointer;
   padding: 10px;
   border: none;
   text-align: left;
@@ -57,9 +57,7 @@
 }
 
 .detailsStyle div{
-  padding-left: 10px;
-  text-indent: 10px
-  background-color: aquamarine;
+  /*background-color: aquamarine;*/
 }
 
 .TemplateContainerCollasible{
@@ -71,5 +69,31 @@
 
 .Indent{
   width: inherit;
+  display: flex;
+  margin-top: 3px;
 }
 
+.closeButtonCollapsible{
+  width: 7px;
+  background-color: #cccccc;
+  border-radius: 5px;
+  border: 2px solid transparent;
+}
+
+.closeButtonCollapsible:hover{
+  cursor: pointer;
+  background-color: #468ff4;
+  color: #468ff4;
+}
+
+.closeButtonCollapsible:focus-visible{
+  outline: none;
+  border-color: #468ff4;
+}
+
+.WrapControlCollapsible{
+  flex: 1;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
