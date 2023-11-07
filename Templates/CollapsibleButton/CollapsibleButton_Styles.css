@@ -60,7 +60,7 @@
   /*background-color: aquamarine;*/
 }
 
-.TemplateContainerCollasible{
+.TemplateContainerCollapsible{
   width: 100%;
   overflow: auto;
   display: flex;
