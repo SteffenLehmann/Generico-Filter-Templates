@@ -78,6 +78,7 @@
   background-color: #cccccc;
   border-radius: 5px;
   border: 2px solid transparent;
+  margin-bottom: 5px;
 }
 
 .closeButtonCollapsible:hover{
