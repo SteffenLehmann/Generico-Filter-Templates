@@ -23,8 +23,8 @@ function getLongInput(original, bare,  opts) {
 
 // getting the elements from the HTML
 const fullscreenIframeContainer = document.getElementById('iframeContainer'+@@AUTOID@@); 
-//const fullscreenButton = document.getElementById('fullscreenButton'+@@AUTOID@@);
-//const exitFullscreenButton = document.getElementById('exitFullscreenButton'+@@AUTOID@@);
+const fullscreenButton = document.getElementById('fullscreenButton'+@@AUTOID@@);
+const exitFullscreenButton = document.getElementById('exitFullscreenButton'+@@AUTOID@@);
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
@@ -45,6 +45,7 @@ onLoad(dURL);
 
 // function to assign the header links
 function assignHeaderLinks(url) {
+      
       headerLink.href = ""+ url;
 }
 
@@ -80,12 +81,12 @@ function onLoad(url){
 }
 
 function URLtoEmbedURL(URL) {
-      const URLDate = URL.split("/");
-      console.log(URLDate);
-      if (URLDate[7] == "_layouts"){
-          return directURLtoEmbedURL(URLDate);
-      } else if (URLDate[7] == "Documents"||URLDate[7] == "Shared%20Documents" ){
-          return copyLinkToEmbedURL(URLDate);
+      const URLData = URL.split("/");
+      console.log(URLData);
+      if (URLData[7] == "_layouts"){
+          return directURLtoEmbedURL(URLData);
+      } else if (URLData[7] == "Documents"||URLData[7] == "Shared%20Documents" ){
+          return copyLinkToEmbedURL(URLData);
       }
   }
   /*
@@ -113,14 +114,14 @@ function URLtoEmbedURL(URL) {
     8 'Slides_GDPR_til_studerende-final.pptx?d=w296bd959a055412f8309026f8c14e9ee&csf=1&web=1&e=rvWdgX'
   ]
   */
-  function copyLinkToEmbedURL (URLDate) {
-      if (URLDate[5] == "personal" || URLDate[5] == "sites"){
-          let id = URLDate[URLDate.length-1].split("=")[1].split("&")[0].substring(1);
+  function copyLinkToEmbedURL (URLData) {
+      if (URLData[5] == "personal" || URLData[5] == "sites"){
+          let id = URLData[URLData.length-1].split("=")[1].split("&")[0].substring(1);
           console.log(id);
           // 8 - 4 - 4 - 4 - 12
           id = id.substring(0,8)+"-"+id.substring(8,12)+"-"+id.substring(12,16)+"-"+id.substring(16,20)+"-"+id.substring(20,32);
           console.log(id)
-          return URLDate[0]+"/"+URLDate[1]+"/"+URLDate[2]+"/"+URLDate[5]+"/"+URLDate[6]+"/"+"_layouts/15/Doc.aspx?sourcedoc="+"{"+id+"}"+"&action=embedview&wdAr=1.7777777777777777&wdEaaCheck=1";
+          return URLData[0]+"/"+URLData[1]+"/"+URLData[2]+"/"+URLData[5]+"/"+URLData[6]+"/"+"_layouts/15/Doc.aspx?sourcedoc="+"{"+id+"}"+"&action=embedview&wdAr=1.7777777777777777&wdEaaCheck=1";
       }
   }
   
@@ -140,24 +141,17 @@ function URLtoEmbedURL(URL) {
       9 'Doc.aspx?sourcedoc=%7B1FB4DC5D-A32A-406E-A082-2A9B230BC50F%7D&file=GoogleSlides.pptx&action=edit&mobileredirect=true'
   ]
   */
-  function directURLtoEmbedURL (URLDate){
-      if (URLDate[5] == "personal" || URLDate[5] == "sites") {
-          const sourceID = URLDate[9].split("%");
+  function directURLtoEmbedURL (URLData){
+      if (URLData[5] == "personal" || URLData[5] == "sites") {
+          const sourceID = URLData[9].split("%");
           const idLenght = sourceID[1].length;
           let id = sourceID[1].replace("7B","")
           if (idLenght == id.length) {
               id = id[1].replace("7b"," ")
           }
-          return URLDate[0]+"/"+URLDate[1]+"/"+URLDate[2]+"/"+URLDate[5]+"/"+URLDate[6]+"/"+URLDate[7]+"/"+URLDate[8]+"/"+sourceID[0]+"{"+id+"}"+"&action=embedview&wdAr=1.7777777777777777&wdEaaCheck=1;wdEaaCheck=1";
+          return URLData[0]+"/"+URLData[1]+"/"+URLData[2]+"/"+URLData[5]+"/"+URLData[6]+"/"+URLData[7]+"/"+URLData[8]+"/"+sourceID[0]+"{"+id+"}"+"&action=embedview&wdAr=1.7777777777777777&wdEaaCheck=1;wdEaaCheck=1";
       }
   }
-
-/* // hide the enter fullscreen button on if the iframe is a presentation
-function hideEnterFullscreenButtonOnPresentation(type) {
-      if (type == 'presentation'){
-            fullscreenButton.style.display = 'none';
-      } 
-} */
 
 
 // event listener for the details element state change
@@ -180,7 +174,7 @@ details.addEventListener("toggle", (event) => {
       }
 });
     
-/* // hide exit fullscreen button
+// hide exit fullscreen button
 function hideFullscreenExitButton() {
       exitFullscreenButton.style.display = 'none';
 }
@@ -240,7 +234,7 @@ function handleFullscreenChange() {
 // Event listener for the exit fullscreen button
 exitFullscreenButton.addEventListener('click', () => {
       exitFullscreen();
-}); */
+}); 
 
 // function to get the background color of the page
 function getBackgroundColor() {
