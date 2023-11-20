@@ -1,7 +1,7 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = getLongInput('@@Name: The name of the button that will contain the MSFile activity content@@', 'Name: The name of the button that will contain the MSFile activity content', opts);
-const dURL = getLongInput('@@MSFile Interactive content activity URL: the browser URL when you are in the Interactive content actvitiy in Moodle@@', "MSFile Interactive content activity URL: the browser URL when you are in the Interactive content actvitiy in Moodl", opts);
+const nameForSummary = getLongInput('@@Name: The name of the button that will contain the Microsoft file@@', 'Name: The name of the button that will contain the Microsoft file', opts);
+const dURL = getLongInput('@@Microsoft file URL@@', "Microsoft file URL", opts);
 
 /* 
   function to get the user input from the generico object opts. 
@@ -28,7 +28,6 @@ const fullscreenIframeContainer = document.getElementById('iframeContainer'+@@AU
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
-const link = document.getElementById('ShareLink'+@@AUTOID@@);
 
 
 // function calls to create the temlate on moodle
@@ -74,17 +73,85 @@ function onLoad(url){
             const embeddUrl = URLtoEmbedURL(url);
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
                 document.getElementById('Content'+@@AUTOID@@).src = ""+embeddUrl;
-                document.getElementById('ShareLink'+@@AUTOID@@).href = ""+ url;
                 // set the SameSite attribute for the cookies
-                setSameSiteAttribute('None');
+                //setSameSiteAttribute('None');
             };
       }
 }
 
 function URLtoEmbedURL(URL) {
-      const embedURL = URL.replace('view.php', 'embed.php');
-      return embedURL;
-}
+      const URLDate = URL.split("/");
+      console.log(URLDate);
+      if (URLDate[7] == "_layouts"){
+          return directURLtoEmbedURL(URLDate);
+      } else if (URLDate[7] == "Documents"||URLDate[7] == "Shared%20Documents" ){
+          return copyLinkToEmbedURL(URLDate);
+      }
+  }
+  /*
+  Private file share[
+    0 'https:',
+    1 '',
+    2 'aaudk-my.sharepoint.com',
+    3 ':p:',
+    4 'r',
+    5 'personal',
+    6 'mz57me_create_aau_dk',
+    7 'Documents',
+    8 'Moodle%20share%20test',
+    9 'GoogleSlides.pptx?d=w1fb4dc5da32a406ea0822a9b230bc50f&csf=1&web=1&e=ecqgdA'
+  ]
+  Site file shared[
+    0 'https:',
+    1 '',
+    2 'aaudk.sharepoint.com',
+    3 ':p:',
+    4 'r',
+    5 'sites',
+    6 'persondata-undervisning',
+    7 'Shared%20Documents',
+    8 'Slides_GDPR_til_studerende-final.pptx?d=w296bd959a055412f8309026f8c14e9ee&csf=1&web=1&e=rvWdgX'
+  ]
+  */
+  function copyLinkToEmbedURL (URLDate) {
+      if (URLDate[5] == "personal" || URLDate[5] == "sites"){
+          let id = URLDate[URLDate.length-1].split("=")[1].split("&")[0].substring(1);
+          console.log(id);
+          // 8 - 4 - 4 - 4 - 12
+          id = id.substring(0,8)+"-"+id.substring(8,12)+"-"+id.substring(12,16)+"-"+id.substring(16,20)+"-"+id.substring(20,32);
+          console.log(id)
+          return URLDate[0]+"/"+URLDate[1]+"/"+URLDate[2]+"/"+URLDate[5]+"/"+URLDate[6]+"/"+"_layouts/15/Doc.aspx?sourcedoc="+"{"+id+"}"+"&action=embedview&wdAr=1.7777777777777777&wdEaaCheck=1";
+      }
+  }
+  
+  /*
+  Sharetype is [6] and email is [7] and sourceID is [9]
+  Embed URL "https://aaudk-my.sharepoint.com/personal/mz57me_create_aau_dk/_layouts/15/Doc.aspx?sourcedoc={1fb4dc5d-a32a-406e-a082-2a9b230bc50f}&amp;action=embedview&amp;wdAr=1.7777777777777777"
+  [
+      0 'https:',
+      1 '',
+      2 'aaudk-my.sharepoint.com',
+      3 ':p:',
+      4 'r',
+      5 'personal',
+      6 'mz57me_create_aau_dk',
+      7 '_layouts',
+      8 '15',
+      9 'Doc.aspx?sourcedoc=%7B1FB4DC5D-A32A-406E-A082-2A9B230BC50F%7D&file=GoogleSlides.pptx&action=edit&mobileredirect=true'
+  ]
+  */
+  function directURLtoEmbedURL (URLDate){
+      if (URLDate[5] == "personal" || URLDate[5] == "sites") {
+          const sourceID = URLDate[9].split("%");
+          const idLenght = sourceID[1].length;
+          let id = sourceID[1].replace("7B","")
+          if (idLenght == id.length) {
+              id = id[1].replace("7b"," ")
+          }
+          return URLDate[0]+"/"+URLDate[1]+"/"+URLDate[2]+"/"+URLDate[5]+"/"+URLDate[6]+"/"+URLDate[7]+"/"+URLDate[8]+"/"+sourceID[0]+"{"+id+"}"+"&action=embedview&wdAr=1.7777777777777777&wdEaaCheck=1;wdEaaCheck=1";
+      }
+  }
+
 /* // hide the enter fullscreen button on if the iframe is a presentation
 function hideEnterFullscreenButtonOnPresentation(type) {
       if (type == 'presentation'){

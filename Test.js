@@ -1,8 +1,12 @@
 
+
+const goalURL = "https://aaudk-my.sharepoint.com/personal/mz57me_create_aau_dk/_layouts/15/Doc.aspx?sourcedoc={1fb4dc5d-a32a-406e-a082-2a9b230bc50f}&amp;action=embedview&amp;wdAr=1.7777777777777777&amp;wdEaaCheck=1"
+
 const directURL = 'https://aaudk.sharepoint.com/:p:/r/sites/persondata-undervisning/_layouts/15/Doc.aspx?sourcedoc=%7B296BD959-A055-412F-8309-026F8C14E9EE%7D&file=Slides_GDPR_til_studerende-final.pptx&action=edit&mobileredirect=true';
 const copyLinksite = "https://aaudk.sharepoint.com/:p:/r/sites/persondata-undervisning/Shared%20Documents/Slides_GDPR_til_studerende-final.pptx?d=w296bd959a055412f8309026f8c14e9ee&csf=1&web=1&e=rvWdgX"
 
-const copyLink = "https://aaudk-my.sharepoint.com/:p:/r/personal/mz57me_create_aau_dk/Documents/Moodle%20share%20test/GoogleSlides.pptx?d=w1fb4dc5da32a406ea0822a9b230bc50f&csf=1&web=1&e=ecqgdA"
+const copyLink = "https://aaudk-my.sharepoint.com/:p:/r/personal/mz57me_create_aau_dk/Documents/Moodle%20share%20test/GoogleSlides.pptx?d=w1fb4dc5da32a406ea0822a9b230bc50f&csf=1&web=1&e=BW8LKq"
+
 
 
 
@@ -47,7 +51,7 @@ function copyLinkToEmbedURL (URLDate) {
         // 8 - 4 - 4 - 4 - 12
         id = id.substring(0,8)+"-"+id.substring(8,12)+"-"+id.substring(12,16)+"-"+id.substring(16,20)+"-"+id.substring(20,32);
         console.log(id)
-        return URLDate[0]+"/"+URLDate[1]+"/"+URLDate[2]+"/"+URLDate[5]+"/"+URLDate[6]+"/"+"_layouts/15/Doc.aspx?sourcedoc="+"{"+id+"}"+"&amp;action=embedview&amp;wdAr=1.7777777777777777";
+        return URLDate[0]+"/"+URLDate[1]+"/"+URLDate[2]+"/"+URLDate[5]+"/"+URLDate[6]+"/"+"_layouts/15/Doc.aspx?sourcedoc="+"{"+id+"}"+"&action=embedview&wdAr=1.7777777777777777&wdEaaCheck=1";
     }
 }
 
@@ -76,12 +80,12 @@ function directURLtoEmbedURL (URLDate){
         if (idLenght == id.length) {
             id = id[1].replace("7b"," ")
         }
-        return URLDate[0]+"/"+URLDate[1]+"/"+URLDate[2]+"/"+URLDate[5]+"/"+URLDate[6]+"/"+URLDate[7]+"/"+URLDate[8]+"/"+sourceID[0]+"{"+id+"}"+"&amp;action=embedview&amp;wdAr=1.7777777777777777";
+        return URLDate[0]+"/"+URLDate[1]+"/"+URLDate[2]+"/"+URLDate[5]+"/"+URLDate[6]+"/"+URLDate[7]+"/"+URLDate[8]+"/"+sourceID[0]+"{"+id+"}"+"&action=embedview&wdAr=1.7777777777777777&wdEaaCheck=1;wdEaaCheck=1";
     }
 }
 
-const goalURL = "https://aaudk.sharepoint.com/sites/persondata-undervisning/_layouts/15/Doc.aspx?sourcedoc={296bd959-a055-412f-8309-026f8c14e9ee}&amp;action=embedview&amp;wdAr=1.7777777777777777"
 
-const testURL = URLtoEmbedURL(copyLinksite);
+
+const testURL = URLtoEmbedURL(copyLink);
 console.log(goalURL);
 console.log(testURL);
