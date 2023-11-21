@@ -18,21 +18,21 @@ const directURLSiteDoc = "https://aaudk.sharepoint.com/:w:/r/sites/Moodleintegra
 const copyLinksitePPT = "https://aaudk.sharepoint.com/:p:/r/sites/persondata-undervisning/Shared%20Documents/Slides_GDPR_til_studerende-final.pptx?d=w296bd959a055412f8309026f8c14e9ee&csf=1&web=1&e=rvWdgX"
 
 const directURLSitePPT = "https://aaudk.sharepoint.com/:p:/r/sites/Moodleintegrationtest/_layouts/15/Doc.aspx?sourcedoc=%7B44A7AB73-F1D7-4180-AEE7-4AE19D859207%7D&file=GoogleSlides.pptx&action=edit&mobileredirect=true"
-
-function getType(URL) {
-    const URLData = URL.split("/");
-    if (URLData[7] == "_layouts"){
-        
-        return "directURL";
-    } else if (URLData[7] == "Documents"||URLData[7] == "Shared%20Documents" ){
-        return "copyLink";
+//returns an array of the URL
+function parseURL(URL) {
+    return URL.split("/");
     }
-    return URLData;
+//returns the filetype of the URL given an array of the URL
+function getType(URLData) {
+    console.log(URLData);
+    if (URLData[7] == "_layouts"){
+        return URLData[URLData.length-1].split(".")[2].split("&")[0];
+    } else if (URLData[7] == "Documents"||URLData[7] == "Shared%20Documents" ){
+        return URLData[URLData.length-1].split(".")[1].split("?")[0];
+    } else { return console.log("URL not supported: could not parse the URL to identify the filetype. Pleas consult the tutorial.")}
 }
 
-function URLtoEmbedURL(URL) {
-    const URLDate = URL.split("/");
-    console.log(URLDate);
+function URLtoEmbedURL(URLDate) {
     if (URLDate[7] == "_layouts"){
         return directURLtoEmbedURL(URLDate);
     } else if (URLDate[7] == "Documents"||URLDate[7] == "Shared%20Documents" ){
@@ -67,10 +67,8 @@ Site file shared[
 function copyLinkToEmbedURL (URLDate) {
     if (URLDate[5] == "personal" || URLDate[5] == "sites"){
         let id = URLDate[URLDate.length-1].split("=")[1].split("&")[0].substring(1);
-        console.log(id);
         // 8 - 4 - 4 - 4 - 12
         id = id.substring(0,8)+"-"+id.substring(8,12)+"-"+id.substring(12,16)+"-"+id.substring(16,20)+"-"+id.substring(20,32);
-        console.log(id)
         return URLDate[0]+"/"+URLDate[1]+"/"+URLDate[2]+"/"+URLDate[5]+"/"+URLDate[6]+"/"+"_layouts/15/Doc.aspx?sourcedoc="+"{"+id+"}"+"&action=embedview&wdAr=1.7777777777777777&wdEaaCheck=1";
     }
 }
@@ -103,6 +101,23 @@ function directURLtoEmbedURL (URLDate){
     }
 }
 
+
+// creates the name for the template
+function createNameForSummary(inputName, type) {
+    let name = inputName; // set the name of the button containing the padlet board
+    if (typeof(name) != 'undefined') {
+        if (type == 'pptx'){{name = "👩‍🏫 "+ name;}}
+        else if (type == 'docx'){{name = "📄 "+ name;}}
+        else if (type == 'xlsx'){{name = "📊 "+ name;}}
+    } else {name = "Missing name"+ name;}
+    return name;
+}
+
 //const testURL = URLtoEmbedURL(copyLink);
-console.log(goalURL);
-console.log(getType(directURLSiteExcel));
+//console.log(goalURL);
+const URLDAta = parseURL(directURLSiteExcel);
+
+const URLType = getType(URLDAta);
+const testname = "null";
+console.log(createNameForSummary(testname, getType(URLDAta)));
+console.log(URLtoEmbedURL(URLDAta));

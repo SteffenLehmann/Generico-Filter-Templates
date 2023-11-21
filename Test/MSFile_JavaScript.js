@@ -2,7 +2,6 @@
 // user input from Moodle
 const nameForSummary = getLongInput('@@Name: The name of the button that will contain the Microsoft file@@', 'Name: The name of the button that will contain the Microsoft file', opts);
 const dURL = getLongInput('@@Microsoft file URL@@', "Microsoft file URL", opts);
-
 /* 
   function to get the user input from the generico object opts. 
   the original input and the bare input must be the same except for the @.
@@ -29,9 +28,12 @@ const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 
+// split URL
+const URLData = parseURL(dURL);
 
 // function calls to create the temlate on moodle
-createNameForSummary(nameForSummary);
+createNameForSummary(nameForSummary, getType(URLData));
+
 assignHeaderLinks(dURL);
 
 // check the background color of the page
@@ -39,20 +41,28 @@ let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
 
 //hideEnterFullscreenButtonOnPresentation(downloadURL[1]);
-onLoad(dURL);
+onLoad(dURL, URLData);
 
 
-
+//returns an array of the URL
+function parseURL(URL) {
+      return URL.split("/");
+}
 // function to assign the header links
 function assignHeaderLinks(url) {
-      
       headerLink.href = ""+ url;
 }
 
 
 // creates the name for the template
-function createNameForSummary(name) {
-      detailsButton.textContent = name; // set the name of the button containing the padlet board
+function createNameForSummary(inputName, type) {
+      let name = inputName; // set the name of the button containing the padlet board
+      if (typeof(name) != undefined) {
+          if (type == 'pptx'){{name = "👩‍🏫 "+ name;}}
+          else if (type == 'docx'){{name = "📄 "+ name;}}
+          else if (type == 'xlsx'){{name = "📊 "+ name;}}
+      } else {name = "Missing name"+ name;}
+      detailsButton.textContent = name;
 }
 
 // set the SameSite attribute for the cookies
@@ -69,9 +79,9 @@ function setSameSiteAttribute(sameSiteValue) {
     }
     
 // on load function e.g. when the Collapsible button is clicked
-function onLoad(url){
+function onLoad(url, URLData){
       if (typeof(url) != 'undefined') {
-            const embeddUrl = URLtoEmbedURL(url);
+            const embeddUrl = URLtoEmbedURL(URLData);
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
                 document.getElementById('Content'+@@AUTOID@@).src = ""+embeddUrl;
                 // set the SameSite attribute for the cookies
@@ -80,17 +90,61 @@ function onLoad(url){
       }
 }
 
-function URLtoEmbedURL(URL) {
-      const URLData = URL.split("/");
-      console.log(URLData);
-      if (URLData[7] == "_layouts"){
-          return directURLtoEmbedURL(URLData);
-      } else if (URLData[7] == "Documents"||URLData[7] == "Shared%20Documents" ){
-          return copyLinkToEmbedURL(URLData);
-      }
-  }
-  /*
-  Private file share[
+//returns the filetype of the URL given an array of the URL
+function getType(URLData) {
+    console.log(URLData);
+    if (URLData[7] == "_layouts"){
+        return URLData[URLData.length-1].split(".")[2].split("&")[0];
+    } else if (URLData[7] == "Documents"||URLData[7] == "Shared%20Documents" ){
+        return URLData[URLData.length-1].split(".")[1].split("?")[0];
+    } else { return console.log("URL not supported: could not parse the URL to identify the filetype. Pleas consult the tutorial.")}
+}
+
+function URLtoEmbedURL(URLDate) {
+    if (URLDate[7] == "_layouts"){
+        return directURLtoEmbedURL(URLDate);
+    } else if (URLDate[7] == "Documents"||URLDate[7] == "Shared%20Documents" ){
+        return copyLinkToEmbedURL(URLDate);
+    }
+}
+/*
+Private file share[
+  0 'https:',
+  1 '',
+  2 'aaudk-my.sharepoint.com',
+  3 ':p:',
+  4 'r',
+  5 'personal',
+  6 'mz57me_create_aau_dk',
+  7 'Documents',
+  8 'Moodle%20share%20test',
+  9 'GoogleSlides.pptx?d=w1fb4dc5da32a406ea0822a9b230bc50f&csf=1&web=1&e=ecqgdA'
+]
+Site file shared[
+  0 'https:',
+  1 '',
+  2 'aaudk.sharepoint.com',
+  3 ':p:',
+  4 'r',
+  5 'sites',
+  6 'persondata-undervisning',
+  7 'Shared%20Documents',
+  8 'Slides_GDPR_til_studerende-final.pptx?d=w296bd959a055412f8309026f8c14e9ee&csf=1&web=1&e=rvWdgX'
+]
+*/
+function copyLinkToEmbedURL (URLDate) {
+    if (URLDate[5] == "personal" || URLDate[5] == "sites"){
+        let id = URLDate[URLDate.length-1].split("=")[1].split("&")[0].substring(1);
+        // 8 - 4 - 4 - 4 - 12
+        id = id.substring(0,8)+"-"+id.substring(8,12)+"-"+id.substring(12,16)+"-"+id.substring(16,20)+"-"+id.substring(20,32);
+        return URLDate[0]+"/"+URLDate[1]+"/"+URLDate[2]+"/"+URLDate[5]+"/"+URLDate[6]+"/"+"_layouts/15/Doc.aspx?sourcedoc="+"{"+id+"}"+"&action=embedview&wdAr=1.7777777777777777&wdEaaCheck=1";
+    }
+}
+
+/*
+Sharetype is [6] and email is [7] and sourceID is [9]
+Embed URL "https://aaudk-my.sharepoint.com/personal/mz57me_create_aau_dk/_layouts/15/Doc.aspx?sourcedoc={1fb4dc5d-a32a-406e-a082-2a9b230bc50f}&amp;action=embedview&amp;wdAr=1.7777777777777777"
+[
     0 'https:',
     1 '',
     2 'aaudk-my.sharepoint.com',
@@ -98,60 +152,22 @@ function URLtoEmbedURL(URL) {
     4 'r',
     5 'personal',
     6 'mz57me_create_aau_dk',
-    7 'Documents',
-    8 'Moodle%20share%20test',
-    9 'GoogleSlides.pptx?d=w1fb4dc5da32a406ea0822a9b230bc50f&csf=1&web=1&e=ecqgdA'
-  ]
-  Site file shared[
-    0 'https:',
-    1 '',
-    2 'aaudk.sharepoint.com',
-    3 ':p:',
-    4 'r',
-    5 'sites',
-    6 'persondata-undervisning',
-    7 'Shared%20Documents',
-    8 'Slides_GDPR_til_studerende-final.pptx?d=w296bd959a055412f8309026f8c14e9ee&csf=1&web=1&e=rvWdgX'
-  ]
-  */
-  function copyLinkToEmbedURL (URLData) {
-      if (URLData[5] == "personal" || URLData[5] == "sites"){
-          let id = URLData[URLData.length-1].split("=")[1].split("&")[0].substring(1);
-          console.log(id);
-          // 8 - 4 - 4 - 4 - 12
-          id = id.substring(0,8)+"-"+id.substring(8,12)+"-"+id.substring(12,16)+"-"+id.substring(16,20)+"-"+id.substring(20,32);
-          console.log(id)
-          return URLData[0]+"/"+URLData[1]+"/"+URLData[2]+"/"+URLData[5]+"/"+URLData[6]+"/"+"_layouts/15/Doc.aspx?sourcedoc="+"{"+id+"}"+"&action=embedview&wdAr=1.7777777777777777&wdEaaCheck=1";
-      }
-  }
-  
-  /*
-  Sharetype is [6] and email is [7] and sourceID is [9]
-  Embed URL "https://aaudk-my.sharepoint.com/personal/mz57me_create_aau_dk/_layouts/15/Doc.aspx?sourcedoc={1fb4dc5d-a32a-406e-a082-2a9b230bc50f}&amp;action=embedview&amp;wdAr=1.7777777777777777"
-  [
-      0 'https:',
-      1 '',
-      2 'aaudk-my.sharepoint.com',
-      3 ':p:',
-      4 'r',
-      5 'personal',
-      6 'mz57me_create_aau_dk',
-      7 '_layouts',
-      8 '15',
-      9 'Doc.aspx?sourcedoc=%7B1FB4DC5D-A32A-406E-A082-2A9B230BC50F%7D&file=GoogleSlides.pptx&action=edit&mobileredirect=true'
-  ]
-  */
-  function directURLtoEmbedURL (URLData){
-      if (URLData[5] == "personal" || URLData[5] == "sites") {
-          const sourceID = URLData[9].split("%");
-          const idLenght = sourceID[1].length;
-          let id = sourceID[1].replace("7B","")
-          if (idLenght == id.length) {
-              id = id[1].replace("7b"," ")
-          }
-          return URLData[0]+"/"+URLData[1]+"/"+URLData[2]+"/"+URLData[5]+"/"+URLData[6]+"/"+URLData[7]+"/"+URLData[8]+"/"+sourceID[0]+"{"+id+"}"+"&action=embedview&wdAr=1.7777777777777777&wdEaaCheck=1;wdEaaCheck=1";
-      }
-  }
+    7 '_layouts',
+    8 '15',
+    9 'Doc.aspx?sourcedoc=%7B1FB4DC5D-A32A-406E-A082-2A9B230BC50F%7D&file=GoogleSlides.pptx&action=edit&mobileredirect=true'
+]
+*/
+function directURLtoEmbedURL (URLDate){
+    if (URLDate[5] == "personal" || URLDate[5] == "sites") {
+        const sourceID = URLDate[9].split("%");
+        const idLenght = sourceID[1].length;
+        let id = sourceID[1].replace("7B","")
+        if (idLenght == id.length) {
+            id = id[1].replace("7b"," ")
+        }
+        return URLDate[0]+"/"+URLDate[1]+"/"+URLDate[2]+"/"+URLDate[5]+"/"+URLDate[6]+"/"+URLDate[7]+"/"+URLDate[8]+"/"+sourceID[0]+"{"+id+"}"+"&action=embedview&wdAr=1.7777777777777777&wdEaaCheck=1;wdEaaCheck=1";
+    }
+}
 
 
 // event listener for the details element state change
@@ -253,10 +269,8 @@ function setBackgrounColor(backGroundColor) {
             detailsButton.classList.remove('detailsCollapsibleDarkModeMSFile');
             headerLink.classList.add('HeaderLinkMSFile');
             headerLink.classList.remove('HeaderLinkDarkModeMSFile');
-            link.classList.add('LinkMSFile');
-            link.classList.remove('LinkDarkModeMSFile');
-            /* fullscreenButton.classList.add('LinkMSFile');
-            fullscreenButton.classList.remove('LinkDarkModeMSFile'); */
+            fullscreenButton.classList.add('LinkMSFile');
+            fullscreenButton.classList.remove('LinkDarkModeMSFile'); 
       } else if (backGroundColor == 'rgb(25, 26, 30)') {
             if (detailsButton.classList.contains('detailsCollapsibleDarkModeMSFile')) {return;}
             // Dark mode
@@ -264,10 +278,8 @@ function setBackgrounColor(backGroundColor) {
             detailsButton.classList.remove('detailsCollapsibleMSFile');
             headerLink.classList.add('HeaderLinkDarkModeMSFile');
             headerLink.classList.remove('HeaderLinkMSFile');
-            link.classList.add('LinkDarkModeMSFile');
-            link.classList.remove('LinkMSFile');
-            /* fullscreenButton.classList.add('LinkDarkModeMSFile');
-            fullscreenButton.classList.remove('LinkMSFile'); */
+            fullscreenButton.classList.add('LinkDarkModeMSFile');
+            fullscreenButton.classList.remove('LinkMSFile');
       }
 }
 
