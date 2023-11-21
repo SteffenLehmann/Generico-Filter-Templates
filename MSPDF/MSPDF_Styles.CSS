@@ -1,0 +1,193 @@
+/* MSPDF Styles */ 
+
+.TemplateContainerMSPDF {
+  width: 100%;
+  overflow: auto;
+}
+
+.detailsCollapsibleMSPDF {
+  pointer: cursor;
+  padding: 10px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #212121;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  overflow: visible;
+  border: 2px solid transparent;
+}
+
+.detailsCollapsibleMSPDF:hover {
+  background-color: #cccccc;
+  color: #468ff4;
+}
+
+.detailsCollapsibleMSPDF:focus-visible {
+  outline: none;
+  border-color: #468ff4;
+}
+.detailsCollapsibleDarkModeMSPDF {
+  pointer: cursor;
+  padding: 10px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #ffffff;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 2px solid transparent;
+}
+
+.detailsCollapsibleDarkModeMSPDF:hover {
+  background-color: #cccccc;
+  color: #468ff4;
+}
+
+.detailsCollapsibleDarkModeMSPDF:focus-visible {
+  outline: none;
+  border-color: #468ff4;
+}
+.present_wrapperMSPDF {
+  position: relative;
+  padding-bottom: 60 %;
+  overflow: hidden;
+  height: 700px;
+}
+
+.Link-containerMSPDF {
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+}
+
+.LinkMSPDF {
+  display: block;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #CCCCCC;
+  background-color: #cccccc;
+  border-radius: 5px; /* Rounded borders */
+  margin-bottom: 5px;
+  margin: 0 5px;
+  color: #131314;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.LinkMSPDF:hover {
+  background-color: #666666;
+  border: 1px solid #666666;
+  color: #468ff4;
+}
+.LinkDarkModeMSPDF {
+  display: block;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: transparent; 
+  background-color: transparent;
+  border-radius: 5px; /* Rounded borders */
+  margin-bottom: 5px;
+  margin: 0 5px;
+  color: #ffffff !important;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+.LinkDarkModeMSPDF:hover {
+  background-color: #cccccc;
+  color: #468ff4 !important;;
+}
+.iframeButtonMSPDF {
+  display: none;
+  position: absolute;
+  bottom: 30px;
+  right: 5px;
+  display: block;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #cccccc;
+  background-color: #cccccc;
+  border-radius: 5px; /* Rounded borders */
+  margin-bottom: 5px;
+  margin: 0 5px;
+  color: #131314;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.iframeButtonMSPDF:hover {
+  background-color: #666666;
+  border: 1px solid #666666;
+  color: #468ff4;
+}
+
+.IframeStyleMSPDF {
+  width: 100%;
+  height: 100%;
+}
+
+.HeaderLinkMSPDF {
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px; /* Rounded borders */
+  color: #212121;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  right: 0;
+  border: 2px solid transparent;
+}
+.HeaderLinkMSPDF:hover {
+  background-color: #cccccc;
+  color: #468ff4;
+}
+.HeaderLinkMSPDF:focus-visible {
+  outline: none;
+  border-color: #468ff4;
+}
+.HeaderLinkDarkModeMSPDF {
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px; /* Rounded borders */
+  color: #ffffff !important;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  right: 0;
+  border: 2px solid transparent;
+}
+.HeaderLinkDarkModeMSPDF:hover {
+  background-color: #cccccc;
+  color: #468ff4 !important;
+}
+.HeaderLinkDarkModeMSPDF:focus-visible {
+  outline: none;
+  border-color: #468ff4;
+}
+
+.HeaderLinkContainerMSPDF {
+  display: flex;
+  align-items: center;
+}
+.HeaderLinkContainerMSPDF > :first-child {
+  flex: 1;
+}
