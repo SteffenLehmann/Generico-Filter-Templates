@@ -1,7 +1,7 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = getLongInput('@@Name: The name of the button that will contain the Microsoft file@@', 'Name: The name of the button that will contain the Microsoft file', opts);
-const dURL = getLongInput('@@Microsoft file URL@@', "Microsoft file URL", opts);
+const nameForSummary = getLongInput('@@Name: The name of the button that will contain the Microsoft Form@@', 'Name: The name of the button that will contain the Microsoft Form', opts);
+const dURL = getLongInput('@@Microsoft Form URL@@', "Microsoft Form URL", opts);
 /* 
   function to get the user input from the generico object opts. 
   the original input and the bare input must be the same except for the @.
@@ -28,39 +28,31 @@ const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 
-// split URL
-const URL = parseURL(dURL);
 
 // function calls to create the temlate on moodle
 createNameForSummary(nameForSummary);
 
-assignHeaderLinks(URL);
+assignHeaderLinks(dURL);
 
 // check the background color of the page
 let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
 
 //hideEnterFullscreenButtonOnPresentation(downloadURL[1]);
-onLoad(URL);
-
-
-
-function parseURL(URL) {
-      console.log(URL.split('"'));
-      const parseURL = URL.split('"')[1];
-      console.log('parseURL' + parseURL);
-      if (parseURL !== undefined){return parseURL;} 
-      else {console.log("No URL found")}
-  }
+onLoad(dURL);
 
 //creates the name for the template
 function createNameForSummary(name) {
       if (typeof(name) != 'undefined') {
-            "📄 "+ name; // you can add emoji to the summary title here, e.g. 🎦
+            name = "📝 "+ name; // you can add emoji to the summary title here, e.g. 🎦
             detailsButton.textContent = name; // set the name of the button containing the padlet board
       } 
     }
 
+// function to assign the header links
+function assignHeaderLinks(url) {
+      headerLink.href = ""+ url;
+}
 
 // set the SameSite attribute for the cookies
 function setSameSiteAttribute(sameSiteValue) {
@@ -78,6 +70,7 @@ function setSameSiteAttribute(sameSiteValue) {
 // on load function e.g. when the Collapsible button is clicked
 function onLoad(url){
       if (typeof(url) != 'undefined') {
+            const embeddUrl = URLtoEmbedURL(url);
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
                 document.getElementById('Content'+@@AUTOID@@).src = ""+embeddUrl;
                 // set the SameSite attribute for the cookies
@@ -85,6 +78,16 @@ function onLoad(url){
             };
       }
 }
+
+function URLtoEmbedURL(URL) {
+      const URLData = URL.split('=');
+      if (URLData.length < 3){return URLData[0]+"="+URLData[1]+"&embed=true";}
+      else if (URLData.length > 2){
+          let directURLtoEmbed = URLData[0].split('?')[0].replace('DesignPageV2.aspx','ResponsePage.aspx') +"?"+URLData[3].split('&')[1]+"="+URLData[4]+"&embed=true";
+          return directURLtoEmbed = directURLtoEmbed.replace('amp;','');
+      }
+      else {console.log("No URL found")}
+  }
 
 // event listener for the details element state change
 details.addEventListener("toggle", (event) => {
@@ -179,23 +182,23 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {
       if (backGroundColor == 'rgb(255, 255, 255)') {
-            if (detailsButton.classList.contains('detailsCollapsibleMSPDF')) {return;}
+            if (detailsButton.classList.contains('detailsCollapsibleMSFORM')) {return;}
             // Light mode
-            detailsButton.classList.add('detailsCollapsibleMSPDF');
-            detailsButton.classList.remove('detailsCollapsibleDarkModeMSPDF');
-            headerLink.classList.add('HeaderLinkMSPDF');
-            headerLink.classList.remove('HeaderLinkDarkModeMSPDF');
-            fullscreenButton.classList.add('LinkMSPDF');
-            fullscreenButton.classList.remove('LinkDarkModeMSPDF'); 
+            detailsButton.classList.add('detailsCollapsibleMSFORM');
+            detailsButton.classList.remove('detailsCollapsibleDarkModeMSFORM');
+            headerLink.classList.add('HeaderLinkMSFORM');
+            headerLink.classList.remove('HeaderLinkDarkModeMSFORM');
+            fullscreenButton.classList.add('LinkMSFORM');
+            fullscreenButton.classList.remove('LinkDarkModeMSFORM'); 
       } else if (backGroundColor == 'rgb(25, 26, 30)') {
-            if (detailsButton.classList.contains('detailsCollapsibleDarkModeMSPDF')) {return;}
+            if (detailsButton.classList.contains('detailsCollapsibleDarkModeMSFORM')) {return;}
             // Dark mode
-            detailsButton.classList.add('detailsCollapsibleDarkModeMSPDF');
-            detailsButton.classList.remove('detailsCollapsibleMSPDF');
-            headerLink.classList.add('HeaderLinkDarkModeMSPDF');
-            headerLink.classList.remove('HeaderLinkMSPDF');
-            fullscreenButton.classList.add('LinkDarkModeMSPDF');
-            fullscreenButton.classList.remove('LinkMSPDF');
+            detailsButton.classList.add('detailsCollapsibleDarkModeMSFORM');
+            detailsButton.classList.remove('detailsCollapsibleMSFORM');
+            headerLink.classList.add('HeaderLinkDarkModeMSFORM');
+            headerLink.classList.remove('HeaderLinkMSFORM');
+            fullscreenButton.classList.add('LinkDarkModeMSFORM');
+            fullscreenButton.classList.remove('LinkMSFORM');
       }
 }
 

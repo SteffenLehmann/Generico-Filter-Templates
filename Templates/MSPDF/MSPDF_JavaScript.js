@@ -1,7 +1,7 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = getLongInput('@@Name: The name of the button that will contain the Microsoft file@@', 'Name: The name of the button that will contain the Microsoft file', opts);
-const dURL = getLongInput('@@Microsoft file URL@@', "Microsoft file URL", opts);
+const nameForSummary = getLongInput('@@Name: The name of the button that will contain the Microsoft PDF@@', 'Name: The name of the button that will contain the Microsoft PDF', opts);
+const dURL = getLongInput('@@Microsoft PDF URL@@', "Microsoft PDF URL", opts);
 /* 
   function to get the user input from the generico object opts. 
   the original input and the bare input must be the same except for the @.
@@ -29,38 +29,31 @@ const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 
 // split URL
-const URL = parseURL(dURL);
 
 // function calls to create the temlate on moodle
 createNameForSummary(nameForSummary);
 
-assignHeaderLinks(URL);
+assignHeaderLinks(dURL);
 
 // check the background color of the page
 let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
 
 //hideEnterFullscreenButtonOnPresentation(downloadURL[1]);
-onLoad(URL);
+onLoad(dURL);
 
-
-
-function parseURL(URL) {
-      console.log(URL.split('"'));
-      const parseURL = URL.split('"')[1];
-      console.log('parseURL' + parseURL);
-      if (parseURL !== undefined){return parseURL;} 
-      else {console.log("No URL found")}
-  }
 
 //creates the name for the template
 function createNameForSummary(name) {
       if (typeof(name) != 'undefined') {
-            "📄 "+ name; // you can add emoji to the summary title here, e.g. 🎦
+            name = "📄 "+ name; // you can add emoji to the summary title here, e.g. 🎦
             detailsButton.textContent = name; // set the name of the button containing the padlet board
       } 
     }
-
+// function to assign the header links
+function assignHeaderLinks(url) {
+      headerLink.href = ""+ url;
+}
 
 // set the SameSite attribute for the cookies
 function setSameSiteAttribute(sameSiteValue) {
@@ -79,7 +72,7 @@ function setSameSiteAttribute(sameSiteValue) {
 function onLoad(url){
       if (typeof(url) != 'undefined') {
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
-                document.getElementById('Content'+@@AUTOID@@).src = ""+embeddUrl;
+                document.getElementById('Content'+@@AUTOID@@).src = ""+url;
                 // set the SameSite attribute for the cookies
                 //setSameSiteAttribute('None');
             };
