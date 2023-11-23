@@ -30,9 +30,9 @@ const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 
 // split URL
 const URLData = parseURL(dURL);
-
+const URLType = getType(URLData);
 // function calls to create the temlate on moodle
-createNameForSummary(nameForSummary, getType(URLData));
+createNameForSummary(nameForSummary, URLType);
 
 assignHeaderLinks(dURL);
 
@@ -41,7 +41,7 @@ let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
 
 //hideEnterFullscreenButtonOnPresentation(downloadURL[1]);
-onLoad(dURL, URLData);
+onLoad(dURL, URLData, URLType);
 
 
 //returns an array of the URL
@@ -61,6 +61,7 @@ function createNameForSummary(inputName, type) {
           if (type == 'pptx'){{name = "👩‍🏫 "+ name;}}
           else if (type == 'docx'){{name = "📄 "+ name;}}
           else if (type == 'xlsx'){{name = "📊 "+ name;}}
+          else if (type == 'vsdx'){{name = "✏️ "+ name;}}
       } else {name = "Missing name"+ name;}
       detailsButton.textContent = name;
 }
@@ -79,9 +80,9 @@ function setSameSiteAttribute(sameSiteValue) {
     }
     
 // on load function e.g. when the Collapsible button is clicked
-function onLoad(url, URLData){
+function onLoad(url, URLData, type){
       if (typeof(url) != 'undefined') {
-            const embeddUrl = URLtoEmbedURL(URLData);
+            const embeddUrl = URLtoEmbedURL(URLData, type);
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
                 document.getElementById('Content'+@@AUTOID@@).src = ""+embeddUrl;
                 // set the SameSite attribute for the cookies
@@ -99,74 +100,42 @@ function getType(URLData) {
     } else { return console.log("URL not supported: could not parse the URL to identify the filetype. Pleas consult the tutorial.")}
 }
 
-function URLtoEmbedURL(URLData) {
+function URLtoEmbedURL(URLData, type) {
     if (URLData[7] == "_layouts"){
-        return directURLtoEmbedURL(URLData);
+        return directURLtoEmbedURL(URLData, type);
     } else if (URLData[7] == "Documents"||URLData[7] == "Shared%20Documents" ){
-        return copyLinkToEmbedURL(URLData);
-    }
-}
-/*
-Private file share[
-  0 'https:',
-  1 '',
-  2 'aaudk-my.sharepoint.com',
-  3 ':p:',
-  4 'r',
-  5 'personal',
-  6 'mz57me_create_aau_dk',
-  7 'Documents',
-  8 'Moodle%20share%20test',
-  9 'GoogleSlides.pptx?d=w1fb4dc5da32a406ea0822a9b230bc50f&csf=1&web=1&e=ecqgdA'
-]
-Site file shared[
-  0 'https:',
-  1 '',
-  2 'aaudk.sharepoint.com',
-  3 ':p:',
-  4 'r',
-  5 'sites',
-  6 'persondata-undervisning',
-  7 'Shared%20Documents',
-  8 'Slides_GDPR_til_studerende-final.pptx?d=w296bd959a055412f8309026f8c14e9ee&csf=1&web=1&e=rvWdgX'
-]
-*/
-function copyLinkToEmbedURL (URLData) {
-    if (URLData[5] == "personal" || URLData[5] == "sites"){
-        let id = URLData[URLData.length-1].split("=")[1].split("&")[0].substring(1);
-        // 8 - 4 - 4 - 4 - 12
-        id = id.substring(0,8)+"-"+id.substring(8,12)+"-"+id.substring(12,16)+"-"+id.substring(16,20)+"-"+id.substring(20,32);
-        return URLData[0]+"/"+URLData[1]+"/"+URLData[2]+"/"+URLData[5]+"/"+URLData[6]+"/"+"_layouts/15/Doc.aspx?sourcedoc="+"{"+id+"}"+"&action=embedview&wdAr=1.7777777777777777&wdEaaCheck=1";
+        return copyLinkToEmbedURL(URLData, type);
     }
 }
 
-/*
-Sharetype is [6] and email is [7] and sourceID is [9]
-Embed URL "https://aaudk-my.sharepoint.com/personal/mz57me_create_aau_dk/_layouts/15/Doc.aspx?sourcedoc={1fb4dc5d-a32a-406e-a082-2a9b230bc50f}&amp;action=embedview&amp;wdAr=1.7777777777777777"
-[
-    0 'https:',
-    1 '',
-    2 'aaudk-my.sharepoint.com',
-    3 ':p:',
-    4 'r',
-    5 'personal',
-    6 'mz57me_create_aau_dk',
-    7 '_layouts',
-    8 '15',
-    9 'Doc.aspx?sourcedoc=%7B1FB4DC5D-A32A-406E-A082-2A9B230BC50F%7D&file=GoogleSlides.pptx&action=edit&mobileredirect=true'
-]
-*/
-function directURLtoEmbedURL (URLData){
-    if (URLData[5] == "personal" || URLData[5] == "sites") {
-        const sourceID = URLData[9].split("%");
-        const idLenght = sourceID[1].length;
-        let id = sourceID[1].replace("7B","")
-        if (idLenght == id.length) {
-            id = id[1].replace("7b"," ")
-        }
-        return URLData[0]+"/"+URLData[1]+"/"+URLData[2]+"/"+URLData[5]+"/"+URLData[6]+"/"+URLData[7]+"/"+URLData[8]+"/"+sourceID[0]+"{"+id+"}"+"&action=embedview&wdAr=1.7777777777777777&wdEaaCheck=1;wdEaaCheck=1";
-    }
-}
+function copyLinkToEmbedURL (URLData, type) {
+      if (URLData[5] == "personal" || URLData[5] == "sites"){
+          let id = URLData[URLData.length-1].split("=")[1].split("&")[0].substring(1);
+          // 8 - 4 - 4 - 4 - 12
+          id = id.substring(0,8)+"-"+id.substring(8,12)+"-"+id.substring(12,16)+"-"+id.substring(16,20)+"-"+id.substring(20,32);
+          if (type !== "vsdx") {
+              return URLData[0]+"/"+URLData[1]+"/"+URLData[2]+"/"+URLData[5]+"/"+URLData[6]+"/"+"_layouts/15/Doc.aspx?sourcedoc="+"{"+id+"}"+"&action=embedview&wdAr=1.7777777777777777&wdEaaCheck=1";  
+          } else if (type == "vsdx") {
+              return URLData[0]+"/"+URLData[1]+"/"+URLData[2]+"/"+URLData[5]+"/"+URLData[6]+"/"+"_layouts/15/Doc.aspx?sourcedoc="+"{"+id+"}"+"&action=embedview";  
+          }
+      }
+  }
+
+function directURLtoEmbedURL (URLData, type){
+      if (URLData[5] == "personal" || URLData[5] == "sites") {
+          const sourceID = URLData[9].split("%");
+          const idLenght = sourceID[1].length;
+          let id = sourceID[1].replace("7B","")
+          if (idLenght == id.length) {
+              id = id[1].replace("7b"," ")
+          }
+          if (type !== "vsdx") {
+              return URLData[0]+"/"+URLData[1]+"/"+URLData[2]+"/"+URLData[5]+"/"+URLData[6]+"/"+URLData[7]+"/"+URLData[8]+"/"+sourceID[0]+"{"+id+"}"+"&action=embedview&wdAr=1.7777777777777777&wdEaaCheck=1;wdEaaCheck=1";
+          } else if (type == "vsdx") {
+              return URLData[0]+"/"+URLData[1]+"/"+URLData[2]+"/"+URLData[5]+"/"+URLData[6]+"/"+URLData[7]+"/"+URLData[8]+"/"+sourceID[0]+"{"+id+"}"+"&action=embedview";
+          }
+      }
+  }
 
 
 // event listener for the details element state change
