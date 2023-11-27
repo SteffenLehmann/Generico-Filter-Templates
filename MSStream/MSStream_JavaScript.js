@@ -1,7 +1,7 @@
 // Custom JS
 // user input from Moodle
-const nameForSummary = getLongInput('@@Name: The name of the button that will contain the Microsoft PDF@@', 'Name: The name of the button that will contain the Microsoft PDF', opts);
-const dURL = getLongInput('@@Microsoft iframe URL for PDFs or MP4 files@@', "Microsoft iframe URL for PDFs or MP4 files", opts);
+const nameForSummary = getLongInput('@@Name: The name of the button that will contain the video@@', 'Name: The name of the button that will contain the video', opts);
+const dURL = getLongInput('@@Microsoft iframe URL for video file@@', "Microsoft iframe URL for video file", opts);
 /* 
   function to get the user input from the generico object opts. 
   the original input and the bare input must be the same except for the @.

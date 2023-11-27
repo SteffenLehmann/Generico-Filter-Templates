@@ -4,6 +4,9 @@ const mp4 = 'https://aaudk.sharepoint.com/sites/Moodleintegrationtest/_layouts/1
 const pdf="https://aaudk.sharepoint.com/sites/Moodleintegrationtest/_layouts/15/embed.aspx?UniqueId=fb26432c-b495-4f3d-b301-16523cc5d488"
 
 
+<iframe src="https://aaudk.sharepoint.com/sites/Moodleintegrationtest/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FMoodleintegrationtest%2FShared%20Documents%2FMoodle%20Test%20data&viewid=ef1e7c66%2D7e5b%2D48da%2D9439%2D8e371b4732da" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+
 function searchForStream(url){
     if (url.includes('Stream')){
         return true
