@@ -1,11 +1,11 @@
-/* MSPDF Styles */ 
+/* MSStream Styles */ 
 
-.TemplateContainerMSPDF {
+.TemplateContainerMSStream {
   width: 100%;
   overflow: auto;
 }
 
-.detailsCollapsibleMSPDF {
+.detailsCollapsibleMSStream {
   pointer: cursor;
   padding: 10px;
   border: none;
@@ -24,16 +24,16 @@
   border: 2px solid transparent;
 }
 
-.detailsCollapsibleMSPDF:hover {
+.detailsCollapsibleMSStream:hover {
   background-color: #cccccc;
   color: #468ff4;
 }
 
-.detailsCollapsibleMSPDF:focus-visible {
+.detailsCollapsibleMSStream:focus-visible {
   outline: none;
   border-color: #468ff4;
 }
-.detailsCollapsibleDarkModeMSPDF {
+.detailsCollapsibleDarkModeMSStream {
   pointer: cursor;
   padding: 10px;
   border: none;
@@ -51,29 +51,29 @@
   border: 2px solid transparent;
 }
 
-.detailsCollapsibleDarkModeMSPDF:hover {
+.detailsCollapsibleDarkModeMSStream:hover {
   background-color: #cccccc;
   color: #468ff4;
 }
 
-.detailsCollapsibleDarkModeMSPDF:focus-visible {
+.detailsCollapsibleDarkModeMSStream:focus-visible {
   outline: none;
   border-color: #468ff4;
 }
-.present_wrapperMSPDF {
+.present_wrapperMSStream {
   position: relative;
   padding-bottom: 60 %;
   overflow: hidden;
   height: 700px;
 }
 
-.Link-containerMSPDF {
+.Link-containerMSStream {
   padding: 10px;
   border-radius: 5px;
   display: flex;
 }
 
-.LinkMSPDF {
+.LinkMSStream {
   display: block;
   text-decoration: none;
   padding: 5px 10px;
@@ -89,12 +89,12 @@
   line-height: 1.6;
 }
 
-.LinkMSPDF:hover {
+.LinkMSStream:hover {
   background-color: #666666;
   border: 1px solid #666666;
   color: #468ff4;
 }
-.LinkDarkModeMSPDF {
+.LinkDarkModeMSStream {
   display: block;
   text-decoration: none;
   padding: 5px 10px;
@@ -109,15 +109,14 @@
   font-weight: 400;
   line-height: 1.6;
 }
-.LinkDarkModeMSPDF:hover {
+.LinkDarkModeMSStream:hover {
   background-color: #cccccc;
   color: #468ff4 !important;;
 }
-.iframeButtonMSPDF {
+.iframeButtonMSStream {
   display: none;
   position: absolute;
   right: 5px;
-  bottom: 8px;
   display: block;
   text-decoration: none;
   padding: 5px 10px;
@@ -132,18 +131,18 @@
   font-weight: 400;
   line-height: 1.5;
 }
-.iframeButtonMSPDF:hover {
+.iframeButtonMSStream:hover {
   background-color: #666666;
   border: 1px solid #666666;
   color: #468ff4;
 }
 
-.IframeStyleMSPDF {
+.IframeStyleMSStream {
   width: 100%;
   height: 100%;
 }
 
-.HeaderLinkMSPDF {
+.HeaderLinkMSStream {
   text-decoration: none;
   padding: 10px;
   border-radius: 5px; /* Rounded borders */
@@ -155,15 +154,15 @@
   right: 0;
   border: 2px solid transparent;
 }
-.HeaderLinkMSPDF:hover {
+.HeaderLinkMSStream:hover {
   background-color: #cccccc;
   color: #468ff4;
 }
-.HeaderLinkMSPDF:focus-visible {
+.HeaderLinkMSStream:focus-visible {
   outline: none;
   border-color: #468ff4;
 }
-.HeaderLinkDarkModeMSPDF {
+.HeaderLinkDarkModeMSStream {
   text-decoration: none;
   padding: 10px;
   border-radius: 5px; /* Rounded borders */
@@ -175,19 +174,19 @@
   right: 0;
   border: 2px solid transparent;
 }
-.HeaderLinkDarkModeMSPDF:hover {
+.HeaderLinkDarkModeMSStream:hover {
   background-color: #cccccc;
   color: #468ff4 !important;
 }
-.HeaderLinkDarkModeMSPDF:focus-visible {
+.HeaderLinkDarkModeMSStream:focus-visible {
   outline: none;
   border-color: #468ff4;
 }
 
-.HeaderLinkContainerMSPDF {
+.HeaderLinkContainerMSStream {
   display: flex;
   align-items: center;
 }
-.HeaderLinkContainerMSPDF > :first-child {
+.HeaderLinkContainerMSStream > :first-child {
   flex: 1;
 }

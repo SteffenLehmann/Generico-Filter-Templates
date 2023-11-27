@@ -1,7 +1,7 @@
 // Custom JS
 // user input from Moodle
 const nameForSummary = getLongInput('@@Name: The name of the button that will contain the Microsoft PDF@@', 'Name: The name of the button that will contain the Microsoft PDF', opts);
-const dURL = getLongInput('@@Microsoft iframe URL for PDFs@@', "Microsoft iframe URL for PDFs", opts);
+const dURL = getLongInput('@@Microsoft iframe URL for PDFs or MP4 files@@', "Microsoft iframe URL for PDFs or MP4 files", opts);
 /* 
   function to get the user input from the generico object opts. 
   the original input and the bare input must be the same except for the @.
@@ -22,8 +22,6 @@ function getLongInput(original, bare,  opts) {
 
 // getting the elements from the HTML
 const fullscreenIframeContainer = document.getElementById('iframeContainer'+@@AUTOID@@); 
-const fullscreenButton = document.getElementById('fullscreenButton'+@@AUTOID@@);
-const exitFullscreenButton = document.getElementById('exitFullscreenButton'+@@AUTOID@@);
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
@@ -32,7 +30,7 @@ const sharelink = document.getElementById('ShareLink'+@@AUTOID@@);
 // split URL
 
 // function calls to create the temlate on moodle
-createNameForSummary(nameForSummary);
+createNameForSummary(nameForSummary, dURL);
 
 assignHeaderLinks(dURL);
 
@@ -45,9 +43,9 @@ onLoad(dURL);
 
 
 //creates the name for the template
-function createNameForSummary(name) {
+function createNameForSummary(name, url) {
       if (typeof(name) != 'undefined') {
-            name = "📄 "+ name; // you can add emoji to the summary title here, e.g. 🎦
+            name = "🎦 "+ name; // you can add emoji to the summary title here, e.g. 🎦
             detailsButton.textContent = name; // set the name of the button containing the padlet board
       } 
     }
@@ -99,7 +97,7 @@ details.addEventListener("toggle", (event) => {
       }
 });
     
-// hide exit fullscreen button
+/* // hide exit fullscreen button
 function hideFullscreenExitButton() {
       exitFullscreenButton.style.display = 'none';
 }
@@ -160,7 +158,7 @@ function handleFullscreenChange() {
 exitFullscreenButton.addEventListener('click', () => {
       exitFullscreen();
 }); 
-
+ */
 // function to get the background color of the page
 function getBackgroundColor() {
       const bodyElement = document.body;
@@ -172,27 +170,23 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {
       if (backGroundColor == 'rgb(255, 255, 255)') {
-            if (detailsButton.classList.contains('detailsCollapsibleMSPDF')) {return;}
+            if (detailsButton.classList.contains('detailsCollapsibleMSStream')) {return;}
             // Light mode
-            detailsButton.classList.add('detailsCollapsibleMSPDF');
-            detailsButton.classList.remove('detailsCollapsibleDarkModeMSPDF');
-            headerLink.classList.add('HeaderLinkMSPDF');
-            headerLink.classList.remove('HeaderLinkDarkModeMSPDF');
-            fullscreenButton.classList.add('LinkMSPDF');
-            fullscreenButton.classList.remove('LinkDarkModeMSPDF'); 
-            sharelink.classList.add('LinkMSPDF');
-            sharelink.classList.remove('LinkDarkModeMSPDF');
+            detailsButton.classList.add('detailsCollapsibleMSStream');
+            detailsButton.classList.remove('detailsCollapsibleDarkModeMSStream');
+            headerLink.classList.add('HeaderLinkMSStream');
+            headerLink.classList.remove('HeaderLinkDarkModeMSStream');
+            sharelink.classList.add('LinkMSStream');
+            sharelink.classList.remove('LinkDarkModeMSStream');
       } else if (backGroundColor == 'rgb(25, 26, 30)') {
-            if (detailsButton.classList.contains('detailsCollapsibleDarkModeMSPDF')) {return;}
+            if (detailsButton.classList.contains('detailsCollapsibleDarkModeMSStream')) {return;}
             // Dark mode
-            detailsButton.classList.add('detailsCollapsibleDarkModeMSPDF');
-            detailsButton.classList.remove('detailsCollapsibleMSPDF');
-            headerLink.classList.add('HeaderLinkDarkModeMSPDF');
-            headerLink.classList.remove('HeaderLinkMSPDF');
-            fullscreenButton.classList.add('LinkDarkModeMSPDF');
-            fullscreenButton.classList.remove('LinkMSPDF');
-            sharelink.classList.add('LinkDarkModeMSPDF');
-            sharelink.classList.remove('LinkMSPDF');
+            detailsButton.classList.add('detailsCollapsibleDarkModeMSStream');
+            detailsButton.classList.remove('detailsCollapsibleMSStream');
+            headerLink.classList.add('HeaderLinkDarkModeMSStream');
+            headerLink.classList.remove('HeaderLinkMSStream');
+            sharelink.classList.add('LinkDarkModeMSStream');
+            sharelink.classList.remove('LinkMSStream');
       }
 }
 
