@@ -127,7 +127,6 @@ details.addEventListener("toggle", (event) => {
   
   // Function to exit fullscreen
   function exitFullscreen() {
-    console.log('exitFullscreen');
     if (document.exitFullscreen) {
       document.exitFullscreen();
     } else if (document.mozCancelFullScreen) {

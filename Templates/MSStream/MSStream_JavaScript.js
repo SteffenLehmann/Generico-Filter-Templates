@@ -96,69 +96,7 @@ details.addEventListener("toggle", (event) => {
         headerLink.style.display = 'block';
       }
 });
-    
-/* // hide exit fullscreen button
-function hideFullscreenExitButton() {
-      exitFullscreenButton.style.display = 'none';
-}
 
-// show exit fullscreen button
-function showFullscreenExitButton() {
-      exitFullscreenButton.style.display = 'block';
-}
-
-// Event listener for the fullscreen button
-fullscreenButton.addEventListener('click', enterFullscreen);
-
-    // Function to enter fullscreen
-function enterFullscreen() {
-      if (fullscreenIframeContainer.requestFullscreen) {
-        fullscreenIframeContainer.requestFullscreen();
-      } else if (fullscreenIframeContainer.mozRequestFullScreen) {
-        fullscreenIframeContainer.mozRequestFullScreen();
-      } else if (fullscreenIframeContainer.webkitRequestFullscreen) {
-        fullscreenIframeContainer.webkitRequestFullscreen();
-      } else if (fullscreenIframeContainer.msRequestFullscreen) {
-        fullscreenIframeContainer.msRequestFullscreen();
-      }
-}
-    
-    // Function to exit fullscreen
-function exitFullscreen() {
-      console.log('exitFullscreen');
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
-      }
-}
-    
-// Listen for fullscreen change event
-document.addEventListener('fullscreenchange', handleFullscreenChange);
-document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-document.addEventListener('mozfullscreenchange', handleFullscreenChange);
-document.addEventListener('MSFullscreenChange', handleFullscreenChange);
-
-// Handle the fullscreen change event to hide/show the exit fullscreen button
-function handleFullscreenChange() {
-      if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
-        // If the iframe enters fullscreen
-        showFullscreenExitButton();
-      } else {
-        // If the iframe exits fullscreen
-        hideFullscreenExitButton();
-      }
-}
-    
-// Event listener for the exit fullscreen button
-exitFullscreenButton.addEventListener('click', () => {
-      exitFullscreen();
-}); 
- */
 // function to get the background color of the page
 function getBackgroundColor() {
       const bodyElement = document.body;
@@ -206,6 +144,5 @@ setInterval(checkBackgroundColor, 500);
 // event listener for the background color change
 document.addEventListener('backgroundColorChanged', (event) => {
       const newBackgroundColor = event.detail;
-      console.log('Background color changed:', newBackgroundColor);
       setBackgrounColor(newBackgroundColor);
 });

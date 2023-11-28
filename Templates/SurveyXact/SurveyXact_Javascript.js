@@ -123,7 +123,6 @@ details.addEventListener("toggle", (event) => {
   
   // Function to exit fullscreen
   function exitFullscreen() {
-    console.log('exitFullscreen');
     if (document.exitFullscreen) {
       document.exitFullscreen();
     } else if (document.mozCancelFullScreen) {
@@ -208,6 +207,5 @@ setInterval(checkBackgroundColor, 500);
 // event listener for the background color change
 document.addEventListener('backgroundColorChanged', (event) => {
   const newBackgroundColor = event.detail;
-  console.log('Background color changed:', newBackgroundColor);
   setBackgrounColor(newBackgroundColor);
 });

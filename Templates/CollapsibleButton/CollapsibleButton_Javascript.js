@@ -67,13 +67,11 @@ setInterval(checkBackgroundColor, 500);
 // event listener for the background color change
 document.addEventListener("backgroundColorChanged", (event) => {
   const newBackgroundColor = event.detail;
-  console.log("Background color changed:", newBackgroundColor);
   setBackgrounColor(newBackgroundColor);
 });
 
 
 const closeButton = document.getElementById('closeButtonCollapsible'+@@AUTOID@@)
-console.log(typeof(closeButton));
 closeButton.addEventListener("click", function(){ 
   details.removeAttribute("open");
 });

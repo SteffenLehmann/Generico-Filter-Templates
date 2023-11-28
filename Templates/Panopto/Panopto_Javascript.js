@@ -149,7 +149,6 @@ setInterval(checkBackgroundColor, 500);
 // event listener for the background color change
 document.addEventListener('backgroundColorChanged', (event) => {
   const newBackgroundColor = event.detail;
-  console.log('Background color changed:', newBackgroundColor);
   setBackgrounColor(newBackgroundColor);
 });
 
