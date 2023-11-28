@@ -46,7 +46,7 @@ function assignHeaderLinks(url) {
 //creates the name for the template
 function createNameForSummary(name) {
   if (typeof(name) != 'undefined') {
-    name = ""+ name; // you can add emoji to the summary title here, e.g. 🎦
+    name = "✏️ "+ name; // you can add emoji to the summary title here, e.g. 🎦
     detailsButton.textContent = name; // set the name of the button containing the padlet board
   } 
 }
