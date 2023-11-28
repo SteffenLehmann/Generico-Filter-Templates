@@ -1,0 +1,192 @@
+/* MSStream Styles */ 
+
+.TemplateContainerMSStream {
+  width: 100%;
+  overflow: auto;
+}
+
+.detailsCollapsibleMSStream {
+  pointer: cursor;
+  padding: 10px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #212121;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  overflow: visible;
+  border: 2px solid transparent;
+}
+
+.detailsCollapsibleMSStream:hover {
+  background-color: #cccccc;
+  color: #468ff4;
+}
+
+.detailsCollapsibleMSStream:focus-visible {
+  outline: none;
+  border-color: #468ff4;
+}
+.detailsCollapsibleDarkModeMSStream {
+  pointer: cursor;
+  padding: 10px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #ffffff;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 2px solid transparent;
+}
+
+.detailsCollapsibleDarkModeMSStream:hover {
+  background-color: #cccccc;
+  color: #468ff4;
+}
+
+.detailsCollapsibleDarkModeMSStream:focus-visible {
+  outline: none;
+  border-color: #468ff4;
+}
+.present_wrapperMSStream {
+  position: relative;
+  padding-bottom: 60 %;
+  overflow: hidden;
+  height: 700px;
+}
+
+.Link-containerMSStream {
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+}
+
+.LinkMSStream {
+  display: block;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #CCCCCC;
+  background-color: #cccccc;
+  border-radius: 5px; /* Rounded borders */
+  margin-bottom: 5px;
+  margin: 0 5px;
+  color: #131314;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.LinkMSStream:hover {
+  background-color: #666666;
+  border: 1px solid #666666;
+  color: #468ff4;
+}
+.LinkDarkModeMSStream {
+  display: block;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: transparent; 
+  background-color: transparent;
+  border-radius: 5px; /* Rounded borders */
+  margin-bottom: 5px;
+  margin: 0 5px;
+  color: #ffffff !important;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+.LinkDarkModeMSStream:hover {
+  background-color: #cccccc;
+  color: #468ff4 !important;;
+}
+.iframeButtonMSStream {
+  display: none;
+  position: absolute;
+  right: 5px;
+  display: block;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #cccccc;
+  background-color: #cccccc;
+  border-radius: 5px; /* Rounded borders */
+  margin-bottom: 5px;
+  margin: 0 5px;
+  color: #131314;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.iframeButtonMSStream:hover {
+  background-color: #666666;
+  border: 1px solid #666666;
+  color: #468ff4;
+}
+
+.IframeStyleMSStream {
+  width: 100%;
+  height: 100%;
+}
+
+.HeaderLinkMSStream {
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px; /* Rounded borders */
+  color: #212121;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  right: 0;
+  border: 2px solid transparent;
+}
+.HeaderLinkMSStream:hover {
+  background-color: #cccccc;
+  color: #468ff4;
+}
+.HeaderLinkMSStream:focus-visible {
+  outline: none;
+  border-color: #468ff4;
+}
+.HeaderLinkDarkModeMSStream {
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px; /* Rounded borders */
+  color: #ffffff !important;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  right: 0;
+  border: 2px solid transparent;
+}
+.HeaderLinkDarkModeMSStream:hover {
+  background-color: #cccccc;
+  color: #468ff4 !important;
+}
+.HeaderLinkDarkModeMSStream:focus-visible {
+  outline: none;
+  border-color: #468ff4;
+}
+
+.HeaderLinkContainerMSStream {
+  display: flex;
+  align-items: center;
+}
+.HeaderLinkContainerMSStream > :first-child {
+  flex: 1;
+}
