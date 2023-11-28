@@ -27,6 +27,7 @@ const exitFullscreenButton = document.getElementById('exitFullscreenButton'+@@AU
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
+const sharelink = document.getElementById('ShareLink'+@@AUTOID@@);
 
 // split URL
 const URLData = parseURL(dURL);
@@ -85,6 +86,7 @@ function onLoad(url, URLData, type){
             const embeddUrl = URLtoEmbedURL(URLData, type);
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
                 document.getElementById('Content'+@@AUTOID@@).src = ""+embeddUrl;
+                document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
                 // set the SameSite attribute for the cookies
                 //setSameSiteAttribute('None');
             };
@@ -238,7 +240,9 @@ function setBackgrounColor(backGroundColor) {
             headerLink.classList.add('HeaderLinkMSFile');
             headerLink.classList.remove('HeaderLinkDarkModeMSFile');
             fullscreenButton.classList.add('LinkMSFile');
-            fullscreenButton.classList.remove('LinkDarkModeMSFile'); 
+            fullscreenButton.classList.remove('LinkDarkModeMSFile');
+            sharelink.classList.add('LinkMSFile');
+            sharelink.classList.remove('LinkDarkModeMSFile');
       } else if (backGroundColor == 'rgb(25, 26, 30)') {
             if (detailsButton.classList.contains('detailsCollapsibleDarkModeMSFile')) {return;}
             // Dark mode
@@ -248,6 +252,8 @@ function setBackgrounColor(backGroundColor) {
             headerLink.classList.remove('HeaderLinkMSFile');
             fullscreenButton.classList.add('LinkDarkModeMSFile');
             fullscreenButton.classList.remove('LinkMSFile');
+            sharelink.classList.add('LinkDarkModeMSFile');
+            sharelink.classList.remove('LinkMSFile');
       }
 }
 
