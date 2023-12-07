@@ -18,8 +18,8 @@
 }
 
 .detailsCollapsible:hover {
-  background-color: #cccccc;
-  color: #468ff4;
+  background-color: #E1E1E1;
+  color: #3357c2;
 }
 
 .detailsCollapsible:focus-visible {
@@ -44,8 +44,8 @@
 }
 
 .detailsCollapsibleDarkMode:hover {
-  background-color: #cccccc;
-  color: #468ff4;
+  background-color: #E1E1E1;
+  color: #3357c2;
 }
 
 .detailsCollapsibleDarkMode:focus-visible {
@@ -75,7 +75,7 @@
 
 .closeButtonCollapsible{
   width: 7px;
-  background-color: #cccccc;
+  background-color: #E1E1E1;
   border-radius: 5px;
   border: 2px solid transparent;
   margin-bottom: 5px;
@@ -83,8 +83,8 @@
 
 .closeButtonCollapsible:hover{
   cursor: pointer;
-  background-color: #468ff4;
-  color: #468ff4;
+  background-color: #3357c2;
+  color: #3357c2;
 }
 
 .closeButtonCollapsible:focus-visible{

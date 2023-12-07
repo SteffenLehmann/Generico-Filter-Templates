@@ -1,0 +1,21 @@
+
+<div id="myElement" class="wrapper">This is a div element.</div>
+
+<script>
+    const element = document.getElementById("myElement");
+    element.style.cssText = "color: red; font-size: 16px; padding: 20px; text-align: center;";
+        // Function to update styles based on window width
+    function updateStyles() {
+        // Add conditional styles based on window width
+        if (window.innerWidth < 600) {
+            element.style.cssText += "background-color: lightcoral;";
+        } else {
+            element.style.cssText += "background-color: lightblue;";
+        }
+    }
+    // Initial call to set styles based on window width
+    updateStyles();
+
+    // Event listener to update styles on window resize
+    window.addEventListener("resize", updateStyles);
+</script>

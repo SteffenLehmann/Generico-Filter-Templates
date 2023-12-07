@@ -1,5 +1,3 @@
-// Custom CSS
-
 .TemplateContainerMiro{
     width: 100%;
     overflow: auto;
@@ -25,8 +23,8 @@
 }
 
 .detailsCollapsibleMiro:hover{
-    background-color: #CCCCCC;
-    color: #468ff4;
+    background-color: #E1E1E1;
+    color: #3357c2;
 }
 
 .detailsCollapsibleMiro:focus-visible{
@@ -64,7 +62,7 @@
     position: relative;
     padding-bottom: 60 %;
     overflow: hidden;
-    height: 700px;
+    height: 58dvh;
 }
 
 .Link-containerMiro{
@@ -77,8 +75,8 @@
     display: block;
     text-decoration: none;
     padding: 5px 10px;
-    border: 1px solid #CCCCCC;
-    background-color: #CCCCCC; 
+    border: 1px solid #E1E1E1;
+    background-color: #E1E1E1; 
     border-radius: 5px; /* Rounded borders */
     margin-bottom: 5px;
     margin: 0 5px;
@@ -90,9 +88,9 @@
 }
 
 .LinkMiro:hover{
-    background-color: #666666;
-    border: 1px solid #666666;
-    color: #468ff4;
+    background-color: #b2b2b2;
+    border: 1px solid #b2b2b2;
+    color: #3357c2;
 }
 .LinkDarkModeMiro {
     display: block;
@@ -156,8 +154,8 @@
     border: 2px solid transparent;
 }
 .HeaderLinkMiro:hover{
-    background-color: #CCCCCC;
-    color: #468ff4;
+    background-color: #E1E1E1;
+    color: #3357c2;
 }
 .HeaderLinkMiro:focus-visible{
     outline: none;
