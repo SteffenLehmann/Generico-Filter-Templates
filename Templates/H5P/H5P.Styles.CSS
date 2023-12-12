@@ -23,8 +23,8 @@
 }
 
 .detailsCollapsibleH5P:hover {
-  background-color: #cccccc;
-  color: #468ff4;
+  background-color: #E1E1E1;
+  color: #3357c2;
 }
 
 .detailsCollapsibleH5P:focus-visible {
@@ -62,7 +62,7 @@
   position: relative;
   padding-bottom: 60 %;
   overflow: hidden;
-  height: 700px;
+  height: 58dvh;
 }
 
 .Link-containerH5P {
@@ -75,8 +75,8 @@
   display: block;
   text-decoration: none;
   padding: 5px 10px;
-  border: 1px solid #CCCCCC;
-  background-color: #cccccc;
+  border: 1px solid #E1E1E1;
+  background-color: #E1E1E1;
   border-radius: 5px; /* Rounded borders */
   margin-bottom: 5px;
   margin: 0 5px;
@@ -88,9 +88,9 @@
 }
 
 .LinkH5P:hover {
-  background-color: #666666;
-  border: 1px solid #666666;
-  color: #468ff4;
+  background-color: #b2b2b2;
+  border: 1px solid #b2b2b2;
+  color: #3357c2;
 }
 .LinkDarkModeH5P {
   display: block;
@@ -154,8 +154,8 @@
   border: 2px solid transparent;
 }
 .HeaderLinkH5P:hover {
-  background-color: #cccccc;
-  color: #468ff4;
+  background-color: #E1E1E1;
+  color: #3357c2;
 }
 .HeaderLinkH5P:focus-visible {
   outline: none;

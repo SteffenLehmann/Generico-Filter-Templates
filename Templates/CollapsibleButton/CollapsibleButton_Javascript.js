@@ -13,8 +13,8 @@ details.addEventListener("toggle", (event) => {
 function toggleDetails() {
   if (details.open) {
     /* the element was toggled open */
-    detailsButton.style.color = "#468ff4";
-    detailsButton.style.backgroundColor = "#CCCCCC";
+    detailsButton.style.color = "#3357c2";
+    detailsButton.style.backgroundColor = "#E1E1E1";
   } else {
     /* the element was toggled closed */
     detailsButton.style.backgroundColor = "";

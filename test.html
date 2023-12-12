@@ -1,0 +1,100 @@
+<div id="gridContainer" style="margin-left: 20px; margin-right: 20px;">
+    <div class="card-deck">
+        <div class="card">
+            <img class="card-img-top" src="https://3rdwavemedia.com/demo-images/slides/maker-card-0.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Introduction</h5>
+                <p class="card-text">The issue with Moodle</p>
+                <p class="card-text">The purpose of the course</p>
+                <p class="card-text">Learn more about Moodle</p>
+                <p class="card-text">Annoucements</p>
+                <p class="card-text">Discussion</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="https://3rdwavemedia.com/demo-images/slides/maker-card-2.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Course Blueprint</h5>
+                <p class="card-text">Why use them</p>
+                <p class="card-text">How to use them</p>
+                <p class="card-text">Provided Blueprint</p>
+                <ul>
+                    <li class="card-text">Traditional course</li>
+                    <li class="card-text">Semester room</li>
+                    <li class="card-text">Flipped classroom</li>
+                    <li class="card-text">Self-study course</li>
+                </ul> 
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="https://3rdwavemedia.com/demo-images/slides/maker-card-3.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Organizing Moodle</h5>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="https://3rdwavemedia.com/demo-images/slides/maker-card-3.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Teaching material</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="https://3rdwavemedia.com/demo-images/slides/maker-card-3.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Communication</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="https://3rdwavemedia.com/demo-images/slides/maker-card-3.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Creative tools</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="https://3rdwavemedia.com/demo-images/slides/maker-card-3.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Quiz and exams</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="https://3rdwavemedia.com/demo-images/slides/maker-card-3.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">GDPR and consent</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<script>
+    const gridContainer = document.getElementById("gridContainer");
+    gridContainer.style.cssText = "width: 99%; display: flex; flex-wrap: wrap; horizontalpadding: 20px;";
+
+    const elements = document.getElementsByClassName("card");
+
+    // Function to change CSS class parameters for multiple elements
+    function changeClassParameters(elements, height, width) {
+        for (var i = 0; i < elements.length; i++) {
+            var element = elements[i];
+            element.style.height = height;
+            element.style.width = width;
+        }
+    }
+    // Apply styles to child elements
+    var gridChildren = gridContainer.children;
+    for (var i = 0; i < gridChildren.length; i++) {
+        gridChildren[i].style.cssText = "flex: 1 1 33.3333%;";
+}
+    changeClassParameters(elements, "100%", "400px");
+
+    
+</script>

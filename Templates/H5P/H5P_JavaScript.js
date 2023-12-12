@@ -98,8 +98,8 @@ function hideEnterFullscreenButtonOnPresentation(type) {
 details.addEventListener("toggle", (event) => {
       if (details.open) {
         /* the element was toggled open */
-        detailsButton.style.color = '#468ff4';
-        detailsButton.style.backgroundColor = '#CCCCCC';
+        detailsButton.style.color = '#3357c2';
+        detailsButton.style.backgroundColor = '#E1E1E1';
         detailsButton.style.borderBottomRightRadius = '0px';
         detailsButton.style.borderBottomLeftRadius = '0px';
         headerLink.style.display = 'none';
