@@ -36,6 +36,7 @@ const download = document.getElementById('Download'+@@AUTOID@@);
 // function calls to create the temlate on moodle
 const embedURLArray = constructEmbedURL(pURL);
 const downloadURL = constructDownloadURL(dURL);
+console.log("downloadURL "+downloadURL);
 createNameForSummary(summaryName, embedURLArray[1]);
 assignHeaderLinks(dURL, downloadURL);
 
@@ -60,8 +61,13 @@ function createNameForSummary(nameforbutton, ID) {
 
 // function to assign the header links
 function assignHeaderLinks(url, downloadURL) {
-      headerLink.href = ""+ url;
-      headerdownload.href = ""+downloadURL;
+      if (typeof(url) != 'undefined') {
+            headerLink.href = ""+ url;
+            headerdownload.href = ""+downloadURL;
+      } else {
+            headerLink.style.display = 'none';
+            headerdownload.style.display = 'none';
+      }
 }
 
 
@@ -85,11 +91,12 @@ function onLoad(embedurl, url, downloadURL){
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
                   document.getElementById('Content'+@@AUTOID@@).src = ""+embedurl;
                   if (typeof(url) != 'undefined') {
-                        document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
-                        document.getElementById('Download'+@@AUTOID@@).href = ""+downloadURL;
+                        sharelink.href = ""+url;
+                        download.href = ""+downloadURL;
+                        console.log("downloadURL "+downloadURL);
                   } else {
-                        document.getElementById('Download'+@@AUTOID@@).style.display = 'none';
-                        document.getElementById('ShareLink'+@@AUTOID@@).style.display = 'none';
+                        sharelink.style.display = 'none';
+                        hideDownloadButtons(downloadURL);
                   }
                   setSameSiteAttribute('None');
             };
@@ -100,6 +107,13 @@ function hideEnterFullscreenButtonOnPresentation(type) {
       if (type == 'presentation'){
             fullscreenButton.style.display = 'none';
       } 
+}
+
+function hideDownloadButtons(link) {
+      if (typeof(link) == 'undefined') {
+            download.style.display = 'none';
+            headerdownload.style.display = 'none';
+      }
 }
 
 // function to construct the embed URL
@@ -143,13 +157,16 @@ function constructDownloadURL(URL){
             }
             const downloadableURL = downloadURL + downloadID + "/export/pdf";
             return downloadableURL;
+      } else {
+            console.log("downloadURL is "+'undefined');
+            return  undefined;
       }
 }
-
+/* 
 // event listener for the details element state change
 details.addEventListener("toggle", (event) => {
       if (details.open) {
-        /* the element was toggled open */
+        //the element was toggled open
         detailsButton.style.color = '#3357c2';
         detailsButton.style.backgroundColor = '#E1E1E1';
         detailsButton.style.borderBottomRightRadius = '0px';
@@ -157,15 +174,46 @@ details.addEventListener("toggle", (event) => {
         headerLink.style.display = 'none';
         headerdownload.style.display = 'none';
       } else {
-        /* the element was toggled closed */
+        //the element was toggled closed
         detailsButton.style.backgroundColor = '';
         detailsButton.style.color = '';
         detailsButton.style.borderBottomRightRadius = '5px';
         detailsButton.style.borderBottomLeftRadius = '5px';
+        
         headerLink.style.display = 'block';
         headerdownload.style.display = 'block';
       }
 });
+ */
+
+details.addEventListener('toggle', (event) => toggleSummary(event, dURL));
+
+function toggleSummary(event, dURL) {
+  if (details.open) {
+      /* the element was toggled open */
+      detailsButton.style.color = '#3357c2';
+      detailsButton.style.backgroundColor = '#E1E1E1';
+      detailsButton.style.borderBottomRightRadius = '0px';
+      detailsButton.style.borderBottomLeftRadius = '0px';
+      headerLink.style.display = 'none';
+      headerdownload.style.display = 'none';
+    } else {
+      /* the element was toggled closed */
+      detailsButton.style.backgroundColor = '';
+      detailsButton.style.color = '';
+      detailsButton.style.borderBottomRightRadius = '5px';
+      detailsButton.style.borderBottomLeftRadius = '5px';
+      if (typeof(dURL) != 'undefined') {
+            headerLink.style.display = 'block';
+            headerdownload.style.display = 'block';
+      } else {
+            headerLink.style.display = 'none';
+            headerdownload.style.display = 'none';
+      }
+    }
+}
+
+
     
 // hide exit fullscreen button
 function hideFullscreenExitButton() {
