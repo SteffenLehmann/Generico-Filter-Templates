@@ -36,8 +36,9 @@ const download = document.getElementById('Download'+@@AUTOID@@);
 // function calls to create the temlate on moodle
 const embedURLArray = constructEmbedURL(pURL);
 const downloadURL = constructDownloadURL(dURL);
+console.log("downloadURL "+downloadURL);
 createNameForSummary(summaryName, embedURLArray[1]);
-assignHeaderLinks(dURL, downloadURL);
+assignHeaderLinks(embedURLArray[0], dURL, downloadURL);
 
 // check the background color of the page
 let previouisBackgroundColor = getBackgroundColor();
@@ -59,11 +60,18 @@ function createNameForSummary(nameforbutton, ID) {
 }
 
 // function to assign the header links
-function assignHeaderLinks(url, downloadURL) {
-      headerLink.href = ""+ url;
-      headerdownload.href = ""+downloadURL;
+function assignHeaderLinks(publishURL ,shareURL, downloadURL) {
+      if (typeof(shareURL) != 'undefined') {
+            headerLink.href = ""+ shareURL;
+            headerdownload.href = ""+downloadURL;
+      } else if (typeof(publishURL) != 'undefined') {
+            headerLink.href = ""+ publishURL;
+            hideDownloadButtons(shareURL);
+      } else {
+            headerLink.style.display = 'none';
+            hideDownloadButtons(shareURL);
+      }
 }
-
 
 // set the SameSite attribute for the cookies
 function setSameSiteAttribute(sameSiteValue) {
@@ -79,17 +87,18 @@ function setSameSiteAttribute(sameSiteValue) {
     }
 
 // on load function e.g. when the Collapsible button is clicked
-function onLoad(embedurl, url, downloadURL){
+function onLoad(embedurl, shareURL, downloadURL){
       if (typeof(embedurl) != 'undefined') {
             hideEnterFullscreenButtonOnPresentation(embedURLArray[1]);
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
                   document.getElementById('Content'+@@AUTOID@@).src = ""+embedurl;
-                  if (typeof(url) != 'undefined') {
-                        document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
-                        document.getElementById('Download'+@@AUTOID@@).href = ""+downloadURL;
+                  if (typeof(shareURL) != 'undefined') {
+                        sharelink.href = ""+shareURL;
+                        download.href = ""+downloadURL;
                   } else {
-                        document.getElementById('Download'+@@AUTOID@@).style.display = 'none';
-                        document.getElementById('ShareLink'+@@AUTOID@@).style.display = 'none';
+                        sharelink.href = ""+embedurl;
+                        sharelink.style.marginLeft = "auto";
+                        hideDownloadButtons(downloadURL);
                   }
                   setSameSiteAttribute('None');
             };
@@ -100,6 +109,13 @@ function hideEnterFullscreenButtonOnPresentation(type) {
       if (type == 'presentation'){
             fullscreenButton.style.display = 'none';
       } 
+}
+
+function hideDownloadButtons(link) {
+      if (typeof(link) == 'undefined') {
+            download.style.display = 'none';
+            headerdownload.style.display = 'none';
+      }
 }
 
 // function to construct the embed URL
@@ -143,29 +159,38 @@ function constructDownloadURL(URL){
             }
             const downloadableURL = downloadURL + downloadID + "/export/pdf";
             return downloadableURL;
+      } else {
+            console.log("downloadURL is "+'undefined');
+            return  undefined;
       }
 }
 
 // event listener for the details element state change
-details.addEventListener("toggle", (event) => {
-      if (details.open) {
-        /* the element was toggled open */
-        detailsButton.style.color = '#3357c2';
-        detailsButton.style.backgroundColor = '#E1E1E1';
-        detailsButton.style.borderBottomRightRadius = '0px';
-        detailsButton.style.borderBottomLeftRadius = '0px';
-        headerLink.style.display = 'none';
-        headerdownload.style.display = 'none';
-      } else {
-        /* the element was toggled closed */
-        detailsButton.style.backgroundColor = '';
-        detailsButton.style.color = '';
-        detailsButton.style.borderBottomRightRadius = '5px';
-        detailsButton.style.borderBottomLeftRadius = '5px';
-        headerLink.style.display = 'block';
-        headerdownload.style.display = 'block';
+details.addEventListener('toggle', (event) => toggleSummary(event, dURL));
+//The toggle function that changes the style of the button when the details element is open or closed
+function toggleSummary(event, dURL) {
+  if (details.open) {
+      /* the element was toggled open */
+      detailsButton.style.color = '#3357c2';
+      detailsButton.style.backgroundColor = '#E1E1E1';
+      detailsButton.style.borderBottomRightRadius = '0px';
+      detailsButton.style.borderBottomLeftRadius = '0px';
+      headerLink.style.display = 'none';
+      headerdownload.style.display = 'none';
+    } else {
+      /* the element was toggled closed */
+      detailsButton.style.backgroundColor = '';
+      detailsButton.style.color = '';
+      detailsButton.style.borderBottomRightRadius = '5px';
+      detailsButton.style.borderBottomLeftRadius = '5px';
+      headerLink.style.display = 'block';
+      if (typeof(dURL) != 'undefined') {
+            headerdownload.style.display = 'block';
       }
-});
+    }
+}
+
+
     
 // hide exit fullscreen button
 function hideFullscreenExitButton() {
