@@ -336,7 +336,7 @@
     // Moodle elements to check for visibility
     const courseIndex = document.getElementById('theme_space-drawers-courseindex');
     const rightblockDrawer = document.getElementById('theme_space-drawers-blocks');
-    const navDrawer = document.getElementById('nav-drawer');
+    const navigationDrawer = document.getElementById('nav-drawer');
 
     // state control
     let courseIndexState = false;
@@ -344,6 +344,7 @@
     let navDrawerState = false;
     
     // CSS assingment
+    const width = '1131';
     gridContainer.style.cssText = "horizontalpadding: 20px;";
     const cardheight = "400px";
     const imageHeightRatio = 0.25;
@@ -357,7 +358,7 @@
     changeClassParametersImages(cardImages, imageFit, imageHeightRatio, cardheight);
 
     // Initial call to set styles based on window width
-    updateStyles(courseIndexState, rightblockDrawerState, navDrawerState);
+    updateStyles(courseIndexState, rightblockDrawerState, navDrawerState, width);
 
     // Function to change CSS class parameters for multiple elements
     function changeClassParameters(elements, height, width) {
@@ -412,22 +413,36 @@
     }
 
     // Function to update styles based on window width
-    function updateStyles(courseIndexState, rightblockDrawerState, navDrawerState) {
-        let width = '1131';
-    
+    function updateStyles(courseIndexState, rightblockDrawerState, navDrawerState, width) {
         controlFlexGrow(cards, courseIndexState, rightblockDrawerState, navDrawerState);
         tabControl(gridContainer, tab, width, courseIndexState, rightblockDrawerState, navDrawerState);
     }
     // Function to check if element is visible
-    function respondToVisibility(element, callback) {
+    function respondToVisibility(element, width, callback) {
+        if (element === null || element === undefined) return;
         var options = {
-            root: null, // Use the viewport
-            threshold: 0 // Call the callback when the element is completely visible or completely hidden
+        root: null, // Use the viewport
+        threshold: 0 // Call the callback when the element is completely visible or completely hidden
         };
 
         var observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                callback(entry.intersectionRatio > 0);
+                // Check if the element is visible
+                if (entry.intersectionRatio > 0) {
+                    // Check if the element has the 'closed' class or the 'aria-hidden' attribute set to 'true'
+                    if (element.classList.contains('closed') || element.getAttribute('aria-hidden') === 'true') {
+                        callback(false);
+                    } else {
+                        callback(true);
+                    }
+                } else {
+                    // Check if the element has the 'closed' class or the 'aria-hidden' attribute set to 'true'
+                    if (element.classList.contains('closed') || element.getAttribute('aria-hidden') === 'true') {
+                        callback(false);
+                    } else {
+                        callback(false);
+                    }
+                }
             });
         }, options);
 
@@ -437,24 +452,25 @@
     // Event listener to update styles on window resize
     //window.addEventListener("resize", updateStyles);
     window.addEventListener("resize", function() {
-        updateStyles(courseIndexState, rightblockDrawerState, navDrawerState);
+        updateStyles(courseIndexState, rightblockDrawerState, navDrawerState, width);
     });
     // Event listener to update styles on window resize based on the Moodle element course index
-    respondToVisibility(courseIndex, function(isVisible) {
+    respondToVisibility(courseIndex, width, function(isVisible) {
         courseIndexState = isVisible;
         controlFlexGrow(cards, courseIndexState, rightblockDrawerState, navDrawerState);
         tabControl(gridContainer, tab, width, courseIndexState, rightblockDrawerState, navDrawerState);
     });
     // Event listener to update styles on window resize based on the Moodle element right block drawer
-    respondToVisibility(rightblockDrawer, function(isVisible) {
+    respondToVisibility(rightblockDrawer, width, function(isVisible) {
         rightblockDrawerState = isVisible;
         controlFlexGrow(cards, courseIndexState, rightblockDrawerState, navDrawerState);
         tabControl(gridContainer, tab, width, courseIndexState, rightblockDrawerState, navDrawerState);
     });
     // Event listener to update styles on window resize based on the Moodle element nav drawer
-    respondToVisibility(navDrawer, function(isVisible) {
+    respondToVisibility(navigationDrawer, width, function(isVisible) {
         navDrawerState = isVisible;
         controlFlexGrow(cards, courseIndexState, rightblockDrawerState, navDrawerState);
         tabControl(gridContainer, tab, width, courseIndexState, rightblockDrawerState, navDrawerState);
     });
+    
 </script>
