@@ -31,8 +31,6 @@ const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 const headerdownload = document.getElementById('DownloadLinkHeader'+@@AUTOID@@);
 const sharelink = document.getElementById('ShareLink'+@@AUTOID@@);
 const download = document.getElementById('Download'+@@AUTOID@@);
-
-
 // function calls to create the temlate on moodle
 const embedURLArray = constructEmbedURL(pURL);
 const downloadURL = constructDownloadURL(dURL);
@@ -177,6 +175,7 @@ function toggleSummary(event, dURL) {
       detailsButton.style.borderBottomLeftRadius = '0px';
       headerLink.style.display = 'none';
       headerdownload.style.display = 'none';
+      setIframeFocus();
     } else {
       /* the element was toggled closed */
       detailsButton.style.backgroundColor = '';
@@ -189,7 +188,6 @@ function toggleSummary(event, dURL) {
       }
     }
 }
-
 
     
 // hide exit fullscreen button
@@ -319,3 +317,52 @@ document.addEventListener('backgroundColorChanged', (event) => {
       const newBackgroundColor = event.detail;
       setBackgrounColor(newBackgroundColor);
 });
+
+
+ // function to remove the iframe focus style
+function removeIframeFocus(element) {
+      //element.style.outline = "transparent"; // or any other color you want
+      element.style.borderTopColor  = "#E1E1E1";
+}
+// function to add the iframe focus style
+function addIframeFocus(element) {
+      //element.style.outline = '#f44646';
+      element.style.borderTopColor  = '#468ff4';
+}
+
+document.addEventListener("focusout", (event) => {
+      //console.log('Element lost focus:', event.target);
+      const focusedElement = document.activeElement;
+      //console.log("focusedElement " + focusedElement);
+      const iframe = document.getElementById('Content'+@@AUTOID@@);
+     
+      if (focusedElement == iframe) {
+        console.log('iframe has focus');
+        addIframeFocus(iframe);
+      } else {
+        console.log('iframe not focused');
+        removeIframeFocus(iframe);
+      }
+     });
+     
+window.setInterval(function() {
+      const iframe = document.getElementById('Content'+@@AUTOID@@);
+      if (document.activeElement == document.getElementById('Content'+@@AUTOID@@)) {
+        console.log('iframe has focus');
+        addIframeFocus(iframe);
+      } else {
+        console.log('iframe not focused');
+        removeIframeFocus(iframe);
+      }
+     }, 500);
+
+function setIframeFocus() {
+      setTimeout(function() {
+            const iframe = document.getElementById('Content'+@@AUTOID@@);
+            if (iframe.contentWindow) {
+                iframe.contentWindow.focus();
+            } else if (iframe.contentDocument && iframe.contentDocument.documentElement) {
+                iframe.contentDocument.documentElement.focus();
+            }
+         }, 500);
+}
