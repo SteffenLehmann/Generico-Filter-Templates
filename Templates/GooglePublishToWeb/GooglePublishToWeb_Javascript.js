@@ -175,7 +175,7 @@ function toggleSummary(event, dURL) {
       detailsButton.style.borderBottomLeftRadius = '0px';
       headerLink.style.display = 'none';
       headerdownload.style.display = 'none';
-      setIframeFocus();
+      setIframeFocusAndBindShortcut(@@AUTOID@@)
     } else {
       /* the element was toggled closed */
       detailsButton.style.backgroundColor = '';
@@ -356,8 +356,9 @@ window.setInterval(function() {
       }
      }, 500);
 
-function setIframeFocus() {
+/* function setIframeFocus() {
       setTimeout(function() {
+            console.log('Programmatically focusing iframe');
             const iframe = document.getElementById('Content'+@@AUTOID@@);
             if (iframe.contentWindow) {
                 iframe.contentWindow.focus();
@@ -365,4 +366,42 @@ function setIframeFocus() {
                 iframe.contentDocument.documentElement.focus();
             }
          }, 500);
+} */
+
+/* function setIframeFocus() {
+      const iframe = document.getElementById('Content'+@@AUTOID@@);
+      if (iframe.contentWindow) {
+          iframe.contentWindow.focus();
+      } else if (iframe.contentDocument && iframe.contentDocument.documentElement) {
+          iframe.contentDocument.documentElement.focus();
+      }
+    } */
+
+function setIframeFocusAndBindShortcut(autoId) {
+      const iframe = document.getElementById('Content' + autoId);
+
+      if (iframe) {
+            try {
+                  if (iframe.contentWindow) {
+                  iframe.contentWindow.focus();
+                  } else if (iframe.contentDocument && iframe.contentDocument.documentElement) {
+                  iframe.contentDocument.documentElement.focus();
+                  }
+
+                  // Bind a keydown event listener within the iframe
+                  iframe.contentWindow.addEventListener('keydown', function(event) {
+                  if (event.ctrlKey && event.shiftKey && event.key === 'F') {
+                        // Your logic to handle Ctrl + Shift + F shortcut, e.g., trigger fullscreen
+                        // This is where you can call a function to enter fullscreen or perform any other action
+                        console.log('Ctrl + Shift + F pressed within the iframe');
+                  }
+                  });
+            } catch (error) {
+                  console.error('Error setting focus and binding shortcut on iframe:', error);
+            }
+      } else {
+            console.error('Iframe with ID ' + 'Content' + autoId + ' not found.');
+      }
 }
+  
+    
