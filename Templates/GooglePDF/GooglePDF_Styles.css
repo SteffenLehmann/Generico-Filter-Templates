@@ -140,6 +140,7 @@
   .IframeStyleGooglePDF{
     width: 100%;
     height: 100%;
+    border-top: 5px solid #E1E1E1;
   }
 
 .HeaderLinkGooglePDF{
