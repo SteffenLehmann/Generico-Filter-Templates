@@ -322,12 +322,12 @@ document.addEventListener('backgroundColorChanged', (event) => {
  // function to remove the iframe focus style
 function removeIframeFocus(element) {
       //element.style.outline = "transparent"; // or any other color you want
-      element.style.borderTop = "#E1E1E1";
+      element.style.borderTopColor = "#E1E1E1";
 }
 // function to add the iframe focus style
 function addIframeFocus(element) {
       //element.style.outline = '#f44646';
-      element.style.borderTop = "#468ff4";
+      element.style.borderTopColor = "#468ff4";
 }
 //checks if the iframe has focus
 document.addEventListener("focusout", (event) => {
@@ -348,7 +348,12 @@ window.setInterval(function() {
       const iframe = document.getElementById('Content'+@@AUTOID@@);
       if (document.activeElement == document.getElementById('Content'+@@AUTOID@@)) {
         addIframeFocus(iframe);
+        console.log("iframe has focus");
       } else {
         removeIframeFocus(iframe);
+        console.log("iframe has no focus");
       }
      }, 500);
+
+
+     
