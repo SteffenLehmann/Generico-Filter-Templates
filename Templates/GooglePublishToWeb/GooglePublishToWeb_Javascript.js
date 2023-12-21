@@ -163,32 +163,32 @@ function constructDownloadURL(URL){
       }
 }
 
+
 // event listener for the details element state change
 details.addEventListener('toggle', (event) => toggleSummary(event, dURL));
 //The toggle function that changes the style of the button when the details element is open or closed
 function toggleSummary(event, dURL) {
-  if (details.open) {
-      /* the element was toggled open */
-      detailsButton.style.color = '#3357c2';
-      detailsButton.style.backgroundColor = '#E1E1E1';
-      detailsButton.style.borderBottomRightRadius = '0px';
-      detailsButton.style.borderBottomLeftRadius = '0px';
-      headerLink.style.display = 'none';
-      headerdownload.style.display = 'none';
-      setIframeFocusAndBindShortcut(@@AUTOID@@)
-    } else {
-      /* the element was toggled closed */
-      detailsButton.style.backgroundColor = '';
-      detailsButton.style.color = '';
-      detailsButton.style.borderBottomRightRadius = '5px';
-      detailsButton.style.borderBottomLeftRadius = '5px';
-      headerLink.style.display = 'block';
-      if (typeof(dURL) != 'undefined') {
+      if (details.open) {
+        /* the element was toggled open */
+        detailsButton.style.color = '#3357c2';
+        detailsButton.style.backgroundColor = '#E1E1E1';
+        detailsButton.style.borderBottomRightRadius = '0px';
+        detailsButton.style.borderBottomLeftRadius = '0px';
+        headerLink.style.display = 'none';
+        headerdownload.style.display = 'none';
+      } else {
+        /* the element was toggled closed */
+        detailsButton.style.backgroundColor = '';
+        detailsButton.style.color = '';
+        detailsButton.style.borderBottomRightRadius = '5px';
+        detailsButton.style.borderBottomLeftRadius = '5px';
+        headerLink.style.display = 'block';
+        if (typeof(dURL) != 'undefined') {
             headerdownload.style.display = 'block';
+        }
       }
-    }
 }
-
+     
     
 // hide exit fullscreen button
 function hideFullscreenExitButton() {
@@ -322,14 +322,14 @@ document.addEventListener('backgroundColorChanged', (event) => {
  // function to remove the iframe focus style
 function removeIframeFocus(element) {
       //element.style.outline = "transparent"; // or any other color you want
-      element.style.borderTopColor  = "#E1E1E1";
+      element.style.borderTop = "#E1E1E1";
 }
 // function to add the iframe focus style
 function addIframeFocus(element) {
       //element.style.outline = '#f44646';
-      element.style.borderTopColor  = '#468ff4';
+      element.style.borderTop = "#468ff4";
 }
-
+//checks if the iframe has focus
 document.addEventListener("focusout", (event) => {
       //console.log('Element lost focus:', event.target);
       const focusedElement = document.activeElement;
@@ -344,7 +344,8 @@ document.addEventListener("focusout", (event) => {
         removeIframeFocus(iframe);
       }
      });
-     
+
+//checks if the iframe has focus (fall back method)  
 window.setInterval(function() {
       const iframe = document.getElementById('Content'+@@AUTOID@@);
       if (document.activeElement == document.getElementById('Content'+@@AUTOID@@)) {
@@ -368,40 +369,15 @@ window.setInterval(function() {
          }, 500);
 } */
 
-/* function setIframeFocus() {
+/* //TODO - find a way to programmatically add focus to the iframe, so keyboard short-cuts work
+function setIframeFocus() {
       const iframe = document.getElementById('Content'+@@AUTOID@@);
       if (iframe.contentWindow) {
           iframe.contentWindow.focus();
       } else if (iframe.contentDocument && iframe.contentDocument.documentElement) {
           iframe.contentDocument.documentElement.focus();
       }
-    } */
+    }
+ */
 
-function setIframeFocusAndBindShortcut(autoId) {
-      const iframe = document.getElementById('Content' + autoId);
-
-      if (iframe) {
-            try {
-                  if (iframe.contentWindow) {
-                  iframe.contentWindow.focus();
-                  } else if (iframe.contentDocument && iframe.contentDocument.documentElement) {
-                  iframe.contentDocument.documentElement.focus();
-                  }
-
-                  // Bind a keydown event listener within the iframe
-                  iframe.contentWindow.addEventListener('keydown', function(event) {
-                  if (event.ctrlKey && event.shiftKey && event.key === 'F') {
-                        // Your logic to handle Ctrl + Shift + F shortcut, e.g., trigger fullscreen
-                        // This is where you can call a function to enter fullscreen or perform any other action
-                        console.log('Ctrl + Shift + F pressed within the iframe');
-                  }
-                  });
-            } catch (error) {
-                  console.error('Error setting focus and binding shortcut on iframe:', error);
-            }
-      } else {
-            console.error('Iframe with ID ' + 'Content' + autoId + ' not found.');
-      }
-}
-  
     
