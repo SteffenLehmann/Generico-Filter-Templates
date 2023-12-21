@@ -337,10 +337,8 @@ document.addEventListener("focusout", (event) => {
       const iframe = document.getElementById('Content'+@@AUTOID@@);
      
       if (focusedElement == iframe) {
-        console.log('iframe has focus');
         addIframeFocus(iframe);
       } else {
-        console.log('iframe not focused');
         removeIframeFocus(iframe);
       }
      });
@@ -349,35 +347,8 @@ document.addEventListener("focusout", (event) => {
 window.setInterval(function() {
       const iframe = document.getElementById('Content'+@@AUTOID@@);
       if (document.activeElement == document.getElementById('Content'+@@AUTOID@@)) {
-        console.log('iframe has focus');
         addIframeFocus(iframe);
       } else {
-        console.log('iframe not focused');
         removeIframeFocus(iframe);
       }
      }, 500);
-
-/* function setIframeFocus() {
-      setTimeout(function() {
-            console.log('Programmatically focusing iframe');
-            const iframe = document.getElementById('Content'+@@AUTOID@@);
-            if (iframe.contentWindow) {
-                iframe.contentWindow.focus();
-            } else if (iframe.contentDocument && iframe.contentDocument.documentElement) {
-                iframe.contentDocument.documentElement.focus();
-            }
-         }, 500);
-} */
-
-/* //TODO - find a way to programmatically add focus to the iframe, so keyboard short-cuts work
-function setIframeFocus() {
-      const iframe = document.getElementById('Content'+@@AUTOID@@);
-      if (iframe.contentWindow) {
-          iframe.contentWindow.focus();
-      } else if (iframe.contentDocument && iframe.contentDocument.documentElement) {
-          iframe.contentDocument.documentElement.focus();
-      }
-    }
- */
-
-    
