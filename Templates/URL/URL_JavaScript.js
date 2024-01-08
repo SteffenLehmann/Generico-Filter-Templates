@@ -157,9 +157,11 @@ function handleFullscreenChange() {
       if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
         // If the iframe enters fullscreen
         showFullscreenExitButton();
+        //document.getElementById('Content'+@@AUTOID@@).style.removeProperty('border-top');
       } else {
         // If the iframe exits fullscreen
         hideFullscreenExitButton();
+        //document.getElementById('Content'+@@AUTOID@@).style.addProperty('border-top');
       }
 }
     
@@ -225,11 +227,13 @@ document.addEventListener('backgroundColorChanged', (event) => {
  // function to remove the iframe focus style
  function removeIframeFocus(element) {
       //element.style.outline = "transparent"; // or any other color you want
+      if (element == undefined) {return;}
       element.style.borderTopColor = "#E1E1E1";
 }
 // function to add the iframe focus style
 function addIframeFocus(element) {
       //element.style.outline = '#f44646';
+      if (element == undefined) {return;}
       element.style.borderTopColor = "#468ff4";
 }
 //checks if the iframe has focus
