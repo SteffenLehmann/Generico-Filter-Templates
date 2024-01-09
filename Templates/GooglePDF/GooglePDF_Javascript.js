@@ -267,27 +267,14 @@ function addIframeFocus(element) {
       //element.style.outline = '#f44646';
       element.style.backgroundColor = "#468ff4";
 }
-//checks if the iframe has focus
-document.addEventListener("focusout", (event) => {
-      //console.log('Element lost focus:', event.target);
-      const focusedElement = document.activeElement;
-      //console.log("focusedElement " + focusedElement);
-      const iframe = document.getElementById('stateIndicator'+@@AUTOID@@);
-     
-      if (focusedElement == iframe) {
-        addIframeFocus(iframe);
-      } else {
-        removeIframeFocus(iframe);
-      }
-     });
 
 //checks if the iframe has focus (fall back method)  
 window.setInterval(function() {
-      const iframe = document.getElementById('stateIndicator'+@@AUTOID@@);
+      const iframeState = document.getElementById('stateIndicator'+@@AUTOID@@);
       if (document.activeElement == document.getElementById('Content'+@@AUTOID@@)) {
-        addIframeFocus(iframe);
+        addIframeFocus(iframeState);
       } else {
-        removeIframeFocus(iframe);
+        removeIframeFocus(iframeState);
       }
      }, 500);
 
