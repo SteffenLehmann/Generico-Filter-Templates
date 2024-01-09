@@ -143,6 +143,11 @@
   height: 100%;
 }
 
+.stateIndicatorMSFile {
+  height: 5px;
+  background-color: #E1E1E1;
+}
+
 .HeaderLinkMSFile {
   text-decoration: none;
   padding: 10px;

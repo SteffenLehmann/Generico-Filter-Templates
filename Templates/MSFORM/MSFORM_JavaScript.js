@@ -27,6 +27,7 @@ const exitFullscreenButton = document.getElementById('exitFullscreenButton'+@@AU
 const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
+const sharelink = document.getElementById('ShareLink'+@@AUTOID@@);
 
 
 // function calls to create the temlate on moodle
@@ -73,6 +74,7 @@ function onLoad(url){
             const embeddUrl = URLtoEmbedURL(url);
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
                 document.getElementById('Content'+@@AUTOID@@).src = ""+embeddUrl;
+                document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
                 // set the SameSite attribute for the cookies
                 //setSameSiteAttribute('None');
             };
@@ -219,3 +221,30 @@ document.addEventListener('backgroundColorChanged', (event) => {
       const newBackgroundColor = event.detail;
       setBackgrounColor(newBackgroundColor);
 });
+
+ // function to remove the iframe focus style
+ function removeIframeFocus(element) {
+      //element.style.outline = "transparent"; // or any other color you want
+      element.style.backgroundColor = "#E1E1E1";
+}
+// function to add the iframe focus style
+function addIframeFocus(element) {
+      //element.style.outline = '#f44646';
+      element.style.backgroundColor = "#468ff4";
+}
+
+//checks if the iframe has focus (fall back method)  
+window.setInterval(function() {
+      const iframeState = document.getElementById('stateIndicator'+@@AUTOID@@);
+      if (document.activeElement == document.getElementById('Content'+@@AUTOID@@)) {
+        addIframeFocus(iframeState);
+      } else {
+        removeIframeFocus(iframeState);
+      }
+     }, 500);
+
+// prevent event probagation
+const linkContainer = document.getElementById('Link-container'+@@AUTOID@@);
+linkContainer.addEventListener('click', function(event) {
+      event.stopPropagation();
+}, false);

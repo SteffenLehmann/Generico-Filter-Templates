@@ -142,6 +142,11 @@
   height: 100%;
 }
 
+.stateIndicatorMSStream {
+  height: 5px;
+  background-color: #E1E1E1;
+}
+
 .HeaderLinkMSStream {
   text-decoration: none;
   padding: 10px;

@@ -141,6 +141,11 @@
   height: 100%;
 }
 
+.stateIndicatorH5P{
+  height: 5px;
+  background-color: #E1E1E1;
+}
+
 .HeaderLinkH5P {
   text-decoration: none;
   padding: 10px;
