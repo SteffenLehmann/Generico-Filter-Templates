@@ -60,7 +60,7 @@ function createNameForSummary(nameforbutton, ID) {
       assignParent('stateIndicator', 'iframeContainer', 'Link-container', 'TemplateContainer');
   }
 }
-debugger;
+
 //function to assign the stateIndicator, iframecontainer and Link-container parent to the TemplateContainerGooglePub
 function assignParent(stateIndicator, iframeContainer, linkContainer, TemplateContainer) {
       /* const stateIndicatorToMove = document.getElementById(stateIndicator+@@AUTOID@@);
@@ -103,10 +103,6 @@ function setSameSiteAttribute(sameSiteValue) {
 
 // on load function e.g. when the Collapsible button is clicked
 function onLoad(embedurl, shareURL, downloadURL, summaryName){
-      console.log("summaryName is "+summaryName);
-      console.log("embedurl is "+embedurl);
-      console.log("shareURL is "+shareURL);
-      debugger;
       if (embedurl && summaryName) {
             hideEnterFullscreenButtonOnPresentation(embedURLArray[1]);
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {

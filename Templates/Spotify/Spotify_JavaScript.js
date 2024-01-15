@@ -29,10 +29,14 @@ assignHeaderLinks(url);
 let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
 
-onLoad(url);
+onLoad(url, summaryName);
 
-function onLoad(url) {
-  if (typeof(url) != 'undefined') {
+function onLoad(url, summaryName) {
+  if (url && summaryName) {
+    url = constructEmbedURL(url);
+    content.src= url;
+    setSameSiteAttribute('None');
+  } else if (url && !summaryName) {
     url = constructEmbedURL(url);
     content.src= url;
     setSameSiteAttribute('None');
@@ -40,7 +44,7 @@ function onLoad(url) {
 }
 
 function constructEmbedURL(URL){
-  if (typeof(URL) != 'undefined') {
+  if (URL) {
         URL = URL.split("/")[URL.split("/").length-1];
         URL = URL.split("?")[0];
         URL = "https://open.spotify.com/embed/episode/" + URL + "?utm_source=generator&theme=0"
@@ -48,11 +52,17 @@ function constructEmbedURL(URL){
   }
 }
 function createNameForSummary(name) {
-  if (typeof(name) != 'undefined') {
+  if (name) {
     detailsButton.textContent = "🎙️ "+ name; // set the name of the button containing the padlet board
-  } 
+  } else if (!name) {
+    const header = document.getElementById('HeaderContainer'+@@AUTOID@@).style.display = 'none';
+    assignParent('iframeContainer', 'TemplateContainer');
+  }
 }
-
+//function to assign the stateIndicator, iframecontainer and Link-container parent to the TemplateContainerGooglePub
+function assignParent(iframeContainer, TemplateContainer) {
+  document.getElementById(TemplateContainer+@@AUTOID@@).appendChild(document.getElementById(iframeContainer+@@AUTOID@@));
+}
 // function to assign the header links
 function assignHeaderLinks(url) {
   headerLink.href = ""+ url;
@@ -107,7 +117,7 @@ function setBackgrounColor(backGroundColor) {
         detailsButton.classList.remove('detailsCollapsibleDarkModeSpotify');
         headerLink.classList.add('HeaderLinkSpotify');
         headerLink.classList.remove('HeaderLinkDarkModeSpotify');
-        if (typeof(headerdownload) != 'undefined') {
+        if (headerdownload) {
               headerdownload.classList.add('HeaderLinkSpotify');
               headerdownload.classList.remove('HeaderLinkDarkModeSpotify');
         }
@@ -118,7 +128,7 @@ function setBackgrounColor(backGroundColor) {
         detailsButton.classList.remove('detailsCollapsibleSpotify');
         headerLink.classList.add('HeaderLinkDarkModeSpotify');
         headerLink.classList.remove('HeaderLinkSpotify');
-        if (typeof(headerdownload) != 'undefined') {
+        if (headerdownload) {
               headerdownload.classList.add('HeaderLinkDarkModeSpotify');
               headerdownload.classList.remove('HeaderLinkSpotify');
         }

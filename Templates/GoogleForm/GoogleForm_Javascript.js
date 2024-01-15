@@ -39,7 +39,7 @@ let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
 
 //hideEnterFullscreenButtonOnPresentation(downloadURL[1]);
-onLoad(dURL, embedURL);
+onLoad(dURL, embedURL, nameForSummary);
 
 
 // function to assign the header links
@@ -51,10 +51,21 @@ function assignHeaderLinks(url) {
 // creates the name for the template
 function createNameForSummary(nameforbutton) {
       let name = nameforbutton;
-      if (typeof(name) != 'undefined') {
+      if (name) {
             name = "📝 "+ name;
-      } 
-      detailsButton.textContent = name; // set the name of the button containing the padlet board
+            detailsButton.textContent = name; // set the name of the button containing the padlet board
+      } else if (!name) {
+            const header = document.getElementById('HeaderContainer'+@@AUTOID@@).style.display = 'none';
+            assignParent('stateIndicator', 'iframeContainer', 'Link-container', 'TemplateContainer');
+      }
+}
+
+function assignParent(stateIndicator, iframeContainer, linkContainer, TemplateContainer) {
+      const container = document.getElementById(TemplateContainer+@@AUTOID@@);
+      const MoveArray = [document.getElementById(stateIndicator+@@AUTOID@@), document.getElementById(iframeContainer+@@AUTOID@@), document.getElementById(linkContainer+@@AUTOID@@)];
+      for (let i = 0; i < MoveArray.length; i++) {
+            container.appendChild(MoveArray[i]);
+      }
 }
 
 // set the SameSite attribute for the cookies
@@ -71,15 +82,21 @@ function setSameSiteAttribute(sameSiteValue) {
     }
     
 // on load function e.g. when the Collapsible button is clicked
-function onLoad(url, embedURL){
-      if (typeof(url) != 'undefined') {
+function onLoad(url, embedURL, nameForSummary){
+      if (url && nameForSummary) {
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
-                document.getElementById('Content'+@@AUTOID@@).src = ""+embedURL;
-                document.getElementById('ShareLink'+@@AUTOID@@).href = ""+ url;
-                // set the SameSite attribute for the cookies
-                setSameSiteAttribute('None');
+                assignContent(url, embedURL);
             };
+      } else if (url && !nameForSummary) {
+            assignContent(url, embedURL);
       }
+}
+
+function assignContent(url, embedURL) {
+      document.getElementById('Content'+@@AUTOID@@).src = ""+embedURL;
+      document.getElementById('ShareLink'+@@AUTOID@@).href = ""+ url;
+      // set the SameSite attribute for the cookies
+      setSameSiteAttribute('None');
 }
 // hide the enter fullscreen button on if the iframe is a presentation
 function hideEnterFullscreenButtonOnPresentation(type) {
@@ -90,7 +107,7 @@ function hideEnterFullscreenButtonOnPresentation(type) {
 
 // function to construct the download URL
 function constructURLs(URL){
-      if(typeof(URL) != 'undefined') {
+      if(URL) {
             const ID = URL.split("/")[URL.split("/").length-2];
     
             const embedURL = 'https://drive.google.com/forms/d/e/' + ID + '/viewform?embedded=true';
@@ -240,9 +257,11 @@ document.addEventListener('backgroundColorChanged', (event) => {
 });
 
  // function to remove the iframe focus style
- function removeIframeFocus(element) {
-      //element.style.outline = "transparent"; // or any other color you want
-      element.style.backgroundColor = "#E1E1E1";
+ function removeIframeFocus(element, nameForSummary) {
+      if (!nameForSummary) {
+            element.style.backgroundColor = "transparent";
+            return;
+      } else element.style.backgroundColor = "#E1E1E1";
 }
 // function to add the iframe focus style
 function addIframeFocus(element) {
@@ -255,7 +274,7 @@ window.setInterval(function() {
       if (document.activeElement == document.getElementById('Content'+@@AUTOID@@)) {
         addIframeFocus(iframeState);
       } else {
-        removeIframeFocus(iframeState);
+        removeIframeFocus(iframeState, nameForSummary);
       }
      }, 500);
 // prevent event probagation

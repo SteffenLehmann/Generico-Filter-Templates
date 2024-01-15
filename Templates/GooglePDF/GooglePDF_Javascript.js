@@ -42,7 +42,7 @@ let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
 
 //hideEnterFullscreenButtonOnPresentation(downloadURL[1]);
-onLoad(dURL);
+onLoad(dURL, nameForSummary);
 
 
 // function to assign the header links
@@ -56,11 +56,22 @@ function assignHeaderLinks(url) {
 // creates the name for the template
 function createNameForSummary(nameforbutton) {
       let name = nameforbutton;
-      if (typeof(name) != 'undefined') {
+      if (name) {
             name = "📄 "+ name;
+            document.getElementById('detailsButton'+@@AUTOID@@).textContent = name; 
+      } else if (!name) {
+            const header = document.getElementById('HeaderContainer'+@@AUTOID@@).style.display = 'none';
+            assignParent('stateIndicator', 'iframeContainer', 'Link-container', 'TemplateContainer');
       }
-      document.getElementById('detailsButton'+@@AUTOID@@).textContent = name; 
-      //detailsButton.textContent = name; // set the name of the button containing the padlet board
+}
+
+function assignParent(stateIndicator, iframeContainer, linkContainer, TemplateContainer) {
+      const container = document.getElementById(TemplateContainer+@@AUTOID@@);
+      const MoveArray = [document.getElementById(stateIndicator+@@AUTOID@@), document.getElementById(iframeContainer+@@AUTOID@@), document.getElementById(linkContainer+@@AUTOID@@)];
+
+      for (let i = 0; i < MoveArray.length; i++) {
+            container.appendChild(MoveArray[i]);
+      }
 }
 
 // set the SameSite attribute for the cookies
@@ -77,17 +88,23 @@ function setSameSiteAttribute(sameSiteValue) {
     }
     
 // on load function e.g. when the Collapsible button is clicked
-function onLoad(url){
+function onLoad(url, nameForSummary){
       const urlArray = constructURLs(url);
-      if (typeof(url) != 'undefined') {
+      if (url && nameForSummary) {
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
-                document.getElementById('Content'+@@AUTOID@@).src = ""+urlArray[0];
-                document.getElementById('ShareLink'+@@AUTOID@@).href = ""+ url;
-                document.getElementById('Download'+@@AUTOID@@).href = ""+urlArray[1];
-                // set the SameSite attribute for the cookies
-                setSameSiteAttribute('None');
+                assignContent(url, urlArray);
             };
+      } else if (url && !nameForSummary) {
+            assignContent(url, urlArray);
       }
+}
+
+function assignContent(url, urlArray){
+      document.getElementById('Content'+@@AUTOID@@).src = ""+urlArray[0];
+      document.getElementById('ShareLink'+@@AUTOID@@).href = ""+ url;
+      document.getElementById('Download'+@@AUTOID@@).href = ""+urlArray[1];
+      // set the SameSite attribute for the cookies
+      setSameSiteAttribute('None');
 }
 // hide the enter fullscreen button on if the iframe is a presentation
 function hideEnterFullscreenButtonOnPresentation(type) {
@@ -98,7 +115,7 @@ function hideEnterFullscreenButtonOnPresentation(type) {
 
 // function to construct the download URL
 function constructURLs(URL){
-      if(typeof(URL) != 'undefined') {
+      if(URL) {
             const ID = URL.split("/")[URL.split("/").length-2];
     
             const embedURL = 'https://drive.google.com/file/d/' + ID + '/preview';
@@ -212,7 +229,7 @@ function setBackgrounColor(backGroundColor) {
             sharelink.classList.remove('LinkDarkModeGooglePDF');
             fullscreenButton.classList.add('LinkGooglePDF');
             fullscreenButton.classList.remove('LinkDarkModeGooglePDF');
-            if (typeof(headerdownload) != 'undefined') {
+            if (headerdownload) {
                   headerdownload.classList.add('HeaderLinkGooglePDF');
                   headerdownload.classList.remove('HeaderLinkDarkModeGooglePDF');
                   download.classList.add('LinkGooglePDF');
@@ -229,7 +246,7 @@ function setBackgrounColor(backGroundColor) {
             sharelink.classList.remove('LinkGooglePDF');
             fullscreenButton.classList.add('LinkDarkModeGooglePDF');
             fullscreenButton.classList.remove('LinkGooglePDF');
-            if (typeof(headerdownload) != 'undefined') {
+            if (headerdownload) {
                   headerdownload.classList.add('HeaderLinkDarkModeGooglePDF');
                   headerdownload.classList.remove('HeaderLinkGooglePDF');
                   download.classList.add('LinkDarkModeGooglePDF');
@@ -258,9 +275,11 @@ document.addEventListener('backgroundColorChanged', (event) => {
 });
 
  // function to remove the iframe focus style
- function removeIframeFocus(element) {
-      //element.style.outline = "transparent"; // or any other color you want
-      element.style.backgroundColor = "#E1E1E1";
+ function removeIframeFocus(element, nameForSummary) {
+      if (!nameForSummary) {
+            element.style.backgroundColor = "transparent";
+            return;
+      } else element.style.backgroundColor = "#E1E1E1";
 }
 // function to add the iframe focus style
 function addIframeFocus(element) {
@@ -272,7 +291,7 @@ function addIframeFocus(element) {
 window.setInterval(function() {
       const iframeState = document.getElementById('stateIndicator'+@@AUTOID@@);
       if (document.activeElement == document.getElementById('Content'+@@AUTOID@@)) {
-        addIframeFocus(iframeState);
+        addIframeFocus(iframeState, nameForSummary);
       } else {
         removeIframeFocus(iframeState);
       }

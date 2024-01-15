@@ -2,7 +2,6 @@
 // user input from Moodle
 const nameForSummary = getLongInput('@@Name: The name of the button that will contain the Miro board@@', "Name: The name of the button that will contain the Miro board", opts);
 const url = getLongInput('@@Miro share URL: Copy the browser link/URL of the Miro board you want to embed@@', "Miro share URL: Copy the browser link/URL of the Miro board you want to embed", opts);
-
 /* 
   function to get the user input from the generico object opts. 
   the original input and the bare input must be the same except for the @.
@@ -26,7 +25,6 @@ const details = document.getElementById('Details'+@@AUTOID@@);
 const detailsButton = document.getElementById('detailsButton'+@@AUTOID@@);
 const headerLink = document.getElementById('ShareLinkHeader'+@@AUTOID@@);
 const sharelink = document.getElementById('ShareLink'+@@AUTOID@@);
-
 // function calls to create the temlate on moodle
 createNameForSummary(nameForSummary);
 assignHeaderLinks(url);
@@ -36,7 +34,7 @@ const embedurl = constructURL(url);
 let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
 
-onLoad(url, embedurl);
+onLoad(url, embedurl, nameForSummary);
 
 // function to assign the header links
 function assignHeaderLinks(url) {
@@ -45,14 +43,28 @@ function assignHeaderLinks(url) {
 
 //creates the name for the template
 function createNameForSummary(name) {
-  if (typeof(name) != 'undefined') {
+  if (name) {
     name = "✏️ "+ name; // you can add emoji to the summary title here, e.g. 🎦
     detailsButton.textContent = name; // set the name of the button containing the padlet board
-  } 
+  } else if (!name) {
+    debugger;
+    const header = document.getElementById('HeaderContainer'+@@AUTOID@@).style.display = 'none';
+    assignParent('stateIndicator', 'iframeContainer', 'Link-container', 'TemplateContainer');
+  }
+}
+
+// function to assign the parent element
+function assignParent(stateIndicator, iframeContainer, linkContainer, TemplateContainer) {
+  const container = document.getElementById(TemplateContainer+@@AUTOID@@);
+  const MoveArray = [document.getElementById(stateIndicator+@@AUTOID@@), document.getElementById(iframeContainer+@@AUTOID@@), document.getElementById(linkContainer+@@AUTOID@@)];
+  debugger;
+  for (let i = 0; i < MoveArray.length; i++) {
+        container.appendChild(MoveArray[i]);
+  }
 }
 // construct the URL for the embed
 function constructURL(url) {
-  if (typeof(url) != 'undefined') {
+  if (url) {
     let embedurl =  "https://miro.com/app/live-embed/";
     const id = url.split("/")[url.split("/").length-2];
     embedurl += id + "/";
@@ -61,14 +73,20 @@ function constructURL(url) {
 }
 
 // on load function e.g. when the Collapsible button is clicked
-function onLoad(url, embedurl){
-    if(typeof(url, embedurl) != 'undefined'){
-        document.getElementById('Details'+@@AUTOID@@).onclick= function() {
-            document.getElementById('Content'+@@AUTOID@@).src = ""+embedurl;
-            document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
-            setSameSiteAttribute('None');
+function onLoad(url, embedurl, nameForSummary){
+    if(url && embedurl && nameForSummary){
+      document.getElementById('Details'+@@AUTOID@@).onclick= function() {
+        assignContent(url, embedurl);
     };
-  }
+  } else if (url && embedurl && !nameForSummary) {
+      assignContent(url, embedurl);
+  }   
+}
+
+function assignContent(url, embedurl) {
+  document.getElementById('Content'+@@AUTOID@@).src = ""+embedurl;
+  document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
+  setSameSiteAttribute('None');
 }
 // set the SameSite attribute for the cookies
 function setSameSiteAttribute(sameSiteValue) {
@@ -152,9 +170,12 @@ document.addEventListener('backgroundColorChanged', (event) => {
 });
 
   // function to remove the iframe focus style
-function removeIframeFocus(element) {
-  //element.style.outline = "transparent"; // or any other color you want
-  element.style.backgroundColor = "#E1E1E1";
+function removeIframeFocus(element, nameForSummary) {
+  if (!nameForSummary) {
+    element.style.backgroundColor = "#E1E1E1";
+      element.style.backgroundColor = "transparent";
+      return;
+    } else element.style.backgroundColor = "#E1E1E1";
 }
 // function to add the iframe focus style
 function addIframeFocus(element) {
@@ -168,7 +189,7 @@ window.setInterval(function() {
   if (document.activeElement == document.getElementById('Content'+@@AUTOID@@)) {
     addIframeFocus(iframeState);
   } else {
-    removeIframeFocus(iframeState);
+    removeIframeFocus(iframeState, nameForSummary);
   }
  }, 500);
 
