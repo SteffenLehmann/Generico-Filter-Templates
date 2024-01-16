@@ -42,7 +42,7 @@ let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
 
 //hideEnterFullscreenButtonOnPresentation(downloadURL[1]);
-onLoad(dURL, URLData, URLType);
+onLoad(dURL, URLData, URLType, nameForSummary);
 
 
 //returns an array of the URL
@@ -58,13 +58,24 @@ function assignHeaderLinks(url) {
 // creates the name for the template
 function createNameForSummary(inputName, type) {
       let name = inputName; // set the name of the button containing the padlet board
-      if (typeof(name) != undefined) {
-          if (type == 'pptx'){{name = "👩‍🏫 "+ name;}}
-          else if (type == 'docx'){{name = "📄 "+ name;}}
-          else if (type == 'xlsx'){{name = "📊 "+ name;}}
-          else if (type == 'vsdx'){{name = "✏️ "+ name;}}
-      } else {name = "Missing name"+ name;}
-      detailsButton.textContent = name;
+      if (name) {
+            if (type == 'pptx'){{name = "👩‍🏫 "+ name;}}
+            else if (type == 'docx'){{name = "📄 "+ name;}}
+            else if (type == 'xlsx'){{name = "📊 "+ name;}}
+            else if (type == 'vsdx'){{name = "✏️ "+ name;}}
+            detailsButton.textContent = name;
+      } else if (!name){
+            const header = document.getElementById('HeaderContainer'+@@AUTOID@@).style.display = 'none';
+            assignParent('stateIndicator', 'iframeContainer', 'Link-container', 'TemplateContainer');
+      }
+}
+
+function assignParent(stateIndicator, iframeContainer, linkContainer, TemplateContainer) {
+      const container = document.getElementById(TemplateContainer+@@AUTOID@@);
+      const MoveArray = [document.getElementById(stateIndicator+@@AUTOID@@), document.getElementById(iframeContainer+@@AUTOID@@), document.getElementById(linkContainer+@@AUTOID@@)];
+      for (let i = 0; i < MoveArray.length; i++) {
+            container.appendChild(MoveArray[i]);
+      }
 }
 
 // set the SameSite attribute for the cookies
@@ -81,16 +92,21 @@ function setSameSiteAttribute(sameSiteValue) {
     }
     
 // on load function e.g. when the Collapsible button is clicked
-function onLoad(url, URLData, type){
-      if (typeof(url) != 'undefined') {
+function onLoad(url, URLData, type, nameForSummary){
+      if (url && nameForSummary) {
             const embeddUrl = URLtoEmbedURL(URLData, type);
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
-                document.getElementById('Content'+@@AUTOID@@).src = ""+embeddUrl;
-                document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
-                // set the SameSite attribute for the cookies
-                //setSameSiteAttribute('None');
+                  assignContent(url, URLData, type);
             };
+      } else if (url && !nameForSummary) {
+            assignContent(url, URLData, type);
       }
+}
+
+function assignContent(url, URLData, type) {
+      const embeddUrl = URLtoEmbedURL(URLData, type);
+      document.getElementById('Content'+@@AUTOID@@).src = ""+embeddUrl;
+      document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
 }
 
 //returns the filetype of the URL given an array of the URL
@@ -276,9 +292,11 @@ document.addEventListener('backgroundColorChanged', (event) => {
 });
 
  // function to remove the iframe focus style
- function removeIframeFocus(element) {
-      //element.style.outline = "transparent"; // or any other color you want
-      element.style.backgroundColor = "#E1E1E1";
+ function removeIframeFocus(element, nameForSummary) {
+      if (!nameForSummary) {
+            element.style.backgroundColor = "transparent";
+            return;
+      } else element.style.backgroundColor = "#E1E1E1";
 }
 // function to add the iframe focus style
 function addIframeFocus(element) {
@@ -292,7 +310,7 @@ window.setInterval(function() {
       if (document.activeElement == document.getElementById('Content'+@@AUTOID@@)) {
         addIframeFocus(iframeState);
       } else {
-        removeIframeFocus(iframeState);
+        removeIframeFocus(iframeState, nameForSummary);
       }
      }, 500);
 

@@ -32,7 +32,7 @@ assignHeaderLinks(sharedURL);
 let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
 
-onLoad(sharedURL);
+onLoad(sharedURL, nameForSummary);
 
 // function to assign the header links
 function assignHeaderLinks(url) {
@@ -41,11 +41,23 @@ function assignHeaderLinks(url) {
 
 //creates the name for the template
 function createNameForSummary(name) {
-  if (typeof(name) != 'undefined') {
+  if (name) {
     name = "🎦 "+ name; // you can add emoji to the summary title here, e.g. 🎦
     detailsButton.textContent = name; // set the name of the button containing the padlet board
-  } 
+  } else if (!name){
+    document.getElementById('HeaderContainer'+@@AUTOID@@).style.display = 'none';
+    assignParent('stateIndicator', 'iframeContainer', 'Link-container', 'TemplateContainer');
+  }
 }
+//function to assign the stateIndicator, iframecontainer and Link-container parent to the TemplateContainerGooglePub
+function assignParent(stateIndicator, iframeContainer, linkContainer, TemplateContainer) {
+  const container = document.getElementById(TemplateContainer+@@AUTOID@@);
+  const MoveArray = [document.getElementById(stateIndicator+@@AUTOID@@), document.getElementById(iframeContainer+@@AUTOID@@), document.getElementById(linkContainer+@@AUTOID@@)];
+  for (let i = 0; i < MoveArray.length; i++) {
+        container.appendChild(MoveArray[i]);
+  }
+}
+
 
 // set the SameSite attribute for the cookies
 function setSameSiteAttribute(sameSiteValue) {
@@ -71,15 +83,21 @@ function constructEmbedURL(url) {
 }
 
 // on load function e.g. when the Collapsible button is clicked
-function onLoad(url){
-  const embedURL = constructEmbedURL(url);  
-  if (typeof (embedURL) != 'undefined') {
+function onLoad(url, nameForSummary){
+  if (url && nameForSummary) {
         document.getElementById('Details'+@@AUTOID@@).onclick= function() {
-            document.getElementById('Content'+@@AUTOID@@).src = ""+embedURL;
-            document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
-            setSameSiteAttribute('None');
+            assignContent(url);
         };
+    } else if (url && !nameForSummary) {
+      assignContent(url);
     }
+}
+
+function assignContent(url) {
+  const embedURL = constructEmbedURL(url);  
+  document.getElementById('Content'+@@AUTOID@@).src = ""+embedURL;
+  document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
+  setSameSiteAttribute('None');
 }
 
 // event listener for the details element state change
@@ -153,9 +171,11 @@ document.addEventListener('backgroundColorChanged', (event) => {
 });
 
  // function to remove the iframe focus style
- function removeIframeFocus(element) {
-  //element.style.outline = "transparent"; // or any other color you want
-  element.style.backgroundColor = "#E1E1E1";
+function removeIframeFocus(element, nameForSummary) {
+  if (!nameForSummary) {
+    element.style.backgroundColor = "transparent";
+    return;
+  } else element.style.backgroundColor = "#E1E1E1";
 }
 // function to add the iframe focus style
 function addIframeFocus(element) {
@@ -169,7 +189,7 @@ window.setInterval(function() {
   if (document.activeElement == document.getElementById('Content'+@@AUTOID@@)) {
     addIframeFocus(iframeState);
   } else {
-    removeIframeFocus(iframeState);
+    removeIframeFocus(iframeState, nameForSummary);
   }
  }, 500);
 

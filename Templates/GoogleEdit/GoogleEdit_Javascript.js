@@ -42,9 +42,7 @@ let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
 
 //hideEnterFullscreenButtonOnPresentation(downloadURL[1]);
-onLoad(dURL, downloadURL[0]);
-
-
+onLoad(dURL, downloadURL[0], nameForSummary);
 
 // function to assign the header links
 function assignHeaderLinks(url, downloadURL) {
@@ -52,20 +50,28 @@ function assignHeaderLinks(url, downloadURL) {
       headerdownload.href = ""+downloadURL;
 }
 
-
 // creates the name for the template
 function createNameForSummary(nameforbutton, ID) {
       let name = nameforbutton;
-      if (typeof(name) != 'undefined') {
+      if (name) {
             const summary = document.getElementById('detailsButton');
             if (ID == 'presentation'){{name = "👩‍🏫 "+ name;}}
             else if (ID == 'document'){{name = "📄 "+ name;}}
             else if (ID == 'forms'){{name = "📝 "+ name;}}
             else if (ID == 'spreadsheets'){{name = "📊 "+ name;}}
       detailsButton.textContent = name; // set the name of the button containing the padlet board
-  } 
+  } else if (!name) {
+      const header = document.getElementById('HeaderContainer'+@@AUTOID@@).style.display = 'none';
+      assignParent('stateIndicator', 'iframeContainer', 'Link-container', 'TemplateContainer');
+  }
 }
-
+function assignParent(stateIndicator, iframeContainer, linkContainer, TemplateContainer) {
+      const container = document.getElementById(TemplateContainer+@@AUTOID@@);
+      const MoveArray = [document.getElementById(stateIndicator+@@AUTOID@@), document.getElementById(iframeContainer+@@AUTOID@@), document.getElementById(linkContainer+@@AUTOID@@)];
+      for (let i = 0; i < MoveArray.length; i++) {
+            container.appendChild(MoveArray[i]);
+      }
+}
 // set the SameSite attribute for the cookies
 function setSameSiteAttribute(sameSiteValue) {
       const cookies = document.cookie.split(";");
@@ -80,17 +86,24 @@ function setSameSiteAttribute(sameSiteValue) {
     }
     
 // on load function e.g. when the Collapsible button is clicked
-function onLoad(url, downloadURL){
-      if (typeof(url) != 'undefined') {
+function onLoad(url, downloadURL, nameForSummary){
+      if (url && nameForSummary) {
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
-                document.getElementById('Content'+@@AUTOID@@).src = ""+url;
-                document.getElementById('ShareLink'+@@AUTOID@@).href = ""+ url;
-                document.getElementById('Download'+@@AUTOID@@).href = ""+downloadURL;
-                // set the SameSite attribute for the cookies
-                setSameSiteAttribute('None');
+                  assignContent(url, downloadURL);
             };
+      } else if (url && !nameForSummary) {
+            assignContent(url, downloadURL);
       }
 }
+
+function assignContent(url, downloadURL) {
+      document.getElementById('Content'+@@AUTOID@@).src = ""+url;
+      document.getElementById('ShareLink'+@@AUTOID@@).href = ""+ url;
+      document.getElementById('Download'+@@AUTOID@@).href = ""+downloadURL;
+      // set the SameSite attribute for the cookies
+      setSameSiteAttribute('None');
+}
+
 // hide the enter fullscreen button on if the iframe is a presentation
 function hideEnterFullscreenButtonOnPresentation(type) {
       if (type == 'presentation'){
@@ -100,7 +113,7 @@ function hideEnterFullscreenButtonOnPresentation(type) {
 
 // function to construct the download URL
 function constructDownloadURL(URL){
-      if(typeof(URL) != 'undefined') {
+      if(URL) {
             const downloadID = URL.split("/")[URL.split("/").length-2];
             const downloadType = URL.split("/")[URL.split("/").length-4];
             let downloadURL;
@@ -221,7 +234,7 @@ function setBackgrounColor(backGroundColor) {
             shareLink.classList.remove('LinkDarkModeGoogleEdit');
             fullscreenButton.classList.add('LinkGoogleEdit');
             fullscreenButton.classList.remove('LinkDarkModeGoogleEdit');
-            if (typeof(headerdownload) != 'undefined') {
+            if (headerdownload) {
                   headerdownload.classList.add('HeaderLinkGoogleEdit');
                   headerdownload.classList.remove('HeaderLinkDarkModeGoogleEdit');
                   downloadLink.classList.add('LinkGoogleEdit');
@@ -238,7 +251,7 @@ function setBackgrounColor(backGroundColor) {
             shareLink.classList.remove('LinkGoogleEdit');
             fullscreenButton.classList.add('LinkDarkModeGoogleEdit');
             fullscreenButton.classList.remove('LinkGoogleEdit');
-            if (typeof(headerdownload) != 'undefined') {
+            if (headerdownload) {
                   headerdownload.classList.add('HeaderLinkDarkModeGoogleEdit');
                   headerdownload.classList.remove('HeaderLinkGoogleEdit');
                   downloadLink.classList.add('LinkDarkModeGoogleEdit');
@@ -267,9 +280,11 @@ document.addEventListener('backgroundColorChanged', (event) => {
 });
 
  // function to remove the iframe focus style
- function removeIframeFocus(element) {
-      //element.style.outline = "transparent"; // or any other color you want
-      element.style.backgroundColor = "#E1E1E1";
+ function removeIframeFocus(element, summaryName) {
+      if (!summaryName) {
+            element.style.backgroundColor = "transparent";
+            return;
+      } else element.style.backgroundColor = "#E1E1E1";
 }
 // function to add the iframe focus style
 function addIframeFocus(element) {
@@ -283,7 +298,7 @@ window.setInterval(function() {
       if (document.activeElement == document.getElementById('Content'+@@AUTOID@@)) {
         addIframeFocus(iframeState);
       } else {
-        removeIframeFocus(iframeState);
+        removeIframeFocus(iframeState, nameForSummary);
       }
      }, 500);
 

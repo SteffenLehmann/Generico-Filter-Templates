@@ -34,7 +34,8 @@ const download = document.getElementById('Download'+@@AUTOID@@);
 // function calls to create the temlate on moodle
 const embedURLArray = constructEmbedURL(pURL);
 const downloadURL = constructDownloadURL(dURL);
-console.log("downloadURL "+downloadURL);
+
+
 createNameForSummary(summaryName, embedURLArray[1]);
 assignHeaderLinks(embedURLArray[0], dURL, downloadURL);
 
@@ -42,27 +43,43 @@ assignHeaderLinks(embedURLArray[0], dURL, downloadURL);
 let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
 
-onLoad(embedURLArray[0], dURL, downloadURL);
+onLoad(embedURLArray[0], dURL, downloadURL, summaryName);
 
 
 // creates the name for the template
 function createNameForSummary(nameforbutton, ID) {
       let name = nameforbutton;
-      if (typeof(name) != 'undefined') {
+      if (name) {
             if (ID == 'presentation'){{name = "👩‍🏫 "+ name;}}
             else if (ID == 'document'){{name = "📄 "+ name;}}
             else if (ID == 'forms'){{name = "📝 "+ name;}}
             else if (ID == 'spreadsheets'){{name = "📊 "+ name;}}
-      detailsButton.textContent = name; // set the name of the button containing the padlet board
-  } 
+            detailsButton.textContent = name; // set the name of the button containing the padlet board
+  } else if (!name) {
+      const header = document.getElementById('HeaderContainer'+@@AUTOID@@).style.display = 'none';
+      assignParent('stateIndicator', 'iframeContainer', 'Link-container', 'TemplateContainer');
+  }
+}
+
+//function to assign the stateIndicator, iframecontainer and Link-container parent to the TemplateContainerGooglePub
+function assignParent(stateIndicator, iframeContainer, linkContainer, TemplateContainer) {
+      /* const stateIndicatorToMove = document.getElementById(stateIndicator+@@AUTOID@@);
+      const iframeContainer = document.getElementById(iframeContainer+@@AUTOID@@);
+      const ContainerForLinks = document.getElementById(linkContainer+@@AUTOID@@); */
+      const container = document.getElementById(TemplateContainer+@@AUTOID@@);
+      const MoveArray = [document.getElementById(stateIndicator+@@AUTOID@@), document.getElementById(iframeContainer+@@AUTOID@@), document.getElementById(linkContainer+@@AUTOID@@)];
+      
+      for (let i = 0; i < MoveArray.length; i++) {
+            container.appendChild(MoveArray[i]);
+      }
 }
 
 // function to assign the header links
 function assignHeaderLinks(publishURL ,shareURL, downloadURL) {
-      if (typeof(shareURL) != 'undefined') {
+      if (shareURL) {
             headerLink.href = ""+ shareURL;
             headerdownload.href = ""+downloadURL;
-      } else if (typeof(publishURL) != 'undefined') {
+      } else if (publishURL) {
             headerLink.href = ""+ publishURL;
             hideDownloadButtons(shareURL);
       } else {
@@ -85,22 +102,29 @@ function setSameSiteAttribute(sameSiteValue) {
     }
 
 // on load function e.g. when the Collapsible button is clicked
-function onLoad(embedurl, shareURL, downloadURL){
-      if (typeof(embedurl) != 'undefined') {
+function onLoad(embedurl, shareURL, downloadURL, summaryName){
+      if (embedurl && summaryName) {
             hideEnterFullscreenButtonOnPresentation(embedURLArray[1]);
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
-                  document.getElementById('Content'+@@AUTOID@@).src = ""+embedurl;
-                  if (typeof(shareURL) != 'undefined') {
-                        sharelink.href = ""+shareURL;
-                        download.href = ""+downloadURL;
-                  } else {
-                        sharelink.href = ""+embedurl;
-                        sharelink.style.marginLeft = "auto";
-                        hideDownloadButtons(downloadURL);
-                  }
-                  setSameSiteAttribute('None');
+                  assignContent(embedurl, shareURL, downloadURL);
             };
+      } else if (embedurl && !summaryName) {
+            hideEnterFullscreenButtonOnPresentation(embedURLArray[1]);
+            assignContent(embedurl, shareURL, downloadURL);
       }
+}
+
+function assignContent(embedurl, shareURL, downloadURL) {
+      document.getElementById('Content'+@@AUTOID@@).src = ""+embedurl;
+      if (shareURL) {
+            sharelink.href = ""+shareURL;
+            download.href = ""+downloadURL;
+      } else {
+            sharelink.href = ""+embedurl;
+            sharelink.style.marginLeft = "auto";
+            hideDownloadButtons(downloadURL);
+      }
+      setSameSiteAttribute('None');
 }
 // hide the enter fullscreen button on if the iframe is a presentation
 function hideEnterFullscreenButtonOnPresentation(type) {
@@ -110,7 +134,7 @@ function hideEnterFullscreenButtonOnPresentation(type) {
 }
 
 function hideDownloadButtons(link) {
-      if (typeof(link) == 'undefined') {
+      if (!link) {
             download.style.display = 'none';
             headerdownload.style.display = 'none';
       }
@@ -118,7 +142,7 @@ function hideDownloadButtons(link) {
 
 // function to construct the embed URL
 function constructEmbedURL(URL){
-      if (typeof(URL) != 'undefined') {
+      if (URL) {
             const embedID = URL.split("/")[URL.split("/").length-2];
             const embedType = URL.split("/")[URL.split("/").length-5];
             let embedURL;
@@ -143,7 +167,7 @@ function constructEmbedURL(URL){
 }
 // function to construct the download URL
 function constructDownloadURL(URL){
-      if(typeof(URL) != 'undefined') {
+      if(URL) {
             const downloadID = URL.split("/")[URL.split("/").length-2];
             const downloadType = URL.split("/")[URL.split("/").length-4];
             let downloadURL;
@@ -183,7 +207,7 @@ function toggleSummary(event, dURL) {
         detailsButton.style.borderBottomRightRadius = '5px';
         detailsButton.style.borderBottomLeftRadius = '5px';
         headerLink.style.display = 'block';
-        if (typeof(dURL) != 'undefined') {
+        if (dURL) {
             headerdownload.style.display = 'block';
         }
       }
@@ -273,7 +297,7 @@ function setBackgrounColor(backGroundColor) {
             sharelink.classList.remove('LinkDarkModeGooglePub');
             fullscreenButton.classList.add('LinkGooglePub');
             fullscreenButton.classList.remove('LinkDarkModeGooglePub');
-            if (typeof(headerdownload) != 'undefined') {
+            if (headerdownload) {
                   headerdownload.classList.add('HeaderLinkGooglePub');
                   headerdownload.classList.remove('HeaderLinkDarkModeGooglePub');
                   download.classList.add('LinkGooglePub');
@@ -290,7 +314,7 @@ function setBackgrounColor(backGroundColor) {
             sharelink.classList.remove('LinkGooglePub');
             fullscreenButton.classList.add('LinkDarkModeGooglePub');
             fullscreenButton.classList.remove('LinkGooglePub');
-            if (typeof(headerdownload) != 'undefined') {
+            if (headerdownload) {
                   headerdownload.classList.add('HeaderLinkDarkModeGooglePub');
                   headerdownload.classList.remove('HeaderLinkGooglePub');
                   download.classList.add('LinkDarkModeGooglePub');
@@ -320,9 +344,11 @@ document.addEventListener('backgroundColorChanged', (event) => {
 
 
  // function to remove the iframe focus style
-function removeIframeFocus(element) {
-      //element.style.outline = "transparent"; // or any other color you want
-      element.style.backgroundColor = "#E1E1E1";
+function removeIframeFocus(element, summaryName) {
+      if (!summaryName) {
+            element.style.backgroundColor = "transparent";
+            return;
+      } else element.style.backgroundColor = "#E1E1E1";
 }
 // function to add the iframe focus style
 function addIframeFocus(element) {
@@ -336,7 +362,7 @@ window.setInterval(function() {
       if (document.activeElement == document.getElementById('Content'+@@AUTOID@@)) {
         addIframeFocus(iframeState);
       } else {
-        removeIframeFocus(iframeState);
+        removeIframeFocus(iframeState, summaryName);
       }
      }, 500);
 

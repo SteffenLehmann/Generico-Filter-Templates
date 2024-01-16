@@ -40,7 +40,7 @@ let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
 
 //hideEnterFullscreenButtonOnPresentation(downloadURL[1]);
-onLoad(dURL);
+onLoad(dURL, nameForSummary);
 
 
 
@@ -52,10 +52,23 @@ function assignHeaderLinks(url) {
 
 // creates the name for the template
 function createNameForSummary(name) {
-      name ="🎦 "+ name; // you can add emoji to the summary title here, e.g. 🎦
-      detailsButton.textContent = name; // set the name of the button containing the padlet board
+      if (name){
+            name ="🎦 "+ name; // you can add emoji to the summary title here, e.g. 🎦
+            detailsButton.textContent = name; // set the name of the button containing the padlet board
+      } else if (!name){
+            const header = document.getElementById('HeaderContainer'+@@AUTOID@@).style.display = 'none';
+            assignParent('stateIndicator', 'iframeContainer', 'Link-container', 'TemplateContainer');
+      }
 }
 
+function assignParent(stateIndicator, iframeContainer, linkContainer, templateContainer) {
+      const container = document.getElementById(templateContainer+@@AUTOID@@);
+      const MoveArray = [document.getElementById(stateIndicator+@@AUTOID@@), document.getElementById(iframeContainer+@@AUTOID@@), document.getElementById(linkContainer+@@AUTOID@@)];
+
+      for (let i = 0; i < MoveArray.length; i++) {
+            container.appendChild(MoveArray[i]);
+      }
+}
 // set the SameSite attribute for the cookies
 function setSameSiteAttribute(sameSiteValue) {
       const cookies = document.cookie.split(";");
@@ -70,16 +83,21 @@ function setSameSiteAttribute(sameSiteValue) {
     }
     
 // on load function e.g. when the Collapsible button is clicked
-function onLoad(url){
-      if (typeof(url) != 'undefined') {
-            const embeddUrl = URLtoEmbedURL(url);
+function onLoad(url, nameForSummary){
+      const embeddUrl = URLtoEmbedURL(url);
+      if (url && nameForSummary) {
             document.getElementById('Details'+@@AUTOID@@).onclick= function() {
-                document.getElementById('Content'+@@AUTOID@@).src = ""+embeddUrl;
-                document.getElementById('ShareLink'+@@AUTOID@@).href = ""+ url;
-                // set the SameSite attribute for the cookies
-                setSameSiteAttribute('None');
+                  assignContent(url, embeddUrl);
             };
+      } else if (url && !nameForSummary) {
+            assignContent(url, embeddUrl);
       }
+}
+function assignContent(url, embeddUrl) {
+      document.getElementById('Content'+@@AUTOID@@).src = ""+embeddUrl;
+      document.getElementById('ShareLink'+@@AUTOID@@).href = ""+ url;
+      // set the SameSite attribute for the cookies
+      setSameSiteAttribute('None');
 }
 
 function URLtoEmbedURL(URL) {
@@ -169,9 +187,11 @@ document.addEventListener('backgroundColorChanged', (event) => {
 });
 
  // function to remove the iframe focus style
- function removeIframeFocus(element) {
-      //element.style.outline = "transparent"; // or any other color you want
-      element.style.backgroundColor = "#E1E1E1";
+ function removeIframeFocus(element, nameForSummary) {
+      if (!nameForSummary) {
+            element.style.backgroundColor = "transparent";
+            return;
+      } else element.style.backgroundColor = "#E1E1E1";
 }
 // function to add the iframe focus style
 function addIframeFocus(element) {
@@ -185,7 +205,7 @@ window.setInterval(function() {
       if (document.activeElement == document.getElementById('Content'+@@AUTOID@@)) {
         addIframeFocus(iframeState);
       } else {
-        removeIframeFocus(iframeState);
+        removeIframeFocus(iframeState, nameForSummary);
       }
      }, 500);
 
