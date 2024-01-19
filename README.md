@@ -8,9 +8,9 @@
    - [Installation of Templates](#installation-of-templates)
 4. [Template overview](#template-overview)
    - [Supported Tools](#supported-tools)
-   - [Google Drive-based templates](#google-drive-based-templates)
-   - [Microsoft SharePoint](#microsoft-sharepoint)
-   - [Moodle and other tools](#moodle-and-other-tools)
+     - [Google Drive-based templates](#google-drive-based-templates)
+     - [Microsoft SharePoint](#microsoft-sharepoint)
+     - [Moodle and other tools](#moodle-and-other-tools)
 6. [Tailoring the Templates to Your Site](#tailoring-the-templates-to-your-site)
 
 
