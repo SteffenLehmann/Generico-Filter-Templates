@@ -34,10 +34,11 @@ The project was funded by Aalborg University, so some templates were discontinue
 ## Getting Started
 
 ### Prerequisites
-The templates require two plugins to be functional: 1. The Generico filter plugin and a Generico selector in the text editor; currently, Atto and Tiny are supported.
+The templates require two plugins to be functional: 
+1. The Generico filter plugin and a Generico selector in the text editor; currently, Atto and Tiny are supported.
 - [Generico Filter Plugin](https://moodle.org/plugins/filter_generico)
-- [Generico Atto Plugin](https://moodle.org/plugins/atto_generico)
-- [Generico Tiny Plugin](https://moodle.org/plugins/tiny_generico)
+- - [Generico Atto Plugin](https://moodle.org/plugins/atto_generico)
+- - [Generico Tiny Plugin](https://moodle.org/plugins/tiny_generico)
 
 ### Installation of Templates
 Templates can be installed using the bundles or by manually copying the sections of the template. Each template requires text or code in the following sections: Key, Name, Version, Instructions, Body, End Tag, Custom JS, Custom CSS.
