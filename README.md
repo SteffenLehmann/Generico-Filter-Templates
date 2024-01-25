@@ -35,9 +35,9 @@ The project was funded by Aalborg University, so some templates were discontinue
 
 ### Prerequisites
 The templates require two plugins to be functional: 
-1. The Generico filter plugin and 
-- [Generico Filter Plugin](https://moodle.org/plugins/filter_generico)
-- a Generico selector in the text editor; currently, Atto and Tiny are supported.
+1. The Generico filter plugin 
+[Generico Filter Plugin](https://moodle.org/plugins/filter_generico) and
+2. a Generico selector in the text editor; currently, Atto and Tiny are supported.
   - [Generico Atto Plugin](https://moodle.org/plugins/atto_generico)
   - [Generico Tiny Plugin](https://moodle.org/plugins/tiny_generico)
 
