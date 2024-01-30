@@ -115,7 +115,7 @@ function getType(URLData) {
         return URLData[URLData.length-1].split(".")[2].split("&")[0];
     } else if (URLData[7] == "Documents"||URLData[7] == "Shared%20Documents" ){
         return URLData[URLData.length-1].split(".")[1].split("?")[0];
-    } else { return console.log("URL not supported: could not parse the URL to identify the filetype. Pleas consult the tutorial.")}
+    } else { return console.log("URL not supported: could not parse the URL to identify the filetype. Please consult the tutorial.")} 
 }
 
 function URLtoEmbedURL(URLData, type) {
