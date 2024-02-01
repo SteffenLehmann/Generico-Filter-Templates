@@ -290,10 +290,11 @@ function addIframeFocus(element) {
 //checks if the iframe has focus (fall back method)  
 window.setInterval(function() {
       const iframeState = document.getElementById('stateIndicator'+@@AUTOID@@);
+      console.log("iframeState: "+iframeState);
       if (document.activeElement == document.getElementById('Content'+@@AUTOID@@)) {
-        addIframeFocus(iframeState, nameForSummary);
+        addIframeFocus(iframeState);
       } else {
-        removeIframeFocus(iframeState);
+        removeIframeFocus(iframeState, nameForSummary);
       }
      }, 500);
 

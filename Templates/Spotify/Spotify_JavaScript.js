@@ -96,7 +96,6 @@ details.addEventListener("toggle", (event) => {
     detailsButton.style.borderBottomRightRadius = '5px';
     detailsButton.style.borderBottomLeftRadius = '5px';
     headerLink.style.display = 'block';
-    content.pauseIframeAudio();
   }
 });
 
