@@ -57,7 +57,8 @@ Templates can be installed using the bundles or by manually copying the sections
 - Dark mode support
 - Built-in tutorials for each template: can be found in the instruction field when creating the template or using one of the two template selector plugins.
 - State options: If you leave the name field empty, the template will only show the iframe without the summary element.
-- Dynamic buttons based on the capability of the iframe
+- Dynamic buttons based on the capability of the iframe:
+   -  When all capabilities are available, the iframe will have the following buttons full-screen, link, and download. 
 
 ### Supported Tools
 
