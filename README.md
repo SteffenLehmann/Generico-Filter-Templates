@@ -46,7 +46,7 @@ Templates can be installed using the bundles or by manually copying the sections
 - **Key**: Template identifier
 - **Name**: Name in the generated text and the selector menu (Atto / Tiny)
 - **Version**: The version it was made in
-- **Instruction**: Text or [link to tutorials](https://docs.moodle.org/403/en/Installing_plugins#Installing_directly_from_the_Moodle_plugins_directory)
+- **Instruction**: Text or [link to tutorials](https://github.com/SteffenLehmann/Generico-Filter-Templates/tree/main/Tutorials)
 - **Body**: HTML field
 - **End** Tag: End of HTML code (only used in collapsible sections)
 - **Custom** JS: Used to dynamically change template content
