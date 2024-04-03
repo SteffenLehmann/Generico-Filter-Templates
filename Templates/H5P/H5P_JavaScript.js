@@ -242,7 +242,7 @@ linkContainer.addEventListener('click', function(event) {
        */
       actionHandlers.hello = function (iframe, data, respond) {
         // Make iframe responsive
-        //iframe.style.width = '80%';
+        iframe.style.width = '75%';
     
         // Bugfix for Chrome: Force update of iframe width. If this is not done the
         // document size may not be updated before the content resizes.
@@ -295,18 +295,6 @@ linkContainer.addEventListener('click', function(event) {
       actionHandlers.resize = function (iframe, data) {
             // Resize iframe so all content is visible. Use scrollHeight to make sure we get everything
             iframe.style.height = data.scrollHeight + 'px';
-
-            // Calculate the pixel equivalent of 53vh
-            const vhInPixels = window.innerHeight * 0.58;
-
-            // Assuming data.scrollHeight is already defined and holds the scroll height of an element
-            if (data.scrollHeight >= vhInPixels) {
-                  console.log("The data's scroll height is more than 53vh of the window.");
-                  iframe.style.width = '80%';
-            } else if (data.scrollHeight < vhInPixels) {
-                  console.log("The data's scroll height is less than 53vh of the window.");
-                  iframe.style.width = '100%';
-            } 
       };
     
       /**
