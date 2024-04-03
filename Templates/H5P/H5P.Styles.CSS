@@ -59,10 +59,9 @@
   border-color: #468ff4;
 }
 .present_wrapperH5P {
-  position: relative;
-  padding-bottom: 60 %;
-  overflow: hidden;
-  height: 58dvh;
+  background-color: black;
+  display: flex;
+  justify-content: center; 
 }
 
 .Link-containerH5P {
@@ -137,7 +136,7 @@
 }
 
 .IframeStyleH5P {
-  width: 100%;
+  width: 80%;
   height: 100%;
 }
 
