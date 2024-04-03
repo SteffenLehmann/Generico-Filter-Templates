@@ -1,4 +1,4 @@
-// Custom CSS
+/* Custom CSS */
 
 .TemplateContainerSurveyXact{
     width: 100%;
@@ -62,10 +62,8 @@
 }
 .present_wrapperSurveyXact {
     position: relative;
-    padding-bottom: 60 %;
     overflow: hidden;
     height: 58dvh;
-    padding-left: 0 !important;
 }
 
 .Link-containerSurveyXact{
