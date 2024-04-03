@@ -121,7 +121,6 @@ details.addEventListener("toggle", (event) => {
         detailsButton.style.borderBottomRightRadius = '0px';
         detailsButton.style.borderBottomLeftRadius = '0px';
         headerLink.style.display = 'none';
-
       } else {
         /* the element was toggled closed */
         detailsButton.style.backgroundColor = '';
@@ -215,23 +214,7 @@ linkContainer.addEventListener('click', function(event) {
       event.stopPropagation();
 }, false);
 
-// function to adjust the iframe size
-function adjustIframeSize() {
-      var iframe = document.getElementById('Content'+@@AUTOID@@);
-      if (iframe) {
-            // Calculate the maximum height based on viewport height and desired aspect ratio
-            var maxHeight = window.innerHeight * 0.65; // 58vh
-            console.log("maxHeight " +maxHeight);
-            // Set the maximum height of the iframe
-            iframe.style.maxHeight = maxHeight + 'px';
-    
-            // Calculate the width based on the aspect ratio and maximum height
-            var aspectRatioWidth = maxHeight * (16 / 9); // Assuming a 16:9 aspect ratio
-    
-            // Set the width of the iframe to ensure it maintains the aspect ratio
-            iframe.style.width = aspectRatioWidth + 'px';
-        }
-  }
+
   
   // Call the adjustIframeSize function when the iframe's content is fully loaded
 //window.onload = adjustIframeSize;
@@ -259,12 +242,12 @@ function adjustIframeSize() {
        */
       actionHandlers.hello = function (iframe, data, respond) {
         // Make iframe responsive
-        iframe.style.width = '80%';
+        //iframe.style.width = '80%';
     
         // Bugfix for Chrome: Force update of iframe width. If this is not done the
         // document size may not be updated before the content resizes.
         iframe.getBoundingClientRect();
-    
+        
         // Tell iframe that it needs to resize when our window resizes
         var resize = function () {
           if (iframe.contentWindow) {
@@ -310,8 +293,20 @@ function adjustIframeSize() {
        * @param {Function} respond Send a response to the iframe
        */
       actionHandlers.resize = function (iframe, data) {
-        // Resize iframe so all content is visible. Use scrollHeight to make sure we get everything
-        iframe.style.height = data.scrollHeight + 'px';
+            // Resize iframe so all content is visible. Use scrollHeight to make sure we get everything
+            iframe.style.height = data.scrollHeight + 'px';
+
+            // Calculate the pixel equivalent of 53vh
+            const vhInPixels = window.innerHeight * 0.58;
+
+            // Assuming data.scrollHeight is already defined and holds the scroll height of an element
+            if (data.scrollHeight >= vhInPixels) {
+                  console.log("The data's scroll height is more than 53vh of the window.");
+                  iframe.style.width = '80%';
+            } else if (data.scrollHeight < vhInPixels) {
+                  console.log("The data's scroll height is less than 53vh of the window.");
+                  iframe.style.width = '100%';
+            } 
       };
     
       /**
