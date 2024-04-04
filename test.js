@@ -44,9 +44,19 @@ function constructEmbedURL(URL){
     }
 }
 
-url = "https://docs.google.com/presentation/d/1ljRV7RAmqV0yiGVdVsSOH0IwVCIydnnp4A-FGp8fcyk/edit#slide=id.p1"
-embed = constructEmbedURL("https://docs.google.com/presentation/d/e/2PACX-1vSP7GCc_FIAGlaehLt1fWQm0X9HZpijYf4JqRir-PbyT7D3DgQaoEE_mgSxZ5u3ku--jcvZCbu3N82I/embed?start=false&loop=false&delayms=3000");
+function constructFolderEmbedURL(URL, viewType){
+    if (URL) {
+              const folderID = URL.split("/")[URL.split("/").length-1];
+              const folderURL = "https://drive.google.com/embeddedfolderview?id=" + folderID + "#"+viewType;
+              return folderURL;
+      }
+}
+
+folderURL = "https://drive.google.com/drive/u/0/folders/1xdkZkqGQoarP02yKrQvpU1StTfGGgMzU"
+url = "https://docs.google.com/presentation/d/1c-Sl79GI8MntP7d-bvtZa8q8BUMpbtjbXm0dtytQFdU/edit#slide=id.p2"
+embed = constructEmbedURL("https://docs.google.com/presentation/d/e/2PACX-1vSkILJv4OJoG7_sZFgqpkhowRWnB0kH-a3RFRLG0MLkcZD3IzlmW1W5FnSkGjMsncEMeb58q3H_RVFR/pub?start=false&loop=false&delayms=3000");
 console.log(embed[0]);
 console.log(constructDownloadURL(url));
-
+//console.log(constructFolderEmbedURL(folderURL, "grid"));
 //<script src="https://hk.moodle.aau.dk/mod/hvp/library/js/h5p-resizer.js" charset="UTF-8"></script>
+
