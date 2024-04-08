@@ -52,9 +52,9 @@ function constructFolderEmbedURL(URL, viewType){
       }
 }
 
-folderURL = "https://drive.google.com/drive/u/0/folders/1xdkZkqGQoarP02yKrQvpU1StTfGGgMzU"
-url = "https://docs.google.com/presentation/d/1c-Sl79GI8MntP7d-bvtZa8q8BUMpbtjbXm0dtytQFdU/edit#slide=id.p2"
-embed = constructEmbedURL("https://docs.google.com/presentation/d/e/2PACX-1vSkILJv4OJoG7_sZFgqpkhowRWnB0kH-a3RFRLG0MLkcZD3IzlmW1W5FnSkGjMsncEMeb58q3H_RVFR/pub?start=false&loop=false&delayms=3000");
+folderURL = "https://drive.google.com/drive/u/2/folders/1zWF8T9a8hS9XxbAx7fyUIXpgNNhk_1aO"
+url = "https://docs.google.com/presentation/d/1gAA2awM4Btq99kJwbIvQGzBOsBEmFQf1gi7GwEjxSwg/edit#slide=id.p1"
+embed = constructEmbedURL("https://docs.google.com/presentation/d/e/2PACX-1vROUZdtMs9wsg3d7xazDkCMihLC5l6Cz0Vn9WIkoyoinly1fW_uUvJWehTibV-tdP583LIIslTGdNge/embed?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.p33#slide=id.p33");
 console.log(embed[0]);
 console.log(constructDownloadURL(url));
 //console.log(constructFolderEmbedURL(folderURL, "grid"));
