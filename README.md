@@ -17,7 +17,7 @@
 ### Description
 The repository contains a set of different templates for Moodle that utilize the Generico filter plugin to insert custom code (HTML, JS, and CSS) enabling the embedding of external digital tools in Moodle.
 
-The project was funded by Aalborg University, so some templates were discontinued due to policies at the university, and all templates are designed to be similar to the space theme. The bundle and template folders contain the templates that are ready to use and include all features. The legacy folder contains the first generation of templates created in the Human-Machine Interaction Research Unit at Aalborg University. Templates marked as !done are templates for digital tools that are no longer supported at Aalborg University.
+The project was funded by Aalborg University, so some templates were discontinued due to policies at the university, and all templates are designed to be similar to the space theme design. The bundle and template folders contain the templates that are ready to use and include all features. You just need to point your Moodle administrators to this repository to install the templates (after having installed the Generico plugin). The legacy folder contains the first generation of templates created in the Human-Machine Interaction Research Unit at Aalborg University. Templates marked as !done are templates for digital tools that are no longer supported at Aalborg University.
 
 ### Usage Examples
 <table style="margin-left: auto; margin-right: auto; border: none;">
