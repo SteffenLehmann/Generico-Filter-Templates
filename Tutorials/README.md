@@ -1,5 +1,5 @@
 Below, find all links to the avaiable tutorial files:
-* [Collapsible buttone](https://docs.google.com/presentation/d/1LKKPFnuEAW9QdYYh4xpWjYO8bzGfkxcC5FDYozd6xdY/edit?usp=sharing)
+* [Collapsible button](https://docs.google.com/presentation/d/1LKKPFnuEAW9QdYYh4xpWjYO8bzGfkxcC5FDYozd6xdY/edit?usp=sharing)
 * [Google Edit](https://docs.google.com/presentation/d/1h7dvjoAZgfpy3J6lBBZ3eXtkqg_Usua7CVnvAAXCYyI/edit?usp=sharing)
 * [Google Form](https://docs.google.com/presentation/d/1F9wWWxAHhrrJwj8WBoQQX2z3UjwUzO68c6ZOvBuAXGo/edit?usp=sharing)
 * [Google PDF](https://docs.google.com/presentation/d/1lBw8IYwDVDmZRWJWq0spttt9sTlvUQA9YkOASgS9yXc/edit?usp=sharing)
