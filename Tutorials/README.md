@@ -1,1 +1,17 @@
-In here, you will find a list of all tutorial files available
+Below, find all links to the avaiable tutorial files;
+* [Collapsible buttone](https://docs.google.com/presentation/d/1LKKPFnuEAW9QdYYh4xpWjYO8bzGfkxcC5FDYozd6xdY/edit?usp=sharing)
+* [Google Edit](https://docs.google.com/presentation/d/1h7dvjoAZgfpy3J6lBBZ3eXtkqg_Usua7CVnvAAXCYyI/edit?usp=sharing)
+* [Google Form](https://docs.google.com/presentation/d/1F9wWWxAHhrrJwj8WBoQQX2z3UjwUzO68c6ZOvBuAXGo/edit?usp=sharing)
+* [Google PDF](https://docs.google.com/presentation/d/1lBw8IYwDVDmZRWJWq0spttt9sTlvUQA9YkOASgS9yXc/edit?usp=sharing)
+* [Google Publish to Web](https://docs.google.com/presentation/d/1CWTeE_pSm0D1yQtdfkmUWKwo12oLi52BodM7QgWr2L0/edit?usp=sharing)
+* [H5P](https://docs.google.com/presentation/d/1BA6XdpRtpzyQZGpof9ts73GC7tE6ADjQq1sPT5X1l0w/edit?usp=sharing)
+* [MS Form](https://docs.google.com/presentation/d/1J2iWYfHSY6UUlpGU_ZEgfeAn2OcQD97QIWKNQbBQdb0/edit?usp=sharing)
+* [MS Files](https://docs.google.com/presentation/d/14Qvdaa4ij40je-IY4uR9A0VvNbVCQ-iFYUZ4SpibeXM/edit?usp=sharing)
+* [MS PDF](https://docs.google.com/presentation/d/1HHjv0UVFoHQ3CZR4hT1riWJKpEVIyVt5HfW9UsfQZu8/edit?usp=sharing)
+* [MS Stream](https://docs.google.com/presentation/d/1de7w9Zruue0Zfvc8WWKsP_Q9VudFLFOnTpo65uDR0co/edit?usp=sharing)
+* [Miro](https://docs.google.com/presentation/d/1pHBQrr71b8DY59ArahOlo95FSbhYyVdq4gjkDaOnBhQ/edit?usp=sharing)
+* [Panopto](https://docs.google.com/presentation/d/1xzJB5MQJVijzVgazFE_hE0kTAPVXzDdHjC9rEicTLsQ/edit?usp=sharing)
+* [Spotify](https://docs.google.com/presentation/d/1dDsGGWCHyClYufui9atfEh9bfyjT_1qjXaZJh1m8Q-4/edit?usp=sharing)
+* [SurveyXact](https://docs.google.com/presentation/d/17lKyv9dVu3O6bXxQ9POAY8Qo0i1YKBgde30OGcTM-2o/edit?usp=sharing)
+* [URL](https://docs.google.com/presentation/d/1D680fXwJwUgBsKa1hcTA3-CLCJ7xDXzJrqns7U50sKk/edit?usp=sharing)
+* [YouTube](https://docs.google.com/presentation/d/1aZqmlGOCRAPeV7t5A-dFcDxZiRubekJFDaCyYs8SEAA/edit?usp=sharing)
