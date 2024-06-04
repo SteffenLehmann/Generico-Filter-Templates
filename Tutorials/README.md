@@ -13,5 +13,6 @@ Below, find all links to the avaiable tutorial files (as Google slides):
 * [Panopto](https://docs.google.com/presentation/d/1xzJB5MQJVijzVgazFE_hE0kTAPVXzDdHjC9rEicTLsQ/edit?usp=sharing)
 * [Spotify](https://docs.google.com/presentation/d/1dDsGGWCHyClYufui9atfEh9bfyjT_1qjXaZJh1m8Q-4/edit?usp=sharing)
 * [SurveyXact](https://docs.google.com/presentation/d/17lKyv9dVu3O6bXxQ9POAY8Qo0i1YKBgde30OGcTM-2o/edit?usp=sharing)
-* [URL](https://docs.google.com/presentation/d/1D680fXwJwUgBsKa1hcTA3-CLCJ7xDXzJrqns7U50sKk/edit?usp=sharing)
+* [URL](https://docs.google.com/presentation/d/1zMHLSxnm8sWhzJjMddXzeyfAQ14fuvc55x9U0NYjb5o/edit?usp=sharing)
 * [YouTube](https://docs.google.com/presentation/d/1aZqmlGOCRAPeV7t5A-dFcDxZiRubekJFDaCyYs8SEAA/edit?usp=sharing)
+
