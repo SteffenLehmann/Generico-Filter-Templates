@@ -144,21 +144,21 @@ function hideDownloadButtons(link) {
 function constructEmbedURL(URL){
       if (URL) {
             const embedID = URL.split("/")[URL.split("/").length-2];
-            const embedType = URL.split("/")[URL.split("/").length-5];
+            const embedType = URL.split("/")[URL.split("/").length-4];
             let embedURL;
             let embedURLend;
             
             if (embedType == "presentation"){
-                  embedURL =  "https://docs.google.com/presentation/d/e/";
+                  embedURL =  "https://docs.google.com/presentation/d/";
                   embedURLend = "/embed?start=false&loop=false&delayms=3000";
             } else if (embedType == "document"){
-                  embedURL =  "https://docs.google.com/document/d/e/";
+                  embedURL =  "https://docs.google.com/document/d/";
                   embedURLend = "/pub?embedded=true";
             } else if (embedType == "forms"){
-                  embedURL =  "https://docs.google.com/forms/d/e/";
+                  embedURL =  "https://docs.google.com/forms/d/";
                   embedURLend = "/viewform?embedded=true";
             } else if (embedType == "spreadsheets"){
-                  embedURL =  "https://docs.google.com/spreadsheets/d/e/";
+                  embedURL =  "https://docs.google.com/spreadsheets/d/";
                   embedURLend = "/pubhtml?widget=true&amp;headers=false";
             }
             const embeddedURL = embedURL + embedID + embedURLend;
