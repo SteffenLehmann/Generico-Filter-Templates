@@ -140,30 +140,38 @@ function hideDownloadButtons(link) {
       }
 }
 
-// function to construct the embed URL
-function constructEmbedURL(URL){
-      if (URL) {
-            const embedID = URL.split("/")[URL.split("/").length-2];
-            const embedType = URL.split("/")[URL.split("/").length-4];
-            let embedURL;
-            let embedURLend;
-            
-            if (embedType == "presentation"){
-                  embedURL =  "https://docs.google.com/presentation/d/";
-                  embedURLend = "/embed?start=false&loop=false&delayms=3000";
-            } else if (embedType == "document"){
-                  embedURL =  "https://docs.google.com/document/d/";
-                  embedURLend = "/pub?embedded=true";
-            } else if (embedType == "forms"){
-                  embedURL =  "https://docs.google.com/forms/d/";
-                  embedURLend = "/viewform?embedded=true";
-            } else if (embedType == "spreadsheets"){
-                  embedURL =  "https://docs.google.com/spreadsheets/d/";
-                  embedURLend = "/pubhtml?widget=true&amp;headers=false";
-            }
-            const embeddedURL = embedURL + embedID + embedURLend;
-            return [embeddedURL, embedType];
-      }
+function constructEmbedURL(URL) {
+    if (URL) {
+        let embedID, embedType, embedURL, embedURLend;
+
+        // Determine if the URL contains "/d/e/" or "/d/"
+        if (URL.includes("/d/e/")) {
+            embedID = URL.split("/")[URL.split("/").length - 2];
+            embedType = URL.split("/")[URL.split("/").length - 5];
+            // Use /d/e/ in the final embed URL
+            embedURL = `https://docs.google.com/${embedType}/d/e/`;
+        } else if (URL.includes("/d/")) {
+            embedID = URL.split("/")[URL.split("/").length - 2];
+            embedType = URL.split("/")[URL.split("/").length - 4];
+            // Use /d/ in the final embed URL
+            embedURL = `https://docs.google.com/${embedType}/d/`;
+        }
+
+        // Set the appropriate URL ending based on the type of document
+        if (embedType == "presentation") {
+            embedURLend = "/embed?start=false&loop=false&delayms=3000";
+        } else if (embedType == "document") {
+            embedURLend = "/pub?embedded=true";
+        } else if (embedType == "forms") {
+            embedURLend = "/viewform?embedded=true";
+        } else if (embedType == "spreadsheets") {
+            embedURLend = "/pubhtml?widget=true&amp;headers=false";
+        }
+
+        // Construct and return the final embedded URL along with the type
+        const embeddedURL = embedURL + embedID + embedURLend;
+        return [embeddedURL, embedType];
+    }
 }
 // function to construct the download URL
 function constructDownloadURL(URL){
