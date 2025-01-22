@@ -68,18 +68,6 @@ function assignParent(stateIndicator, iframeContainer, linkContainer, TemplateCo
             container.appendChild(MoveArray[i]);
       }
 }
-// set the SameSite attribute for the cookies
-function setSameSiteAttribute(sameSiteValue) {
-      const cookies = document.cookie.split(";");
-    
-      for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i].trim();
-        const [name, value] = cookie.split("=");
-    
-        // Set the cookie with the desired SameSite attribute
-        document.cookie = `${name}=${value}; SameSite=${sameSiteValue}; Secure`;
-      }
-    }
     
 // on load function e.g. when the Collapsible button is clicked
 function onLoad(url, nameForSummary){
@@ -95,8 +83,6 @@ function onLoad(url, nameForSummary){
 function assignContent(url){
       document.getElementById('Content'+@@AUTOID@@).src = ""+url;
       document.getElementById('ShareLink'+@@AUTOID@@).href = ""+ url;
-      // set the SameSite attribute for the cookies
-      setSameSiteAttribute('None');
 }
 // hide the enter fullscreen button on if the iframe is a presentation
 function hideEnterFullscreenButtonOnPresentation(type) {
