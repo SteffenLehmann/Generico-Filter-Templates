@@ -1,4 +1,4 @@
-.detailsCollapsible {
+.collapsibleSection {
   cursor: pointer;
   padding: 10px;
   border: none;
@@ -17,15 +17,15 @@
   border: 2px solid transparent;
 }
 
-.detailsCollapsible:hover {
+.collapsibleSection:hover {
   background-color: #E1E1E1;
   color: #3357c2;
 }
 
-.detailsCollapsible:focus-visible {
+.collapsibleSection:focus-visible {
   border-color: #468ff4;
 }
-.detailsCollapsibleDarkMode {
+.collapsibleSectionDarkMode {
   cursor: pointer;
   padding: 10px;
   border: none;
@@ -43,12 +43,12 @@
   border: 2px solid transparent;
 }
 
-.detailsCollapsibleDarkMode:hover {
+.collapsibleSectionDarkMode:hover {
   background-color: #E1E1E1;
   color: #3357c2;
 }
 
-.detailsCollapsibleDarkMode:focus-visible {
+.collapsibleSectionDarkMode:focus-visible {
   border-color: #468ff4;
 }
 

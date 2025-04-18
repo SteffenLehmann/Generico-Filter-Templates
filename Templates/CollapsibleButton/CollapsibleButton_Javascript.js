@@ -33,19 +33,19 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {   
   if (backGroundColor == "rgb(255, 255, 255)") {
-    if (detailsButton.classList.contains("detailsCollapsible")) {
+    if (detailsButton.classList.contains("collapsibleSection")) {
       return;
     }
     // Light mode
-    detailsButton.classList.add("detailsCollapsible");
-    detailsButton.classList.remove("detailsCollapsibleDarkMode");
+    detailsButton.classList.add("collapsibleSection");
+    detailsButton.classList.remove("collapsibleSectionDarkMode");
   } else if (backGroundColor == "rgb(25, 26, 30)") {
-    if (detailsButton.classList.contains("detailsCollapsibleDarkMode")) {
+    if (detailsButton.classList.contains("collapsibleSectionDarkMode")) {
       return;
     }
     // Dark mode
-    detailsButton.classList.add("detailsCollapsibleDarkMode");
-    detailsButton.classList.remove("detailsCollapsible");
+    detailsButton.classList.add("collapsibleSectionDarkMode");
+    detailsButton.classList.remove("collapsibleSection");
   }
 }
 
