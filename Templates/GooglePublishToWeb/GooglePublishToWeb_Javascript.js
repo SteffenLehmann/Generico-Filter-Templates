@@ -37,13 +37,13 @@ const downloadURL = constructDownloadURL(dURL);
 
 
 createNameForSummary(summaryName, embedURLArray[1]);
-assignHeaderLinks(embedURLArray[0], dURL, downloadURL);
+assignHeaderLinks(embedURLArray[0], pURL, downloadURL);
 
 // check the background color of the page
 let previouisBackgroundColor = getBackgroundColor();
 setBackgrounColor(previouisBackgroundColor);
 
-onLoad(embedURLArray[0], dURL, downloadURL, summaryName);
+onLoad(embedURLArray[0], pURL, downloadURL, summaryName);
 
 
 // creates the name for the template
@@ -86,7 +86,7 @@ function assignHeaderLinks(publishURL ,shareURL, downloadURL) {
             headerLink.style.display = 'none';
             hideDownloadButtons(shareURL);
       }
-    }
+}
 
 // on load function e.g. when the Collapsible button is clicked
 function onLoad(embedurl, shareURL, downloadURL, summaryName){
