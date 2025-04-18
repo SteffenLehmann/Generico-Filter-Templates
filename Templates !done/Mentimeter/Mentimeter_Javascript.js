@@ -78,19 +78,6 @@ function reNamePresentationName(name) {
     return name;
 }
 
-// set the SameSite attribute for the cookies
-function setSameSiteAttribute(sameSiteValue) {
-  const cookies = document.cookie.split(";");
-
-  for (let i = 0; i < cookies.length; i++) {
-    const cookie = cookies[i].trim();
-    const [name, value] = cookie.split("=");
-
-    // Set the cookie with the desired SameSite attribute
-    document.cookie = `${name}=${value}; SameSite=${sameSiteValue}; Secure`;
-  }
-}
-
 // function to construct the embed and download url
 function constructURLS(url) {
   if (typeof (url) != 'undefined') {
@@ -110,7 +97,7 @@ function onLoad(url, embedURL, resultURL) {
             } else {
               document.getElementById('Download'+@@AUTOID@@).style.display = 'none';
             }
-            setSameSiteAttribute('None');
+            
         };
     };
 }

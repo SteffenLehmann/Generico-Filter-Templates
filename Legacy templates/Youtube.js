@@ -27,7 +27,7 @@ if(typeof(YTurl) != 'undefined'){
 
 // Custom CSS
 .detailsCollapsible{
-    pointer: cursor; 
+    cursor: pointer;
     padding: 5px; 
     width: 100%; 
     border: none; 

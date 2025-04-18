@@ -4,7 +4,7 @@
 }
 
 .detailsCollapsibleGooglePub{
-    pointer: cursor; 
+    cursor: pointer; 
     padding: 10px; 
     border: none; 
     text-align: left; 
@@ -32,7 +32,7 @@
     border-color: #468ff4;
 }
 .detailsCollapsibleDarkModeGooglePub{
-    pointer: cursor; 
+    cursor: pointer;
     padding: 10px; 
     border: none; 
     text-align: left; 
@@ -60,10 +60,10 @@
 }
 .present_wrapperGooglePub {
     position: relative;
-    padding-bottom: 60 %;
+    padding-bottom: 60%;
     overflow: hidden;
     height: 58dvh;
-    padding_left: 0px;
+    padding-left: 0px;
 }
 
 .Link-containerGooglePub{

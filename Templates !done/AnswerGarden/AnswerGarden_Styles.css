@@ -4,7 +4,7 @@
 }
 
 .detailsCollapsibleAG{
-    pointer: cursor; 
+    cursor: pointer;
     padding: 10px; 
     border: none; 
     text-align: left; 
@@ -31,7 +31,7 @@
     border-color: #468ff4;
 }
 .detailsCollapsibleDarkModeAG{
-    pointer: cursor; 
+    cursor: pointer;
     padding: 10px; 
     border: none; 
     text-align: left; 

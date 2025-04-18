@@ -5,7 +5,7 @@
 }
 
 .detailsCollapsible{
-    pointer: cursor; 
+    cursor: pointer;
     padding: 10px; 
     border: none; 
     text-align: left; 
@@ -27,7 +27,7 @@
 }
 
 .detailsCollapsibleDarkMode{
-    pointer: cursor; 
+    cursor: pointer;
     padding: 10px; 
     border: none; 
     text-align: left; 

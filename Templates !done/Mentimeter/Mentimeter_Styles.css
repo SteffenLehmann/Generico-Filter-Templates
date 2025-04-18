@@ -6,7 +6,7 @@
 }
 
 .detailsCollapsibleMentimeter{
-    pointer: cursor; 
+    cursor: pointer;
     padding: 10px; 
     border: none; 
     text-align: left; 
@@ -34,7 +34,7 @@
     border: 2px solid #468ff4;
 }
 .detailsCollapsibleDarkModeMentimeter{
-    pointer: cursor; 
+    cursor: pointer;
     padding: 10px; 
     border: none; 
     text-align: left; 
