@@ -78,19 +78,6 @@ function assignParent(stateIndicator, iframeContainer, linkContainer, TemplateCo
       }
 }
 
-// set the SameSite attribute for the cookies
-function setSameSiteAttribute(sameSiteValue) {
-      const cookies = document.cookie.split(";");
-    
-      for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i].trim();
-        const [name, value] = cookie.split("=");
-    
-        // Set the cookie with the desired SameSite attribute
-        document.cookie = `${name}=${value}; SameSite=${sameSiteValue}; Secure`;
-      }
-    }
-    
 // on load function e.g. when the Collapsible button is clicked
 function onLoad(url, URLData, type, nameForSummary){
       if (url && nameForSummary) {

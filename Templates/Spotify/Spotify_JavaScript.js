@@ -35,11 +35,11 @@ function onLoad(url, summaryName) {
   if (url && summaryName) {
     url = constructEmbedURL(url);
     content.src= url;
-    setSameSiteAttribute('None');
+    
   } else if (url && !summaryName) {
     url = constructEmbedURL(url);
     content.src= url;
-    setSameSiteAttribute('None');
+    
   }
 }
 
@@ -66,18 +66,6 @@ function assignParent(iframeContainer, TemplateContainer) {
 // function to assign the header links
 function assignHeaderLinks(url) {
   headerLink.href = ""+ url;
-}
-
-function setSameSiteAttribute(sameSiteValue) {
-  const cookies = document.cookie.split(";");
-
-  for (let i = 0; i < cookies.length; i++) {
-    const cookie = cookies[i].trim();
-    const [name, value] = cookie.split("=");
-
-    // Set the cookie with the desired SameSite attribute
-    document.cookie = `${name}=${value}; SameSite=${sameSiteValue}; Secure`;
-  }
 }
 
 // event listener for the details element state change

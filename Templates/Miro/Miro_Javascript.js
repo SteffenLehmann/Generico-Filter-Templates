@@ -86,19 +86,7 @@ function onLoad(url, embedurl, nameForSummary){
 function assignContent(url, embedurl) {
   document.getElementById('Content'+@@AUTOID@@).src = ""+embedurl;
   document.getElementById('ShareLink'+@@AUTOID@@).href = ""+url;
-  setSameSiteAttribute('None');
-}
-// set the SameSite attribute for the cookies
-function setSameSiteAttribute(sameSiteValue) {
-  const cookies = document.cookie.split(";");
-
-  for (let i = 0; i < cookies.length; i++) {
-    const cookie = cookies[i].trim();
-    const [name, value] = cookie.split("=");
-
-    // Set the cookie with the desired SameSite attribute
-    document.cookie = `${name}=${value}; SameSite=${sameSiteValue}; Secure`;
-  }
+  
 }
 
 // event listener for the details element state change
