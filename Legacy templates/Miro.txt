@@ -30,7 +30,7 @@ if(typeof(url) != 'undefined'){
 // Custom CSS (template 3) 
 
 .detailsCollapsible{
-    pointer: cursor; 
+    cursor: pointer;
     padding: 5px; 
     width: 100%; 
     border: none; 
