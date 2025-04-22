@@ -1,0 +1,194 @@
+.TemplateContainerMiro{
+    width: 100%;
+    overflow: auto;
+}
+
+.detailsCollapsibleMiro{
+    cursor: pointer;
+    padding: 10px; 
+    border: none; 
+    text-align: left; 
+    outline: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #212121;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    overflow: visible;
+    border: 2px solid transparent;
+}
+
+.detailsCollapsibleMiro:hover{
+    background-color: #E1E1E1;
+    color: #3357c2;
+}
+
+.detailsCollapsibleMiro:focus-visible{
+    outline: none;
+    border-color: #468ff4;
+}
+.detailsCollapsibleDarkModeMiro{
+    cursor: pointer;
+    padding: 10px; 
+    border: none; 
+    text-align: left; 
+    outline: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #FFFFFF;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 2px solid transparent;
+}
+
+.detailsCollapsibleDarkModeMiro:hover{
+    background-color: #CCCCCC;
+    color: #468ff4;
+}
+
+.detailsCollapsibleDarkModeMiro:focus-visible{
+    outline: none;
+    border-color: #468ff4;
+}
+.present_wrapperMiro {
+    position: relative;
+    padding-bottom: 60 %;
+    overflow: hidden;
+    height: 58dvh;
+}
+
+.Link-containerMiro{
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+}
+
+.LinkMiro{
+    display: block;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #E1E1E1;
+    background-color: #E1E1E1; 
+    border-radius: 5px; /* Rounded borders */
+    margin-bottom: 5px;
+    margin: 0 5px;
+    color: #131314;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.LinkMiro:hover{
+    background-color: #b2b2b2;
+    border: 1px solid #b2b2b2;
+    color: #3357c2;
+}
+.LinkDarkModeMiro {
+    display: block;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: transparent; 
+    background-color: transparent;
+    border-radius: 5px; /* Rounded borders */
+    margin-bottom: 5px;
+    margin: 0 5px;
+    color: #ffffff !important;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .LinkDarkModeMiro:hover {
+    background-color: #cccccc;
+    color: #468ff4 !important;;
+  }
+.iframeButtonMiro{
+    display: none;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    display: block;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #CCCCCC;
+    background-color: #CCCCCC; 
+    border-radius: 5px; /* Rounded borders */
+    margin-bottom: 5px;
+    margin: 0 5px;
+    color: #131314;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+}
+.iframeButtonMiro:hover{
+    background-color: #666666;
+    border: 1px solid #666666;
+    color: #468ff4;
+}
+
+  .IframeStyleMiro{
+    width: 100%;
+    height: 100%;
+}
+.stateIndicatorMiro{
+    height: 5px;
+    background-color: #E1E1E1;
+}
+
+.HeaderLinkMiro{
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px; /* Rounded borders */
+    color: #212121;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    right: 0;
+    border: 2px solid transparent;
+}
+.HeaderLinkMiro:hover{
+    background-color: #E1E1E1;
+    color: #3357c2;
+}
+.HeaderLinkMiro:focus-visible{
+    outline: none;
+    border-color: #468ff4;
+}
+.HeaderLinkDarkModeMiro{
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px; /* Rounded borders */
+    color: #FFFFFF !important; 
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    right: 0;
+}
+.HeaderLinkDarkModeMiro:hover{
+    background-color: #CCCCCC;
+    color: #468ff4 !important;
+    border: 2px solid transparent;
+}
+.HeaderLinkDarkModeMiro:focus-visible{
+    outline: none;
+    border-color: #468ff4;
+}
+.HeaderLinkContainerMiro{
+    display: flex;
+    align-items: center;
+}
+.HeaderLinkContainerMiro > :first-child{
+    flex: 1;
+}
