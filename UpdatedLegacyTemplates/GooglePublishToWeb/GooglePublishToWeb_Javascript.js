@@ -1,8 +1,8 @@
 // Custom JS
 // user input from Moodle
-const summaryName = getLongInput("@@Name Displayed on the Button@@", 'Name: The name of the button that will contain the google document', opts);
-const pURL = getLongInput("@@Google Publish to Web Link@@", 'Google Publish to Web Link: open the file menu in the top left corner and find the share section then select publish to web', opts);
-const dURL = getLongInput("@@Google URL - Easy Download@@", 'Google share URL: Remember to make it public for everyone', opts);
+const summaryName = getLongInput("@@Name Displayed on the Button@@", 'Name Displayed on the Button', opts);
+const pURL = getLongInput("@@Google Publish to Web Link@@", 'Google Publish to Web Link', opts);
+const dURL = getLongInput("@@Google URL - Easy Download@@", 'Google URL - Easy Download', opts);
 
 /* 
   function to get the user input from the generico object opts. 
@@ -282,37 +282,37 @@ function getBackgroundColor() {
 
 function setBackgrounColor(backGroundColor) {
       if (backGroundColor == 'rgb(255, 255, 255)') {
-            if (detailsButton.classList.contains('detailsCollapsibleGooglePub')) {return;}
+            if (detailsButton.classList.contains('detailsCollapsibleGooglePubLegacy')) {return;}
             // Light mode
-            detailsButton.classList.add('detailsCollapsibleGooglePub');
-            detailsButton.classList.remove('detailsCollapsibleDarkModeGooglePub');
-            headerLink.classList.add('HeaderLinkGooglePub');
-            headerLink.classList.remove('HeaderLinkDarkModeGooglePub');
-            sharelink.classList.add('LinkGooglePub');
-            sharelink.classList.remove('LinkDarkModeGooglePub');
-            fullscreenButton.classList.add('LinkGooglePub');
-            fullscreenButton.classList.remove('LinkDarkModeGooglePub');
+            detailsButton.classList.add('detailsCollapsibleGooglePubLegacy');
+            detailsButton.classList.remove('detailsCollapsibleDarkModeGooglePubLegacy');
+            headerLink.classList.add('HeaderLinkGooglePubLegacy');
+            headerLink.classList.remove('HeaderLinkDarkModeGooglePubLegacy');
+            sharelink.classList.add('LinkGooglePubLegacy');
+            sharelink.classList.remove('LinkDarkModeGooglePubLegacy');
+            fullscreenButton.classList.add('LinkGooglePubLegacy');
+            fullscreenButton.classList.remove('LinkDarkModeGooglePubLegacy');
             if (headerdownload) {
-                  headerdownload.classList.add('HeaderLinkGooglePub');
-                  headerdownload.classList.remove('HeaderLinkDarkModeGooglePub');
-                  download.classList.add('LinkGooglePub');
-                  download.classList.remove('LinkDarkModeGooglePub');
+                  headerdownload.classList.add('HeaderLinkGooglePubLegacy');
+                  headerdownload.classList.remove('HeaderLinkDarkModeGooglePubLegacy');
+                  download.classList.add('LinkGooglePubLegacy');
+                  download.classList.remove('LinkDarkModeGooglePubLegacy');
             }
       } else if (backGroundColor == 'rgb(25, 26, 30)') {
-            if (detailsButton.classList.contains('detailsCollapsibleDarkModeGooglePub')) {return;}
+            if (detailsButton.classList.contains('detailsCollapsibleDarkModeGooglePubLegacy')) {return;}
             // Dark mode
-            detailsButton.classList.add('detailsCollapsibleDarkModeGooglePub');
-            detailsButton.classList.remove('detailsCollapsibleGooglePub');
-            headerLink.classList.add('HeaderLinkDarkModeGooglePub');
-            headerLink.classList.remove('HeaderLinkGooglePub');
-            sharelink.classList.add('LinkDarkModeGooglePub');
-            sharelink.classList.remove('LinkGooglePub');
-            fullscreenButton.classList.add('LinkDarkModeGooglePub');
-            fullscreenButton.classList.remove('LinkGooglePub');
+            detailsButton.classList.add('detailsCollapsibleDarkModeGooglePubLegacy');
+            detailsButton.classList.remove('detailsCollapsibleGooglePubLegacy');
+            headerLink.classList.add('HeaderLinkDarkModeGooglePubLegacy');
+            headerLink.classList.remove('HeaderLinkGooglePubLegacy');
+            sharelink.classList.add('LinkDarkModeGooglePubLegacy');
+            sharelink.classList.remove('LinkGooglePubLegacy');
+            fullscreenButton.classList.add('LinkDarkModeGooglePubLegacy');
+            fullscreenButton.classList.remove('LinkGooglePubLegacy');
             if (headerdownload) {
-                  headerdownload.classList.add('HeaderLinkDarkModeGooglePub');
-                  headerdownload.classList.remove('HeaderLinkGooglePub');
-                  download.classList.add('LinkDarkModeGooglePub');
+                  headerdownload.classList.add('HeaderLinkDarkModeGooglePubLegacy');
+                  headerdownload.classList.remove('HeaderLinkGooglePubLegacy');
+                  download.classList.add('LinkDarkModeGooglePubLegacy');
                   download.classList.remove('LinkGooglePub');
             }
       }
